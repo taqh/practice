@@ -1,0 +1,88 @@
+/*GENERAL STYLING*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: tahoma;
+}
+
+li {
+    list-style: none;
+    font-size: 30px;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+h2 {
+    font-size: 35px;
+    padding: 5px;
+}
+
+ul {
+    padding: 0;
+}
+
+input {
+    font-size: 1.5em;
+    padding: 0.5em;
+    border-radius: 7px;
+
+}
+
+
+/*SPECIFIC STYLING*/
+
+#header-title {
+    font-weight: 500;
+    font-size: 50px;
+    margin: 0 8%;
+    color: white;
+}
+
+#main-header {
+    background-color: rgb(48, 129, 48);
+}
+
+#items * {
+    border-radius: 5px;
+    border-top: 1px solid grey;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    padding: 0.5em;
+}
+
+#items :nth-of-type(4) {
+    border-bottom: 1px solid gray;
+}
+
+.form-inline .mb-3 {
+    display: flex;
+    gap: 1em;
+}
+
+@media (max-width: 650px) {
+    .form-inline {
+        flex-direction: column;
+    }
+
+}
+
+.btn-dark {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+#main {
+    border: 1px solid grey;
+    border-radius: 7px;
+    padding: 2em;
+    margin: 2% 10%;
+}
+
+.container h1 {
+    padding: 0.4em;
+}
