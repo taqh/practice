@@ -44,13 +44,13 @@ input {
 }
 
 .head-container {
-    padding: 1em;  
+    padding: 1em;
 }
 
 .row {
     display: flex;
     justify-content: space-between;
-    margin: 0 9% 0 9%; 
+    margin: 0 9% 0 9%;
 }
 
 #items * {
@@ -69,10 +69,12 @@ input {
     display: flex;
     flex-direction: column;
 }
+
 .list-group-item {
     display: flex;
     justify-content: space-between;
 }
+
 .delete {
     background-color: rgb(238, 51, 51);
     font-size: 20px;
@@ -80,17 +82,14 @@ input {
     cursor: pointer;
 }
 
+.delete:hover {
+    background-color: red;
+}
+
 form {
     display: flex;
     gap: 1em;
 }
-
-/* .form-ctrl {
-    padding: 1.4em;
-    border-radius: 7px;
-    
-} */
-
 
 @media (max-width: 650px) {
     .form-inline {
@@ -103,6 +102,10 @@ form {
     background-color: #333;
     color: #fff;
     cursor: pointer;
+}
+
+.btn-dark:hover {
+    background-color: black;
 }
 
 .btn-block {
@@ -118,6 +121,3 @@ form {
     padding: 2em;
     margin: 2% 10%;
 }
-
-
-
