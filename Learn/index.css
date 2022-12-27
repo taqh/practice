@@ -28,22 +28,29 @@ ul {
 input {
     font-size: 1.5em;
     padding: 0.5em;
-    border-radius: 7px;
-
+    border-radius: 5px;
 }
 
 
 /*SPECIFIC STYLING*/
+#main-header {
+    background-color: rgb(48, 129, 48);
+}
 
 #header-title {
     font-weight: 500;
-    font-size: 50px;
-    margin: 0 8%;
+    font-size: 45px;
     color: white;
 }
 
-#main-header {
-    background-color: rgb(48, 129, 48);
+.head-container {
+    padding: 1em;  
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 9% 0 9%; 
 }
 
 #items * {
@@ -54,14 +61,36 @@ input {
     padding: 0.5em;
 }
 
-#items :nth-of-type(4) {
+#items :last-of-type {
     border-bottom: 1px solid gray;
 }
 
-.form-inline .mb-3 {
+#items {
+    display: flex;
+    flex-direction: column;
+}
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+}
+.delete {
+    background-color: rgb(238, 51, 51);
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+form {
     display: flex;
     gap: 1em;
 }
+
+/* .form-ctrl {
+    padding: 1.4em;
+    border-radius: 7px;
+    
+} */
+
 
 @media (max-width: 650px) {
     .form-inline {
@@ -76,6 +105,13 @@ input {
     cursor: pointer;
 }
 
+.btn-block {
+    font-size: 1em;
+    padding: 1em;
+    width: 100%;
+    border-radius: 7px;
+}
+
 #main {
     border: 1px solid grey;
     border-radius: 7px;
@@ -83,6 +119,5 @@ input {
     margin: 2% 10%;
 }
 
-.container h1 {
-    padding: 0.4em;
-}
+
+
