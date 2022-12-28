@@ -6,7 +6,7 @@ let filter = document.getElementById('filter');
 form.addEventListener('submit', addItem);
 
 // Add item //
-function addItem(e) {
+function addItem(e){
     e.preventDefault();
 
     //  Get input value
@@ -22,16 +22,16 @@ function addItem(e) {
     li.appendChild(document.createTextNode(newItem));
 
     //  Create delete button element  //
-    let deleteBtn = document.createElement('button');
+    let = deleteButton = document.createElement('button');
 
     // Add classes to delete button //
-    deleteBtn.className = 'delete';
+    deleteButton.className = 'delete';
 
     //  Append text Node  //
-    deleteBtn.appendChild(document.createTextNode('X'));
+    deleteButton.appendChild(document.createTextNode('X'));
 
     //  Append button to li  //
-    li.appendChild(deleteBtn);
+    li.appendChild(deleteButton);
 
     //  Append li to list   //
     itemList.appendChild(li);
