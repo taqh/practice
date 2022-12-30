@@ -54,7 +54,6 @@ function removeItem(e) {
 } 
 
 
-
 //     Filter Event    //
 filter.addEventListener('keyup', filterItems);
 
