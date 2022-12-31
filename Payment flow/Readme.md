@@ -1,0 +1,1 @@
+This was a figma design i tried creating as practice for my CSS 
