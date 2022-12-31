@@ -1,1 +1,1 @@
-This was a figma design i tried creating as practice for my CSS 
+This was a figma design i tried building as practice for html forms and CSS
