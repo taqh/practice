@@ -14,32 +14,34 @@
         href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
         rel="stylesheet">
     <title>Spacetravel</title>
+
+    <script src="index.js" defer></script>
 </head>
 
 <body class="home">
-
+    <a class="skip-to-content sr-only" href="#main" style="color:white">Skip to content</a>
     <header class="primary-header flex">
         <div>
             <img src="images/shared/logo.svg" alt="space tourism logo" class="logo">
         </div>
-        <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
+        <button class="mobile-nav-toggle"  aria-controls="primary-navigation" aria-expanded="false"><span class="sr-only" aria-expanded="false">Menu</span></button>
         <nav>
-            <ul id="primary-navigation" class="primary-navigation underline-indicators flex">
+            <ul id="primary-navigation" data-visible="false" class="primary-navigation underline-indicators flex">
                 <li class="active">
                     <a class="ff-sans-cond uppercase txt-white letter-spacing-2"
-                        href="#"><span>00</span>Home</a>
-                <li><a class="ff-sans-cond uppercase txt-white letter-spacing-2" href="#"><span>01</span>Destination</a>
-                <li><a class="ff-sans-cond uppercase txt-white letter-spacing-2" href="#"><span>02</span>Crew</a>
-                <li><a class="ff-sans-cond uppercase txt-white letter-spacing-2" href="#"><span>03</span>Technology</a>
+                        href="#"><span aria-hidden="true">00</span>Home</a>
+                <li><a class="ff-sans-cond uppercase txt-white letter-spacing-2" href="#"><span aria-hidden="true">01</span>Destination</a>
+                <li><a class="ff-sans-cond uppercase txt-white letter-spacing-2" href="#"><span aria-hidden="true">02</span>Crew</a>
+                <li><a class="ff-sans-cond uppercase txt-white letter-spacing-2" href="#"><span aria-hidden="true">03</span>Technology</a>
             </ul>
         </nav>
     </header>
 
-    <div class="grid-container grid-container--home">
+    <main id="main" class="grid-container grid-container--home">
         <div>
             <h1 class="txt-accent fs-500 ff-sans-cond uppercase letter-spacing-1">So, you want to travel to 
                 <span class="fs-900 ff-serif txt-white d-block">Space</span></h1>
-            <p>
+            <p> 
                 Let’s face it; if you want to go to space, you might as well genuinely go to
                 outer space and not hover kind of on the edge of it. Well sit back, and relax
                 because we’ll give you a truly out of this world experience!
@@ -48,17 +50,10 @@
         <div>
             <a href="#" class="large-button uppercase ff-serif txt-dark bg-white">Explore</a>
         </div>
-    </div>
+    </main>
 
 
-
-
-
-
-
-
-
-    <script src="index.js"></script>
+    
 </body>
 
 </html>
