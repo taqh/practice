@@ -3,7 +3,7 @@
 
 let navToggle = document.querySelector(".mobile-nav-toggle");
 let nav = document.querySelector(".primary-navigation");
-
+let body = document.querySelector(".technology");
 // when someone clicks the hamburger button
 navToggle.addEventListener("click", () => {
 
@@ -21,4 +21,15 @@ navToggle.addEventListener("click", () => {
     console.log();
 })
 
+document.addEventListener('click', (e) => {
+    let visibliity = nav.getAttribute("data-visible");
+    if (visibliity === "true") {
+        close = e.target.tagName;
+        console.log(close)
+    }
+        
+        
     
+
+    
+})

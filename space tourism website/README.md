@@ -45,7 +45,6 @@ Users should be able to:
 ### What I learned
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
 <!-- to display a different image based on screen size -->
 <picture id="launch-image" class="launch-image">
                 <source 
