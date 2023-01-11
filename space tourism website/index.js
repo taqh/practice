@@ -17,19 +17,20 @@ navToggle.addEventListener("click", () => {
         navToggle.setAttribute("aria-expanded", false);
     }
 
-
-    console.log();
 })
 
 document.addEventListener('click', (e) => {
-    let visibliity = nav.getAttribute("data-visible");
-    if (visibliity === "true") {
-        close = e.target.tagName;
-        console.log(close)
-    }
-        
-        
-    
 
+    let visibliity = nav.getAttribute("data-visible");
+    close = e.target.classList;
+
+    if (visibliity == "true") {
+    if(close.contains('toggle')){
+        console.log();
+    }else{
+        nav.setAttribute("data-visible", false);
+        navToggle.setAttribute("aria-expanded", false);
+    }
+   }
     
 })
