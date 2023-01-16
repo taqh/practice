@@ -26,7 +26,7 @@ document.addEventListener('click', (e) => {
 
     if (visibliity == "true") {
     if(close.contains('toggle')){
-        console.log();
+        return;
     }else{
         nav.setAttribute("data-visible", false);
         navToggle.setAttribute("aria-expanded", false);
