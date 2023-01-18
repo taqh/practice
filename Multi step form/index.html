@@ -23,9 +23,8 @@
       <div class="content-sidebar flex-row flex bg-white">
 
         <div class="sidebar flex flex-column">
-
           <div class="side-tabs flex flex-row">
-            <button class="tab" aria-selected="true" role="tab" data-tab="">1</button>
+            <button class="tab" aria-selected="true" role="tab" tabindex="0" data-tab="">1</button>
             <div class="details txt-white"> 
               <h6>STEP 1</h6>
               <h4>YOUR INFO</h4>
@@ -33,7 +32,7 @@
           </div>
 
           <div class="side-tabs flex flex-row">
-            <button class="tab" aria-selected="false" role="tab" data-tab="">2</button>
+            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">2</button>
             <div class="details txt-white">
               <h6>STEP 2</h6>
               <h4>SELECT PLAN</h4>
@@ -41,7 +40,7 @@
           </div>
 
           <div class="side-tabs flex flex-row">
-            <button class="tab" aria-selected="false" role="tab" data-tab="">3</button>
+            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">3</button>
             <div class="details txt-white">
               <h6>STEP 3</h6>
               <h4>ADD-ONS</h4>
@@ -49,48 +48,170 @@
           </div>
 
           <div class="side-tabs flex flex-row">
-            <button class="tab" aria-selected="false" role="tab" data-tab="">4</button>
+            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">4</button>
             <div class="details txt-white">
               <h6>STEP 4</h6>
               <h4>SUMMARY</h4>
             </div>
-
           </div>
-
-          <!-- <div class="number-indicators" role="tablist">
-            <button class="tab" aria-selected="true" role="tab" data-tab="">1</button> 
-            <button class="tab" aria-selected="false" role="tab" data-tab="">2</button>
-            <button class="tab" aria-selected="false" role="tab" data-tab="">3</button>
-            <button class="tab" aria-selected="false" role="tab" data-tab="">4</button>
-          </div>
-          </div> -->
-
         </div>
 
-        <div class="content flex">
+        <div class="content flex flex-column">
+            <!-- STEP 1 -->
+            <section id="info" class="Step-1" hidden>
+                <div class="info">
+                  <h1 class="txt-blue">Personal info</h1>
+                  <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
+                </div>
+  
+                <form action="" class="form">
+                  <label for="Name" class="txt-blue">Name</label>
+                  <input type="text" name="Name" id="Name" placeholder="e.g. Stephen King">
 
-          <form action="">
-            <section class="info">
-              <h1 class="txt-blue">Personal info</h1>
-              <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
+                  <label for="Email" class="txt-blue">Email Address</label>
+                  <input type="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
+
+                  <label for="Phone" class="txt-blue">Phone Number</label>
+                  <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890">
+
+                  <div class="bottom flex">
+                    <a href="" class="txt-gray back">Go Back</a>
+                    <input type="button" class="bg-blue btn" value="Next Step">
+                  </div>
+                </form>
             </section>
 
-            <section class="form">
-            <label for="Name" class="txt-blue flex">Name <span class="warning">This field is required</span></label>
-            <input type="text" name="Name" id="Name" placeholder="e.g. Stephen King">
+            <!-- STEP 2 -->
+            <section id="plan" class="step-2" hidden>
+                <div class="info">
+                  <h1 class="txt-blue">Select your plan</h1>
+                  <p class="txt-gray">You have the option of monthly or yearly billing.</p> 
+                </div>
+                
+                <div class="select flex flex-row">
+                  <div class="plan arcade flex-column" aria-expanded="false">
+                    <h4 class="txt-blue">Arcade</h4>
+                    <h5 class="txt-gray">$9<span hidden>0</span>/mo</h5>
+                    <span class="txt-blue" hidden>2 months free</span>
+                  </div>
+                  <div class="plan advanced flex-column" aria-expanded="false">
+                    <h4 class="txt-blue">Advanced</h4>
+                    <h5 class="txt-gray">$12<span hidden>0</span>/mo</h5>
+                    <span class="txt-blue" hidden>2 months free</span>
+                  </div>
+                  <div class="plan pro flex-column" aria-expanded="false">
+                    <h4 class="txt-blue">Pro</h4>
+                    <h5 class="txt-gray">$15<span hidden>0</span>/mo</h5>
+                    <span class="txt-blue" hidden>2 months free</span>
+                  </div>
+                </div>
 
-            <label for="Email" class="txt-blue">Email Address</label>
-            <input type="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
+                <div class="toggle">
+                  <div class="flex flex-center">
+                    <p data-selected="true" class="txt-gray option">Monthly</p>
+                    
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider"></span>
+                    </label>
 
-            <label for="Phone" class="txt-blue">Phone Number</label>
-            <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890">
+                    <p data-selected=""="false" class="txt-gray option">Yearly</p>
+                  </div>
+                </div>
 
-            <div class="bottom flex">
-              <a href="" class="txt-blue back">Go Back</a>
-              <input type="button" class="bg-blue btn" value="Next Step">
-            </div>
-          </section>
+                <div class="bottom flex">
+                  <a href="" class="txt-gray back">Go Back</a>
+                  <input type="button" class="bg-blue btn" value="Next Step">
+                </div>
+            </section>
 
+            <!-- STEP 3 -->
+            <section id="add-on" class="step-3" hidden>
+                <div class="info">
+                  <h1 class="txt-blue">Pick add-ons</h1>
+                  <p class="txt-gray">Add-ons help enhance your gaming experience.</p> 
+                </div>
+
+                <div class="add-on flex flex-column">
+
+                  <div class="pick flex" data-checked="true">    
+                    <input type="checkbox" class="checkbox" name="" id="add">                    
+                    <div class="checkbox-details">
+                      <h4 class="txt-blue">Online service</h4>
+                      <h5 class="txt-gray">Access to multiplayer</h5>
+                    </div>
+                    <span class="txt-purple">$1/mo</span>
+                    <span class="txt-purple" hidden>$10/yr</span>
+                  </div>
+
+                  <div class="pick flex" data-checked="false">
+                    <input type="checkbox" class="checkbox" name="" id="add">
+                    <div class="checkbox-details" for="add">
+                      <h4 class="txt-blue">Larger storage</h4>
+                      <h5 class="txt-gray">Extra 1TB of cloud save</h5>
+                    </div>
+                    <span class="txt-purple">$2/mo</span>
+                    <span class="txt-purple" hidden>$20/yr</span>
+                  </div>
+
+                  <div class="pick flex" data-checked="false"> 
+                    <input type="checkbox" class="checkbox" name="" id="add"> 
+                    <div class="checkbox-details">
+                      <h4 class="txt-blue ">Customizable profile</h4>
+                      <h5 class="txt-gray">Custom theme on your profile</h5>
+                    </div>
+                    <span class="txt-purple">$2/mo</span>
+                    <span class="txt-purple" hidden>$20/yr</span>
+                  </div>
+
+                </div>
+
+                <div class="bottom flex">
+                  <a href="" class="txt-gray back">Go Back</a>
+                  <input type="button" class="bg-blue btn" value="Next Step">
+                </div>
+              
+            </section>
+
+            <!-- STEP 4 -->
+            <section id="summary" class="step-4">
+                <div class="info">
+                  <h1 class="txt-blue">Finishing up</h1>
+                  <p class="txt-gray">Double-check everything looks OK before confirming.</p> 
+                </div>
+              
+                <div class="reciept bg-mg flex flex-column">
+                  <div class="summary flex">
+                    <div class="plan-sum">
+                      <h4 class="txt-blue seven">Arcade (Yearly)</h4>
+                      <a href="" class="txt-gray">Change</a>
+                    </div>
+                    <span class="txt-blue seven">$90/yr</span>
+                  </div>
+                  
+                  <div class="plus flex flex-column">
+                    <div class="add-on-sum flex">
+                      <p class="txt-gray">Online service</p>
+                      <span class="txt-blue five">+$10/yr</span>
+                    </div>
+                    <div class="add-on-sum flex">
+                      <p class="txt-gray">Larger storage</p>
+                      <span class="txt-blue five">+$20/yr</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="total flex">
+                  <p class="txt-gray">Total (per year)</p>
+                  <h3 class="txt-purple seven">$120/yr</h3>
+                </div>
+
+                <div class="bottom flex">
+                  <button href="" class="txt-gray back">Go Back</button>
+                  <input type="button" class="bg-blue btn" value="Confirm">
+                </div>
+                </form>
+            </section>
         </div>
    
       </div>
@@ -100,8 +221,8 @@
 
 <footer>
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Taqib</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"> Frontend Mentor</a>.
+    Coded by <a href="https://github.com/Dom-iha">Taqib</a>.
   </div>
 </footer>
 </body>

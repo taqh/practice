@@ -86,7 +86,7 @@ select {
 
 /* set up the body */
 body {
-    background-color: hsl(var(--Pastel-blue)); /* change to magnolia after finishing layout*/
+    background-color: hsl(var(--Marineblue)); /* change to magnolia after finishing layout*/
     line-height: 1.5;
     min-height: 100vh;
     overflow-x: hidden;
@@ -104,7 +104,6 @@ body {
 .bg-blue {background-color: hsl(var(--Marineblue));}
 .bg-blue2 {background-color: hsl(var(--Pastel-blue));}
 .bg-al {background-color: hsl(var(--Alabaster));}
-.bg-mg {background-color: hsl(var(--Magnolia));}
 
 /* Text color */
 .txt-dark {color: hsl(var(--Purplish-blue));}
@@ -113,16 +112,12 @@ body {
 .txt-white {color: hsl(var(--White));}
 .txt-blue {color: hsl(var(--Marineblue));}
 .txt-gray {color: hsl(var(--Cool-gray));}
-.txt-purple {color: hsl(var(--Purplish-blue));}
 
 /* typography */
 .ff-ubuntu {font-family: var(--ff-ubuntu);}
 .ff-outfit {font-family: var(--ff-outfit);}
 .ff-poppins {font-family: var(--ff-poppins);}
 
-.four{font-weight: 400;}
-.five{font-weight: 500;}
-.seven{font-weight: 700;}
 
 .flex {
     display: flex;
@@ -144,12 +139,6 @@ body {
 
 .flex-right {
     align-self: flex-end;
-}
-.block{
-    display: block;
-}
-.hidden{
-    display: none;
 }
 
 .container {
@@ -173,13 +162,13 @@ body {
     border-radius: 1.5rem;
     height: 86vh;
     padding: 1.3rem;
-    /* border: .2rem solid hsl(var(--Strawberry-red)); */
+    border: .2rem solid hsl(var(--Strawberry-red));
 }
 
 .sidebar {
     border-radius: 1rem;
     flex: 1 1 25%;
-    /* border: .2rem solid hsl(var(--Strawberry-red)); */
+    border: .2rem solid hsl(var(--Strawberry-red));
 }
 
 /* ----------Sidebar---------- */
@@ -211,7 +200,6 @@ body {
     color: hsl(var(--Light-gray));
 }
 
-/* Js conditional */
 .side-tabs>[aria-selected="true"] {
     border: none;
     background-color: hsl(var(--Light-blue) / 1);
@@ -224,7 +212,7 @@ body {
 
 /* ----------Content---------- */
 .content {
-    border: .2rem solid hsl(var(--Pastel-blue));
+    border: .2rem solid hsl(var(--Strawberry-red));
     border-radius: 1rem;
     flex: 1 1 70%;
 }
@@ -247,6 +235,9 @@ h1 {
 }
 
 /* ----------Form Section---------- */
+.step-1 {
+    height: 100%;
+}
 
 .form {
     display: flex;
@@ -256,12 +247,6 @@ h1 {
 input::placeholder {
     color: hsl(var(--Cool-gray));
     font-weight: 400;
-}
-input:hover{
-    border-color: hsl(var(--Purplish-blue) / .8);
-}
-input:focus{
-   border-color: hsl(var(--Purplish-blue) /1); 
 }
 
 input {
@@ -274,7 +259,7 @@ input {
     font-weight: 500;
 }
 
-.form label {
+label {
     padding-top: 2rem;
     font-weight: 500;
 }
@@ -295,7 +280,7 @@ input {
 }
 
 .btn:hover {
-    transform: scale(1.04);
+    transform: scale(1.1);
     transition: 500ms ease-in-out;
 }
 
@@ -314,204 +299,8 @@ input {
 }
 
 
-/* ---------- STEP 2 ---------- */
-.select {
-    margin-top: 3rem;
-    gap: 2rem;
-}
-
-.plan {
-    border:.1rem solid  hsl(var(--Cool-gray) / .5);
-    border-radius: 1rem;
-    height: 16rem;
-    width: 14rem;
-    background-position: 15% 15%;
-    background-repeat: no-repeat;
-    padding-inline: 1.5rem;
-    padding-block: 1rem;
-}
-/* JS conditional */
-.plan[aria-expanded="true"] {
-    height: 19rem;
-    transition: 400ms;
-}
-.plan{
-    display: flex;
-    justify-content: flex-end;
-}
-.plan:hover{
-    border-color: hsl(var(--Purplish-blue) / .8);
-    cursor: pointer;
-}
-.plan h4{
-    font-weight: 700;
-}
-.plan h5{
-    font-weight: 500;
-}
-.plan span{
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-.arcade{
-    background-image: url(images/icon-arcade.svg);
-}
-.advanced{
-    background-image: url(images/icon-advanced.svg);
-}
-.pro{
-    background-image: url(images/icon-pro.svg);
-}
 
 
-.toggle {
-    background-color: hsl(var(--Magnolia) );
-    margin-top: 2.5rem;
-    padding: 1rem; 
-    gap: 2rem;
-}
-.option[data-selected="true"]{
-    color: hsl(var(--Marineblue));
-}
-.toggle > div {
-    gap: 3rem;
-}
-.option{
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 4rem;
-    height: 2rem;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: hsl(var(--Marineblue));
-    /* --webkit-transition: .4s; */
-    transition: .4s;
-}
-
-.slider::before {
-    position: absolute;
-    content: "";
-    height: 1.2rem;
-    width: 1.2rem;
-    top: .4rem;
-    left: .3rem;
-    right: .4rem;
-    background-color: hsl(var(--White));
-    transition: 400ms;
-    --webkit-transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: hsl(var(--Marineblue) );
-}
-input:focus + .slider {
-    box-shadow: 0 0 .1rem hsl(var(--Marineblue) );
-}
-input:checked + .slider::before {
-    /*-webkit-transform: translateX(1rem);
-    -ms-transform: translateX(1rem); */
-    transform: translateX(2.2rem);
-}
-.slider {
-    border-radius: 3.5rem;
-}
-.slider::before{
-    border-radius: 50%;
-}
-
-
-/* ---------- STEP 3 ---------- */
-.add-on{
-    margin-top: 2rem;
-    gap: 1.5rem;
-}
-.pick {
-    border:.1rem solid  hsl(var(--Cool-gray) / .5);
-    border-radius: 1rem;
-    height: 7.5rem;
-    width: 45rem;
-    padding-inline: 2rem;
-    gap: 2rem;
-}
-
-.pick{
-    align-items: center;
-}
-.pick:hover{
-    border-color: hsl(var(--Purplish-blue) / .8);
-}
-.pick>span{
-    font-weight: 500;
-    font-size: 1.3rem;
-    margin-left: auto;
-}
-
-.checkbox {
-    height: 1.7rem;
-    width: 1.7rem;
-    accent-color: hsl(243 100% 62%);
-}
-.checkbox-details>h4,h5 {
-    font-weight: 500;
-}
-.checkbox-details{
-    cursor: pointer;
-}
-.pick[data-checked="true"] {
-    background: hsl(var(--Magnolia) / .5);
-}
-
-/* ---------- STEP 4 ----------- */
-.reciept{
-    width: 45rem;
-    height: 18rem;
-    border-radius: 1rem;
-    padding-block: 2rem;
-    padding-inline: 2rem;
-    gap: 3rem;
-}
-.summary {
-    align-items: center;
-    justify-content: space-between;
-}
-.total {
-    padding: 3rem;
-    align-items: center;
-    justify-content: space-between;
-}
-.add-on-sum {
-    justify-content: space-between;
-}
-.plus > div >span {
-    font-size: 1.4rem;
-}
-
-.step-4 .bottom > .btn {
-    background-color: hsl(var(--Purplish-blue));
-}
-.step-4 .bottom > .back {
-    background: transparent;
-    border: none;
-    cursor: pointer;   
-}
 
 
 

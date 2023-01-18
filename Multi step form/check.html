@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Poppins:wght@100;200;300;400;600;700&family=Ubuntu:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <title>Frontend Mentor | Multi-step form</title>
+  <script src="index.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <div class="content-sidebar flex-row flex bg-white">
+
+        <div class="sidebar flex flex-column">
+          <div class="side-tabs flex flex-row">
+            <button class="tab" aria-selected="true" role="tab" tabindex="0" data-tab="">1</button>
+            <div class="details txt-white"> 
+              <h6>STEP 1</h6>
+              <h4>YOUR INFO</h4>
+            </div>
+          </div>
+
+          <div class="side-tabs flex flex-row">
+            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">2</button>
+            <div class="details txt-white">
+              <h6>STEP 2</h6>
+              <h4>SELECT PLAN</h4>
+            </div>
+          </div>
+
+          <div class="side-tabs flex flex-row">
+            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">3</button>
+            <div class="details txt-white">
+              <h6>STEP 3</h6>
+              <h4>ADD-ONS</h4>
+            </div>
+          </div>
+
+          <div class="side-tabs flex flex-row">
+            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">4</button>
+            <div class="details txt-white">
+              <h6>STEP 4</h6>
+              <h4>SUMMARY</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="content flex flex-column">
+            <!-- STEP 1 -->
+            <section class="Step-1">
+                <div class="info">
+                  <h1 class="txt-blue">Personal info</h1>
+                  <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
+                </div>
+  
+                <form action="" class="form">
+                  <label for="Name" class="txt-blue">Name</label>
+                  <input type="text" name="Name" id="Name" placeholder="e.g. Stephen King">
+
+                  <label for="Email" class="txt-blue">Email Address</label>
+                  <input type="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
+
+                  <label for="Phone" class="txt-blue">Phone Number</label>
+                  <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890">
+
+                  <div class="bottom flex">
+                    <a href="" class="txt-gray back">Go Back</a>
+                    <input type="button" class="bg-blue btn" value="Next Step">
+                  </div>
+                </form>
+            </section>
+
+            <!-- STEP 2 -->
+            <section hidden>
+                <div class="info">
+                  <h1 class="txt-blue">Personal info</h1>
+                  <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
+                </div>
+  
+                <div class="bottom flex">
+                  <a href="" class="txt-gray back">Go Back</a>
+                  <input type="button" class="bg-blue btn" value="Next Step">
+                </div>
+            </section>
+
+            <!-- STEP 3 -->
+            <section hidden>
+                <div class="info">
+                  <h1 class="txt-blue">Personal info</h1>
+                  <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
+                </div>
+  
+                <form action="">
+                  <label for="Name" class="txt-blue">Name</label>
+                  <input type="text" name="Name" id="Name" placeholder="e.g. Stephen King">
+
+                  <label for="Email" class="txt-blue">Email Address</label>
+                  <input type="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
+
+                  <label for="Phone" class="txt-blue">Phone Number</label>
+                  <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890">
+
+                  <div class="bottom flex">
+                    <a href="" class="txt-blue back">Go Back</a>
+                    <input type="button" class="bg-blue btn" value="Next Step">
+                  </div>
+                </form>
+            </section>
+
+            <!-- STEP 4 -->
+            <section hidden>
+                <div class="info">
+                  <h1 class="txt-blue">Personal info</h1>
+                  <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
+                </div>
+  
+                <form action="">
+                  <label for="Name" class="txt-blue">Name</label>
+                  <input type="text" name="Name" id="Name" placeholder="e.g. Stephen King">
+
+                  <label for="Email" class="txt-blue">Email Address</label>
+                  <input type="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
+
+                  <label for="Phone" class="txt-blue">Phone Number</label>
+                  <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890">
+
+                  <div class="bottom flex">
+                    <a href="" class="txt-blue back">Go Back</a>
+                    <input type="button" class="bg-blue btn" value="Next Step">
+                  </div>
+                </form>
+            </section>
+        </div>
+   
+      </div>
+    </div>
+
+  </main>
+
+<footer>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Taqib</a>.
+  </div>
+</footer>
+</body>
+
+</html>
