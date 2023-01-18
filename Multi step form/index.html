@@ -20,7 +20,7 @@
 <body>
   <main>
     <div class="container">
-      <div class="content-sidebar flex-row flex bg-white">
+      <div class="content-sidebar flex bg-white">
 
         <div class="sidebar flex flex-column">
           <div class="side-tabs flex flex-row">
@@ -57,161 +57,182 @@
         </div>
 
         <div class="content flex flex-column">
-            <!-- STEP 1 -->
-            <section id="info" class="Step-1" hidden>
-                <div class="info">
-                  <h1 class="txt-blue">Personal info</h1>
-                  <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
+          <!-- STEP 1 -->
+          <section id="info" class="Step-1" hidden>
+              <div class="info">
+                <h1 class="txt-blue seven">Personal info</h1>
+                <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
+              </div>
+
+              <form action="" class="form">
+                <label for="Name" class="txt-blue">Name</label>
+                <input type="text" name="Name" id="Name" placeholder="e.g. Stephen King">
+
+                <label for="Email" class="txt-blue">Email Address</label>
+                <input type="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
+
+                <label for="Phone" class="txt-blue">Phone Number</label>
+                <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890">
+
+                <div class="bottom flex">
+                  <button class="txt-gray back seven">Go Back</button>
+                  <input type="button" class="bg-blue btn" value="Next Step">
                 </div>
-  
-                <form action="" class="form">
-                  <label for="Name" class="txt-blue">Name</label>
-                  <input type="text" name="Name" id="Name" placeholder="e.g. Stephen King">
+              </form>
+          </section>
 
-                  <label for="Email" class="txt-blue">Email Address</label>
-                  <input type="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
+          <!-- STEP 2 -->
+          <section id="plans" class="step-2" hidden>
+              <div class="info">
+                <h1 class="txt-blue seven">Select your plan</h1>
+                <p class="txt-gray">You have the option of monthly or yearly billing.</p> 
+              </div>
+              
+              <div class="select flex flex-row">
+                <div class="plan arcade flex-column" aria-expanded="false" data-clicked="true">
+                  <h4 class="txt-blue seven">Arcade</h4>
+                  <h5 class="txt-gray five">$9<span hidden>0</span>/mo</h5>
+                  <span class="txt-blue five" hidden>2 months free</span>
+                </div>
+                <div class="plan advanced flex-column" aria-expanded="false" data-clicked="false">
+                  <h4 class="txt-blue seven">Advanced</h4>
+                  <h5 class="txt-gray five">$12<span hidden>0</span>/mo</h5>
+                  <span class="txt-blue five" hidden>2 months free</span>
+                </div>
+                <div class="plan pro flex-column" aria-expanded="false" data-clicked="false">
+                  <h4 class="txt-blue seven">Pro</h4>
+                  <h5 class="txt-gray five">$15<span hidden>0</span>/mo</h5>
+                  <span class="txt-blue five" hidden>2 months free</span>
+                </div>
+              </div>
 
-                  <label for="Phone" class="txt-blue">Phone Number</label>
-                  <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890">
+              <div class="toggle">
+                <div class="flex flex-center">
+                  <p data-selected="true" class="txt-gray option five">Monthly</p>
+                  
+                  <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                  </label>
 
-                  <div class="bottom flex">
-                    <a href="" class="txt-gray back">Go Back</a>
-                    <input type="button" class="bg-blue btn" value="Next Step">
+                  <p data-selected=""="false" class="txt-gray option five">Yearly</p>
+                </div>
+              </div>
+
+              <div class="bottom flex">
+                <button class="txt-gray back seven">Go Back</button>
+                <input type="button" class="bg-blue btn" value="Next Step">
+              </div>
+          </section>
+
+          <!-- STEP 3 -->
+          <section id="add-on" class="step-3" hidden>
+              <div class="info">
+                <h1 class="txt-blue seven">Pick add-ons</h1>
+                <p class="txt-gray">Add-ons help enhance your gaming experience.</p> 
+              </div>
+
+              <div class="add-on flex flex-column">
+
+                <div class="pick flex" data-checked="true">    
+                  <input type="checkbox" class="checkbox" name="" id="add">                    
+                  <div class="checkbox-details">
+                    <h4 class="txt-blue five">Online service</h4>
+                    <h5 class="txt-gray five">Access to multiplayer</h5>
                   </div>
-                </form>
-            </section>
+                  <span class="txt-purple">$1/mo</span>
+                  <span class="txt-purple" hidden>$10/yr</span>
+                </div>
 
-            <!-- STEP 2 -->
-            <section id="plan" class="step-2" hidden>
-                <div class="info">
-                  <h1 class="txt-blue">Select your plan</h1>
-                  <p class="txt-gray">You have the option of monthly or yearly billing.</p> 
+                <div class="pick flex" data-checked="false">
+                  <input type="checkbox" class="checkbox" name="" id="add">
+                  <div class="checkbox-details" for="add">
+                    <h4 class="txt-blue five">Larger storage</h4>
+                    <h5 class="txt-gray">Extra 1TB of cloud save</h5>
+                  </div>
+                  <span class="txt-purple">$2/mo</span>
+                  <span class="txt-purple" hidden>$20/yr</span>
+                </div>
+
+                <div class="pick flex" data-checked="false"> 
+                  <input type="checkbox" class="checkbox" name="" id="add"> 
+                  <div class="checkbox-details">
+                    <h4 class="txt-blue five">Customizable profile</h4>
+                    <h5 class="txt-gray">Custom theme on your profile</h5>
+                  </div>
+                  <span class="txt-purple">$2/mo</span>
+                  <span class="txt-purple" hidden>$20/yr</span>
+                </div>
+
+              </div>
+
+              <div class="bottom flex">
+                <button class="txt-gray back seven">Go Back</button>
+                <input type="button" class="bg-blue btn" value="Next Step">
+              </div>
+            
+          </section>
+
+          <!-- STEP 4 -->
+          <section id="summary" class="step-4" >
+              <div class="info">
+                <h1 class="txt-blue seven">Finishing up</h1>
+                <p class="txt-gray">Double-check everything looks OK before confirming.</p> 
+              </div>
+            
+              <div class="reciept bg-mg flex flex-column">
+                <div class="summary flex">
+                  <div class="plan-sum">
+                    <h4 class="txt-blue seven">Arcade (Yearly)</h4>
+                    <a href="" class="txt-gray">Change</a>
+                  </div>
+                  <span class="txt-blue seven">$90/yr</span>
                 </div>
                 
-                <div class="select flex flex-row">
-                  <div class="plan arcade flex-column" aria-expanded="false">
-                    <h4 class="txt-blue">Arcade</h4>
-                    <h5 class="txt-gray">$9<span hidden>0</span>/mo</h5>
-                    <span class="txt-blue" hidden>2 months free</span>
+                <div class="plus flex flex-column">
+                  <div class="add-on-sum flex">
+                    <p class="txt-gray">Online service</p>
+                    <span class="txt-blue five">+$10/yr</span>
                   </div>
-                  <div class="plan advanced flex-column" aria-expanded="false">
-                    <h4 class="txt-blue">Advanced</h4>
-                    <h5 class="txt-gray">$12<span hidden>0</span>/mo</h5>
-                    <span class="txt-blue" hidden>2 months free</span>
-                  </div>
-                  <div class="plan pro flex-column" aria-expanded="false">
-                    <h4 class="txt-blue">Pro</h4>
-                    <h5 class="txt-gray">$15<span hidden>0</span>/mo</h5>
-                    <span class="txt-blue" hidden>2 months free</span>
+                  <div class="add-on-sum flex">
+                    <p class="txt-gray">Larger storage</p>
+                    <span class="txt-blue five">+$20/yr</span>
                   </div>
                 </div>
+              </div>
 
-                <div class="toggle">
-                  <div class="flex flex-center">
-                    <p data-selected="true" class="txt-gray option">Monthly</p>
-                    
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider"></span>
-                    </label>
+              <div class="total flex">
+                <p class="txt-gray">Total (per year)</p>
+                <h3 class="txt-purple seven">$120/yr</h3>
+              </div>
 
-                    <p data-selected=""="false" class="txt-gray option">Yearly</p>
-                  </div>
-                </div>
+              <div class="bottom flex">
+                <button class="txt-gray back seven">Go Back</button>
+                <input type="button" class="bg-blue btn" value="Confirm">
+              </div>
+              </form>
+          </section>
 
-                <div class="bottom flex">
-                  <a href="" class="txt-gray back">Go Back</a>
-                  <input type="button" class="bg-blue btn" value="Next Step">
-                </div>
-            </section>
-
-            <!-- STEP 3 -->
-            <section id="add-on" class="step-3" hidden>
-                <div class="info">
-                  <h1 class="txt-blue">Pick add-ons</h1>
-                  <p class="txt-gray">Add-ons help enhance your gaming experience.</p> 
-                </div>
-
-                <div class="add-on flex flex-column">
-
-                  <div class="pick flex" data-checked="true">    
-                    <input type="checkbox" class="checkbox" name="" id="add">                    
-                    <div class="checkbox-details">
-                      <h4 class="txt-blue">Online service</h4>
-                      <h5 class="txt-gray">Access to multiplayer</h5>
-                    </div>
-                    <span class="txt-purple">$1/mo</span>
-                    <span class="txt-purple" hidden>$10/yr</span>
-                  </div>
-
-                  <div class="pick flex" data-checked="false">
-                    <input type="checkbox" class="checkbox" name="" id="add">
-                    <div class="checkbox-details" for="add">
-                      <h4 class="txt-blue">Larger storage</h4>
-                      <h5 class="txt-gray">Extra 1TB of cloud save</h5>
-                    </div>
-                    <span class="txt-purple">$2/mo</span>
-                    <span class="txt-purple" hidden>$20/yr</span>
-                  </div>
-
-                  <div class="pick flex" data-checked="false"> 
-                    <input type="checkbox" class="checkbox" name="" id="add"> 
-                    <div class="checkbox-details">
-                      <h4 class="txt-blue ">Customizable profile</h4>
-                      <h5 class="txt-gray">Custom theme on your profile</h5>
-                    </div>
-                    <span class="txt-purple">$2/mo</span>
-                    <span class="txt-purple" hidden>$20/yr</span>
-                  </div>
-
-                </div>
-
-                <div class="bottom flex">
-                  <a href="" class="txt-gray back">Go Back</a>
-                  <input type="button" class="bg-blue btn" value="Next Step">
-                </div>
+          <!-- STEP 5 -->
+          <section id="completed" class="step-5" hidden>
               
-            </section>
-
-            <!-- STEP 4 -->
-            <section id="summary" class="step-4">
-                <div class="info">
-                  <h1 class="txt-blue">Finishing up</h1>
-                  <p class="txt-gray">Double-check everything looks OK before confirming.</p> 
-                </div>
+            <div class="msg-wrap flex flex-column">
+              <div>
+                <img src="images/icon-thank-you.svg" alt="">
+              </div>
+              <div class="msg txt-center">
+                <h1 class="txt-blue seven">Thank you!</h1>
+                <p class="txt-gray">
+                  Thanks for confirming your subscription! We hope you have fun
+                  using our platform. If you ever need support, please feel free
+                  to email us at support@loremgaming.com. 
+                </p> 
+              </div>
+            </div>
+            
               
-                <div class="reciept bg-mg flex flex-column">
-                  <div class="summary flex">
-                    <div class="plan-sum">
-                      <h4 class="txt-blue seven">Arcade (Yearly)</h4>
-                      <a href="" class="txt-gray">Change</a>
-                    </div>
-                    <span class="txt-blue seven">$90/yr</span>
-                  </div>
-                  
-                  <div class="plus flex flex-column">
-                    <div class="add-on-sum flex">
-                      <p class="txt-gray">Online service</p>
-                      <span class="txt-blue five">+$10/yr</span>
-                    </div>
-                    <div class="add-on-sum flex">
-                      <p class="txt-gray">Larger storage</p>
-                      <span class="txt-blue five">+$20/yr</span>
-                    </div>
-                  </div>
-                </div>
+          </section>
 
-                <div class="total flex">
-                  <p class="txt-gray">Total (per year)</p>
-                  <h3 class="txt-purple seven">$120/yr</h3>
-                </div>
-
-                <div class="bottom flex">
-                  <button href="" class="txt-gray back">Go Back</button>
-                  <input type="button" class="bg-blue btn" value="Confirm">
-                </div>
-                </form>
-            </section>
         </div>
    
       </div>
@@ -219,12 +240,12 @@
 
   </main>
 
-<footer>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"> Frontend Mentor</a>.
-    Coded by <a href="https://github.com/Dom-iha">Taqib</a>.
-  </div>
-</footer>
-</body>
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"> Frontend Mentor</a>.
+      Coded by <a href="https://github.com/Dom-iha">Taqib</a>.
+    </div>
+  </footer>
 
+</body>
 </html>

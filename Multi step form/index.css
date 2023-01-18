@@ -124,6 +124,10 @@ body {
 .five{font-weight: 500;}
 .seven{font-weight: 700;}
 
+.txt-center{
+    text-align: center;
+}
+
 .flex {
     display: flex;
     gap: 1rem;
@@ -158,20 +162,12 @@ body {
     max-width: 80%;
 }
 
-.warning {
-    display: flex;
-    justify-content: flex-end;
-    flex: 1 1 50%;
-    color: hsl(var(--Strawberry-red));
-    font-weight: 700;
-    font-size: 1.3rem;
-}
 
 /* ----------Layout------------- */
 .content-sidebar {
     flex-wrap: wrap;
     border-radius: 1.5rem;
-    height: 86vh;
+    height: 85vh;
     padding: 1.3rem;
     /* border: .2rem solid hsl(var(--Strawberry-red)); */
 }
@@ -182,13 +178,19 @@ body {
     /* border: .2rem solid hsl(var(--Strawberry-red)); */
 }
 
+.content {
+    border: .2rem solid hsl(var(--Pastel-blue));
+    border-radius: 1rem;
+    flex: 1 1 70%;
+}
+
 /* ----------Sidebar---------- */
 .sidebar {
     background-image: url(images/bg-sidebar-desktop.svg);
     background-repeat: no-repeat;
     padding-inline: 3rem;
-    padding-block: 3rem;
-    height: 100%;
+    padding-block: 3.5rem;
+    max-height: 100%;
     gap: 2.5rem;
 }
 
@@ -223,29 +225,20 @@ body {
 }
 
 /* ----------Content---------- */
-.content {
-    border: .2rem solid hsl(var(--Pastel-blue));
-    border-radius: 1rem;
-    flex: 1 1 70%;
-}
 
 .content {
-    padding-top: 3em;
-    height: 100%;
-    width: 100%;
+    padding-top: 4rem;
+    max-height: 100%;
     justify-content: flex-start;
     align-items: center;
-    flex: 1 1 1;
 }
 
 .info {
     padding-bottom: 1.5rem;
 }
-
-h1 {
-    font-weight: 700;
+h1{
+    font-size: 3rem;
 }
-
 /* ----------Form Section---------- */
 
 .form {
@@ -295,28 +288,27 @@ input {
 }
 
 .btn:hover {
-    transform: scale(1.04);
-    transition: 500ms ease-in-out;
+    transform: scale(1.02);
+    transition: 200ms ease-in-out;
 }
 
 .btn:active {
     transform: scale(0.96);
     transition: 200ms ease-in;
-    background-color: hsl(var(--Purplish-blue) / 1);
 }
 
 .back {
-    text-decoration: none;
-    font-weight: 700;
+    background: transparent;
+    border: none;
+    cursor: pointer;   
 }
 .back:hover{
     color: hsl(var(--Marineblue));
 }
 
-
 /* ---------- STEP 2 ---------- */
 .select {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     gap: 2rem;
 }
 
@@ -343,15 +335,12 @@ input {
     border-color: hsl(var(--Purplish-blue) / .8);
     cursor: pointer;
 }
-.plan h4{
-    font-weight: 700;
-}
-.plan h5{
-    font-weight: 500;
+.plan[data-clicked="true"] {
+    background-color: hsl(var(--Magnolia) / .5);
+    border-color: hsl(var(--Purplish-blue) / .8);
 }
 .plan span{
     font-size: 1.1rem;
-    font-weight: 500;
 }
 .arcade{
     background-image: url(images/icon-arcade.svg);
@@ -377,7 +366,6 @@ input {
     gap: 3rem;
 }
 .option{
-    font-weight: 500;
     cursor: pointer;
 }
 
@@ -469,9 +457,6 @@ input:checked + .slider::before {
     width: 1.7rem;
     accent-color: hsl(243 100% 62%);
 }
-.checkbox-details>h4,h5 {
-    font-weight: 500;
-}
 .checkbox-details{
     cursor: pointer;
 }
@@ -481,16 +466,27 @@ input:checked + .slider::before {
 
 /* ---------- STEP 4 ----------- */
 .reciept{
+    margin-top: 2rem;
     width: 45rem;
     height: 18rem;
     border-radius: 1rem;
     padding-block: 2rem;
     padding-inline: 2rem;
     gap: 3rem;
+    position: relative;
+}
+.reciept::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: .1rem;
+    width: 41rem;
+    background-color: hsl(var(--Cool-gray) / .5); 
+    bottom: 50%;  
 }
 .summary {
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between;  
 }
 .total {
     padding: 3rem;
@@ -507,12 +503,29 @@ input:checked + .slider::before {
 .step-4 .bottom > .btn {
     background-color: hsl(var(--Purplish-blue));
 }
-.step-4 .bottom > .back {
-    background: transparent;
-    border: none;
-    cursor: pointer;   
+.step-4 .bottom > .btn:hover {
+    background-color: hsl(var(--Purplish-blue) / .8);
 }
 
+.plan-sum > a:hover {
+    color: hsl(var(--Purplish-blue) );
+}
+
+
+/* ---------- final page ---------- */
+.msg-wrap{ 
+    /* background-image: url(images/icon-thank-you.svg);
+    background-position: center;
+    background-repeat: no-repeat; */
+    align-items: center;
+    padding-top: 12rem;
+    gap: 3rem;
+}
+
+.msg {
+    padding-inline: 14rem;
+    /* padding-top: 22rem; */
+}
 
 
 
