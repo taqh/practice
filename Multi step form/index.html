@@ -24,7 +24,7 @@
 
         <div class="sidebar flex flex-column">
           <div class="side-tabs flex flex-row">
-            <button class="tab" aria-selected="true" role="tab" tabindex="0" data-tab="">1</button>
+            <span class="tab txt-center seven" aria-selected="true" role="tab" tabindex="0" data-tab="">1</span>
             <div class="details txt-white"> 
               <h6>STEP 1</h6>
               <h4>YOUR INFO</h4>
@@ -32,7 +32,7 @@
           </div>
 
           <div class="side-tabs flex flex-row">
-            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">2</button>
+            <span class="tab txt-center seven" aria-selected="false" role="tab" tabindex="-1" data-tab="">2</span>
             <div class="details txt-white">
               <h6>STEP 2</h6>
               <h4>SELECT PLAN</h4>
@@ -40,7 +40,7 @@
           </div>
 
           <div class="side-tabs flex flex-row">
-            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">3</button>
+            <span class="tab seven txt-center" aria-selected="false" role="tab" tabindex="-1" data-tab="">3</span>
             <div class="details txt-white">
               <h6>STEP 3</h6>
               <h4>ADD-ONS</h4>
@@ -48,35 +48,35 @@
           </div>
 
           <div class="side-tabs flex flex-row">
-            <button class="tab" aria-selected="false" role="tab" tabindex="-1" data-tab="">4</button>
+            <span class="tab txt-center seven" aria-selected="false" role="tab" tabindex="-1" data-tab="">4</span>
             <div class="details txt-white">
               <h6>STEP 4</h6>
               <h4>SUMMARY</h4>
             </div>
           </div>
+          
         </div>
 
         <div class="content flex flex-column">
           <!-- STEP 1 -->
-          <section id="info" class="Step-1" hidden>
+          <section id="info" class="Step-1" >
               <div class="info">
                 <h1 class="txt-blue seven">Personal info</h1>
                 <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
               </div>
 
               <form action="" class="form">
-                <label for="Name" class="txt-blue">Name</label>
-                <input type="text" name="Name" id="Name" placeholder="e.g. Stephen King">
+                <label for="Name" class="txt-blue flex">Name <span hidden class="txt-red invalid five">This field is required</span></label>
+                <input type="text" class="name" name="Name" id="Name" placeholder="e.g. Stephen King">
 
-                <label for="Email" class="txt-blue">Email Address</label>
-                <input type="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
+                <label for="Email" class="txt-blue flex">Email Address <span hidden class="txt-red invalid five">This field is required</span></label>
+                <input type="email" class="email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
 
-                <label for="Phone" class="txt-blue">Phone Number</label>
-                <input type="tel" name="phone" id="phone" placeholder="e.g. +1 234 567 890">
+                <label for="Phone" class="txt-blue flex">Phone Number <span hidden class="txt-red invalid five">This field is required</span></label>
+                <input type="tel" class="phone" name="Phone" id="Phone" placeholder="e.g. +1 234 567 890">
 
                 <div class="bottom flex">
-                  <button class="txt-gray back seven">Go Back</button>
-                  <input type="button" class="bg-blue btn" value="Next Step">
+                  <input type="submit" class="bg-blue btn btn-1" value="Next Step">
                 </div>
               </form>
           </section>
@@ -121,7 +121,7 @@
 
               <div class="bottom flex">
                 <button class="txt-gray back seven">Go Back</button>
-                <input type="button" class="bg-blue btn" value="Next Step">
+                <input type="submit" class="bg-blue btn" value="Next Step">
               </div>
           </section>
 
@@ -168,13 +168,13 @@
 
               <div class="bottom flex">
                 <button class="txt-gray back seven">Go Back</button>
-                <input type="button" class="bg-blue btn" value="Next Step">
+                <input type="submit" class="bg-blue btn" value="Next Step">
               </div>
             
           </section>
 
           <!-- STEP 4 -->
-          <section id="summary" class="step-4" >
+          <section id="summary" class="step-4" hidden>
               <div class="info">
                 <h1 class="txt-blue seven">Finishing up</h1>
                 <p class="txt-gray">Double-check everything looks OK before confirming.</p> 
@@ -208,7 +208,7 @@
 
               <div class="bottom flex">
                 <button class="txt-gray back seven">Go Back</button>
-                <input type="button" class="bg-blue btn" value="Confirm">
+                <input type="submit" class="bg-blue btn" value="Confirm">
               </div>
               </form>
           </section>
