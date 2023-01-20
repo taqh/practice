@@ -169,8 +169,10 @@ body {
 .content-sidebar {
     border-radius: 1.5rem;
     height: 85vh;
+    min-width: 75rem;
     padding: 1.3rem;
-    border: .2rem solid hsl(var(--Strawberry-red));
+    /* border: .2rem solid hsl(var(--Strawberry-red)); */
+    box-shadow: .1rem .1rem .4rem .1rem hsl(var(--Cool-gray));
 }
 
 .sidebar {
@@ -189,10 +191,12 @@ body {
 /* ----------Sidebar---------- */
 .sidebar {
     background-image: url(images/bg-sidebar-desktop.svg);
+    background-size: cover;
     background-repeat: no-repeat;
     padding-inline: 3rem;
     padding-block: 3.5rem;
     max-height: 100%;
+    min-width: fit-content;
     gap: 2.5rem;
 }
 .side-tabs{
@@ -231,7 +235,7 @@ body {
     max-height: 100%;
     justify-content: flex-start;
     align-items: center;
-    
+    min-width: fit-content;
 }
 
 .info {
@@ -547,10 +551,18 @@ input:checked + .slider::before {
 
 
 
-/* -------------------Mobile------------------ */
-@media only screen and (max-width: 37.5rem) {
+/* -------------------Tablets------------------ */
+@media only screen and (max-width: 50rem) {
+
+    .container{
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
     .sidebar {
         background-image: url(images/bg-sidebar-mobile.svg);
+        background-size: cover;
         background-repeat: no-repeat;
         padding-inline: 3rem;
         padding-block: 4rem;
@@ -563,13 +575,15 @@ input:checked + .slider::before {
         flex-wrap: wrap;
         border-radius: 0;
         position: relative;
-        
+        background-color: hsl(var(--Magnolia) );
+
     }
     .sidebar{
         display: flex;
-        flex-direction: column;
-        background-color: hsl(var(--Magnolia));
+        flex-direction: row;
+        height: 30%;
     }
+    
     .details {
         display: none;
     }
@@ -577,22 +591,38 @@ input:checked + .slider::before {
         display: flex;
         position: absolute;
         z-index: 2;
-        top: 15%;
-        left: 5%;
+        top: 15rem;
+        left:4rem;
         background-color: hsl(var(--White));
         padding: 2rem;
-        width: 90%;
+        min-width: 90%;
+        min-height: 60%;
         box-shadow: .2rem .5rem 1rem .1rem hsl(var(--Cool-gray) / .3);
     }
     .bottom{
         position: absolute;
         top: 100%;
-        left: 70%;
+        left: 0%;
+        gap: 30em;
     }
     
     /* step 2 */
     .plan{
         flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 30rem) {
+    .select{
+        flex-direction: column;
+        align-items: center;
+    }
+    .plan{
+        flex-direction: row;
+        height: 8rem;
+        width: 100%;
+        align-items: center;
+        background-position: 10%;
     }
 }
 
@@ -611,14 +641,13 @@ input:checked + .slider::before {
 
 
 
-
-
 .attribution {
-    display: flex;
-    font-size: 1rem;
+    
+    /* display: flex;
+    font-size: 1.2rem;
     text-align: center;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-end; */
 }
 
 .attribution a {
