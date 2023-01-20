@@ -452,8 +452,8 @@ input:checked + .slider::before {
 .pick {
     border:.1rem solid  hsl(var(--Cool-gray) / .5);
     border-radius: 1rem;
-    height: 7.5rem;
-    width: 45rem;
+    height: 7.6rem;
+    width: 42rem;
     padding-inline: 2rem;
     gap: 2rem;
 }
@@ -465,7 +465,6 @@ input:checked + .slider::before {
     border-color: hsl(var(--Purplish-blue) / .8);
 }
 .pick>span{
-    font-weight: 500;
     font-size: 1.3rem;
     margin-left: auto;
 }
@@ -475,11 +474,12 @@ input:checked + .slider::before {
     width: 1.7rem;
     accent-color: hsl(243 100% 62%);
 }
-.checkbox-details{
+.checkbox-option{
     cursor: pointer;
 }
 .pick[data-checked="true"] {
     background: hsl(var(--Magnolia) / .5);
+    border-color: hsl(var(--Purplish-blue) / 1);
 }
 
 /* ---------- STEP 4 ----------- */
@@ -532,54 +532,64 @@ input:checked + .slider::before {
 
 /* ---------- final page ---------- */
 .msg-wrap{ 
-    /* background-image: url(images/icon-thank-you.svg);
-    background-position: center;
-    background-repeat: no-repeat; */
+    background-image: url(images/icon-thank-you.svg);
+    background-position: 50% 40%;
+    background-repeat: no-repeat;
     align-items: center;
-    padding-top: 12rem;
     gap: 3rem;
 }
 
 .msg {
-    padding-inline: 14rem;
-    /* padding-top: 22rem; */
+    padding-inline: 10rem;
+    padding-top: 22rem;
 }
 
 
 
 
 /* -------------------Mobile------------------ */
-@media (max-width: 37.5rem) {
+@media only screen and (max-width: 37.5rem) {
     .sidebar {
         background-image: url(images/bg-sidebar-mobile.svg);
         background-repeat: no-repeat;
         padding-inline: 3rem;
         padding-block: 4rem;
         height: 100%;
+        border-radius: 0;
     }
 
     .content-sidebar {
         padding: 0;
         flex-wrap: wrap;
+        border-radius: 0;
+        position: relative;
+        
     }
     .sidebar{
         display: flex;
-       flex-direction: column;
-    }
-    .content {
-        display: flex;
-    }
-    .side-tabs{
-        display: flex;
         flex-direction: column;
-        flex-basis: 20%;
+        background-color: hsl(var(--Magnolia));
     }
-
     .details {
         display: none;
     }
-
-
+    .content {
+        display: flex;
+        position: absolute;
+        z-index: 2;
+        top: 15%;
+        left: 5%;
+        background-color: hsl(var(--White));
+        padding: 2rem;
+        width: 90%;
+        box-shadow: .2rem .5rem 1rem .1rem hsl(var(--Cool-gray) / .3);
+    }
+    .bottom{
+        position: absolute;
+        top: 100%;
+        left: 70%;
+    }
+    
     /* step 2 */
     .plan{
         flex-direction: column;

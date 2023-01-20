@@ -59,7 +59,7 @@
 
         <div class="content flex flex-column">
           <!-- STEP 1 -->
-          <section id="info" class="Step-1" hidden>
+          <section id="info" class="Step-1" >
               <div class="info">
                 <h1 class="txt-blue seven">Personal info</h1>
                 <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
@@ -126,7 +126,7 @@
           </section>
 
           <!-- STEP 3 -->
-          <section id="add-on" class="step-3" >
+          <section id="add-on" class="step-3" hidden>
               <div class="info">
                 <h1 class="txt-blue seven">Pick add-ons</h1>
                 <p class="txt-gray">Add-ons help enhance your gaming experience.</p> 
@@ -135,33 +135,33 @@
               <div class="add-on flex flex-column">
 
                 <div class="pick flex" data-checked="true">    
-                  <input type="checkbox" class="checkbox" name="" id="add">                    
-                  <div class="checkbox-details">
-                    <h4 class="txt-blue five">Online service</h4>
-                    <h5 class="txt-gray five">Access to multiplayer</h5>
-                  </div>
-                  <span class="txt-purple">$1/mo</span>
-                  <span class="txt-purple" hidden>$10/yr</span>
+                  <input type="checkbox" class="checkbox" name="service" id="option-1">                    
+                  <label class="checkbox-option" for="option-1">
+                    <p class="txt-blue five">Online service</p>
+                    <h5 class="txt-gray">Access to multiplayer games</h5>
+                  </label>
+                  <span class="txt-purple five">$1/mo</span>
+                  <span class="txt-purple five" hidden>$10/yr</span>
                 </div>
-
+ 
                 <div class="pick flex" data-checked="false">
-                  <input type="checkbox" class="checkbox" name="" id="add">
-                  <div class="checkbox-details" for="add">
-                    <h4 class="txt-blue five">Larger storage</h4>
+                  <input type="checkbox" class="checkbox" name="storage" id="option-2">
+                  <label class="checkbox-option" for="option-2">
+                    <p class="txt-blue five">Larger storage</p>
                     <h5 class="txt-gray">Extra 1TB of cloud save</h5>
-                  </div>
-                  <span class="txt-purple">$2/mo</span>
-                  <span class="txt-purple" hidden>$20/yr</span>
+                  </label>
+                  <span class="txt-purple five">$2/mo</span>
+                  <span class="txt-purple five" hidden>$20/yr</span>
                 </div>
 
                 <div class="pick flex" data-checked="false"> 
-                  <input type="checkbox" class="checkbox" name="" id="add"> 
-                  <div class="checkbox-details">
-                    <h4 class="txt-blue five">Customizable profile</h4>
-                    <h5 class="txt-gray">Custom theme on your profile</h5>
-                  </div>
-                  <span class="txt-purple">$2/mo</span>
-                  <span class="txt-purple" hidden>$20/yr</span>
+                  <input type="checkbox" class="checkbox" name="profile" id="option-3"> 
+                  <label class="checkbox-option" for="option-3">
+                    <p class="txt-blue five">Customizable profile</p>
+                    <h5 class="txt-gray five">Custom theme on your profile</h5>
+                  </label>
+                  <span class="txt-purple five">$2/mo</span>
+                  <span class="txt-purple five" hidden>$20/yr</span>
                 </div>
 
               </div>
@@ -217,9 +217,9 @@
           <section id="completed" class="step-5" hidden>
               
             <div class="msg-wrap flex flex-column">
-              <div>
+              <!-- <div>
                 <img src="images/icon-thank-you.svg" alt="">
-              </div>
+              </div> -->
               <div class="msg txt-center">
                 <h1 class="txt-blue seven">Thank you!</h1>
                 <p class="txt-gray">
