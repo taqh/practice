@@ -161,14 +161,20 @@ body {
 .container {
     padding: 2em;
     margin-inline: auto;
-    max-width: 75%;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
 }
 
 
 /* ----------Layout------------- */
 .content-sidebar {
     border-radius: 1.5rem;
-    height: 85vh;
+    height: 100%;
+    min-height: 57rem;
+    max-height: 80vh;
+    width: 70%;
     min-width: 75rem;
     padding: 1.3rem;
     /* border: .2rem solid hsl(var(--Strawberry-red)); */
@@ -194,6 +200,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     padding-inline: 3rem;
+    padding-right: 5rem;
     padding-block: 3.5rem;
     max-height: 100%;
     min-width: fit-content;
@@ -293,6 +300,7 @@ input {
     justify-content: space-between;
     align-items: center;
     padding-top: 9rem;
+    padding-bottom: 3rem;
 }
 
 .btn-1{
@@ -333,7 +341,9 @@ input {
     margin-top: 2.5rem;
     gap: 2rem;
 }
-
+.step-2 .bottom{
+    padding-top: 10.5rem;
+}
 .plan {
     border:.1rem solid  hsl(var(--Cool-gray) / .5);
     border-radius: 1rem;
@@ -461,7 +471,9 @@ input:checked + .slider::before {
     padding-inline: 2rem;
     gap: 2rem;
 }
-
+.step-3 .bottom {
+    padding-top: 8rem;
+}
 .pick{
     align-items: center;
 }
@@ -521,7 +533,9 @@ input:checked + .slider::before {
 .plus > div >span {
     font-size: 1.4rem;
 }
-
+.step-4 .bottom{
+    padding-top: 7.5rem;
+}
 .step-4 .bottom > .btn {
     background-color: hsl(var(--Purplish-blue));
 }
@@ -541,12 +555,16 @@ input:checked + .slider::before {
     background-repeat: no-repeat;
     align-items: center;
     gap: 3rem;
+    width: 45rem;
 }
 
 .msg {
-    padding-inline: 10rem;
+    padding-inline: 1rem;
     padding-top: 22rem;
 }
+/* .pic{
+    padding-top: 10rem;
+} */
 
 .attribution {
     display: flex;
@@ -568,6 +586,7 @@ input:checked + .slider::before {
     }
     .container {
         min-width: 100%;
+        width: 100%;
         height: 100vh;
         margin: 0;
         padding: 0;
@@ -588,6 +607,7 @@ input:checked + .slider::before {
         background-image: url(images/bg-sidebar-mobile.svg);
         background-size: cover;
         border-radius: 0;
+        padding-inline: 3rem;
     }
     .sidebar{
         display: flex;
@@ -612,11 +632,13 @@ input:checked + .slider::before {
         min-height: 60%;
         box-shadow: .2rem .5rem 1rem .1rem hsl(var(--Cool-gray) / .3);
     }
+
+    /* next/back buttons */
     .bottom{
         position: absolute;
         top: 100%;
         left: 0%;
-        margin-top: 2rem;
+        margin-top: 3rem;
         padding: 2rem;
         padding-inline: 2rem;
         background-color: hsl(var(--White));
@@ -625,7 +647,29 @@ input:checked + .slider::before {
         border-radius: 1rem;
         box-shadow: .2rem .5rem 1rem .1rem hsl(var(--Cool-gray) / .3);
     }
+    /* step-2 */
+    .step-2 .bottom {
+        padding-top: 2rem;
+    }
     
+    /* step 3 */
+    .step-3 .bottom {
+        padding-top: 2rem;
+    }
+     /* step four */
+     .reciept {
+        max-width: 80vw;
+    }
+    .reciept::after {
+        max-width: 85%;  
+    }
+    .step-4 .bottom{
+        padding-top: 2rem;
+    }
+    /* final step */
+    .msg-wrap{
+      width: 80vw;     
+    }
     
 }
 
@@ -633,6 +677,12 @@ input:checked + .slider::before {
     .content{
         top: 12rem;
         left:2rem;
+        width: 80%;
+    }
+
+    .sidebar{
+        height: 23vh;
+        min-height: 20%;
     }
     /* step 1 */
     .form {
@@ -657,17 +707,37 @@ input:checked + .slider::before {
         background-position: 5%;
         padding-left: 7rem;
     }
-    .plan h4,h5 {
-        
+    .plan {
+       display: flex;
+       flex-direction: column;
+       align-items: flex-start;
+       justify-content: center;
     }
-
+    
     /* step three */
-
+    .pick {
+        max-width: 80vw;
+        padding-inline: 2rem;
+    }
     
     /* step four */
-
+    .reciept {
+        max-width: 80vw;
+    }
+    .reciept::after {
+        max-width: 85%;  
+    }
 
     /* step five */
+    .msg-wrap{
+        max-width: 80vw; 
+    }
+    .msg{
+        max-width: 80vw;
+        padding-inline: 1rem;
+        padding-bottom: 4rem;
+    }
+
 }
 
 
