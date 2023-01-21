@@ -86,7 +86,7 @@ select {
 
 /* set up the body */
 body {
-    background-color: hsl(var(--Light-blue)); /* change to magnolia after finishing layout*/
+    background-color: hsl(var(--Magnolia)); /* change to magnolia after finishing layout*/
     line-height: 1.5;
     min-height: 100vh;
     overflow-x: hidden;
