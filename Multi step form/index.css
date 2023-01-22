@@ -215,7 +215,7 @@ body {
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
-    cursor: pointer;
+    cursor: default;
     padding: .7rem;
 }
 
@@ -267,7 +267,9 @@ input:hover{
 input:focus{
    border-color: hsl(var(--Purplish-blue) /1); 
 }
-
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
 input {
     border: 0.05rem hsl(var(--Cool-gray) / .5) solid;
     border-radius: .7rem;
@@ -295,6 +297,13 @@ input {
     justify-content: space-between;
     cursor: pointer;
 }
+/* .label {
+    justify-content: space-between;
+    padding-top: 2rem;
+}
+.label > span{
+    align-self: flex-end;
+} */
 
 .bottom {
     justify-content: space-between;
