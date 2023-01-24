@@ -72,9 +72,12 @@ backBtn.forEach((btn) => {
 
 
 // ---------- SELECT PLAN ---------- //
-plans.addEventListener('click', (e)=>{
-  
-})
+plans.forEach((plan) => {
+  plan.addEventListener('click', (e) => {
+    plan.setAttribute("data-clicked", true);
+  });
+});
+
 
 
 
