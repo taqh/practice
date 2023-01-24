@@ -1,56 +1,75 @@
-// ----- Form Validation ----- //
-
+// ---------- START ---------- //
+const nextBtn = document.querySelector('.btn');
+const backBtn = document.querySelector('.back');
+const steps = [...document.querySelectorAll('section')];
+const tabs = [...document.querySelectorAll('.tab')]
+const inputs = document.querySelectorAll('input');
 const form = document.querySelector('form');
-const input = document.querySelector('input')
 
-console.log(form);
-form.addEventListener('submit', (e) =>  {
-    e.preventDefault();
+// ---------- ONLOAD SHOW CONTENT ---------- //
+currentSection = steps[0];
+currentTab = tabs[0];
 
-    let validate = document.querySelector('.invalid')
-    if (input.value ==='' ) {
-        validate.removeAttribute('hidden')
-        input.classList.add('required');
-    } else {
-        validate.setAttribute('hidden','')
-        input.classList.remove('required');
-    }
- });
+window.addEventListener('DOMContentLoaded', () => {
+    currentSection.removeAttribute('hidden');
+    currentTab.setAttribute("aria-selected", true);
+});
 
+// ---------- FORM VALIDATION ---------- //
 
-
-// const inputs = document.querySelectorAll('input');
-// const form = document.querySelector('form');
-
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault();
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
   
-//   inputs.forEach((input) => {
-//     const validate = input.parentNode.querySelector('.invalid')
+  inputs.forEach((input) => {
+    const validate = input.parentNode.querySelector('.invalid')
     
-//     if (!input.value) {
-//       validate.removeAttribute('hidden');
-//       input.classList.add('required');
-//     } else {
-//       validate.setAttribute('hidden','');
-//       input.classList.remove('required');
-//     }
-//   });
-// });
+    if (!input.value) {
+      validate.removeAttribute('hidden');
+      input.classList.add('required');
+    } else {
+      validate.setAttribute('hidden','');
+      input.classList.remove('required');
+    }
+  });
+  form.reset();
+});
 
-form.reset();
+// ---------- SWITCH SECTIONS ---------- //
+
+function switchSection(isNext) {
+    currentSection.setAttribute('hidden', true);
+    currentTab.setAttribute("aria-selected", false);
+    currentIndex = steps.indexOf(currentSection);
+    currentTabIndex = tabs.indexOf(currentTab);
+
+    if (isNext) {
+        currentIndex = currentIndex + 1;
+        currentTabIndex = currentTabIndex + 1;
+    } else {
+        currentIndex = currentIndex - 1;
+        currentTabIndex = currentTabIndex - 1;
+    }
+    if(currentIndex === steps.length) {
+        currentIndex = 0;
+    }
+    if(currentIndex < 0) {
+        currentIndex = steps.length -1;
+    }
+    currentSection = steps[currentIndex];
+    currentTab = tabs[currentTabIndex];
+    currentSection.removeAttribute('hidden');
+    currentTab.setAttribute("aria-selected", true);
+}
+nextBtn.addEventListener('click', (e) => {
+    switchSection(true);
+});
+
+backBtn.addEventListener('click', (e) => {
+    switchSection(false);
+});
 
 
-// ----- Switch sections ----- //
-// const next = document.querySelector('.btn')
-// const plans = document.getElementById('plans')
-// const info = document.getElementById('info')
 
-// Btn.addEventListener('click', (e) => {
-  
-//   let input = document.querySelector('.login');
-//   if(input.value) {
-//     info.setAttribute('hidden','');
-//     plans.removeAttribute('hidden');
-//   }
-// })
+
+
+
