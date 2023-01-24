@@ -6,7 +6,7 @@ const tabs = [...document.querySelectorAll('.tab')]
 const inputs = document.querySelectorAll('.login');
 const form = document.querySelector('form');
 const plans = document.querySelectorAll('.plan');
-
+const toggle =  document.querySelector('.swap');
 // ---------- ONLOAD SHOW CONTENT ---------- //
 currentSection = steps[0];
 currentTab = tabs[0];
@@ -20,7 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  console.log(inputs.length)
 
   inputs.forEach((input) => {
     const validate = input.parentNode.querySelector('.invalid')
@@ -78,6 +77,34 @@ plans.forEach((plan) => {
   });
 });
 
+// ONCLICK CHANGE PLAN STATE //
+    toggle.addEventListener('click', (e) => {  
 
+      monthly = document.querySelector('.option1');
+      yearly = document.querySelector('.option2');
+
+      yearPrice = document.querySelectorAll('.yr');
+      monthPrice = document.querySelectorAll('.mo');
+
+        if (monthly.getAttribute("data-selected").includes("true")) {
+          yearly.setAttribute("data-selected", true);
+          monthly.setAttribute("data-selected", false);
+          
+        } else {
+          monthly.setAttribute("data-selected", true);
+          yearly.setAttribute("data-selected", false);
+          
+        }
+
+        if (monthly.getAttribute("data-selected").includes("true")) {
+          yearPrice.removeAttribute('hidden');
+          monthPrice.setAttribute('hidden');
+        } else {
+          monthPrice.removeAttribute('hidden');
+          yearPrice.setAttribute('hidden');  
+        }
+
+});
+  
 
 
