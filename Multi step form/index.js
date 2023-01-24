@@ -1,10 +1,11 @@
 // ---------- START ---------- //
-const nextBtn = document.querySelector('.btn');
-const backBtn = document.querySelector('.back');
+const nextBtn = document.querySelectorAll('.btn');
+const backBtn = document.querySelectorAll('.back');
 const steps = [...document.querySelectorAll('section')];
 const tabs = [...document.querySelectorAll('.tab')]
-const inputs = document.querySelectorAll('input');
+const inputs = document.querySelectorAll('.login');
 const form = document.querySelector('form');
+const plans = document.querySelectorAll('.plan');
 
 // ---------- ONLOAD SHOW CONTENT ---------- //
 currentSection = steps[0];
@@ -19,7 +20,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+  console.log(inputs.length)
+
   inputs.forEach((input) => {
     const validate = input.parentNode.querySelector('.invalid')
     
@@ -43,33 +45,36 @@ function switchSection(isNext) {
     currentTabIndex = tabs.indexOf(currentTab);
 
     if (isNext) {
-        currentIndex = currentIndex + 1;
-        currentTabIndex = currentTabIndex + 1;
+        currentIndex++;
+        currentTabIndex++;
     } else {
-        currentIndex = currentIndex - 1;
-        currentTabIndex = currentTabIndex - 1;
-    }
-    if(currentIndex === steps.length) {
-        currentIndex = 0;
-    }
-    if(currentIndex < 0) {
-        currentIndex = steps.length -1;
+        currentIndex--;
+        currentTabIndex--;
     }
     currentSection = steps[currentIndex];
     currentTab = tabs[currentTabIndex];
     currentSection.removeAttribute('hidden');
     currentTab.setAttribute("aria-selected", true);
 }
-nextBtn.addEventListener('click', (e) => {
+nextBtn.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
     switchSection(true);
 });
+});
 
-backBtn.addEventListener('click', (e) => {
+backBtn.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
     switchSection(false);
+});
 });
 
 
 
+
+// ---------- SELECT PLAN ---------- //
+plans.addEventListener('click', (e)=>{
+  
+})
 
 
 
