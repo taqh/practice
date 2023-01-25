@@ -380,8 +380,8 @@ input {
     background-color: hsl(var(--Magnolia) / .5);
     border-color: hsl(var(--Purplish-blue) / .8);
 }
-.plan span{
-    font-size: 1.1rem;
+.plan > .perks{
+    font-size: 1.2rem;
 }
 .arcade{
     background-image: url(images/icon-arcade.svg);

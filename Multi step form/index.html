@@ -66,21 +66,13 @@
               </div>
 
               <form action="" class="form">
-                <!-- <div class="label flex">
-                  <label for="Name" class="txt-blue flex">Name</label><span hidden class="txt-red invalid seven">This field is required</span>
-                </div> -->
+
                 <label for="Name" class="txt-blue flex">Name <span hidden class="txt-red invalid seven">This field is required</span></label>
                 <input type="text" class="login name" name="Name" id="Name" placeholder="e.g. Stephen King">
 
-                <!-- <div class="label flex">
-                  <label for="Name" class="txt-blue flex">Name</label><span hidden class="txt-red invalid seven">This field is required</span>
-                </div> -->
                 <label for="Email" class="txt-blue flex">Email Address <span hidden class="txt-red invalid seven">This field is required</span></label>
                 <input type="email" class="login email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
 
-                <!-- <div class="label flex">
-                  <label for="Name" class="txt-blue flex">Name</label><span hidden class="txt-red invalid seven">This field is required</span>
-                </div> -->
                 <label for="Phone" class="txt-blue flex">Phone Number <span hidden class="txt-red invalid seven">This field is required</span></label>
                 <input type="number" class="login phone" name="Phone" id="Phone" placeholder="e.g. +1 234 567 890">
 
@@ -101,17 +93,17 @@
                 <div class="plan arcade flex-column" aria-expanded="false" data-clicked="false">
                   <h4 class="txt-blue seven">Arcade</h4>
                   <h5 class="txt-gray five">$9<span class="yr" hidden>0/yr</span><span class="mo">/mo</span></h5>
-                  <span class="txt-blue yr five" hidden>2 months free</span>
+                  <span class="txt-blue yr five perks" hidden>2 months free</span>
                 </div>
                 <div class="plan advanced flex-column" aria-expanded="false" data-clicked="false">
                   <h4 class="txt-blue seven">Advanced</h4>
                   <h5 class="txt-gray five">$12<span class="yr" hidden>0/yr</span><span class="mo">/mo</span></h5>
-                  <span class="txt-blue yr five" hidden>2 months free</span>
+                  <span class="txt-blue yr five perks" hidden>2 months free</span>
                 </div>
                 <div class="plan pro flex-column" aria-expanded="false" data-clicked="false">
                   <h4 class="txt-blue seven">Pro</h4>
                   <h5 class="txt-gray five">$15<span class="yr" hidden>0/yr</span><span class="mo">/mo</span></h5>
-                  <span class="txt-blue yr five" hidden>2 months free</span>
+                  <span class="txt-blue yr five perks" hidden>2 months free</span>
                 </div>
               </div>
 
@@ -143,14 +135,14 @@
 
               <div class="add-on flex flex-column">
 
-                <div class="pick flex" data-checked="true">    
+                <div class="pick flex" data-checked="false">    
                   <input type="checkbox" class="checkbox" name="service" id="option-1">                    
                   <label class="checkbox-option" for="option-1">
                     <p class="txt-blue five">Online service</p>
                     <h5 class="txt-gray">Access to multiplayer games</h5>
                   </label>
-                  <span class="txt-purple five">$1/mo</span>
-                  <span class="txt-purple five" hidden>$10/yr</span>
+                  <span class="txt-purple five mo">$1/mo</span>
+                  <span class="txt-purple five yr" hidden>$10/yr</span>
                 </div>
  
                 <div class="pick flex" data-checked="false">
@@ -159,8 +151,8 @@
                     <p class="txt-blue five">Larger storage</p>
                     <h5 class="txt-gray">Extra 1TB of cloud save</h5>
                   </label>
-                  <span class="txt-purple five">$2/mo</span>
-                  <span class="txt-purple five" hidden>$20/yr</span>
+                  <span class="txt-purple five mo">$2/mo</span>
+                  <span class="txt-purple five yr" hidden>$20/yr</span>
                 </div>
 
                 <div class="pick flex" data-checked="false"> 
@@ -169,8 +161,8 @@
                     <p class="txt-blue five">Customizable profile</p>
                     <h5 class="txt-gray five">Custom theme on your profile</h5>
                   </label>
-                  <span class="txt-purple five">$2/mo</span>
-                  <span class="txt-purple five" hidden>$20/yr</span>
+                  <span class="txt-purple five mo">$2/mo</span>
+                  <span class="txt-purple five yr" hidden>$20/yr</span>
                 </div>
 
               </div>
@@ -192,27 +184,27 @@
               <div class="reciept bg-mg flex flex-column">
                 <div class="summary flex">
                   <div class="plan-sum">
-                    <h4 class="txt-blue seven">Arcade (Yearly)</h4>
-                    <a href="" class="txt-gray">Change</a>
+                    <h4 class="txt-blue seven">Arcade <span class="mo">(Monthly)</span><span class="yr" hidden>(Yearly)</span></h4>
+                    <a href="#plans" class="txt-gray">Change</a>
                   </div>
-                  <span class="txt-blue seven">$90/yr</span>
+                  <span class="txt-blue seven">$<span class="mo">9/</span><span class="yr" hidden>90/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></span>
                 </div>
                 
                 <div class="plus flex flex-column">
                   <div class="add-on-sum flex">
                     <p class="txt-gray">Online service</p>
-                    <span class="txt-blue five">+$10/yr</span>
+                    <span class="txt-blue five">+$<span class="mo">1/</span><span class="yr" hidden>10/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></span>
                   </div>
                   <div class="add-on-sum flex">
                     <p class="txt-gray">Larger storage</p>
-                    <span class="txt-blue five">+$20/yr</span>
+                    <span class="txt-blue five">+$<span class="mo">2/</span><span class="yr" hidden>20/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></span>
                   </div>
                 </div>
               </div>
 
               <div class="total flex">
-                <p class="txt-gray">Total (per year)</p>
-                <h3 class="txt-purple seven">$120/yr</h3>
+                <p class="txt-gray">Total <span class="mo">(per month)</span><span class="yr" hidden>(per year)</span></p>
+                <h3 class="txt-purple seven">$<span class="mo">12/</span><span class="yr" hidden>120/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></h3>
               </div>
 
               <div class="bottom flex">
