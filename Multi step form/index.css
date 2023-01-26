@@ -178,7 +178,7 @@ body {
     min-width: 75rem;
     padding: 1.3rem;
     /* border: .2rem solid hsl(var(--Strawberry-red)); */
-    box-shadow: .1rem .1rem .4rem .1rem hsl(var(--Cool-gray));
+    box-shadow: 0 0 1rem 0rem hsl(var(--Cool-gray) / .4);
 }
 
 .sidebar {
@@ -278,9 +278,6 @@ input {
     color: hsl(var(--Marineblue));
     outline: none;
     font-weight: 500;
-}
-.form>input{
-    cursor: text;
 }
 .required {
     border: .1rem solid hsl(var(--Strawberry-red) / .8);
@@ -509,12 +506,11 @@ input:checked + .slider::before {
     background: hsl(var(--Magnolia) / .5);
     border-color: hsl(var(--Purplish-blue) / 1);
 }
-
 /* ---------- STEP 4 ----------- */
 .reciept{
     margin-top: 2rem;
     width: 45rem;
-    height: 18rem;
+    max-height: 22rem;
     border-radius: 1rem;
     padding-block: 2rem;
     padding-inline: 2rem;
@@ -528,7 +524,8 @@ input:checked + .slider::before {
     height: .1rem;
     width: 41rem;
     background-color: hsl(var(--Cool-gray) / .5); 
-    bottom: 50%;  
+    top: 9rem; 
+ 
 }
 .summary {
     align-items: center;

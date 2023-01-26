@@ -143,15 +143,31 @@ toggle.addEventListener('click', (e) => {
 });
   
   // ---------- SELECT ADD ON ---------- //
-  picks.forEach((pick) =>  {
+picks.forEach((pick) => {
     pick.addEventListener('click', (e) => {
-      if (pick.getAttribute("data-checked").includes("true")){
-        pick.setAttribute("data-checked", false);
-      } else {
-        pick.setAttribute("data-checked", true);
-      }
+        let checkbox = pick.querySelector('.checkbox');
+        if (pick.getAttribute("data-checked").includes("true")) {
+            pick.setAttribute("data-checked", false);
+            checkbox.checked = false;
+        } else {
+            pick.setAttribute("data-checked", true);
+            checkbox.checked = true;
+        }
     });
-  });
+
+    let label = pick.querySelector('label');
+    label.addEventListener('click', (e) => {
+        let checkbox = pick.querySelector('.checkbox');
+        if (checkbox.checked) {
+            pick.setAttribute("data-checked", false);
+            checkbox.checked = false;
+        } else {
+            pick.setAttribute("data-checked", true);
+            checkbox.checked = true;
+        }
+    });
+});
+
 
   // SUMMARY SECTION LINK  //
   function changePlan(isTrue) {
@@ -175,4 +191,49 @@ let back = document.getElementById('back-link')
   changePlan(true);
  });
 
-  
+
+// -------- get plan price and name ------ //
+let plansList = [...document.querySelectorAll('.plan')]
+
+// final page choice
+let planChoice = '';
+
+// for plans
+let planPrices = [9, 12, 15]
+let planPrice = 0;
+
+// for add-ons
+let addonPrices = [1, 2, 2]
+let addonPrice = 0;
+
+// iterate through plans to check which is clicked //  
+plans.forEach((plan) => {
+  plan.addEventListener('click', (e) => {
+    plans.forEach((plan) => {
+      if (plan.getAttribute("data-clicked").includes("true")){
+          plan.setAttribute("data-clicked", false);
+      }
+  });
+    plan.setAttribute("data-clicked", true);
+    //grab title of plan (arcade, advanced, pro) //
+    planChoice = e.target.firstElementChild.innerText; 
+
+    // select plan price based on index of the plansList array //
+    planPrice = planPrices[plansList.indexOf(plan)];
+
+    // update reciept page based on plan clicked //
+   document.querySelector('.plan-final').innerText = planChoice;
+   document.querySelector('.price-final').innerText = planPrice;
+   document.querySelector('.price-final-yr').innerText = planPrice + '0';
+  });
+});
+
+
+// ----- Get add-on and price ----- //
+let addOns = document.querySelectorAll('.pick')
+
+addOns.forEach((addOn) => {
+  addOn.addEventListener('click', (e) => {
+    e.preventDefault
+  })
+})

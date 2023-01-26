@@ -22,7 +22,7 @@
     <div class="container">
       <div class="content-sidebar flex bg-white">
 
-        <div class="sidebar flex flex-column">
+        <div class="sidebar flex flex-column" role="tablist">
           <div class="side-tabs flex flex-row">
             <span class="tab txt-center seven" aria-selected="false" role="tab" tabindex="0">1</span>
             <div class="details txt-white"> 
@@ -31,7 +31,7 @@
             </div>
           </div>
 
-          <div class="side-tabs flex flex-row">
+          <div class="side-tabs flex flex-row" role="tablist">
             <span class="tab txt-center seven" aria-selected="false" role="tab" tabindex="-1">2</span>
             <div class="details txt-white">
               <p>STEP 2</p>
@@ -39,7 +39,7 @@
             </div>
           </div>
 
-          <div class="side-tabs flex flex-row">
+          <div class="side-tabs flex flex-row" role="tablist">
             <span class="tab seven txt-center" aria-selected="false" role="tab" tabindex="-1">3</span>
             <div class="details txt-white">
               <p>STEP 3</p>
@@ -47,7 +47,7 @@
             </div>
           </div>
 
-          <div class="side-tabs flex flex-row">
+          <div class="side-tabs flex flex-row" role="tablist">
             <span class="tab txt-center seven" aria-selected="false" role="tab" tabindex="-1">4</span>
             <div class="details txt-white">
               <p>STEP 4</p>
@@ -184,27 +184,35 @@
               <div class="reciept bg-mg flex flex-column">
                 <div class="summary flex">
                   <div class="plan-sum">
-                    <h4 class="txt-blue seven">Arcade <span class="mo">(Monthly)</span><span class="yr" hidden>(Yearly)</span></h4>
+                    <h4 class="txt-blue seven plan-choice"> <span class="plan-final">  </span> <span class="mo">(Monthly)</span><span class="yr" hidden>(Yearly)</span></h4>
                     <a href="#plans" id="back-link" class="txt-gray">Change</a>
                   </div>
-                  <span class="txt-blue seven">$<span class="mo">9/</span><span class="yr" hidden>90/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></span>
+                  <span class="txt-blue seven">$<span class="mo price-final">-</span><span class="yr price-final-yr" hidden>0</span><span class="mo">/mo</span><span class="yr" hidden>/yr</span></span>
                 </div>
                 
                 <div class="plus flex flex-column">
-                  <div class="add-on-sum flex">
+
+                  <div class=" hidden add-on-sum flex">
                     <p class="txt-gray">Online service</p>
-                    <span class="txt-blue five">+$<span class="mo">1/</span><span class="yr" hidden>10/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></span>
+                    <span class="txt-blue five">+$<span class="mo">1/</span><span class="yr" hidden>10</span><span class="mo">/mo</span><span class="yr" hidden>/yr</span></span>
                   </div>
-                  <div class="add-on-sum flex">
+
+                  <div class="hidden add-on-sum flex">
                     <p class="txt-gray">Larger storage</p>
-                    <span class="txt-blue five">+$<span class="mo">2/</span><span class="yr" hidden>20/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></span>
+                    <span class="txt-blue five">+$<span class="mo">2/</span><span class="yr" hidden>20</span><span class="mo">/mo</span><span class="yr" hidden>/yr</span></span>
                   </div>
+
+                  <div class=" hidden add-on-sum flex">
+                    <p class="txt-gray">Customizable profile</p>
+                    <span class="txt-blue five">+$<span class="mo">2/</span><span class="yr" hidden>20</span><span class="mo">/mo</span><span class="yr" hidden>/yr</span></span>
+                  </div>
+
                 </div>
               </div>
 
               <div class="total flex">
                 <p class="txt-gray">Total <span class="mo">(per month)</span><span class="yr" hidden>(per year)</span></p>
-                <h3 class="txt-purple seven">$<span class="mo">12/</span><span class="yr" hidden>120/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></h3>
+                <h3 class="txt-purple seven">$<span class="mo"> </span><span class="yr" hidden>  </span><span class="mo">/mo</span><span class="yr" hidden>/yr</span></h3>
               </div>
 
               <div class="bottom flex">
