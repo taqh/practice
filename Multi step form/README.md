@@ -2,6 +2,13 @@
 
 This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
+
+<a href="https://dom-iha.github.io/space-tourism-website/">View Demo</a>
+    ·
+    <a href="https://github.com/Dom-iha/Multi-step-form/issues" target="_blank">Report Bug</a>
+    ·
+    <a href="https://github.com/Dom-iha/Multi-step-form/issues" target="_blank">Request Feature</a>
+
 ## Table of contents
 
 - [Overview](#overview)
@@ -16,7 +23,7 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 
 
 ## Overview
-This is an intermediate level project from frontendmentor
+
 ### The challenge
 
 Users should be able to:
@@ -28,8 +35,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [frontendmentor](https://www.frontendmentor.io/solutions/multistep-form-YWjY9ctzuj)
+- Live Site URL: [live site URL](dom-iha.github.io/Multi-step-form/)
 
 ## My process
 
@@ -38,8 +45,8 @@ Users should be able to:
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- Mobile-first workflow
-- JavaScript  
+- JavaScript 
+- Mobile-first workflow 
 
 
 ### What I learned

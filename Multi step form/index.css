@@ -219,8 +219,8 @@ body {
     padding: .7rem;
 }
 
-.details>h6 {
-    margin: 0;
+.details>p{
+    font-size: 1.1rem;
     color: hsl(var(--Light-gray));
 }
 
@@ -278,6 +278,9 @@ input {
     color: hsl(var(--Marineblue));
     outline: none;
     font-weight: 500;
+}
+.form>input{
+    cursor: text;
 }
 .required {
     border: .1rem solid hsl(var(--Strawberry-red) / .8);

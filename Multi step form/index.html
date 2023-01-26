@@ -26,7 +26,7 @@
           <div class="side-tabs flex flex-row">
             <span class="tab txt-center seven" aria-selected="false" role="tab" tabindex="0">1</span>
             <div class="details txt-white"> 
-              <h6>STEP 1</h6>
+              <p>STEP 1</p>
               <h4>YOUR INFO</h4>
             </div>
           </div>
@@ -34,7 +34,7 @@
           <div class="side-tabs flex flex-row">
             <span class="tab txt-center seven" aria-selected="false" role="tab" tabindex="-1">2</span>
             <div class="details txt-white">
-              <h6>STEP 2</h6>
+              <p>STEP 2</p>
               <h4>SELECT PLAN</h4>
             </div>
           </div>
@@ -42,7 +42,7 @@
           <div class="side-tabs flex flex-row">
             <span class="tab seven txt-center" aria-selected="false" role="tab" tabindex="-1">3</span>
             <div class="details txt-white">
-              <h6>STEP 3</h6>
+              <p>STEP 3</p>
               <h4>ADD-ONS</h4>
             </div>
           </div>
@@ -50,7 +50,7 @@
           <div class="side-tabs flex flex-row">
             <span class="tab txt-center seven" aria-selected="false" role="tab" tabindex="-1">4</span>
             <div class="details txt-white">
-              <h6>STEP 4</h6>
+              <p>STEP 4</p>
               <h4>SUMMARY</h4>
             </div>
           </div>
@@ -65,7 +65,7 @@
                 <p class="txt-gray">Please provide your name, email address, and phone number.</p> 
               </div>
 
-              <form action="" class="form">
+              <form class="form">
 
                 <label for="Name" class="txt-blue flex">Name <span hidden class="txt-red invalid seven">This field is required</span></label>
                 <input type="text" class="login name" name="Name" id="Name" placeholder="e.g. Stephen King">
@@ -74,7 +74,7 @@
                 <input type="email" class="login email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
 
                 <label for="Phone" class="txt-blue flex">Phone Number <span hidden class="txt-red invalid seven">This field is required</span></label>
-                <input type="number" pattern="[0-9]+" class="login phone" name="Phone" id="Phone" placeholder="e.g. +1 234 567 890">
+                <input type="tel" pattern="[0-9]+" class="login phone" name="Phone" id="Phone" placeholder="e.g. +1 234 567 890">
 
                 <div class="bottom flex">
                   <input type="submit" class="bg-blue btn btn-1" value="Next Step">
@@ -90,7 +90,7 @@
               </div>
               
               <div class="select flex flex-row">
-                <div class="plan arcade flex-column" aria-expanded="false" data-clicked="false">
+                <div checked class="plan arcade flex-column" aria-expanded="false" data-clicked="false">
                   <h4 class="txt-blue seven">Arcade</h4>
                   <h5 class="txt-gray five">$9<span class="yr" hidden>0/yr</span><span class="mo">/mo</span></h5>
                   <span class="txt-blue yr five perks" hidden>2 months free</span>
@@ -109,14 +109,14 @@
 
               <div class="toggle">
                 <div class="flex flex-center">
-                  <p data-selected="true" class="txt-gray option option1 five">Monthly</p>
+                  <label for="toggle" data-selected="true" class="txt-gray option option1 five">Monthly</label>
                   
                   <label class="switch">
-                    <input class="swap" type="checkbox">
+                    <input id="toggle" class="swap" type="checkbox">
                     <span class="slider"></span>
                   </label>
 
-                  <p data-selected="false" class="txt-gray option option2 five">Yearly</p>
+                  <label for="toggle" data-selected="false" class="txt-gray option option2 five">Yearly</label>
                 </div>
               </div>
 
