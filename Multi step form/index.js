@@ -8,6 +8,7 @@ const displayError = document.querySelectorAll('.invalid');
 const form = document.querySelector('form');
 const plans = document.querySelectorAll('.plan');
 const toggle =  document.querySelector('.swap');
+const picks = document.querySelectorAll('.pick');
 
 
 // ---------- ONLOAD SHOW CONTENT ---------- //
@@ -33,10 +34,11 @@ form.addEventListener('submit', (e) => {
       displayError[index].setAttribute('hidden','');
     }
   });
-  form.reset();
 });
-inputs.forEach((input, index) => {
-  input.addEventListener('keydown', (e) => {
+
+ // ON KEYDOWN CLEAR ERROR MESSAGES //
+ inputs.forEach((input, index) => {
+  input.addEventListener('input', (e) => {
     if(e.target.value){
       input.classList.remove('required');
       displayError[index].setAttribute('hidden','');
@@ -44,23 +46,9 @@ inputs.forEach((input, index) => {
   });
 });
 
-
 // ---------- SWITCH SECTIONS ---------- //
 function switchSection(isNext) {
 
-  // let emptyInputs = false;
-  // inputs.forEach((input, index) => {
-  //   if (!input.value) {
-  //     input.classList.add('required');
-  //     displayError[index].removeAttribute('hidden');
-  //     emptyInputs = true;
-  //   } else {
-  //     input.classList.remove('required');
-  //     displayError[index].setAttribute('hidden','');
-  //   }
-  // });
-    
-  // if(emptyInputs) return;
     currentSection.setAttribute('hidden', true);
     currentTab.setAttribute("aria-selected", false);
     currentIndex = steps.indexOf(currentSection);
@@ -80,8 +68,22 @@ function switchSection(isNext) {
 }
 nextBtn.forEach((btn) => {
   btn.addEventListener('click', (e) => {
-    switchSection(true);
-});
+    e.preventDefault();
+
+    // CHECK IF EMPTY FORM FIELDS //
+    let isValid = true;
+    inputs.forEach((input,index) => {
+      // if empty display error messages 
+      if (!input.value) {
+        isValid = false;
+        input.classList.add('required');
+        displayError[index].removeAttribute('hidden');
+      }
+    });
+    // else switch to next section
+    if(isValid) switchSection(true);
+    form.reset();
+  });
 });
 
 backBtn.forEach((btn) => {
@@ -141,8 +143,6 @@ toggle.addEventListener('click', (e) => {
 });
   
   // ---------- SELECT ADD ON ---------- //
-  const picks = document.querySelectorAll('.pick');
-  
   picks.forEach((pick) =>  {
     pick.addEventListener('click', (e) => {
       if (pick.getAttribute("data-checked").includes("true")){
@@ -152,5 +152,27 @@ toggle.addEventListener('click', (e) => {
       }
     });
   });
+
+  // SUMMARY SECTION LINK  //
+  function changePlan(isTrue) {
+    currentSection.setAttribute('hidden', true);
+    currentTab.setAttribute("aria-selected", false);
+    currentIndex = steps.indexOf(currentSection);
+    currentTabIndex = tabs.indexOf(currentTab);
+
+    if(isTrue) {
+      currentIndex = currentIndex - 2; //back two sections
+      currentTabIndex = currentTabIndex - 2; //back two tabs
+    }
+    currentSection = steps[currentIndex];
+    currentTab = tabs[currentTabIndex];
+    currentSection.removeAttribute('hidden');
+    currentTab.setAttribute("aria-selected", true);
+  }
+
+let back = document.getElementById('back-link')
+ back.addEventListener('click', (e) => {
+  changePlan(true);
+ });
 
   

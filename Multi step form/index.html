@@ -13,7 +13,7 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Poppins:wght@100;200;300;400;600;700&family=Ubuntu:wght@400;500;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="index.css">
-  <title>Frontend Mentor | Multi-step form</title>
+  <title>Multi-step form</title>
   <script src="index.js" defer></script>
 </head>
 
@@ -74,7 +74,7 @@
                 <input type="email" class="login email" name="Email" id="Email" placeholder="e.g. stephenking@lorem.com">
 
                 <label for="Phone" class="txt-blue flex">Phone Number <span hidden class="txt-red invalid seven">This field is required</span></label>
-                <input type="number" class="login phone" name="Phone" id="Phone" placeholder="e.g. +1 234 567 890">
+                <input type="number" pattern="[0-9]+" class="login phone" name="Phone" id="Phone" placeholder="e.g. +1 234 567 890">
 
                 <div class="bottom flex">
                   <input type="submit" class="bg-blue btn btn-1" value="Next Step">
@@ -185,7 +185,7 @@
                 <div class="summary flex">
                   <div class="plan-sum">
                     <h4 class="txt-blue seven">Arcade <span class="mo">(Monthly)</span><span class="yr" hidden>(Yearly)</span></h4>
-                    <a href="#plans" class="txt-gray">Change</a>
+                    <a href="#plans" id="back-link" class="txt-gray">Change</a>
                   </div>
                   <span class="txt-blue seven">$<span class="mo">9/</span><span class="yr" hidden>90/</span><span class="mo">mo</span><span class="yr" hidden>yr</span></span>
                 </div>
