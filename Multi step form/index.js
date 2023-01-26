@@ -82,7 +82,7 @@ nextBtn.forEach((btn) => {
     });
     // else switch to next section
     if(isValid) switchSection(true);
-    form.reset();
+    
   });
 });
 
