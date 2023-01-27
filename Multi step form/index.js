@@ -142,8 +142,9 @@ toggle.addEventListener('click', (e) => {
 
 });
   
-  // ---------- SELECT ADD ON ---------- //
+// ---------- SELECT ADD ON ---------- //
 picks.forEach((pick) => {
+  // if user clics the div check the checkbox
     pick.addEventListener('click', (e) => {
         let checkbox = pick.querySelector('.checkbox');
         if (pick.getAttribute("data-checked").includes("true")) {
@@ -155,6 +156,7 @@ picks.forEach((pick) => {
         }
     });
 
+    // if user cliks label add styling to div
     let label = pick.querySelector('label');
     label.addEventListener('click', (e) => {
         let checkbox = pick.querySelector('.checkbox');
@@ -167,7 +169,6 @@ picks.forEach((pick) => {
         }
     });
 });
-
 
   // SUMMARY SECTION LINK  //
   function changePlan(isTrue) {
@@ -202,10 +203,6 @@ let planChoice = '';
 let planPrices = [9, 12, 15]
 let planPrice = 0;
 
-// for add-ons
-let addonPrices = [1, 2, 2]
-let addonPrice = 0;
-
 // iterate through plans to check which is clicked //  
 plans.forEach((plan) => {
   plan.addEventListener('click', (e) => {
@@ -230,10 +227,60 @@ plans.forEach((plan) => {
 
 
 // ----- Get add-on and price ----- //
-let addOns = document.querySelectorAll('.pick')
+let addonList = [...document.querySelectorAll('.pick')];
+let checkboxes = [...document.querySelectorAll('.checkbox')];
+let labels = [...document.querySelectorAll('.checkbox-title')];
 
-addOns.forEach((addOn) => {
-  addOn.addEventListener('click', (e) => {
-    e.preventDefault
-  })
-})
+// list to be displayed on the next page //
+let addons = [...document.querySelectorAll('.add-on-sum')];
+
+// i tried checking above (line 145) for clicks on the label and checkbox 
+// as well as the div so that wherever is clicked the styling is appled 
+// to the div hence why i also have to check for each of them below
+
+// checks for click on the .pick div to show corresponding div index on the final page
+addonList.forEach((addon) => {
+  addon.addEventListener('click', (e) => {
+    let clicked = e.target;
+    let addonChoice = addonList.indexOf(clicked);
+    if (addonChoice !== -1) {
+      addons[addonChoice].classList.remove("hidden");
+      console.log(addonChoice);
+    }
+  });
+});
+
+
+//checks for click on the labels to show corresponding div index on the final page
+labels.forEach((label) => {
+  label.addEventListener('click', (e) => {
+    let clicked = e.target;
+    let addonChoice = labels.indexOf(clicked);
+    if (addonChoice !== -1) {
+      addons[addonChoice].classList.remove("hidden");
+      console.log(addonChoice);
+    }
+  });
+});
+
+//checks for click on the checkboxes to show corresponding div index on the final page
+checkboxes.forEach((checkbox) => {
+  // since a click on the div or label checks the checkbox 
+  //im listening for a change event so when its unchecked 
+  // it hides the corresponding div index
+    checkbox.addEventListener('change', (e) => {
+      let clicked = e.target;
+      let addonChoice = checkboxes.indexOf(clicked);
+      if (addonChoice !== -1) {
+        if (clicked.checked) {
+          addons[addonChoice].classList.remove("hidden");
+        } else {
+          addons[addonChoice].classList.add("hidden");
+          console.log(addonChoice);
+        }
+      }
+    });
+  });
+
+
+
