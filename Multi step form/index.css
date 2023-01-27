@@ -640,7 +640,8 @@ input:checked + .slider::before {
         position: absolute;
         z-index: 2;
         top: 15rem;
-        left:4rem;
+        left:4%;
+        right:4%;
         background-color: hsl(var(--White));
         padding: 2rem;
         min-width: 90%;
@@ -695,6 +696,7 @@ input:checked + .slider::before {
     .content{
         top: 12rem;
         left:2rem;
+        right:2rem;
         width: 80%;
     }
 
