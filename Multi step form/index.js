@@ -238,6 +238,7 @@ let addons = [...document.querySelectorAll('.add-on-sum')];
 // as well as the div so that wherever is clicked the styling is appled 
 // to the div hence why i also have to check for each of them below
 
+
 // checks for click on the .pick div to show corresponding div index on the final page
 addonList.forEach((addon) => {
   addon.addEventListener('click', (e) => {
@@ -249,7 +250,6 @@ addonList.forEach((addon) => {
     }
   });
 });
-
 
 //checks for click on the labels to show corresponding div index on the final page
 labels.forEach((label) => {
@@ -282,5 +282,7 @@ checkboxes.forEach((checkbox) => {
     });
   });
 
+// sum the total price of the users picks
+let total = document.querySelector('.sum-total');
 
-
+total = planPrice;
