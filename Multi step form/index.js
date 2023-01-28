@@ -204,7 +204,7 @@ let planPrices = [9, 12, 15]
 let planPrice = 0;
 
 // iterate through plans to check which is clicked //  
-plans.forEach((plan) => {
+plansList.forEach((plan) => {
   plan.addEventListener('click', (e) => {
     plans.forEach((plan) => {
       if (plan.getAttribute("data-clicked").includes("true")){
@@ -246,7 +246,7 @@ addonList.forEach((addon) => {
     let addonChoice = addonList.indexOf(clicked);
     if (addonChoice !== -1) {
       addons[addonChoice].classList.remove("hidden");
-      console.log(addonChoice);
+      // console.log(addonChoice);
     }
   });
 });
@@ -258,7 +258,7 @@ labels.forEach((label) => {
     let addonChoice = labels.indexOf(clicked);
     if (addonChoice !== -1) {
       addons[addonChoice].classList.remove("hidden");
-      console.log(addonChoice);
+      // console.log(addonChoice);
     }
   });
 });
@@ -276,13 +276,36 @@ checkboxes.forEach((checkbox) => {
           addons[addonChoice].classList.remove("hidden");
         } else {
           addons[addonChoice].classList.add("hidden");
-          console.log(addonChoice);
+          // console.log(addonChoice);
         }
       }
     });
-  });
+});
 
-// sum the total price of the users picks
-let total = document.querySelector('.sum-total');
+// display the total price of the users choices
+document.getElementById("calc").addEventListener('click', (e) => {
+  // set default //
+  let one = 0;
+  let two = 0;
+  let three = 0;
 
-total = planPrice;
+  // iterate through the checkboxes array
+  for (let i = 0; i < checkboxes.length; i++) {
+    const box = checkboxes[i];
+    // check the index of checked boxes and assign price 
+    if(box.checked){
+      if(i === 0){
+        one = 1;
+      }
+      if(i === 1){
+        two = 2;
+      }
+      if(i === 2){
+        three = 2;
+      }
+    }
+  }
+  // sum the plan price and addon choices
+  total = planPrice + one + two + three;
+  document.querySelector('.sum-total').innerText = total;
+});
