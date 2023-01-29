@@ -1,0 +1,213 @@
+/* Custom properties   */
+
+:root {
+    font-size: 62.5%;
+
+    /* Primary colors  */
+    --White: 0 0% 98%;
+    --Gray: 0 0% 41%;
+    --Black: 0 0% 8%;
+    --Strawberry-red: 354 84% 57%;
+
+    /* Font families */
+    --ff-epilogue: 'Epilogue', sans-serif;
+    --ff-Outfit: 'Outfit', sans-serif;
+    --ff-Poppins: 'Poppins', sans-serif;
+    --ff-Ubuntu: 'Ubuntu', sans-serif;
+}
+
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+
+/* make images easier to work with */
+picture,
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* set up the body */
+body {
+    background-color: hsl(var(--White));
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 1.6rem;
+    font-family: var(--ff-epilogue);
+    padding-inline: 3rem;
+}
+a{
+    text-decoration: none;
+}
+/* Utility Classes */
+
+/* Background colors */
+.bg-dark {background-color: hsl(var(--Black));}
+.bg-white {background-color: hsl(var(--White));}
+.bg-gray {background-color: hsl(var(--Gray));}
+
+/* Text color */
+.txt-dark {color: hsl(var(--Black));}
+.txt-white {color: hsl(var(--White));}
+.txt-gray {color: hsl(var(--Gray));}
+
+/* typography */
+.ff-epilogue {font-family: var(--ff-epilogue);}
+.ff-ubuntu {font-family: var(--ff-Ubuntu);}
+.ff-poppins {font-family: var(--ff-Poppins);}
+.ff-outfit {font-family: var(--ff-Outfit);}
+
+.four{font-weight: 400;}
+.five{font-weight: 500;}
+.seven{font-weight: 700;}
+
+.txt-center{
+    text-align: center;
+}
+.flex {
+    display: flex;
+    gap: 1rem;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+.flex-right {
+    align-self: flex-end;
+}
+.block{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+
+/* ---------- Navigation ---------- */
+.primary-header {
+    align-items: center;
+    gap: 5rem;
+    padding-block: 3rem;
+}
+.primary-nav {
+    --gap: clamp(1.5rem, 5vw, 3.5rem);
+    --underline-gap: 2rem;
+    background: hsl( var(--clr-white)); 
+    width: 100%;
+    justify-content: space-between;   
+    font-size: 1.4rem;
+}
+.nav-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 5rem;
+}
+
+.mobile-nav-toggle{
+    display: none;
+}
+
+/* ---------- Layout ---------- */
+.container {
+    display: flex;
+    place-items: center; 
+    border: .2rem solid hsl(var(--Strawberry-red)); 
+}
+.content{
+   flex: 1 1 60%; 
+   border: .2rem solid hsl(var(--Strawberry-red));
+}
+.side{
+    flex: 1 1 40%;
+    border: .2rem solid hsl(var(--Strawberry-red));
+}
+h1 {
+    font-size: 8rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ---------- Footer ---------- */
+.attribution {
+    font-size: 1.2rem; 
+    text-align: center;
+    justify-content: center;
+    align-items: flex-end;
+    cursor: default; 
+}
+.attribution a {
+    text-decoration: none;
+}
+.attribution a:hover {
+    color: hsl(228, 45%, 44%); 
+}

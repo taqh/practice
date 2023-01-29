@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Intro section with dropdown navigation</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro section</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&family=Outfit:wght@400;700&family=Poppins:wght@100;200;300;400;600;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
 </head>
-<body>
+<body> 
 
-  Features
-  Company
-  Careers
-  About
+    <header class="primary-header flex">      
+        <div class="logo-cover">
+            <img src="images/logo.svg" alt="snap logo" class="logo">
+        </div>
+        <button class="mobile-nav-toggle toggle"></button>  </button>
+        <nav class="primary-nav flex txt-gray five">
+            <ul class="nav-list flex left">
+                <li>Features</li>
+                <li>Company</li>
+                <li>Careers</li>
+                <li>About</li>
+            </ul>
+            <ul class="nav-list flex right">
+                <li>Login</li>
+                <li>Register</li>
+            </ul>
+        </nav>
+    </header>
 
-  Login
-  Register
+    <main class="container">   
+        <div class="content">
+            <h1 class="seven">
+                Make remote work
+            </h1>   
+            <p class="five txt-gray">
+                Get your team in sync, no matter your location. Streamline processes, 
+                create team rituals, and watch productivity soar.
+            </p>
+            <a href="">Learn more</a>
+        </div>
+        <div class="side">
+            <img src="images/image-hero-desktop.png" alt="">
+        </div>
+    </main>
 
-  Make remote work
-
-  Get your team in sync, no matter your location. Streamline processes, 
-  create team rituals, and watch productivity soar.
-
-  Learn more
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+    <footer>
+        <div class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+            Coded by <a href="#">Taqib</a>.
+        </div>
+    </footer>
 </body>
 </html>
