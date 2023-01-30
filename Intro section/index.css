@@ -81,6 +81,8 @@ body {
     line-height: 1.5;
     min-height: 100vh;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
     font-size: 1.6rem;
     font-family: var(--ff-epilogue);
 }
@@ -235,9 +237,9 @@ a{
 }
 .features{
     justify-content: space-between;
-    width: 13rem;
-    height: 15rem; 
-    left: -6rem; 
+    width: 14rem;
+    height: 16rem; 
+    left: -5rem; 
     padding: 2rem; 
 }
 .features[aria-expanded="false"] {
@@ -289,58 +291,58 @@ a{
 
 /* ---------- Layout ---------- */
 .container {
-    border: .2rem solid hsl(var(--Strawberry-red)); 
+    /* border: .2rem solid hsl(var(--Strawberry-red));  */
     min-width: 50rem;
-    margin-block: 4rem;
+    margin-block: 7rem;
     margin-inline: 10rem;
+    height: 100%;
+    padding-inline: 4rem;
 }
 .content{
-   flex: 1 1 60%; 
-   border: .2rem solid hsl(var(--Strawberry-red));
+   flex: 1 1 55%; 
 }
 .content{
-    flex-direction: column;
-    justify-content: center; 
-    padding: 5rem;  
+    flex-direction: column; 
+    margin-top: 10rem;  
+    margin-right: 8rem; 
+    justify-content: space-between;
 }
 .side{
-    flex: 1 0 40%;
-    border: .2rem solid hsl(var(--Strawberry-red));   
+    flex: 1 1 45%;
 }
-.side img{
-    min-height: 100%;
-    min-width: 100%;
-    object-fit: cover;
+.side{
+    margin-left: 2rem;
 }
 .clients{
-    border: .2rem solid hsl(var(--Strawberry-red));
     align-items: flex-end;
+    justify-content: space-around;
     flex-wrap: wrap; 
     gap: 4rem;
 }
 
 h1 {
-   
     font-size: 8rem;
     line-height: 1;
-
 }
 p {
     font-size: 1.8rem;
+    line-height: 1.7;
+    padding-right: 10rem;
 }
 .learn{
     background-color: hsl(var(--Black));
-    border-radius: 1rem;
-    padding-block: 1rem;
-    padding-inline: 2rem;
+    border-radius: 1.4rem;
+    padding-block: 1.5rem;
+    padding-inline: 2.5rem;
     color: hsl( var(--White));
     align-self: flex-start;
+    font-size: 1.8rem;
 }
 .learn:hover {
     background-color: hsl( var(--White));
     color: hsl(var(--Black));
     border: .1rem solid hsl(var(--Black));
-    font-weight: 500;
+    font-weight: 700;
 }
 
 /* ---------- Footer ---------- */
@@ -363,48 +365,28 @@ p {
 }
 
 
-
-
-/* --------- Mobile Nav ---------- */
+/* ---------Very Large screens ---------- */
 @media (min-width: 100rem) {
     .primary-header{
-        margin-inline: 13rem;
+        margin-inline: 20rem;
     }
     .container{
         margin-block: 5rem;
-        margin-inline: 20rem;
+        margin-inline: 25rem;
+    }
+    .content{
+        margin-top: 8rem;
+        padding: 2rem; 
+    }
+    .side{
+        margin-left: 7rem;
+        padding-bottom: 2rem;
     }
 }
 
-@media (max-width: 48rem){
+/* ---------- Tablets ---------- */
+@media (max-width: 76rem){
    
-    .container{
-        flex-direction: column;
-        min-width: fit-content;
-        height: 100vh;
-    }
-    h1{
-        font-size: 4rem;
-    }
-    p{
-        padding: 2rem;
-    }
-    .side{
-        order: 0;
-    }
-    .content{
-        order: 1;
-        padding: 0;
-        gap: 0;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        text-align: center;
-        height: fit-content;
-    }
-    .learn{
-        align-self: center;
-    }
     .primary-header{
         margin: 0;
     }
@@ -452,20 +434,72 @@ p {
         outline: 5px solid white;
         outline-offset: 5px;
     }
-  
-}
 
-@media (max-width: 37.5rem) {
+
     .container{
-        margin: 0;
+        flex-direction: row;
+        min-width: fit-content;
+        height: 100%;
+        margin-inline: 0;
+        padding-inline: 2rem;
+    }
+    
+    .clients *{
+       gap: 2rem;   
+    }
+    .clients{
+        padding: 1rem;
+        justify-content: space-around;
+    }
+    .side{
         padding: 0;
     }
     .content{
+        padding: 3rem;
+        gap: 4rem;
+        flex-direction: column;
+       justify-content: space-between;
+        margin: 0;
+    }
+    .learn{
+        padding-inline: 3.5rem;
+        padding-block: 1.6rem;
+    }
+    p{
+        padding-right: 0;
+    }   
+  
+}
+
+/* --------- Mobile Nav ---------- */
+@media (max-width: 47.5rem) {
+    .container{
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    h1{
+        font-size: 3.5rem;
+    }
+    p{
+       text-align: center;
+       padding: 1rem;
+    }
+    .content{
+        order: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        text-align: center;
         gap: 4rem;
-        
+        padding: 1rem;
+        margin: 0;
+    }
+    .side{
+        order: 0;
+        padding: 0;
+        margin: 0;
     }
     .attribution{
         display: none;
@@ -473,6 +507,11 @@ p {
     .clients{  
         gap: 0;
         flex-direction: row;
+        padding: 0;
+        justify-content: space-between;
+    }
+    .learn{
+        align-self: center;
     }
 }
 
