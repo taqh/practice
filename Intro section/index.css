@@ -292,7 +292,7 @@ a{
     cursor: pointer;
 }
 .register:active{
-    scale: 0.96;
+    scale: 0.92;
 }
 .register:hover {  
     color: var(--Black);
@@ -354,6 +354,9 @@ p {
     border: .1rem solid hsl(var(--Black));
     font-weight: 700;
 }
+.learn:active {
+    transform: scale(0.9);
+}
 
 /* ---------- Footer ---------- */
 .attribution {
@@ -405,8 +408,10 @@ p {
         right: 0;
         bottom: 0;
         width: 100vw;
-        background-color: hsl(var(--Black) /.6);
-        transition: all 50ms linear;
+        height: 100vh;
+        z-index: 5;
+        background-color: hsl(var(--Black) /.7);
+        transition: all 10ms linear;
     }  
     .overlay[data-visible="false"]{
         transform: translateX(-100%);
@@ -431,7 +436,7 @@ p {
     }
     .nav-list{
         flex-direction: column;
-        gap: 2rem;
+        gap: 2.2rem;
         height: 100vh;
         width: 100%;
         padding-top: 9rem;
@@ -452,28 +457,24 @@ p {
        box-shadow: none;
     }
     .features[aria-expanded="false"] {
-        transform: translateY(-100%); 
-        z-index: -1;
+        transform: translateY(-100%);   
         opacity: 0;
         transition: all 200ms linear;
-     }
-     
-     .features[aria-expanded="true"] {
-         transform: translateY(0);
-         z-index: 1;
-         transition: all 200ms linear;
-     }
+    }
+        
+    .features[aria-expanded="true"] {
+            transform: translateY(0);
+            transition: all 200ms linear;
+    }
     .company[aria-expanded="false"] {
         transform: translateY(-100%); 
-        z-index: -1;
         transition: all 200ms linear;
         opacity: 0;
     }
     .company[aria-expanded="true"] {
         transform: translateY(0);
-        z-index: 1;
         transition: all 200ms linear;
-     }
+    }
     .features{
         justify-content: space-between;
         align-items: center;
@@ -569,7 +570,7 @@ p {
 @media (max-width: 47.5rem) {
     .container{
         margin: 0;
-        padding: .5rem;
+        padding: 0;
         flex-direction: column;
         gap: 1.5rem;
     }
@@ -587,12 +588,12 @@ p {
         justify-content: center;
         text-align: center;
         gap: 4rem;
-        padding: 1rem;
+        padding: .5rem;
         margin: 0;
     }
     .side{
         order: 0;
-        padding: 0;
+        padding: .5rem;
         margin: 0;
     }
     .attribution{
@@ -602,7 +603,7 @@ p {
         gap: 0;
         flex-direction: row;
         padding: 0;
-        justify-content: space-between;
+        justify-content: space-between;       
     }
     .learn{
         align-self: center;
