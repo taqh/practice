@@ -5,10 +5,9 @@ const companyMenu = document.querySelector('.company-menu')
 const featuresMenu = document.querySelector('.features-menu')
 const featArrow =document.querySelector('.features-arrow')
 const compArrow =document.querySelector('.company-arrow')
-
-window.addEventListener('DOMContentLoaded', () => {
-    
-});
+const navToggle = document.querySelector(".mobile-nav-toggle");
+const nav = document.querySelector(".primary-nav");
+const blur = document.querySelector('.overlay');
 
 
 featuresMenu.addEventListener('click', (e) => {
@@ -35,4 +34,40 @@ companyMenu.addEventListener('click', (e) => {
     } else {
         compArrow.setAttribute("aria-expanded", false)
     }
+});
+
+
+
+
+navToggle.addEventListener("click", (e) => {
+
+    let visibliity = nav.getAttribute("data-visible");
+        
+    if (visibliity === "false") {
+        nav.setAttribute("data-visible", true);
+        navToggle.setAttribute("aria-expanded", true);
+    } else {
+        nav.setAttribute("data-visible", false);   
+        navToggle.setAttribute("aria-expanded", false);
+    }
+
+    if (nav.getAttribute("data-visible").includes("true")) {
+        blur.setAttribute("data-visible", true)
+    }   else {
+        blur.setAttribute("data-visible", false)
+
+    }
+});
+
+blur.addEventListener('click', (e) => {
+let visibliity = nav.getAttribute("data-visible");
+    if (visibliity === "true") {
+        blur.setAttribute("data-visible", false);
+        nav.setAttribute("data-visible", false);
+        navToggle.setAttribute("aria-expanded", false);
+    } else {
+        blur.setAttribute("data-visible", false);
+        nav.setAttribute("data-visible", false);
+        navToggle.setAttribute("aria-expanded", false);
+}
 });

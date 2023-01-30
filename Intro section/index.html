@@ -13,17 +13,17 @@
     <script src="index.js" defer></script>
 </head>
 <body> 
-
+    <div data-visible="false" class="overlay"></div>
     <header class="primary-header flex">      
         <div class="logo-cover flex">
             <img src="images/logo.svg" alt="snap logo" class="logo">
         </div>
-        <button class="mobile-nav-toggle toggle"></button>  </button>
-        <nav class="primary-nav flex txt-gray five">
+        <button class="mobile-nav-toggle toggle" aria-controls="primary-navigation" aria-expanded="false"></button>  </button>
+        <nav class="primary-nav flex txt-gray five" data-visible="false">
             <ul class="nav-list flex left">
                 <li class="drop-menu">
                     <button class="icon-menu features-menu" aria-expanded="false" aria-controls="dropdown-menu"><img aria-expanded="false" class="arrow features-arrow" src="images/icon-arrow-down.svg" alt=""></button>
-                    <ul class="features" aria-expanded="false">
+                    <ul class="features list" aria-expanded="false">
                         <li><a href="#" class="features-list todo">Todo List</a></li>
                         <li><a href="#" class="features-list calendar">Calendar</a></li>
                         <li><a href="#" class="features-list reminder">Reminders</a></li>
@@ -32,7 +32,7 @@
                 </li>
                 <li class="drop-menu">
                     <button class="icon-menu company-menu"><img class="arrow company-arrow" aria-expanded="false" src="images/icon-arrow-down.svg" alt=""></button>
-                    <ul class="company" aria-expanded="false">
+                    <ul class="company list" aria-expanded="false">
                         <li><a href="#">History</a></li>
                         <li><a href="#">Our Team</a></li>
                         <li><a href="#">Blog</a></li>

@@ -143,6 +143,9 @@ a{
 .mobile-nav-toggle {
     display: none;
 }
+.toggle{
+    cursor: pointer;
+}
 .primary-header {
     align-items: center;
     gap: 5rem;
@@ -157,6 +160,9 @@ a{
     justify-content: space-between;
     align-items: center;   
     font-size: 1.5rem;
+}
+.primary-nav a:hover {
+    color: hsl(var(--Black));
 }
 .logo-cover{
     padding-top: .5rem;
@@ -222,8 +228,7 @@ a{
     content: url(images/icon-planning.svg);
 }
 
-.features,
-.company {
+.list {
     padding: 0;
     margin: 0;
     display: flex;
@@ -264,7 +269,8 @@ a{
     transform: translateY(-100%); 
     z-index: -1;
     transition: all 200ms linear;
- }
+    opacity: 0;
+}
 .company[aria-expanded="true"] {
     transform: translateY(2.5rem);
     z-index: 1;
@@ -283,8 +289,12 @@ a{
     padding-block: .8rem;
     padding-inline: 2rem;
     border-radius: 1rem;
+    cursor: pointer;
 }
-.register-link:hover {  
+.register:active{
+    scale: 0.96;
+}
+.register:hover {  
     color: var(--Black);
 }
 
@@ -386,24 +396,106 @@ p {
 
 /* ---------- Tablets ---------- */
 @media (max-width: 76rem){
-   
+  
+    .overlay {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        background-color: hsl(var(--Black) /.6);
+        transition: all 50ms linear;
+    }  
+    .overlay[data-visible="false"]{
+        transform: translateX(-100%);
+    } 
+    .overlay[data-visible="true"]{
+        transform: translateX(0);
+    } 
     .primary-header{
         margin: 0;
     }
+
     .primary-nav {
+        width: auto;
         position: fixed;
-        z-index: 1000;
+        z-index: 100;
         inset: 0 0 0 30%;
         list-style: none;
-        padding: min(20rem, 15vh) 2rem;
-        margin: 0;
         flex-direction: column;
         transform: translateX(100%);
         transition: transform 400ms ease-in-out;
+        background-color: hsl(var(--White) );
+    }
+    .nav-list{
+        flex-direction: column;
+        gap: 2rem;
+        height: 100vh;
+        width: 100%;
+        padding-top: 9rem;
+        padding-inline: 4rem;
+    }
+    .register{
+        border-radius: 1.5rem;
+        width: 80%;
+        text-align: center;
+        padding: 1.3rem;
+    }
+    .right{
+        padding: 0;
+        align-items: center;
+    }
+    .list{
+       position: fixed;
+       box-shadow: none;
+    }
+    .features[aria-expanded="false"] {
+        transform: translateY(-100%); 
+        z-index: -1;
+        opacity: 0;
+        transition: all 200ms linear;
+     }
+     
+     .features[aria-expanded="true"] {
+         transform: translateY(0);
+         z-index: 1;
+         transition: all 200ms linear;
+     }
+    .company[aria-expanded="false"] {
+        transform: translateY(-100%); 
+        z-index: -1;
+        transition: all 200ms linear;
+        opacity: 0;
+    }
+    .company[aria-expanded="true"] {
+        transform: translateY(0);
+        z-index: 1;
+        transition: all 200ms linear;
+     }
+    .features{
+        justify-content: space-between;
+        align-items: center;
+        width: 19rem;
+        height: 20rem; 
+        left: 0;
+        padding: 2rem; 
     }
 
+    .company {
+        justify-content: space-between;
+        padding: 1.5rem;
+        height: 15rem;
+        margin-top: 1rem;
+    }
+    .features-list {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
     /* JS conditional */
-    .primary-navigation[data-visible="true"] {
+    .primary-nav[data-visible="true"] {
         transform: translateX(0);
     }
     
@@ -427,12 +519,14 @@ p {
     /* JS conditional */
     .mobile-nav-toggle[aria-expanded="true"] {
         background-image: url(images/icon-close-menu.svg);
-        transition: .3s ease-in;
+        transform: rotateZ(360deg);
+        transition: all 350ms linear;
     }
 
-    .mobile-nav-toggle:focus-visible {
-        outline: 5px solid white;
-        outline-offset: 5px;
+    .mobile-nav-toggle[aria-expanded="false"] {
+        background-image: url(images/icon-menu.svg);
+        transform: rotateZ(0);
+        transition: all 350ms linear;
     }
 
 
@@ -475,7 +569,7 @@ p {
 @media (max-width: 47.5rem) {
     .container{
         margin: 0;
-        padding: 0;
+        padding: .5rem;
         flex-direction: column;
         gap: 1.5rem;
     }
