@@ -9,12 +9,14 @@ const navToggle = document.querySelector(".mobile-nav-toggle");
 const nav = document.querySelector(".primary-nav");
 const blur = document.querySelector('.overlay');
 
-
 featuresMenu.addEventListener('click', (e) => {
     if (feat.getAttribute("aria-expanded").includes("false")){
         feat.setAttribute("aria-expanded", true);
+        featuresMenu.setAttribute("aria-expanded", true);
     } else {
         feat.setAttribute("aria-expanded", false);
+        featuresMenu.setAttribute("aria-expanded", false);
+
     }
     if (featArrow.getAttribute("aria-expanded").includes("false")){
         featArrow.setAttribute("aria-expanded", true);
@@ -26,8 +28,12 @@ featuresMenu.addEventListener('click', (e) => {
 companyMenu.addEventListener('click', (e) => {
     if (comp.getAttribute("aria-expanded").includes("false")){
         comp.setAttribute("aria-expanded", true);
+        companyMenu.setAttribute("aria-expanded", true);
+
     } else {
         comp.setAttribute("aria-expanded", false);
+        companyMenu.setAttribute("aria-expanded", false);
+
     }
     if (compArrow.getAttribute("aria-expanded").includes("false")){
         compArrow.setAttribute("aria-expanded", true);
