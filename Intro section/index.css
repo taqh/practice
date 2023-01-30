@@ -200,21 +200,19 @@ a{
     cursor: pointer;
 }
 .features-btn:before {
-    content: "Features";
     display: flex;
 }
 .company-btn:before {
-    content: "Company";
     display: flex;
 }
 
 /* js conditional */
-.arrow[aria-expanded="true"] {
+.arrow[data-expanded="true"] {
     transition: all 250ms ease-in-out;
     transform: rotateZ(180deg);
     color: hsl(var(--Black));
 }
-.arrow[aria-expanded="false"] {
+.arrow[data-expanded="false"] {
     transition: all 250ms ease-in-out;
     transform: rotateZ(0);
 }

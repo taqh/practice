@@ -18,10 +18,10 @@ featuresMenu.addEventListener('click', (e) => {
         featuresMenu.setAttribute("aria-expanded", false);
 
     }
-    if (featArrow.getAttribute("aria-expanded").includes("false")){
-        featArrow.setAttribute("aria-expanded", true);
+    if (featArrow.getAttribute("data-expanded").includes("false")){
+        featArrow.setAttribute("data-expanded", true);
     } else {
-        featArrow.setAttribute("aria-expanded", false)
+        featArrow.setAttribute("data-expanded", false)
     }
 });
 
@@ -35,10 +35,10 @@ companyMenu.addEventListener('click', (e) => {
         companyMenu.setAttribute("aria-expanded", false);
 
     }
-    if (compArrow.getAttribute("aria-expanded").includes("false")){
-        compArrow.setAttribute("aria-expanded", true);
+    if (compArrow.getAttribute("data-expanded").includes("false")){
+        compArrow.setAttribute("data-expanded", true);
     } else {
-        compArrow.setAttribute("aria-expanded", false)
+        compArrow.setAttribute("data-expanded", false)
     }
 });
 
