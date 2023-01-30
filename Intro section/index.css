@@ -511,7 +511,7 @@ p {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        width: 2.5rem;
+        width: 2.2rem;
         height: 1.5rem;
         aspect-ratio: 1;
         border: 0;
@@ -600,10 +600,10 @@ p {
         display: none;
     }
     .clients{  
-        gap: 0;
+        gap: .5rem;
         flex-direction: row;
         padding: 0;
-        justify-content: space-between;       
+               
     }
     .learn{
         align-self: center;
