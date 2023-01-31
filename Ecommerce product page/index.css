@@ -1,0 +1,162 @@
+:root {
+    font-size: 62.5%;
+
+    /* Primary colors */
+    --Orange: 26 100% 55%;
+    --Paleorange: 25 100% 94%;
+
+    /* Neutral colors  */
+    --White: 0 0% 100%;
+    --Gray: 0 0% 41%;
+    --Black: 0 0% 8%;
+    --Strawberry-red: 354 84% 57%;
+    --lightgrayblue: 223 64% 98%;
+    --darkgrayblue: 219 9% 45%;
+    --grayblue: 220 14% 75%;
+
+    --lightbox: 0, 0%, 0%;
+
+    /* Font families */
+    --ff-epilogue: 'Epilogue', sans-serif;
+    --ff-Outfit: 'Outfit', sans-serif;
+    --ff-Poppins: 'Poppins', sans-serif;
+    --ff-Ubuntu: 'Ubuntu', sans-serif;
+    --ff-kumbh: 'Kumbh Sans', sans-serif;
+
+}
+html{
+    scroll-behavior: smooth;
+}
+
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+
+/* make images easier to work with */
+picture,
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* set up the body */
+body {
+    background-color: hsl(var(--White));
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    font-size: 1.6rem;
+    font-family: var(--ff-epilogue);
+}
+
+/* Utility Classes */
+
+/* Background colors */
+.bg-dark {background-color: hsl(var(--Black));}
+.bg-white {background-color: hsl(var(--White));}
+.bg-gray {background-color: hsl(var(--Gray));}
+
+/* Text color */
+.txt-dark {color: hsl(var(--Black));}
+.txt-white {color: hsl(var(--White));}
+.txt-gray {color: hsl(var(--Gray));}
+
+/* typography */
+.ff-epilogue {font-family: var(--ff-epilogue);}
+.ff-ubuntu {font-family: var(--ff-Ubuntu);}
+.ff-poppins {font-family: var(--ff-Poppins);}
+.ff-outfit {font-family: var(--ff-Outfit);}
+
+.four{font-weight: 400;}
+.five{font-weight: 500;}
+.seven{font-weight: 700;}
+
+.txt-center{
+    text-align: center;
+}
+.flex {
+    display: flex;
+    gap: 1rem;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+.flex-right {
+    align-self: flex-end;
+}
+.block{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+
+
+
+
+/* -------- Tablets --------- */
+@media (max-width: 76rem){
+
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 47.5rem){
+
+}
