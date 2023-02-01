@@ -14,7 +14,7 @@
     --darkgrayblue: 219 9% 45%;
     --grayblue: 220 14% 75%;
 
-    --lightbox: 0, 0%, 0%;
+    --lightbox: 0 0% 0%;
 
     /* Font families */
     --ff-epilogue: 'Epilogue', sans-serif;
@@ -257,6 +257,7 @@ button {
     
     border-radius: 2rem;
     aspect-ratio: 1;
+    transition: 200ms all ease;
 }
 .cards{
     justify-content: space-between;
@@ -280,6 +281,11 @@ button {
     scale: 0.95;
     transition: all 200ms linear;
 }
+.main-prev{
+    cursor: pointer;
+}
+
+
 
 /* ---------- Lightbox pop up ---------- */
 .lightbox{
@@ -362,9 +368,7 @@ button {
     transform: scale(0.95);
     transition: all 200ms ease;
 }
-.prev-btn :hover{
-    fill: hsl(var(--Orange)/ .8);
-}
+
 
 
 
@@ -484,7 +488,7 @@ button {
         width: 100%;
         justify-content: space-between;
         background-color: hsl(var(--White));     
-         
+        z-index: 2; 
     }
     .right{
         gap: 1.7rem;
@@ -533,7 +537,7 @@ button {
         background-color: hsl(var(--White));
         transform: translateX(-100%);
         width: calc(70vw - 20%);
-    }
+    }   
     .primary-nav a{
         color: hsl(var(--Black));
         height: auto;
@@ -551,25 +555,25 @@ button {
         font-weight: 700;
         gap: 3rem;
     }
-    .overlay {
+    
+    .blur {
         content: '';
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         width: 100vw;
         height: 100vh;
-        z-index: 50;
+        z-index: 2;
         background-color: hsl(var(--lightbox) /.7);
-        transition: all 10ms linear;
     }  
-    .overlay[data-visible="false"]{
-        transform: translateX(-100%);
+    .blur[data-visible="false"]{
+        transform: scale(0);
         transition: all 10ms linear;
     } 
-    .overlay[data-visible="true"]{
-        transform: translateX(0);
+    .blur[data-visible="true"]{
+        transform: scale(1);
         transition: all 10ms linear;
     } 
     .lightbox{
@@ -578,6 +582,7 @@ button {
     .price-slash{
         z-index: -1;
     }
+
     .container{
         flex-direction: column;
     }
@@ -590,6 +595,31 @@ button {
     .gallery{
         margin: 0;
     }
+    .main-prev{
+        cursor: default;
+    }
+    .prev-btn{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: hsl(var(--White));   
+        transition: all 300ms ease;
+        top: 30%;
+        left: 7%;
+    }
+    .next-btn{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: hsl(var(--White));
+        transition: all 300ms ease;
+        top: auto;
+        top: 30%;
+        left: 86%;
+    }
+
     .select{
         width: 100%;
         justify-content: center;
@@ -645,10 +675,38 @@ button {
     }
     .product{
         border-radius: 0;
+        margin-top: 5rem;
     }
     .cards{
         display: none;
     }
+    .prev-btn{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: hsl(var(--White));   
+        transition: all 300ms ease;
+        top: 27vh;
+        left: 4%;
+        height: 4rem;
+        width: 4rem;
+    }
+    .next-btn{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: hsl(var(--White));
+        transition: all 300ms ease;
+        top: auto;
+        top: 27vh;
+        left: 86%;
+        height: 4rem;
+        width: 4rem;
+    }
+
+
     .content{
         padding: 2rem;
     }
@@ -657,7 +715,7 @@ button {
         font-size: 3rem;
     }
     .price-tag{
-        font-size: 2rem;
+        font-size: 2.4rem;
     }
     .percent{
         font-size: 1.3rem;

@@ -3,7 +3,7 @@ const feat = document.querySelector('.features');
 const comp = document.querySelector('.company');
 const navToggle = document.querySelector(".mobile-nav-toggle");
 const nav = document.querySelector(".primary-nav");
-const blur = document.querySelector('.overlay');
+const blur = document.querySelector('.blur');
 
 
 navToggle.addEventListener("click", (e) => {
@@ -45,17 +45,23 @@ blur.addEventListener('click', (e) => {
 
 let close = document.querySelector('.close-btn');
 let lightbox = document.querySelector('.lightbox');
-
-close.addEventListener('click', (e) => {
-    if (lightbox.getAttribute("data-visible").includes("true")){
-        lightbox.setAttribute("data-visible", false)
-    }
-});
-
 const popup = document.querySelector('.main-prev');
+const lightblur = document.querySelector('.lightblur')
 
 popup.addEventListener('click', (e) => {
     if (lightbox.getAttribute("data-visible").includes("false")){
         lightbox.setAttribute("data-visible", true)
+        lightblur.setAttribute("data-visible", true)
     }
 });
+
+close.addEventListener('click', (e) => {
+    if (lightbox.getAttribute("data-visible").includes("true")){
+        lightbox.setAttribute("data-visible", false)
+        lightblur.setAttribute("data-visible", false)
+    }
+});
+
+
+
+
