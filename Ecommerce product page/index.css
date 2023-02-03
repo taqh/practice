@@ -150,6 +150,52 @@ body {
     display: none;
 }
 
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;  
+    }
+}
+@keyframes fade-out {
+    0%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes slide-up {
+    0% {
+        transform: translateY(0%);
+    } 
+    20%{
+        opacity: .8;
+    }
+    80%{
+        transform: 0;
+    }
+    100% {
+        transform: translateY(-200%);
+    }
+}
+@keyframes slide-down {
+    0% {
+        transform: translateY(-200%);
+    }
+    20%{
+        opacity: 0;
+    }
+    80%{
+        opacity: .1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
 
 /* Navigation */
 .mobile-nav-toggle {
@@ -208,6 +254,31 @@ body {
     background: transparent;
     border: 0;
     cursor: pointer;
+    position: relative;
+}
+.cart{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    border-radius: 1rem;
+    top: 13vh;
+    right: 13vh;
+    width: 35rem;
+    height: 22rem; 
+    padding: 1rem; 
+    background-color: hsl(var(--White));
+    box-shadow: .1rem .5rem 2rem .3rem hsl(var(--Gray)/.2);
+}
+.cart[data-visible="false"]{
+    animation: slide-up 400ms forwards;  
+}
+.cart[data-visible="true"]{
+    animation: slide-down 400ms forwards; 
+}
+.title{
+    padding: 1rem;
+    border-bottom: .2rem solid hsl(var(--grayblue) /.2);
 }
 .account-btn{
     border-radius: 50%;
@@ -272,14 +343,23 @@ button {
     transition: all 200ms linear;
 }
 .thumbnail:hover{
-    border: .2rem solid hsl(var(--Orange));
     scale: 1.1;
     transition: all 200ms linear;
     cursor: pointer;
+    
+}
+.card:hover{
+    opacity: .7;
 }
 .thumbnail:active{
-    scale: 0.95;
+    scale: 0.96;
     transition: all 200ms linear;
+    border: .3rem solid hsl(var(--Orange));
+    opacity: .4;
+}
+.thumbnail[active]{
+    opacity: .5;
+    border: .3rem solid hsl(var(--Orange));
 }
 .main-prev{
     cursor: pointer;
@@ -288,17 +368,26 @@ button {
 
 
 /* ---------- Lightbox pop up ---------- */
+
 .lightbox{
-    width: 100%;
-    height: 100%;
+    border: 0;
+    inset: 0;
     z-index: 100;
-    position: absolute;
+    gap: 2.5rem;
+    position: fixed;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    right: 0;
-    bottom: 0;
-    gap: 2rem;
+    background: transparent;
+    animation: fade-in 500ms forwards;
+}
+.lightbox::backdrop{
+    background: hsl(0 0% 0% / .7);
+    opacity: 0;
+}
+.lightbox[open]::backdrop{
+    animation: fade-in 500ms forwards;
+    
 }
 .lightbox .preview{
     width: 50rem;
@@ -306,26 +395,33 @@ button {
 }
 .lightbox .cards{
     justify-content: center;
+    gap: 2rem;
 }
-.lightbox[data-visible="false"]{
-    transform: scale(0) ;
-    transition: all 200ms linear;
-}
-.lightbox[data-visible="true"]{
-    transform: scale(1);
-    transition: all 200ms linear;
-    
+
+.lightbox[open]{
+    animation: fade-in 500ms forwards;
+    display: flex;
 }
 .btn-wrap{
     position: relative;
 }
 .close-btn{
-    position: absolute;
-    right: 0;
-    top: -6%;
+    position: fixed;
+    top: 6%;
+    left: 65%;
     transform: scale(1.2);
+    border: 0;
+    
 }
-
+.close-btn *{
+    fill: hsl(var(--White));
+}
+.close-btn:hover{
+    scale: 1.05;
+}
+.close-btn *:hover {
+    fill: hsl(var(--Orange));
+}
 .prev-btn{
     position: fixed;
     display: flex;
@@ -368,7 +464,9 @@ button {
     transform: scale(0.95);
     transition: all 200ms ease;
 }
-
+.mobile{
+    transform: scale(0);
+}
 
 
 
@@ -488,12 +586,18 @@ button {
         width: 100%;
         justify-content: space-between;
         background-color: hsl(var(--White));     
-        z-index: 2; 
+        z-index: 100; 
     }
     .right{
         gap: 1.7rem;
         align-items: center;
     }
+    .cart {
+        width: 60vw;
+        top: 10vh;
+        
+    }
+
     .account-btn {
         width: 2.5rem;
         height: 2.5rem;
@@ -526,25 +630,27 @@ button {
         transition: all 400ms linear;
     }
     .primary-nav {
-        margin: 0;
-        padding: 0;
-        top: 0;
-        z-index: 100;
-        inset: 0 0 30%;
         position: fixed;
-        list-style: none;
+        list-style: none; 
+        z-index: 100;
+        inset: 0 0 30%;  
+        width: calc(70vw - 20%);    
+        transform: translateX(-100%);
         transition: all 400ms linear;
         background-color: hsl(var(--White));
-        transform: translateX(-100%);
-        width: calc(70vw - 20%);
+        /* box-shadow: hsl(var(--lightbox) /.7) 0 0 0 100vw; */
     }   
     .primary-nav a{
         color: hsl(var(--Black));
         height: auto;
+        width: fit-content;
     }
     .primary-nav[data-visible="true"] {
         transform: translateX(0);
     }
+    /* .primary-nav[data-visible="false"] {
+        box-shadow: none;
+    } */
     .nav-list{
         flex-direction: column;
         justify-content: flex-start;
@@ -555,7 +661,6 @@ button {
         font-weight: 700;
         gap: 3rem;
     }
-    
     .blur {
         content: '';
         position: fixed;
@@ -565,7 +670,7 @@ button {
         bottom: 0;
         width: 100vw;
         height: 100vh;
-        z-index: 2;
+        z-index: 5;
         background-color: hsl(var(--lightbox) /.7);
     }  
     .blur[data-visible="false"]{
@@ -576,13 +681,9 @@ button {
         transform: scale(1);
         transition: all 10ms linear;
     } 
-    .lightbox{
-        display: none;
-    }
     .price-slash{
         z-index: -1;
     }
-
     .container{
         flex-direction: column;
     }
@@ -595,8 +696,12 @@ button {
     .gallery{
         margin: 0;
     }
+    .mobile{
+        transform: scale(1);
+    }
     .main-prev{
         cursor: default;
+        pointer-events: none;
     }
     .prev-btn{
         position: absolute;
@@ -619,7 +724,6 @@ button {
         top: 30%;
         left: 86%;
     }
-
     .select{
         width: 100%;
         justify-content: center;
@@ -646,6 +750,10 @@ button {
     .right{
         gap: 1.3rem;
         align-items: center;
+    }
+    .cart {
+        width: 90vw;
+        top: 9vh;
     }
     .account-btn {
         width: 2.5rem;

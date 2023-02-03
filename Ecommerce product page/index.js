@@ -4,7 +4,8 @@ const comp = document.querySelector('.company');
 const navToggle = document.querySelector(".mobile-nav-toggle");
 const nav = document.querySelector(".primary-nav");
 const blur = document.querySelector('.blur');
-
+const viewcart = document.querySelector('.cart-btn');
+const cart = document .querySelector('.cart');
 
 navToggle.addEventListener("click", (e) => {
 
@@ -27,41 +28,46 @@ navToggle.addEventListener("click", (e) => {
     }
 });
 
-blur.addEventListener('click', (e) => {
-    let visibility = nav.getAttribute("data-visible");
-    if (visibility === "true") {
-        blur.setAttribute("data-visible", false);
-        nav.setAttribute("data-visible", false);
-        navToggle.setAttribute("aria-expanded", false);
-        document.body.style.overflow = "scroll";
-    } else {
-        blur.setAttribute("data-visible", false);
-        nav.setAttribute("data-visible", false);
-        navToggle.setAttribute("aria-expanded", false);
-        document.body.style.overflow = "scroll";
-    }
-});
+// blur.addEventListener('click', (e) => {
+//     let visibility = nav.getAttribute("data-visible");
+//     if (visibility === "true") {
+//         blur.setAttribute("data-visible", false);
+//         nav.setAttribute("data-visible", false);
+//         navToggle.setAttribute("aria-expanded", false);
+//         document.body.style.overflow = "scroll";
+//     } else {
+//         blur.setAttribute("data-visible", false);
+//         nav.setAttribute("data-visible", false);
+//         navToggle.setAttribute("aria-expanded", false);
+//         document.body.style.overflow = "scroll";
+//     }
+// });
 
 
 let close = document.querySelector('.close-btn');
-let lightbox = document.querySelector('.lightbox');
+let modal = document.querySelector('.lightbox');
 const popup = document.querySelector('.main-prev');
-const lightblur = document.querySelector('.lightblur')
 
-popup.addEventListener('click', (e) => {
-    if (lightbox.getAttribute("data-visible").includes("false")){
-        lightbox.setAttribute("data-visible", true)
-        lightblur.setAttribute("data-visible", true)
-    }
+
+popup.addEventListener('click', () => {
+    modal.showModal();
+    document.body.style.overflow = "hidden";
+
 });
 
-close.addEventListener('click', (e) => {
-    if (lightbox.getAttribute("data-visible").includes("true")){
-        lightbox.setAttribute("data-visible", false)
-        lightblur.setAttribute("data-visible", false)
-    }
+close.addEventListener('click', () => {
+   modal.close();
+   document.body.style.overflow = "scroll";
 });
 
 
-
+viewcart.addEventListener('click', (e) => {
+    if(cart.getAttribute("data-visible").includes("false")){
+        cart.setAttribute("data-visible", true)
+        viewcart.setAttribute("aria-expanded", 'true')
+    } else {
+        cart.setAttribute("data-visible", false)
+        viewcart.setAttribute("aria-expanded", 'false')
+    }
+})
 
