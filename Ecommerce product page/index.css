@@ -13,6 +13,8 @@
     --lightgrayblue: 223 64% 98%;
     --darkgrayblue: 219 9% 45%;
     --grayblue: 220 14% 75%;
+    --Strawberry-red: 354 84% 57%;
+
 
     --lightbox: 0 0% 0%;
 
@@ -92,7 +94,6 @@ body {
     background-color: hsl(var(--White));
     line-height: 1.5;
     min-height: 100vh;
-    overflow-x: hidden;
     overflow-x: hidden;
     font-size: 1.6rem;
     font-family: var(--ff-kumbh);
@@ -195,6 +196,22 @@ body {
         transform: translateY(0%);
     }
 }
+@keyframes slide-in {
+    0% {
+        transform: translateX(200%);
+    } 
+    100% {
+        transform: translateX(0%);
+    }
+}
+@keyframes slide-out {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-200%);
+    }
+}
 
 
 /* Navigation */
@@ -256,17 +273,31 @@ body {
     cursor: pointer;
     position: relative;
 }
+.hud{
+    position: absolute;
+    background-color: hsl(var(--Orange));
+    border-radius: .5rem;
+    top: 0%;
+    right: 0%;
+    left: 40%;
+    color: hsl(var(--White));
+    width: 2rem;
+    height: 1.3rem;
+    text-align: center;
+    font-size: x-small;
+    z-index: 2;
+}
+/* --- cartdropdown --- */
 .cart{
     position: absolute;
     display: flex;
     flex-direction: column;
     font-weight: 700;
     border-radius: 1rem;
-    top: 13vh;
-    right: 13vh;
+    top: 12vh;
+    right: 0;
     width: 35rem;
-    height: 22rem; 
-    padding: 1rem; 
+    height: 25rem; 
     background-color: hsl(var(--White));
     box-shadow: .1rem .5rem 2rem .3rem hsl(var(--Gray)/.2);
 }
@@ -277,9 +308,89 @@ body {
     animation: slide-down 400ms forwards; 
 }
 .title{
-    padding: 1rem;
-    border-bottom: .2rem solid hsl(var(--grayblue) /.2);
+    padding: 2rem;
+    border-bottom: .2rem solid hsl(var(--grayblue) /.3);
 }
+.basket{
+    padding: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.prompt{
+    color:hsl(var(--Gray) /.9);
+    text-align: center;
+    margin: auto;
+}
+.prompt:not([hidden]){
+    animation: fade-in 800ms forwards;
+}
+.prompt[hidden]{
+    animation: fade-out 300ms forwards;
+}
+.cart-item{
+    justify-content: space-between;
+    transition: 400ms ease;
+}
+.cart-item[data-visible="false"]{
+    animation: fade-out 400ms forwards;
+    /* transform: scale(0); */
+}
+.cart-item[data-visible="true"]{
+    animation: fade-in 400ms forwards;
+    
+}
+.cart-thumbnail{
+    height: 5rem;
+    width: 5rem;
+    border-radius: .4rem;
+}
+.delete{   
+    align-items: center;
+    padding: 0;
+}
+.delete *:hover{
+    fill: hsl(var(--Strawberry-red));
+}
+.details {
+    flex-direction: column;
+    gap: .2rem;
+    color: hsl(var(--darkgrayblue));
+}
+.multiplier{
+    font-weight: 400;
+}
+.sum{
+    color: hsl(var(--Black));
+}
+.checkout-btn{
+    justify-content: center;
+    background: hsl(var(--Orange));
+    padding-block: 1.6rem;
+    width: 100%;
+    border-radius: 1rem;
+    transition: all 300ms ease-in-out;
+}
+.checkout-btn[data-visible="false"]{
+    transform: scale(0);
+}
+.checkout-btn[data-visible="true"]{
+    transform: scale(1);
+}
+.checkout-btn:hover{
+    scale: 1.02;
+    box-shadow: 0 .5rem 1rem .1rem hsl(var(--Orange)/.5);
+    transition: all 300ms ease-in-out;
+
+}
+.checkout-btn:active{
+    scale: 0.96;
+    transition: all 300ms ease-in-out;
+}
+/* cart dropdown end */
+
 .account-btn{
     border-radius: 50%;
     width: 4rem;
@@ -322,14 +433,25 @@ button {
     margin-left: 5rem;
     padding-bottom: 2rem;
     gap: 3rem;
-    
+
+}
+.preview{
+    position: relative;
+    display: flex;
+    overflow: hidden;
 }
 .product{
-    
     border-radius: 2rem;
     aspect-ratio: 1;
-    transition: 200ms all ease;
+    transition: 300ms all ease;
 }
+.product[data-visible="false"]{
+    animation: slide-out 400ms forwards;
+}
+.product[data-visible="true"]{
+    animation: slide-in 400ms forwards;
+}
+
 .cards{
     justify-content: space-between;
     width: 100%;
@@ -357,7 +479,7 @@ button {
     border: .3rem solid hsl(var(--Orange));
     opacity: .4;
 }
-.thumbnail[active]{
+.thumbnail[data-active="true"]{
     opacity: .5;
     border: .3rem solid hsl(var(--Orange));
 }
@@ -434,6 +556,7 @@ button {
     top: 40%;
     right: 65%;
     transition: all 300ms ease;
+    z-index: 2;
 }
 .prev-btn:hover{
     transform: scale(1.05);
@@ -455,6 +578,7 @@ button {
     top: 40%;
     left: 65%;
     transition: all 300ms ease;
+    z-index: 2;
 }
 .next-btn:hover{
     transform: scale(1.05);
@@ -467,7 +591,7 @@ button {
 .mobile{
     transform: scale(0);
 }
-
+/* ---- lightbox end ---- */
 
 
 
@@ -528,6 +652,28 @@ button {
     background-color: hsl(var(--lightgrayblue)/1);
     align-items: center;
     justify-content: space-between;
+}
+.minus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 3rem;
+}
+.amount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 3rem;
+    width: 3rem; 
+}
+.plus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 3rem;
 }
 
 .add-btn{
@@ -594,10 +740,9 @@ button {
     }
     .cart {
         width: 60vw;
-        top: 10vh;
-        
+        top: 12vh;
+        left: 20%; 
     }
-
     .account-btn {
         width: 2.5rem;
         height: 2.5rem;
@@ -710,8 +855,9 @@ button {
         justify-content: center;
         background: hsl(var(--White));   
         transition: all 300ms ease;
-        top: 30%;
+        top: 30vh;
         left: 7%;
+        z-index: 2;
     }
     .next-btn{
         position: absolute;
@@ -720,9 +866,9 @@ button {
         justify-content: center;
         background: hsl(var(--White));
         transition: all 300ms ease;
-        top: auto;
-        top: 30%;
+        top: 30vh;
         left: 86%;
+        z-index: 2;
     }
     .select{
         width: 100%;
@@ -752,8 +898,11 @@ button {
         align-items: center;
     }
     .cart {
-        width: 90vw;
-        top: 9vh;
+        width: 95%;
+        top: 10vh;
+        left: 0;
+        right: 0;
+        margin: auto;
     }
     .account-btn {
         width: 2.5rem;
@@ -807,7 +956,6 @@ button {
         justify-content: center;
         background: hsl(var(--White));
         transition: all 300ms ease;
-        top: auto;
         top: 27vh;
         left: 86%;
         height: 4rem;

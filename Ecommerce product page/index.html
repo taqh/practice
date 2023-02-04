@@ -21,14 +21,17 @@
             <button class="prev-btn"><svg width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
             <button class="next-btn"><svg width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
             <div class="preview">
-                <img src="images/image-product-1.jpg" alt="product preview" class="product">
+                <img src="images/image-product-1.jpg" alt="product preview" class="  product" data-visible="true">
+                <img src="images/image-product-2.jpg" alt="product preview" class="  product" data-visible="false">
+                <img src="images/image-product-3.jpg" alt="product preview" class="  product" data-visible="false">
+                <img src="images/image-product-4.jpg" alt="product preview" class="  product" data-visible="false">
             </div>
         </div>
         <div class="cards flex">
-            <img src="images/image-product-1-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
-            <img src="images/image-product-2-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
-            <img src="images/image-product-3-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
-            <img src="images/image-product-4-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
+            <img data-active="true" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
+            <img data-active="false" src="images/image-product-2-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
+            <img data-active="false" src="images/image-product-3-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
+            <img data-active="false" src="images/image-product-4-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
         </div>
     </dialog>
 
@@ -37,7 +40,7 @@
         <button class="mobile-nav-toggle toggle" aria-controls="primary-nav" aria-expanded="false"></button>
 
         <div class="logo-cover">
-            <img src="images/logo.svg" alt="sneakers logo" class="logo">
+            <a href="#"><img src="images/logo.svg" alt="sneakers logo" class="logo"></a>
         </div>
         
         <nav class="primary-nav flex four" data-visible="false">
@@ -51,10 +54,25 @@
         </nav>
 
         <ul class="right flex">
-            <button class="cart-btn" aria-expanded="false"><img src="images/icon-cart.svg" alt=""></button>
+            
+            <button class="cart-btn" aria-expanded="false"><img src="images/icon-cart.svg" alt=""><span hidden class="hud">0</span></button>
             <div class="cart" data-visible="false">
                 <span class="title">Cart</span>
-                <span>Your cart is empty</span>
+
+                <div class="basket">
+                    <span class="cart-item flex" data-visible="false">
+                        <img class="cart-thumbnail" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail">
+                        <span class="flex details">
+                            <p>Fall Limited Edition Sneakers</p>
+                            <span class="flex"><p>$<span class="price">125.00 </span><span>x <span class="multiplier">0</span></span></p><span class="sum">0</span></span>
+                        </span>
+                        <button class="delete"><svg width="14" height="16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z" id="a"/></defs><use fill="#C3CAD9" fill-rule="nonzero" xlink:href="#a"/></svg></button>
+                    </span>
+                    <span class="prompt">Your cart is empty</span>
+        
+                    <button class="checkout-btn flex txt-white" data-visible="false">Checkout</button>
+                </div>
+
             </div>
             <button class="account-btn"><img src="images/image-avatar.png" alt=""></button>
         </ul>
@@ -67,14 +85,17 @@
                 <button class="mobile prev-btn"><svg width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
                 <button class="mobile next-btn"><svg width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
                 <div class="preview main-prev">
-                    <img src="images/image-product-1.jpg" alt="product preview" class="product">
+                    <img src="images/image-product-1.jpg" alt="product preview" class="  product" data-visible="true">
+                    <img src="images/image-product-2.jpg" alt="product preview" class="  product" data-visible="false">
+                    <img src="images/image-product-3.jpg" alt="product preview" class="  product" data-visible="false">
+                    <img src="images/image-product-4.jpg" alt="product preview" class="  product" data-visible="false">
                 </div>
             
             <div class="cards flex">
-                <img active src="images/image-product-1-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
-                <img src="images/image-product-2-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
-                <img src="images/image-product-3-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
-                <img src="images/image-product-4-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
+                <img data-active="true" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
+                <img data-active="false" src="images/image-product-2-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
+                <img data-active="false" src="images/image-product-3-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
+                <img data-active="false" src="images/image-product-4-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
             </div>
         </div>
         
@@ -94,7 +115,7 @@
             <span class="select flex">
                 <div class="quantity seven flex">
                     <button class="minus txt-orange"><img src="images/icon-minus.svg" alt="minus-btn"></button>
-                    <span>0</span>
+                    <span class="amount">0</span>
                     <button class="plus txt-orange"><img src="images/icon-plus.svg" alt="plus-btn"></button>
                 </div>
                 
