@@ -11,9 +11,9 @@
     <br />
     <a href="https://dom-iha.github.io/space-tourism-website/">View Demo</a>
     ·
-    <a href="https://github.com/Dom-iha/Multi-step-form/issues" target="_blank">Report Bug</a>
+    <a href="https://github.com/Dom-iha/Intro-section/issues" target="_blank">Report Bug</a>
     ·
-    <a href="https://github.com/Dom-iha/Multi-step-form/issues" target="_blank">Request Feature</a>
+    <a href="https://github.com/Dom-iha/Intro-section/issues" target="_blank">Request Feature</a>
   </p>
 </div>
 

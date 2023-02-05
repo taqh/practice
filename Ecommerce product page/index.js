@@ -28,20 +28,20 @@ navToggle.addEventListener("click", (e) => {
     }
 });
 
-// blur.addEventListener('click', (e) => {
-//     let visibility = nav.getAttribute("data-visible");
-//     if (visibility === "true") {
-//         blur.setAttribute("data-visible", false);
-//         nav.setAttribute("data-visible", false);
-//         navToggle.setAttribute("aria-expanded", false);
-//         document.body.style.overflow = "scroll";
-//     } else {
-//         blur.setAttribute("data-visible", false);
-//         nav.setAttribute("data-visible", false);
-//         navToggle.setAttribute("aria-expanded", false);
-//         document.body.style.overflow = "scroll";
-//     }
-// });
+blur.addEventListener('click', (e) => {
+    let visibility = nav.getAttribute("data-visible");
+    if (visibility === "true") {
+        blur.setAttribute("data-visible", false);
+        nav.setAttribute("data-visible", false);
+        navToggle.setAttribute("aria-expanded", false);
+        document.body.style.overflow = "scroll";
+    } else {
+        blur.setAttribute("data-visible", false);
+        nav.setAttribute("data-visible", false);
+        navToggle.setAttribute("aria-expanded", false);
+        document.body.style.overflow = "scroll";
+    }
+});
 
 
 let close = document.querySelector('.close-btn');
@@ -92,18 +92,18 @@ add.addEventListener('click', () => {
     value++;
     amount.innerText = value;
   }
-  multiplier.innerText = value
-  hud.innerText = value
+//   multiplier.innerText = value
+//   hud.innerText = value
 });
 
 subtract.addEventListener('click', () => {
   let value = parseInt(amount.innerText);
-  if (value > 0) {
+  if (value > 1) {
     value--;
     amount.innerText = value;
   }
-  multiplier.innerText = value;
-  hud.innerText = value
+//   multiplier.innerText = value;
+//   hud.innerText = value
 });
   
 
@@ -113,7 +113,9 @@ subtract.addEventListener('click', () => {
 addtocart.addEventListener('click', () => {
     let value = parseInt(amount.innerText);
         amount.innerText = value;
-    
+        multiplier.innerText = value;
+        hud.innerText = value
+
     if(checkout.getAttribute("data-visible").includes("false")){
         checkout.setAttribute("data-visible", true)
         item.setAttribute("data-visible", true)
@@ -150,24 +152,24 @@ deleteitem.addEventListener('click', () => {
 
 
 
-currentImage = products[0];
-currentCard = cards[0];
-// window.addEventListener('DOMContentLoaded', () => {
-//     currentImage.setAttribute("data-visible", true);
-//     currentCard.setAttribute("data-active", true);
-    
-// });
+
 
 
 const nextBtn = [...document.querySelectorAll('.next-btn')];
 const prevBtn = [...document.querySelectorAll('.prev-btn')];
-
 const products = [...document.querySelectorAll('.product')];
 const cards = [...document.querySelectorAll('.card')];
 
 
+let currentSlide = 0;
+let currentCardIndex = 0;
+let currentImage = products[currentSlide];
+let currentCard = cards[currentCardIndex];
 
-
+window.addEventListener('DOMContentLoaded', () => {
+    currentCard.setAttribute("data-active", true);
+    currentImage.setAttribute("data-visible", true);
+});
 
 function switchImage(isNext) {
     currentImage.setAttribute("data-visible", false);
@@ -177,7 +179,7 @@ function switchImage(isNext) {
     let currentCardIndex = cards.indexOf(currentCard);
     
     if (isNext) {
-        if (currentSlide === products.length - 1) {
+        if (currentSlide >= products.length -1) {
             currentSlide = 0;
             currentCardIndex = 0;
         } else {
@@ -185,7 +187,7 @@ function switchImage(isNext) {
             currentCardIndex++;
         }
     } else {
-        if (currentSlide === 0) {
+        if (currentSlide <= 0) {
             currentSlide = products.length - 1;
             currentCardIndex = cards.length - 1;
         } else {
@@ -198,9 +200,12 @@ function switchImage(isNext) {
     currentCard = cards[currentCardIndex];
     currentImage.setAttribute("data-visible", true);
     currentCard.setAttribute("data-active", true);
-
     
+    products.forEach(product => product.style.transform = `translateX(${-100 * currentSlide}%)`);
+
 }
+
+
 
 nextBtn.forEach(btn => {
     btn.addEventListener('click', () =>{
@@ -214,11 +219,11 @@ prevBtn.forEach(btn => {
     });
 });
 
-// cards.forEach((card) =>{
-//     card.addEventListener('click', (e) =>{
-//         let currentSlide = products.indexOf(currentImage);
-//         let clicked = e.target;
-//         currentSlide = cards.indexOf(clicked)
-//         console.log(currentSlide)
-//     });
-// });
+cards.forEach((card) =>{
+    card.addEventListener('click', (e) =>{
+        let currentSlide = products.indexOf(currentImage);
+        let clicked = e.target;
+        currentSlide = cards.indexOf(clicked)
+        console.log(currentSlide)
+    });
+});
