@@ -7,8 +7,8 @@ const blur = document.querySelector('.blur');
 const viewcart = document.querySelector('.cart-btn');
 const cart = document .querySelector('.cart');
 
+// ---------- Mobile navigation toggle ---------- //
 navToggle.addEventListener("click", (e) => {
-
     let visibility = nav.getAttribute("data-visible");
         
     if (visibility === "false") {
@@ -28,6 +28,7 @@ navToggle.addEventListener("click", (e) => {
     }
 });
 
+//  ---------- close mobile nav onclick outside ---------- //
 blur.addEventListener('click', (e) => {
     let visibility = nav.getAttribute("data-visible");
     if (visibility === "true") {
@@ -48,19 +49,17 @@ let close = document.querySelector('.close-btn');
 let modal = document.querySelector('.lightbox');
 const popup = document.querySelector('.main-prev');
 
-
+// ----- on click of image preview, show dialog ----- //
 popup.addEventListener('click', () => {
     modal.showModal();
     document.body.style.overflow = "hidden";
-
 });
-
 close.addEventListener('click', () => {
    modal.close();
    document.body.style.overflow = "scroll";
 });
 
-
+// ---------- onclick of cart button open cart ---------- //
 viewcart.addEventListener('click', (e) => {
     if(cart.getAttribute("data-visible").includes("false")){
         cart.setAttribute("data-visible", true)
@@ -85,32 +84,26 @@ const hud = document.querySelector('.hud');
 const total = document.querySelector('.sum');
 const price = document.querySelector('.price');
 
-
+//  increment quantity onclick //
 add.addEventListener('click', () => {
   let value = parseInt(amount.innerText);
   if (value < 10) {
     value++;
     amount.innerText = value;
   }
-//   multiplier.innerText = value
-//   hud.innerText = value
 });
-
+// decrement quantity on click
 subtract.addEventListener('click', () => {
   let value = parseInt(amount.innerText);
   if (value > 1) {
     value--;
     amount.innerText = value;
   }
-//   multiplier.innerText = value;
-//   hud.innerText = value
 });
   
-
-
-
-
+// ---------- on click add quantity of items to cart ---------- //
 addtocart.addEventListener('click', () => {
+    // update hud showing amount of items in cart //
     let value = parseInt(amount.innerText);
         amount.innerText = value;
         multiplier.innerText = value;
@@ -135,7 +128,7 @@ addtocart.addEventListener('click', () => {
     
 });
 
-
+// empty cart on checkout or on delete //
 checkout.addEventListener('click', () => {
     checkout.setAttribute("data-visible", false)
     item.setAttribute("data-visible", false)
@@ -151,79 +144,67 @@ deleteitem.addEventListener('click', () => {
 });
 
 
-
-
-
-
+// ---------- Image carousel ---------- //
 const nextBtn = [...document.querySelectorAll('.next-btn')];
 const prevBtn = [...document.querySelectorAll('.prev-btn')];
 const products = [...document.querySelectorAll('.product')];
 const cards = [...document.querySelectorAll('.card')];
 
 
-let currentSlide = 0;
-let currentCardIndex = 0;
-let currentImage = products[currentSlide];
-let currentCard = cards[currentCardIndex];
+let currentIndex = 0;
+let currentCard = cards[0]
+let  currentSlide = products[0]
 
 window.addEventListener('DOMContentLoaded', () => {
     currentCard.setAttribute("data-active", true);
-    currentImage.setAttribute("data-visible", true);
+    currentSlide.setAttribute("data-visible", true);
 });
 
-function switchImage(isNext) {
-    currentImage.setAttribute("data-visible", false);
-    currentCard.setAttribute("data-active", false);
-    
-    let currentSlide = products.indexOf(currentImage);
-    let currentCardIndex = cards.indexOf(currentCard);
-    
-    if (isNext) {
-        if (currentSlide >= products.length -1) {
-            currentSlide = 0;
-            currentCardIndex = 0;
-        } else {
-            currentSlide++;
-            currentCardIndex++;
-        }
-    } else {
-        if (currentSlide <= 0) {
-            currentSlide = products.length - 1;
-            currentCardIndex = cards.length - 1;
-        } else {
-            currentSlide--;
-            currentCardIndex--;
-        }
-    }
-    
-    currentImage = products[currentSlide];
-    currentCard = cards[currentCardIndex];
-    currentImage.setAttribute("data-visible", true);
-    currentCard.setAttribute("data-active", true);
-    
-    products.forEach(product => product.style.transform = `translateX(${-100 * currentSlide}%)`);
-
-}
-
-
-
-nextBtn.forEach(btn => {
-    btn.addEventListener('click', () =>{
-        switchImage(true);
+const updateCard = (index) => {
+    cards.forEach((card) => {
+      card.setAttribute("data-active", false);
     });
+    cards[index].setAttribute("data-active", true);
+    products.forEach((product) => {
+      product.setAttribute("data-visible", false);
+    });
+    products[index].setAttribute("data-visible", true);
+  };
+
+const showNext = () => {
+  currentIndex = (currentIndex + 1) % products.length;
+  products.forEach((product) => {
+    product.style.transform = `translateX(-${currentIndex * 100}%)`;
+  });
+  updateCard(currentIndex);
+};
+
+const showPrev = () => {
+  currentIndex = (currentIndex - 1 + products.length) % products.length;
+  products.forEach((product) => {
+    product.style.transform = `translateX(-${currentIndex * 100}%)`;
+  });
+  updateCard(currentIndex);
+};
+
+const showSlide = (index) => {
+    currentIndex = index;
+    products.forEach((product) => {
+      product.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
+    updateCard(currentIndex);
+  };
+  
+nextBtn.forEach((btn) => {
+  btn.addEventListener("click", showNext);
 });
 
-prevBtn.forEach(btn => {
-    btn.addEventListener('click', () =>{
-        switchImage(false);
-    });
+prevBtn.forEach((btn) => {
+  btn.addEventListener("click", showPrev);
 });
 
-cards.forEach((card) =>{
-    card.addEventListener('click', (e) =>{
-        let currentSlide = products.indexOf(currentImage);
-        let clicked = e.target;
-        currentSlide = cards.indexOf(clicked)
-        console.log(currentSlide)
-    });
-});
+cards.forEach((card, index) => {
+    card.addEventListener("click", () => showSlide(index));
+  });
+
+
