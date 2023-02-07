@@ -56,9 +56,8 @@
         </ul>
     </header>
 
-    
     <main class="container flex"> 
-        <div class="gallery flex" role="carousel" aria-roledescription="carousel">
+        <div class="gallery flex">
                 <button class="mobile prev-btn" aria-controls="gallery" aria-label="Previous image"><svg width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
                 <button class="mobile next-btn" aria-controls="gallery" aria-label="Next image"><svg width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
                 <div class="preview main-prev">
@@ -69,17 +68,17 @@
                 </div>
             
             <div class="cards flex">
-                <div class="thumb">
-                    <img data-active="false" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
+                <div class="thumb" data-active="true">
+                    <img data-active="false" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail" class="card">
                 </div>
                 <div class="thumb">
-                    <img data-active="false" src="images/image-product-2-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
+                    <img data-active="false" src="images/image-product-2-thumbnail.jpg" alt="product thumbnail" class="card">
                 </div>
                 <div class="thumb">
-                    <img data-active="false" src="images/image-product-3-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
+                    <img data-active="false" src="images/image-product-3-thumbnail.jpg" alt="product thumbnail" class="card">
                 </div>
                 <div class="thumb">
-                    <img data-active="false" src="images/image-product-4-thumbnail.jpg" alt="product thumbnail" class="card thumbnail">
+                    <img data-active="false" src="images/image-product-4-thumbnail.jpg" alt="product thumbnail" class="card">
                 </div>
             </div>
         </div>
@@ -87,26 +86,26 @@
         <dialog class="lightbox" aria-roledescription="modal">
         <div class="btn-wrap">
             <button aria-controls="dialog" aria-label="Close dialog" class="close-btn"><svg width="14" height="15" xmlns="http://www.w3.org/2000/svg"><path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="#69707D" fill-rule="evenodd"/></svg></button>
-            <button aria-controls="dialog" aria-label="Previous image" class="prev-btn"><svg width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
-            <button aria-controls="dialog" aria-label="Next image" class="next-btn"><svg width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
+            <button aria-controls="dialog" aria-label="Previous image" class="prevslide-btn"><svg width="12" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M11 1 3 9l8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
+            <button aria-controls="dialog" aria-label="Next image" class="nextslide-btn"><svg width="13" height="18" xmlns="http://www.w3.org/2000/svg"><path d="m2 1 8 8-8 8" stroke="#1D2026" stroke-width="3" fill="none" fill-rule="evenodd"/></svg></button>
             <div class="preview">
-                <img src="images/image-product-1.jpg" alt="product preview" class="product" data-visible="false">
-                <img src="images/image-product-2.jpg" alt="product preview" class="product" data-visible="false">
-                <img src="images/image-product-3.jpg" alt="product preview" class="product" data-visible="false">
-                <img src="images/image-product-4.jpg" alt="product preview" class="product" data-visible="false">
+                <img src="images/image-product-1.jpg" alt="product preview" class="modal-product" data-visible="false">
+                <img src="images/image-product-2.jpg" alt="product preview" class="modal-product" data-visible="false">
+                <img src="images/image-product-3.jpg" alt="product preview" class="modal-product" data-visible="false">
+                <img src="images/image-product-4.jpg" alt="product preview" class="modal-product" data-visible="false">
             </div>
         </div>
         <div class="cards flex">
-            <div class="thumb">
+            <div class="modal-thumb">
                 <img data-active="false" src="images/image-product-1-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
             </div>
-            <div class="thumb">
+            <div class="modal-thumb">
                 <img data-active="false" src="images/image-product-2-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
             </div>
-            <div class="thumb">
+            <div class="modal-thumb">
                 <img data-active="false" src="images/image-product-3-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
             </div>
-            <div class="thumb">
+            <div class="modal-thumb">
                 <img data-active="false" src="images/image-product-4-thumbnail.jpg" alt="product thumbnail" class="thumbnail">
             </div>
             <!-- <img data-active="false" src="images/image-product-2-thumbnail.jpg" alt="product thumbnail" class="thumbnail">

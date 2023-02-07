@@ -450,11 +450,35 @@ button {
     flex: 0 0 100%;
     transition: all 300ms ease-in-out;
 }
-
-
+.modal-product{
+    border-radius: 2rem;
+    aspect-ratio: 1;
+    flex: 0 0 100%;
+    transition: all 300ms ease-in-out;
+}
 .cards{
     justify-content: space-between;
     width: 100%;
+}
+.card {
+    border-radius: 1rem;
+    aspect-ratio: 1;
+    height: 9rem;
+    max-width: 9rem;
+    transition: all 200ms linear;
+}
+.card:hover{
+    opacity: .7;
+    transition: all 200ms linear;
+    cursor: pointer;
+}
+.card:active{
+    scale: 0.96;
+    transition: all 200ms linear;
+}
+.card[data-active="true"]{
+    opacity: .5;
+    transition: all 200ms linear;
 }
 .thumbnail {
     border-radius: 1rem;
@@ -464,13 +488,8 @@ button {
     transition: all 200ms linear;
 }
 .thumbnail:hover{
-    scale: 1.1;
-    transition: all 200ms linear;
-    cursor: pointer;
-    
-}
-.card:hover{
     opacity: .7;
+    transition: all 200ms linear;
 }
 .thumbnail:active{
     scale: 0.96;
@@ -479,10 +498,54 @@ button {
 .thumbnail[data-active="true"]{
     opacity: .5;
 }
+.thumb{
+    border-radius: 1.1rem;
+    transition: all 200ms linear;
+}
+.card:hover{
+    scale: 1.04;
+    transition: all 200ms linear;
+}
+.thumb:hover{
+    scale: 1.1;
+    transition: all 200ms linear;
+}
+
+.thumb[data-active="true"]{
+    border: .3rem solid hsl(var(--Orange) );
+    transition: all 200ms linear;
+}
 .main-prev{
     cursor: pointer;
 }
-
+.prev-btn{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    background: hsl(var(--White));
+    top: 40%;
+    right: 65%;
+    transition: all 300ms ease;
+    z-index: 2;
+}
+.next-btn{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    background: hsl(var(--White));
+    top: 40%;
+    left: 65%;
+    transition: all 300ms ease;
+    z-index: 2;
+}
 
 
 /* ---------- Lightbox pop up ---------- */
@@ -503,8 +566,7 @@ button {
     opacity: 0;
 }
 .lightbox[open]::backdrop{
-    animation: fade-in 500ms forwards;
-    
+    animation: fade-in 500ms forwards; 
 }
 .lightbox .preview{
     width: 50rem;
@@ -528,7 +590,6 @@ button {
     left: 65%;
     transform: scale(1.2);
     border: 0;
-    
 }
 .close-btn *{
     fill: hsl(var(--White));
@@ -536,10 +597,10 @@ button {
 .close-btn:hover{
     scale: 1.05;
 }
-.close-btn *:hover {
+.close-btn :hover {
     fill: hsl(var(--Orange));
 }
-.prev-btn{
+.prevslide-btn{
     position: fixed;
     display: flex;
     align-items: center;
@@ -553,15 +614,15 @@ button {
     transition: all 300ms ease;
     z-index: 2;
 }
-.prev-btn:hover{
+.prevslide-btn:hover{
     transform: scale(1.05);
     transition: all 200ms ease;
 }
-.prev-btn:active{
+.prevslide-btn:active{
     transform: scale(0.95);
     transition: all 200ms ease;
 }
-.next-btn{
+.nextslide-btn{
     position: fixed;
     display: flex;
     align-items: center;
@@ -575,11 +636,19 @@ button {
     transition: all 300ms ease;
     z-index: 2;
 }
-.next-btn:hover{
+.nextslide-btn:hover{
     transform: scale(1.05);
     transition: all 200ms ease;
 }
-.next-btn:active{
+.nextslide-btn:active{
+    transform: scale(0.95);
+    transition: all 200ms ease;
+}
+.mobile :hover{
+    transform: scale(1.05);
+    transition: all 200ms ease;
+}
+.mobile :active{
     transform: scale(0.95);
     transition: all 200ms ease;
 }
@@ -722,12 +791,14 @@ button {
         top: 0; 
         margin: 0;
         gap: 0;
-        border: 0;
         padding: 2rem;
         width: 100%;
         justify-content: space-between;
         background-color: hsl(var(--White));     
         z-index: 100; 
+    }
+    .primary-header::after{
+        display: none;
     }
     .right{
         gap: 1.7rem;

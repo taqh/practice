@@ -149,11 +149,12 @@ const nextBtn = [...document.querySelectorAll('.next-btn')];
 const prevBtn = [...document.querySelectorAll('.prev-btn')];
 const products = [...document.querySelectorAll('.product')];
 const cards = [...document.querySelectorAll('.card')];
-
+const thumbnails = [...document.querySelectorAll('.thumb')]
 
 let currentIndex = 0;
 let currentCard = cards[0]
 let  currentSlide = products[0]
+let currentThumb = thumbnails[0] 
 
 window.addEventListener('DOMContentLoaded', () => {
     currentCard.setAttribute("data-active", true);
@@ -165,12 +166,19 @@ const updateCard = (index) => {
       card.setAttribute("data-active", false);
     });
     cards[index].setAttribute("data-active", true);
+
+    // update current active conteiner to show orange border //
+    thumbnails.forEach((thumb) => {
+      thumb.setAttribute("data-active", false);
+    });
+    thumbnails[index].setAttribute("data-active", true);
+
     products.forEach((product) => {
       product.setAttribute("data-visible", false);
     });
     products[index].setAttribute("data-visible", true);
   };
-
+ 
 const showNext = () => {
   currentIndex = (currentIndex + 1) % products.length;
   products.forEach((product) => {
@@ -204,7 +212,55 @@ prevBtn.forEach((btn) => {
 });
 
 cards.forEach((card, index) => {
-    card.addEventListener("click", () => showSlide(index));
+  card.addEventListener("click", () => showSlide(index));
+});
+
+
+
+
+//  -------- slider for Dialog element --------- //
+  const slides = [...document.querySelectorAll('.modal-product')];
+  const thumbs = [...document.querySelectorAll('.thumbnail')];
+  const nxtBtn = document.querySelector('.nextslide-btn');
+  const backBtn = document.querySelector('.prevslide-btn');
+  
+const updateSlide = (index) => {
+  thumbs.forEach((thumb) => {
+    thumb.setAttribute("data-active", false);
   });
+  thumbs[index].setAttribute("data-active", true);
 
+  slides.forEach((slide) => {
+    slide.setAttribute("data-visible", false);
+  });
+  slides[index].setAttribute("data-visible", true);
+};
+ 
+const scrollNext = () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides.forEach((slide) => {
+    slide.style.transform = `translateX(-${currentIndex * 100}%)`;
+  });
+  updateSlide(currentIndex);
+};
 
+const scrollBack = () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  slides.forEach((slide) => {
+    slide.style.transform = `translateX(-${currentIndex * 100}%)`;
+  });
+  updateSlide(currentIndex);
+};
+
+const showImage = (index) => {
+    currentIndex = index;
+    products.forEach((product) => {
+      product.style.transform = `translateX(-${currentIndex * 100}%)`;
+    });
+    updateSlide(currentIndex);
+};
+
+nxtBtn.addEventListener("click", scrollNext);
+ 
+backBtn.addEventListener("click", scrollBack);
+ 
