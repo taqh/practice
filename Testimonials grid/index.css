@@ -1,0 +1,151 @@
+/* Custom properties   */
+
+:root {
+    font-size: 62.5%;
+
+    /* Primary colors  */
+    --White: 0 0% 100%;
+    --Gray-blue: 217 19% 35%;
+    --Black-blue: 219 29% 14%;
+    --Violet: 263 55% 52%;
+    --Strawberry-red: 354 84% 57%;
+
+    /*  Neutral colors */
+    --Light-gray: 0, 0%, 81%;
+    --Light-gray-blue:210, 46%, 95%;
+
+    /* Font families */
+    --ff-epilogue: 'Epilogue', sans-serif;
+    --ff-Outfit: 'Outfit', sans-serif;
+    --ff-Poppins: 'Poppins', sans-serif;
+    --ff-Ubuntu: 'Ubuntu', sans-serif;
+    --ff-barlow: 'Barlow Semi Condensed', sans-serif;
+}
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+
+/* make images easier to work with */
+picture,
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* set up the body */
+body {
+    background-color: hsl(var(--White));
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-x: hidden;
+    font-size: 1.3rem;
+    font-family: var(--ff-epilogue);
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* Utility Classes */
+
+/* Background colors */
+.bg-dark {background-color: hsl(var(--Black-blue));}
+.bg-white {background-color: hsl(var(--White));}
+.bg-gray {background-color: hsl(var(--Gray-blue));}
+.bg-violet {background-color: hsl(var(--Violet));}
+.bg-lightgray {background-color: hsl(var(--Light-gray));}
+.bg-lightblue {background-color: hsl(var(--Light-gray-blue));}
+
+/* Text color */
+.txt-dark {color: hsl(var(--Black-blue));}
+.txt-white {color: hsl(var(--White));}
+.txt-gray {color: hsl(var(--Gray-blue));}
+.txt-violet {color: hsl(var(--Violet));}
+.txt-lightgray {color: hsl(var(--Light-gray));}
+.txt-lightblue {background-color: hsl(var(--Light-gray-blue));}
+
+/* typography */
+.ff-epilogue {font-family: var(--ff-epilogue);}
+.ff-ubuntu {font-family: var(--ff-Ubuntu);}
+.ff-poppins {font-family: var(--ff-Poppins);}
+.ff-outfit {font-family: var(--ff-Outfit);}
+.ff-barlow {font-family: var(--ff-barlow);}
+
+.five{font-weight: 500;}
+.six{font-weight: 600;}
+
+
+/* ---------- Main ---------- */
+/* .container{
+
+} */
+
+
+
+
+/* ----------- Footer ---------- */
+.attribution {
+    font-size: 1.3rem; 
+    text-align: center;
+    justify-content: center;
+    align-items: flex-end;
+    cursor: default; 
+    color: hsl(var(--Gray));
+    font-weight: 500;
+}
+.attribution a {
+    text-decoration: none;
+    color: hsl(var(--Orange));
+    font-weight: 500; 
+}
+.attribution a:hover {
+    color: hsl(228, 45%, 44%); 
+}
