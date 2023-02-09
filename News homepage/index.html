@@ -4,13 +4,102 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Epilogue:wght@400;500;700&family=Inter:wght@400;700;800&family=Kumbh+Sans:wght@400;500;700&family=Outfit:wght@400;700&family=Poppins:wght@100;200;300;400;600;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
     <title>Frontend Mentor | News homepage</title>
 </head>
 <body>
+    <div class="overlay" data-visible="false"></div>
     
+    <header class="primary-header flex">
+        <div>
+            <img src="images/logo.svg" alt="W logo" class="logo">
+        </div>
+
+        <button class="mobile-nav-toggle toggle"  aria-controls="primary-navigation" aria-expanded="false"><span class="sr-only" aria-expanded="false">Menu</span></button>
+        
+        <nav>
+            <ul id="primary-navigation" data-visible="false" class="primary-navigation toggle flex">
+                <li><a class="" href="#">Home</a></li>
+                <li><a class="" href="#">New</a></li>
+                <li><a class="" href="#">Popular</a></li>
+                <li><a class="" href="#">Trending</a></li>
+                <li><a class="" href="#">Categories</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="news-grid">
+        <article class="news">
+            <picture>
+                <source media="(max-width: 45rem)" srcset="images/image-web-3-mobile.jpg">
+                <img src="images/image-web-3-desktop.jpg" alt="Web3 image">
+            </picture>
+        </article>
+
+        <article class="news flow">
+            <h1>The Bright Future of Web 3.0?</h1>  
+        </article>
+
+        <article class="news flow">
+            <p class="txt-Darkgray">We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?</p>
+            <a href="#" class="more">READ MORE</a>
+        </article>
+
+        <article class="news bg-dark flow">
+            <h2 class="txt-orange side">New</h2>
+            <div class="cover">
+                <h3><a href="#" class="headline">Hydrogen VS Electric Cars</a></h3>
+                <p class="txt-gray">Will hydrogen-fueled cars ever catch up to EVs?</p>
+            </div>
+            <div class="cover">
+                <h3><a href="#" class="headline">The Downsides of AI Artistry</a></h3>
+                <p class="txt-gray">What are the possible adverse effects of on-demand AI image generation?</p>
+            </div>
+            <div class="cover">
+                <h3><a href="#" class="headline">Is VC Funding Drying Up?</a></h3>
+                <p class="txt-gray">Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+            </div>
+        </article>
+
+        <article class="news flow">
+            <div class="flex top-stories">
+                <img src="images/image-retro-pcs.jpg" alt="retro pc image">
+                <div>
+                    <h2 class="txt-gray number">01</h2>
+                    <h3><a href="#" class="story">Reviving Retro PCs</a></h3>
+                    <p class="txt-Darkgray">What happens when old PCs are given modern upgrades?</p>
+                </div>
+            </div>
+            <div class="flex top-stories">
+                <img src="images/image-top-laptops.jpg" alt="top laptops image">
+                <div>
+                    <h2 class="txt-gray number">02</h2>
+                    <h3><a href="#" class="story">Top 10 Laptops of 2022</a></h3>
+                    <p class="txt-Darkgray">Our best picks for various needs and budgets.</p>
+                </div>
+            </div>
+            <div class="flex top-stories">
+                <img src="images/image-gaming-growth.jpg" alt="gaming growth image">
+                <div>
+                    <h2 class="txt-gray number">03</h2>
+                    <h3><a href="#" class="story">The Growth of Gaming</a></h3>
+                    <p class="txt-Darkgray">How the pandemic has sparked fresh opportunities.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="attribution">
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+            Coded by <a href="https://github.com/Dom-iha">Taqib</a>.
+        </div>
+    </footer>
+
 </body>
 </html>
