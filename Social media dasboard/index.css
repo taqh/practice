@@ -1,0 +1,216 @@
+/* Custom properties   */
+
+:root {
+    font-size: 62.5%;
+
+    /* Primary colors  */
+    --Lime-Green: 163 72% 41%;
+    --Bright-Red: 356 69% 56%;
+    --Facebook: 208 92% 53%;
+    --Twitter: 203 89% 53%;
+    --Instagram: linear gradient hsl(37, 97%, 70%) to hsl(329, 70%, 58%);
+    --YouTube: 348 97% 39%;
+    --Toggle: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%); /* dark theme */
+    --Toggle: 230 22% 74%; /* light theme */
+
+    /*  Neutral colors */
+
+    /* Dark theme */
+    --Very-Dark-Blue: 230 17% 14%; /* (BG) */
+    --Very-Dark-Blue: 232 19% 15%; /* (Top BG Pattern) */
+    --Dark-Desaturated-Blue: 228 28% 20%; /* (Card BG) */
+    --Desaturated-Blue: 228 34% 66%; /* (Text) */
+    --White: 0 0% 100%; /*  (Text) */
+
+    /* Light theme */
+    --White: 0 0% 100%;
+    --Very-Pale-Blue: 225 100% 98%; /* (Top BG Pattern) */
+    --Light-Grayish-Blue: 227 47% 96%; /* (Card BG) */
+    --Dark-Grayish-Blue: 228 12% 44%; /* (Text) */
+    --Very-Dark-Blue: 230 17% 14%; /* (Text) */
+
+    /* Font families */
+    --ff-epilogue: 'Epilogue', sans-serif;
+    --ff-Outfit: 'Outfit', sans-serif;
+    --ff-Poppins: 'Poppins', sans-serif;
+    --ff-Ubuntu: 'Ubuntu', sans-serif;
+    --ff-barlow: 'Barlow Semi Condensed', sans-serif;
+    --ff-Inter: 'Inter', sans-serif;
+
+    /* Font weights */
+    --fw-400: 400;
+    --fw-700: 700;
+    --fw-800: 800;
+  
+    /* Font sizes */
+    --fs-300: 1.6rem;
+    --fs-400: 1.8rem;
+    --fs-500: 2rem;
+    --fs-600: 2.5rem;
+}
+
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+  }
+  
+  /* Set core root defaults */
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+
+   /* A elements that don't have a class get default styles */
+   a:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
+
+/* make images easier to work with */
+picture,
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* set up the body */
+body {
+    background-color: hsl(var(--White));
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    text-rendering: optimizeSpeed;
+    font-size: 1.6rem;
+    background-color: var(--Off-white);
+    font-family: var(--ff-Inter);
+}
+
+h2,
+h3 {
+  font-weight: var(--fw-700);
+}
+
+/* Utility Classes */
+.sr-only {
+    position: absolute; 
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px; 
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+    
+}
+.txt-center{
+    text-align: center;
+}
+.flex {
+    display: flex;
+    gap: 1rem;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+.flex-right {
+    align-self: flex-end;
+}
+.grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+.flow > *:where(:not(:first-child)) {
+    margin-top:  1em;
+}
+.block{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+
+/* Background colors */
+.bg-dark {background-color: hsl(var(--Darkblue));}
+.bg-white {background-color: hsl(var(--Off-white));}
+.bg-gray {background-color: hsl(var(--Grayblue));}
+.bg-Darkgray {background-color: hsl(var(--Darkgrayblue));}
+.bg-orange {background-color: hsl(var(--Soft-orange));}
+.bg-red {background-color: hsl(var(--Soft-red));}
+
+/* Text color */
+.txt-dark {color: hsl(var(--Darkblue));}
+.txt-white {color: hsl(var(--Off-white));}
+.txt-gray {color: hsl(var(--Grayblue));}
+.txt-Darkgray {color: hsl(var(--Darkgrayblue));}
+.txt-orange {color: hsl(var(--Soft-orange));}
+.txt-red {color: hsl(var(--Soft-red));}
+
+/* typography */
+.ff-epilogue {font-family: var(--ff-epilogue);}
+.ff-ubuntu {font-family: var(--ff-Ubuntu);}
+.ff-poppins {font-family: var(--ff-Poppins);}
+.ff-outfit {font-family: var(--ff-Outfit);}
+.ff-Inter {font-family: var(--ff-Inter);}
+
+.fs-600 {font-size: var(--fs-600);}
+.four{font-weight: 400;}
+.seven{font-weight: 700;}
+.eight{font-weight: 800;}
