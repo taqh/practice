@@ -1,0 +1,267 @@
+/* Custom properties   */
+
+:root {
+    font-size: 62.5%;
+
+    /* ------------ Colors ------------  */
+
+    /* ------------ THEME 1 ------------  */
+    --Very-dark-desaturated-blue: 222 26% 31%; /* main BG*/
+    --Very-dark-desaturated-blue: 223 31% 20%; /* Toggle & Keypad BG */
+    --Very-dark-desaturated-blue: 224 36% 15%;  /* Screeen BG */
+    /* ----- Keys ----- */
+    --Desaturated-dark-blue: 225 21% 49%;  /* Key BG*/
+    --Desaturated-dark-blue: 224 28% 35%;  /* Key Shadow */
+    --Red: 6 63% 50%;  /* Key & Toggle BG */
+    --Dark-red: 6 70% 34%;  /* key shadow */
+    --Light-grayish-orange: 30 25% 89%;  /* Key BG*/
+    --Grayish-orange: 28 16% 65%;  /* Key Shadow*/
+    /* ----- Text ----- */
+    --Very-dark-grayish-blue: 221 14% 31%;
+    --White: 0 0% 100%;
+    
+
+    /* ------------ THEME 2 ------------ */
+    --Light-gray: 0 0% 90%;     /* main BG*/
+    --Grayish-red: 0 5% 81%;    /* Toggle & Keypad BG */  
+    --Very-light-gray: 0 0% 93%;   /* Screeen BG */ 
+    /* ----- Keys ----- */
+    --Dark-moderate-cyan: 185 42% 37%;  /* Key BG*/
+    --Very-dark-cyan: 185 58% 25%;  /* Key Shadow */
+    --Orange: 25 98% 40%;   /* Key & Toggle BG */
+    --Dark-orange: 25 99% 27%;  /* key shadow */
+    --Light-grayish-yellow: 45 7% 89%;  /* Key BG*/
+    --Dark-grayish-orange: 35 11% 61%;  /* Key Shadow*/
+    /* ----- Text ----- */
+    --Very-dark-grayish-yellow: 60 10% 19%;
+    --White: 0 0% 100%;
+
+
+    /* ------------ THEME 3 ------------ */
+    --Very-dark-violet: 268 75% 9%; /* main BG*/
+    --Very-dark-violet: 268 71% 12%;  /* Toggle, Keypad & Screen BG */  
+    /* ----- Keys ----- */
+    --Dark-violet: 281 89% 26%;  /* Key BG*/
+    --Vivid-magenta: 285 91% 52%;   /* Key Shadow */
+    --Pure-cyan: 176 100% 44%;  /* Key & Toggle BG */
+    --Soft-cyan: 177 92% 70%;  /* key shadow */
+    --Very-dark: 268 47% 21%;  /* Key BG*/
+    --Dark-magenta: 290 70% 36%;  /* Key Shadow*/
+    /* ----- Text ----- */
+    --Light-yellow: 52 100% 62%;
+    --Very-dark-blue: 198 20% 13%;
+    --White: 0 0% 100%;
+    
+
+    /* Font families */
+    --ff-epilogue: 'Epilogue', sans-serif;
+    --ff-Outfit: 'Outfit', sans-serif;
+    --ff-Poppins: 'Poppins', sans-serif;
+    --ff-Ubuntu: 'Ubuntu', sans-serif;
+    --ff-barlow: 'Barlow Semi Condensed', sans-serif;
+    --ff-Inter: 'Inter', sans-serif;
+    --ff-league: 'League Spartan', sans-serif;
+
+
+    /* Font weights */
+    --fw-700: 700;
+}
+
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 700;
+}
+
+  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+  }
+  
+  /* Set core root defaults */
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+
+   /* A elements that don't have a class get default styles */
+   a:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
+
+/* make images easier to work with */
+picture,
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* set up the body */
+body {
+    line-height: 1.5;
+    min-height: 100vh;
+    font-size: 3.2rem;
+    overflow-x: hidden;
+    text-rendering: optimizeSpeed;
+    font-weight: var(--fw-700);
+    font-family: var(--ff-league);
+    background-color: var(--Very-dark-desaturated-blue);
+}
+
+h2,
+h3 {
+  font-weight: var(--fw-700);
+}
+
+/* Utility Classes */
+.sr-only {
+    position: absolute; 
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px; 
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+    
+}
+.txt-center{
+    text-align: center;
+}
+.flex {
+    display: flex;
+    gap: 1rem;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+.flex-right {
+    align-self: flex-end;
+}
+.grid {
+    display: grid;
+    gap: var(--gap, 1rem);
+}
+.flow > *:where(:not(:first-child)) {
+    margin-top:  1em;
+}
+.block{
+    display: block;
+}
+.hidden{
+    display: none;
+}
+
+/* Background colors */
+.bg-green {background-color: hsl(var(--Lime-Green));}
+.bg-white {background-color: hsl(var(--White));}
+.bg-red {background-color: hsl(var(--Bright-Red));}
+/* -- Light theme BG -- */
+.bg-paleblue {background-color: hsl(var(--Very-Pale-Blue));}
+.bg-lightblue {background-color: hsl(var(--Light-Grayish-Blue));}
+/* -- Dark theme BG -- */
+.bg-darkblue {background-color: hsl(var(--Dark-Blue));}
+.bg-verydarkblue {background-color: hsl(var(--Very-Dark-Blue));}
+.bg-cardblue {background-color: hsl(var(--Dark-Desaturated-Blue));}
+
+/* Text color */
+.txt-green {color: hsl(var(--Lime-Green));}
+.txt-red {color: hsl(var(--Bright-Red));}
+.txt-fb {color: hsl(var(--Facebook));}
+.txt-YT {color: hsl(var(--YouTube));}
+.txt-tweet {color: hsl(var(--Twitter));}
+/* -- light theme text -- */
+.txt-gray {color: hsl(var(--Dark-Grayish-Blue));}
+.txt-darkblue {color: hsl(var(--Very-Dark-Blue));}
+/* -- dark theme text -- */
+.txt-desatblue {color: hsl(var(--Desaturated-Blue));}
+.txt-white {color: hsl(var(--White));}
+
+
+/* typography */
+.ff-epilogue {font-family: var(--ff-epilogue);}
+.ff-ubuntu {font-family: var(--ff-Ubuntu);}
+.ff-poppins {font-family: var(--ff-Poppins);}
+.ff-outfit {font-family: var(--ff-Outfit);}
+.ff-Inter {font-family: var(--ff-Inter);}
+.ff-league {font-family: var(--ff-league);}
+
+.seven{font-weight: 700;}
+
+
+/* ------------ Main ------------ */
+
+
+/* ---------- Footer ---------- */
+.attribution {
+    margin-top: 5rem;
+    font-size: 1.3rem; 
+    text-align: center;
+    justify-content: center;
+    align-items: flex-end;
+    cursor: default; 
+    color: hsl(var(--Gray));
+    font-weight: 500;
+}
+.attribution a {
+    text-decoration: none;
+    color: hsl(var(--Orange));
+    font-weight: 700; 
+}
+.attribution a:hover {
+    color: hsl(var(--Lime-Green)); 
+}
+
