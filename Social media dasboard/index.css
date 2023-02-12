@@ -8,9 +8,9 @@
     --Bright-Red: 356 69% 56%;
     --Facebook: 208 92% 53%;
     --Twitter: 203 89% 53%;
-    --Instagram: linear-gradient(to righthsl(37, 97%, 70%), hsl(329, 70%, 58%));
+    --Instagram: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
     --YouTube: 348 97% 39%;
-    --Toggle-linear: linear-gradient(to right hsl(210, 78%, 56%) to hsl(146, 68%, 55%)); /* dark theme */
+    --Toggle-linear: linear-gradient(to right, hsl(210, 78%, 56%) to hsl(146, 68%, 55%)); /* dark theme */
     --Toggle: 230 22% 74%; /* light theme */
 
     /*  Neutral colors */
@@ -228,8 +228,8 @@ h3 {
 /* --------- Header ---------- */
 
 header{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
     width: 80%;
     margin-inline: auto;
@@ -237,6 +237,7 @@ header{
     padding-block: 2rem;
 }
 .toggle{
+    justify-content: flex-end;
     align-items: center;
     gap: 1.4rem;
 }
@@ -248,12 +249,13 @@ header::before{
     height: 35vh;
     width: 100%;
     background: hsl(var(--Very-Pale-Blue));
-    border-bottom-left-radius: 3rem;
-    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
     z-index: -1;
 }
-
-
+.total {
+    font-size: 1.5rem;
+}
 
 /* ----- Theme toggle -----  */
 .switch {
@@ -285,7 +287,7 @@ header::before{
     top: .4rem;
     right: .3rem;
     background-color: hsl(var(--White));
-    transition: 400ms;
+    transition: 200ms;
 }
 input:checked + .slider {
     background: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
@@ -305,6 +307,31 @@ input:checked + .slider::before {
     letter-spacing: .1ch;
 }
 
+/* --- DARK THEME COLORS ---- */
+body[data-toggled="true"] {
+    background-color: hsl(var(--Dark-Blue));
+    color: hsl(var(--White));
+}
+.cards[data-toggled="true"]{
+    background-color: hsl(var(--Dark-Desaturated-Blue));
+}
+.cards[data-toggled="true"]:hover{
+    background-color: hsl(var(--Desaturated-Blue)/.3);
+}
+.darktheme-text[data-toggled="true"]{
+    color: hsl(var(--Desaturated-Blue));
+}
+.overview[data-toggled="true"]{
+    color: hsl(var(--White));
+}
+.dark[data-toggled="true"]{
+    color: hsl(var(--White));
+
+}
+/* this enables me to toggle the ::before pseudo elements background from Js wby adding this '.header-toggle class */
+header.header-toggle::before {
+    background: hsl(232 19% 15%);
+}
 
 /* ---------- Main ---------- */
 body{
@@ -324,24 +351,26 @@ body{
 .cards{
     background-color: hsl(var(--Light-Grayish-Blue));
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 3rem;
     cursor: pointer;
 }
 .cards:hover{
     background: hsl(var(--Toggle)/.5);
 }
 .status{
+    margin-top: 2rem;
     display: flex;
     align-items: center;
     gap: .4rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: var(--fw-700);
 }
 .media-cards{
     position: relative;
     overflow: hidden;
-    padding-block: 3rem;
     display: grid;
+    padding-bottom: 2.5rem;
+    
 }
 .username{
     font-size: 1.2rem;
@@ -352,21 +381,29 @@ body{
 .media-cards *{
     justify-self: center;
 }
+.media-cards h1{
+    font-size: 5.5rem;
+    line-height: 1;
+    margin-top: 2.5rem;
+}
 .overview-cards{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 10rem 5rem;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1.5rem;
+    padding-block: 2rem;
     
 }
-.media-cards h1{
-    font-size: 5rem;
+.overview-cards img{
+    margin-left: auto;
 }
 .facebook::before{
     position: absolute;
     content: '';
     width: 100%;
     height: .4rem;
-    top: .3%;
+    top: 0%;
     left: 0;
     right: 0;
     background: hsl(var(--Facebook)); 
@@ -376,7 +413,7 @@ body{
     content: '';
     width: 100%;
     height: .4rem;
-    top: .3%;
+    top: 0%;
     left: 0;
     right: 0;
     background: hsl(var(--Twitter)); 
@@ -386,7 +423,7 @@ body{
     content: '';
     width: 100%;
     height: .4rem;
-    top: .3%;
+    top: 0%;
     left: 0;
     right: 0;
     background: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%)); 
@@ -396,24 +433,27 @@ body{
     content: '';
     width: 100%;
     height: .4rem;
-    top: .3%;
+    top: 0%;
     left: 0;
     right: 0;
     background: hsl(var(--YouTube)); 
 }
-
-.media-cards p:nth-child(3){
-    letter-spacing: .6ch;
+.follow{
+    margin-bottom: .5rem;
+    letter-spacing: .8ch;
     font-size: 1.2rem;
     color: hsl(var(--Dark-Grayish-Blue));
+    
 }
 .overview-cards h3{
     font-size: 1.4rem;
     color: hsl(var(--Dark-Grayish-Blue));
 }
 
+
 /* ---------- Footer ---------- */
 .attribution {
+    margin-top: 5rem;
     font-size: 1.3rem; 
     text-align: center;
     justify-content: center;
@@ -422,11 +462,49 @@ body{
     color: hsl(var(--Gray));
     font-weight: 500;
 }
-.attribution a {
+.attribution a:first-of-type {
     text-decoration: none;
-    color: hsl(var(--Lime-Green));
-    font-weight: 500; 
+    color: hsl(var(--Facebook));
+    font-weight: 700; 
+}
+.attribution a:last-of-type {
+    text-decoration: none;
+    color: hsl(var(--Twitter));
+    font-weight: 700; 
 }
 .attribution a:hover {
-    color: hsl(var(--Facebook)); 
+    color: hsl(var(--Lime-Green)); 
+}
+
+@media(max-width: 45rem){
+    .attribution{
+        display: none;
+    }
+    main{
+        margin-bottom: 2rem;
+    }
+    .card-grid{
+        width: 90%;
+        gap: 2rem;
+    }
+    .toggle{
+        padding-top: 2rem;
+        align-self: end;
+        align-items: end;
+        border-top: .1rem solid hsl(var(--Toggle) );
+    }
+    .switch{
+        margin-left: auto;
+    }
+    header{
+        width: 90%;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1fr;
+    }
+    header h1{
+        font-size: 2.5rem;
+    }
+
 }
