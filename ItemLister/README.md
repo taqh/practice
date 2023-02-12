@@ -1,1 +1,0 @@
-This is just a basic page with some functionalities such as search, delete, and add. It's my first attempt at DOM manipulation
