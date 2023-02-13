@@ -1,45 +1,46 @@
-/* Custom properties   */
-
 :root {
     font-size: 62.5%;
 
-    /* ------------ Colors ------------  */
-
     /* ------------ THEME 1 ------------  */
-    --Very-dark-desaturated-blue: 222 26% 31%; /* main BG*/
-    --Very-dark-desaturated-blue: 223 31% 20%; /* Toggle & Keypad BG */
-    --Very-dark-desaturated-blue: 224 36% 15%;  /* Screeen BG */
+    --Theme1-BG: 222 26% 31%; 
+    --Theme1-Keypad: 223 31% 20%; 
+    --Theme1-Screen: 224 36% 15%; 
+
     /* ----- Keys ----- */
-    --Desaturated-dark-blue: 225 21% 49%;  /* Key BG*/
-    --Desaturated-dark-blue: 224 28% 35%;  /* Key Shadow */
-    --Red: 6 63% 50%;  /* Key & Toggle BG */
-    --Dark-red: 6 70% 34%;  /* key shadow */
-    --Light-grayish-orange: 30 25% 89%;  /* Key BG*/
-    --Grayish-orange: 28 16% 65%;  /* Key Shadow*/
-    /* ----- Text ----- */
-    --Very-dark-grayish-blue: 221 14% 31%;
+    --Key1-shared: 225 21% 49%;  
+    --Key1-ss: 224 28% 35%;  /* Theme 1 shared shadow*/
+    --Key1-clr: 6 63% 50%;  /* Key & Toggle BG */
+    --Key1-equal: 6 70% 34%;  /* Theme 1 equals key shadow */
+    --Key1-BG: 30 25% 89%;  /* Theme 1 Key BG*/
+    --Key1-shadow: 28 16% 65%;  /* Theme 1 Key Shadow*/
+    
+    /* ----- Text ----- */ 
+    --Key1-text: 221 14% 31%;
     --White: 0 0% 100%;
     
 
     /* ------------ THEME 2 ------------ */
-    --Light-gray: 0 0% 90%;     /* main BG*/
-    --Grayish-red: 0 5% 81%;    /* Toggle & Keypad BG */  
-    --Very-light-gray: 0 0% 93%;   /* Screeen BG */ 
+    --Theme2-BG: 0 0% 90%;    
+    --Theme2-keypad: 0 5% 81%;      
+    --Theme2-screen: 0 0% 93%;   
+    
     /* ----- Keys ----- */
-    --Dark-moderate-cyan: 185 42% 37%;  /* Key BG*/
-    --Very-dark-cyan: 185 58% 25%;  /* Key Shadow */
-    --Orange: 25 98% 40%;   /* Key & Toggle BG */
-    --Dark-orange: 25 99% 27%;  /* key shadow */
-    --Light-grayish-yellow: 45 7% 89%;  /* Key BG*/
-    --Dark-grayish-orange: 35 11% 61%;  /* Key Shadow*/
+    --Key2-BG: 185 42% 37%;  /* Key BG*/
+    --Key2-shadow: 185 58% 25%;  /* Key Shadow */
+    --Toggle-2: 25 98% 40%;   /* Key & Toggle BG */
+    --Key2-ss: 25 99% 27%;  /* key2 shared shadow */
+    --Key2-sahred: 45 7% 89%;  /* Key BG*/
+    --Key2-equal: 35 11% 61%;  /* theme 2 equals BG*/
+    
     /* ----- Text ----- */
-    --Very-dark-grayish-yellow: 60 10% 19%;
+    --Dark-gray-yellow: 60 10% 19%;
     --White: 0 0% 100%;
 
 
     /* ------------ THEME 3 ------------ */
-    --Very-dark-violet: 268 75% 9%; /* main BG*/
-    --Very-dark-violet: 268 71% 12%;  /* Toggle, Keypad & Screen BG */  
+    --Theme3-BG: 268 75% 9%; /* main BG*/
+    --Theme3-Screen: 268 71% 12%;  /* Toggle, Keypad & Screen BG */  
+   
     /* ----- Keys ----- */
     --Dark-violet: 281 89% 26%;  /* Key BG*/
     --Vivid-magenta: 285 91% 52%;   /* Key Shadow */
@@ -47,6 +48,7 @@
     --Soft-cyan: 177 92% 70%;  /* key shadow */
     --Very-dark: 268 47% 21%;  /* Key BG*/
     --Dark-magenta: 290 70% 36%;  /* Key Shadow*/
+    
     /* ----- Text ----- */
     --Light-yellow: 52 100% 62%;
     --Very-dark-blue: 198 20% 13%;
@@ -63,8 +65,14 @@
     --ff-league: 'League Spartan', sans-serif;
 
 
-    /* Font weights */
+    /* Font weights / sizes */
     --fw-700: 700;
+
+    --fs-300: 0.75rem;
+    --fs-400: 1rem;
+    --fs-500: 1.25rem;
+    --fs-600: 1.75rem;
+    --fs-700: 2.25rem;
 }
 
 
@@ -145,12 +153,12 @@ select {
 body {
     line-height: 1.5;
     min-height: 100vh;
-    font-size: 3.2rem;
+    font-size: 1.6rem;
     overflow-x: hidden;
     text-rendering: optimizeSpeed;
     font-weight: var(--fw-700);
     font-family: var(--ff-league);
-    background-color: var(--Very-dark-desaturated-blue);
+    background: hsl(var(--Theme1-BG));
 }
 
 h2,
@@ -205,32 +213,6 @@ h3 {
     display: none;
 }
 
-/* Background colors */
-.bg-green {background-color: hsl(var(--Lime-Green));}
-.bg-white {background-color: hsl(var(--White));}
-.bg-red {background-color: hsl(var(--Bright-Red));}
-/* -- Light theme BG -- */
-.bg-paleblue {background-color: hsl(var(--Very-Pale-Blue));}
-.bg-lightblue {background-color: hsl(var(--Light-Grayish-Blue));}
-/* -- Dark theme BG -- */
-.bg-darkblue {background-color: hsl(var(--Dark-Blue));}
-.bg-verydarkblue {background-color: hsl(var(--Very-Dark-Blue));}
-.bg-cardblue {background-color: hsl(var(--Dark-Desaturated-Blue));}
-
-/* Text color */
-.txt-green {color: hsl(var(--Lime-Green));}
-.txt-red {color: hsl(var(--Bright-Red));}
-.txt-fb {color: hsl(var(--Facebook));}
-.txt-YT {color: hsl(var(--YouTube));}
-.txt-tweet {color: hsl(var(--Twitter));}
-/* -- light theme text -- */
-.txt-gray {color: hsl(var(--Dark-Grayish-Blue));}
-.txt-darkblue {color: hsl(var(--Very-Dark-Blue));}
-/* -- dark theme text -- */
-.txt-desatblue {color: hsl(var(--Desaturated-Blue));}
-.txt-white {color: hsl(var(--White));}
-
-
 /* typography */
 .ff-epilogue {font-family: var(--ff-epilogue);}
 .ff-ubuntu {font-family: var(--ff-Ubuntu);}
@@ -243,25 +225,182 @@ h3 {
 
 
 /* ------------ Main ------------ */
+h1{
+    font-size: 2.8rem;
+}
+.calculator{
+    display: grid;
+    gap: 3rem;
+    margin-inline: auto;
+    height: 100vh;
+    width: clamp(50rem, 60rem, 80%);
+    
+}
+@media(max-width: 60rem){
+    .calculator{
+        width: clamp(40rem, 80vw, 100%);
+    }
+}
+.hud {
+    display: flex; 
+    align-items: flex-end;
+    justify-content: space-between;
+    color: hsl(var(--White));
+    font-size: 1.2rem;
+ }
+ .name{
+    line-height: 1;
+ }
+ .toggle{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        '.  one'
+        'three four'
+    ;
+}
+ .theme {
+    letter-spacing: .3ch;
+    grid-area: three;
+    padding-top: .2rem;
+}
+.switch{
+    grid-area: four;  
+}
+.theme-labels{
+    display: flex;
+    justify-content: space-around;
+    grid-area: one;
+}
+
+
+
+
+/* ---------- Screen ---------- */
+.screen{
+    background-color: hsl(var(--Theme1-Screen));
+    border-radius: 1rem;
+}
+
+
+/* ----- Theme toggle button -----  */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 7rem;
+    height: 2.5rem;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsl(var(--Theme1-Keypad) );
+    transition: .2s;
+}
+.slider::before {
+    position: absolute;
+    content: '';
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 20%;
+    left: 8%;
+    background-color: hsl(var(--Key1-clr));
+    transition: 200ms;
+}
+input:checked + .slider {
+    background: hsl(var(--Theme2-keypad));
+}
+input:checked + .slider::before {
+    transform: translateX(135%);
+    background: hsl(var(--Toggle-2));
+}
+.slider {
+    border-radius: 2.5rem;
+}
+.slider::before{
+    border-radius: 50%;
+}
+
+
+
+/* ---------- Keypad and keys ---------- */
+.keypad{
+    background-color: hsl(var(--Theme1-Keypad));
+}
+.keypad{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3rem;
+    border-radius: 1rem;
+}
+.key{
+    cursor: pointer;
+    color: hsl(var(--Key1-text));
+    background: hsl(var(--Key1-BG));
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-shadow));
+    transition: all 100ms linear;
+    font-size: 3.2rem;
+    line-height: 1;
+    padding-top: .3rem;
+}
+.key:not(.shared, .large-key):hover{
+    background: hsl(var(--White));
+}
+.key:active{
+    box-shadow: none;
+    transform: translateY(.4rem);
+    transition: all 100ms ease-in;
+}
+.shared{
+    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-ss));
+}
+.equal{
+    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-equal));
+}
+.large-key{
+    grid-column: span 2;
+    color: hsl(var(--White) );
+}
+.large-key{
+    background-color: hsl(var(--Key1-clr));
+}
+.shared{
+    background: hsl(var(--Key1-shared));
+    color: hsl(var(--White) );
+}
+
+
 
 
 /* ---------- Footer ---------- */
 .attribution {
-    margin-top: 5rem;
     font-size: 1.3rem; 
     text-align: center;
-    justify-content: center;
-    align-items: flex-end;
-    cursor: default; 
-    color: hsl(var(--Gray));
+    color: hsl(var(--White));
     font-weight: 500;
 }
 .attribution a {
     text-decoration: none;
-    color: hsl(var(--Orange));
+    color: hsl(var(--Key1-clr));
     font-weight: 700; 
 }
 .attribution a:hover {
     color: hsl(var(--Lime-Green)); 
 }
 
+@media(max-width: 75rem) {
+    .attribution{
+        display: none;
+    }
+}

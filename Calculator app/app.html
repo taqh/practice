@@ -13,7 +13,54 @@
     <title>Calculator</title>
 </head>
 <body>
-    <main></main>
+    <main class="calculator"> 
+        <h1 class="sr-only">CALCULATOR APP</h1>   
+        <div class="hud">
+
+            <h1 class="name">calc</h1>
+            <div class="toggle">
+                <div class="theme-labels">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                </div>
+                
+                <span class="theme">THEME</span>
+                
+                
+                <label class="switch">
+                    <!-- <input type="radio" name="theme" class="swap">
+                    <input type="radio" name="theme" class="swap">
+                    <input type="radio" name="theme" class="swap"> -->
+                    <input id="toggle" class="swap" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="screen"></div>
+
+        <div class="keypad">
+            <button class="key">7</button>
+            <button class="key">8</button>
+            <button class="key">9</button>
+            <button class="key shared">DEL</button>
+            <button class="key">4</button>
+            <button class="key">5</button>
+            <button class="key">6</button>
+            <button class="key">+</button>
+            <button class="key">1</button>
+            <button class="key">2</button>
+            <button class="key">3</button>
+            <button class="key">-</button>
+            <button class="key">.</button>
+            <button class="key">0</button>
+            <button class="key">/</button>
+            <button class="key">x</button>
+            <button class="key large-key shared">RESET</button>
+            <button class="key large-key equal">=</button>
+        </div>
+    </main>
     
     <footer>
         <div class="attribution">
