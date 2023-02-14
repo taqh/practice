@@ -7,12 +7,12 @@
     --Theme1-Screen: 224 36% 15%; 
 
     /* ----- Keys ----- */
+    --Key1-bg: 30 25% 89%;  
+    --Key1-shadow: 28 16% 65%;  
     --Key1-shared: 225 21% 49%;  
-    --Key1-ss: 224 28% 35%;  /* Theme 1 shared shadow*/
-    --Key1-clr: 6 63% 50%;  /* Key & Toggle BG */
-    --Key1-equal: 6 70% 34%;  /* Theme 1 equals key shadow */
-    --Key1-BG: 30 25% 89%;  /* Theme 1 Key BG*/
-    --Key1-shadow: 28 16% 65%;  /* Theme 1 Key Shadow*/
+    --Key1-shared-shadow: 224 28% 35%;  
+    --Key1-equal: 6 63% 50%;  
+    --Key1-equal-shadow: 6 70% 34%;  
     
     /* ----- Text ----- */ 
     --Key1-text: 221 14% 31%;
@@ -21,14 +21,14 @@
 
     /* ------------ THEME 2 ------------ */
     --Theme2-BG: 0 0% 90%;    
-    --Theme2-keypad: 0 5% 81%;      
-    --Theme2-screen: 0 0% 93%;   
+    --Theme2-Keypad: 0 5% 81%;      
+    --Theme2-Screen: 0 0% 93%;   
     
     /* ----- Keys ----- */
     --Key2-BG: 185 42% 37%;  /* Key BG*/
     --Key2-shadow: 185 58% 25%;  /* Key Shadow */
     --Toggle-2: 25 98% 40%;   /* Key & Toggle BG */
-    --Key2-ss: 25 99% 27%;  /* key2 shared shadow */
+    --Key2-shared-shadow: 25 99% 27%;  /* key2 shared shadow */
     --Key2-sahred: 45 7% 89%;  /* Key BG*/
     --Key2-equal: 35 11% 61%;  /* theme 2 equals BG*/
     
@@ -225,33 +225,32 @@ h3 {
 
 
 /* ------------ Main ------------ */
-h1{
-    font-size: 2.8rem;
-}
-.calculator{
-    display: grid;
-    gap: 3rem;
-    margin-inline: auto;
+body {
     height: 100vh;
-    width: clamp(50rem, 60rem, 80%);
-    
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
 }
-@media(max-width: 60rem){
-    .calculator{
-        width: clamp(40rem, 80vw, 100%);
-    }
+.calculator { 
+    gap: 2rem;
+    display: grid;
+    margin-inline: auto;
+    width: clamp(35rem, 90%, 50rem);
 }
 .hud {
     display: flex; 
-    align-items: flex-end;
-    justify-content: space-between;
-    color: hsl(var(--White));
     font-size: 1.2rem;
- }
- .name{
+    align-items: flex-end;
+    color: hsl(var(--White));
+    justify-content: space-between;
+}
+.app-name {
+    font-size: 2.8rem;
     line-height: 1;
- }
- .toggle{
+}
+.toggle {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -259,15 +258,15 @@ h1{
         'three four'
     ;
 }
- .theme {
-    letter-spacing: .3ch;
+.theme {
+    letter-spacing: .2ch;
     grid-area: three;
     padding-top: .2rem;
 }
-.switch{
+.switch {
     grid-area: four;  
 }
-.theme-labels{
+.theme-labels {
     display: flex;
     justify-content: space-around;
     grid-area: one;
@@ -275,20 +274,12 @@ h1{
 
 
 
-
-/* ---------- Screen ---------- */
-.screen{
-    background-color: hsl(var(--Theme1-Screen));
-    border-radius: 1rem;
-}
-
-
 /* ----- Theme toggle button -----  */
 .switch {
     position: relative;
     display: inline-block;
     width: 7rem;
-    height: 2.5rem;
+    height: 2.4rem;
 }
 .switch input {
     opacity: 0;
@@ -308,18 +299,18 @@ h1{
 .slider::before {
     position: absolute;
     content: '';
-    height: 1.5rem;
-    width: 1.5rem;
-    top: 20%;
+    height: 1.4rem;
+    width: 1.4rem;
+    top: 23%;
     left: 8%;
-    background-color: hsl(var(--Key1-clr));
+    background-color: hsl(var(--Key1-equal));
     transition: 200ms;
 }
 input:checked + .slider {
-    background: hsl(var(--Theme2-keypad));
+    background: hsl(var(--Theme2-Keypad));
 }
 input:checked + .slider::before {
-    transform: translateX(135%);
+    transform: translateX(150%);
     background: hsl(var(--Toggle-2));
 }
 .slider {
@@ -330,32 +321,50 @@ input:checked + .slider::before {
 }
 
 
+/* ---------- Screen ---------- */
+.screen{
+    display: grid;
+    height: 12rem;
+    font-size: 3.2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: hsl(var(--Theme1-Screen));
+}
+
+
+
+
 
 /* ---------- Keypad and keys ---------- */
 .keypad{
-    background-color: hsl(var(--Theme1-Keypad));
-}
-.keypad{
     display: grid;
     gap: 2rem;
+    padding: 2.5rem;
     grid-template-columns: repeat(4, 1fr);
-    padding: 3rem;
     border-radius: 1rem;
+    background-color: hsl(var(--Theme1-Keypad));
+
 }
 .key{
-    cursor: pointer;
-    color: hsl(var(--Key1-text));
-    background: hsl(var(--Key1-BG));
     border-radius: 1rem;
     border: none;
+    outline: transparent;
+    cursor: pointer;
+    color: hsl(var(--Key1-text));
+    background: hsl(var(--Key1-bg));
     box-shadow: 0 .4rem 0 0 hsl(var(--Key1-shadow));
     transition: all 100ms linear;
-    font-size: 3.2rem;
-    line-height: 1;
-    padding-top: .3rem;
+    font-size: 2.5rem;
+    padding-inline: 1rem;
+    padding-top: .5rem;
+    text-align: center;
+    /* height: 6rem; */
 }
-.key:not(.shared, .large-key):hover{
-    background: hsl(var(--White));
+.num-key{
+    font-size: 3.2rem;
+}
+.num-key:hover{
+    background: hsl(var(--White));  
 }
 .key:active{
     box-shadow: none;
@@ -363,17 +372,20 @@ input:checked + .slider::before {
     transition: all 100ms ease-in;
 }
 .shared{
-    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-ss));
+    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-shared-shadow));
+}
+.operator{
+    font-weight: 700;
+    font-size: 3.6rem;
 }
 .equal{
-    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-equal));
+    background-color: hsl(var(--Key1-equal));
+    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-equal-shadow));
 }
 .large-key{
     grid-column: span 2;
     color: hsl(var(--White) );
-}
-.large-key{
-    background-color: hsl(var(--Key1-clr));
+    padding: 1.2rem;
 }
 .shared{
     background: hsl(var(--Key1-shared));
@@ -392,15 +404,42 @@ input:checked + .slider::before {
 }
 .attribution a {
     text-decoration: none;
-    color: hsl(var(--Key1-clr));
+    color: hsl(var(--Key1-equal));
     font-weight: 700; 
 }
 .attribution a:hover {
     color: hsl(var(--Lime-Green)); 
 }
-
 @media(max-width: 75rem) {
     .attribution{
         display: none;
+    }
+}
+
+
+
+@media(max-width: 55rem){
+    .calculator{
+        height: 80vh;
+        width: clamp(35rem, 70vw, 100%);
+        grid-template-rows: 5rem 12rem auto;
+    } 
+}
+
+@media(max-width: 37.5rem){
+    .calculator{
+        height: 85vh;
+        width: clamp(35rem, 90vw, 100%);
+        grid-template-rows: auto 12rem 1fr;
+    }
+    .key{
+        border-radius: .6rem;
+        padding-inline: 0;
+        padding-block: .5rem;
+    }
+
+    .keypad{
+        padding: 2rem;
+        gap: 1.5rem;
     }
 }
