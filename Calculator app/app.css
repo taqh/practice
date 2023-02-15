@@ -336,14 +336,15 @@ input:checked + .slider::before {
     border-radius: 1rem;
     color: hsl(var(--White));
     background-color: hsl(var(--Theme1-Screen));
+    word-break: break-all;
 }
-.op{
+.operator{
     grid-area: operator;
     font-size: 3.6rem;
     padding-top: 1rem;
 }
 .previous-operand{
-   font-size: 1.6rem;
+   font-size: 2.2rem;
    grid-area: operand;
    font-weight: 700;
 }
@@ -396,7 +397,7 @@ input:checked + .slider::before {
 .shared{
     box-shadow: 0 .4rem 0 0 hsl(var(--Key1-shared-shadow));
 }
-.operator{
+.operator-key{
     font-weight: 700;
     font-size: 3.6rem;
 }

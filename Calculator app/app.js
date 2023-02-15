@@ -1,80 +1,175 @@
-const digit = document.querySelectorAll('.num-key');
+// screen Sections
+const operatorValue = document.querySelector('.operator');
+const prevNumValue = document.querySelector('.previous-operand');
+const currNumValue = document.querySelector('.current-operand');
+// Key types
+const numberKeys = document.querySelectorAll('.num-key');
+const operatorKeys = document.querySelectorAll('.operator-key');
 const del = document.querySelector('.delete');
-const clear = document.querySelector('.reset');
+const clear = document.querySelector('.reset'); 
+const evaluate = document.querySelector('.equal');
 
-const opScreen = document.querySelector('.op');
-const operand = document.querySelector('.previous-operand');
-const result = document.querySelector('.current-operand');
+class Calculator {
+    constructor(prevNumValue, currNumValue, operatorValue) {
+        this.prevNumValue = prevNumValue
+        this.currNumValue = currNumValue
+        this.operatorValue = operatorValue
+        this.reset()
+    }
 
-const eval = document.querySelector('.equal');
+    reset() {
+        this.currNum = ''
+        this.prevNum = ''
+        this.operator = ''
+    }
+
+    delete() {
+        this.currNum = this.currNum.toString().slice(0, -1)
+    }
+
+    appendNumber(number) {
+        // prevent multiple decimals
+        if(number === '.' && this.currNum.includes('.')) return
+
+        
+        // prevent adding more digits if the number is too long
+        if (this.currNum.length >= 9) return
+
+        // append new inputs
+        this.currNum = this.currNum.toString() + number.toString()
+    }
+
+    chooseOperator(operator){   
+        if(this.currNum === '') return
+        // check if user presses another operator 
+        if(this.prevNum !== '') {
+            this.calculate()
+        }
+        this.operator = operator
+        this.prevNum = this.currNum
+        this.currNum = '';
+    }
+
+    calculate() {
+        let calculation
+        const previous = parseFloat(this.prevNum)
+        const current = parseFloat(this.currNum)
+
+        if (isNaN(previous) || isNaN(current)) return
+        
+        switch (this.operator) {
+            case '+':
+                calculation = previous + current
+                break
+            case '-':
+                calculation = previous - current
+                break
+            case 'x':
+                calculation = previous * current
+                break
+            case '/':
+                calculation = previous / current
+                break
+            default:
+                return
+        }
+        this.currNum = calculation
+        this.operator = ''
+        this.prevNum = ''
+    }
+
+    // Adds commas to large numbers
+    getDisplayNumber(number) {
+        const stringNumber = number.toString()
+        const integerDigits = parseFloat(stringNumber.split('.')[0])
+        const decimalDigits = stringNumber.split('.')[1]
+
+        let integerDisplay
+        if (isNaN(integerDigits)) {
+            integerDisplay = ''
+        }   else {
+            integerDisplay = integerDigits.toLocaleString('en', {
+                maximumFractionDigits: 0
+            })
+        }
+        if (decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}`
+        }   else {
+            return integerDisplay
+        }
+        
+    }
+
+    updateScreen() {
+        this.currNumValue.innerText = this.getDisplayNumber(this.currNum)
+
+        this.operatorValue.innerText = this.operator
+ 
+        this.prevNumValue.innerText = this.getDisplayNumber(this.prevNum)
+    }  
+}
+
+
+const calculator = new Calculator(prevNumValue, currNumValue, operatorValue)
+
+numberKeys.forEach(key => {
+    key.addEventListener('click', () => {
+        calculator.appendNumber(key.innerText)
+        calculator.updateScreen();
+    })
+});
+
+operatorKeys.forEach(key => {
+    key.addEventListener('click', () => {
+        calculator.chooseOperator(key.innerText)
+        calculator.updateScreen()
+    })
+});
+
+evaluate.addEventListener('click', (e) => {
+    calculator.calculate()
+    calculator.updateScreen()
+});
+
+clear.addEventListener('click', (e) => {
+    calculator.reset()
+    calculator.updateScreen()
+});
+
+del.addEventListener('click', (e) => {
+    calculator.delete()
+    calculator.updateScreen()
+});
+
+
+
+
 
 // ----- Reset calclation to zero
-clear.addEventListener('click', (e) => {
-    if(result.innerText){
-        result.innerText = 0;
-    }
-    if(opScreen.innerText){
-        opScreen.innerText = '';
-    }
-    if(operand.innerText){
-        operand.innerText = '';
-    }
-});
+// clear.addEventListener('click', (e) => {
+//     if(currNum.innerText){
+//         currNum.innerText = 0;
+//     }
+//     if(operator.innerText){
+//         operator.innerText = '';
+//     }
+//     if(prevNum.innerText){
+//         prevNum.innerText = '';
+//     }
+// });
 
-//  delete integer
-del.addEventListener('click', (e) =>{
-    let input = result.innerText.toString();
-    result.innerText = input.substr(0, input.length - 1)
-});
+// //  delete integer
+// del.addEventListener('click', (e) =>{
+//     let input = currNum.innerText.toString();
+//     currNum.innerText = input.substr(0, input.length - 1)
+// });
 
-eval.addEventListener('click', (e) => {
-    if(!result.innerText){
-        result.innerText = 'NaN';
-        setTimeout(() => (result.innerText = ''), 2000)
-    } else if(result.innerText && opScreen.innerText){
-        result.innerText = eval(opScreen.innerText && result.innerText);
-    } 
-});
+// eval.addEventListener('click', (e) => {
+//     if(!currNum.innerText){
+//         currNum.innerText = 'NaN';
+//         setTimeout(() => (currNum.innerText = ''), 1000)
+//     } else if(currNum.innerText && operator.innerText){
+//         currNum.innerText = eval(operator.innerText && currNum.innerText);
+//     } 
+// });
 
-
-
-
-
-// Maps innerHTML text of buttons
-const keys = {
-    ZERO: '0',
-    ONE: '1',
-    TWO: '2',
-    THREE: '3',
-    FOUR: '4',
-    FIVE: '5',
-    SIX: '6',
-    SEVEN: '7',
-    EIGHT: '8',
-    NINE: '9',
-    PERIOD: '.',
-    PLUS: '+',
-    MINUS: '-',
-    PRODUCT: 'x',
-    DIVIDE: '/',
-    EQUAL: '=',
-    BACKSPACE: 'DEL',
-    CLEAR: 'RESET'
-};
-
-const keyCode = new Map();
-keyCode.set('Digit1', keys.ONE);
-keyCode.set('Digit2', keys.TWO);
-keyCode.set('Digit3', keys.THREE);
-keyCode.set('Digit4', keys.FOUR);
-keyCode.set('Digit5', keys.FIVE);
-keyCode.set('Digit6', keys.SIX);
-keyCode.set('Digit7', keys.SEVEN);
-keyCode.set('Digit8', keys.EIGHT);
-keyCode.set('Digit9', keys.NINE);
-keyCode.set('Digit0', keys.ZERO);
-keyCode.set('Backspace', keys.BACKSPACE);
-keyCode.set('Minus', keys.MINUS);
-keyCode.set('Equal', keys.EQUAL);
-keyCode.set('Slash', keys.DIVIDE);
-keyCode.set('Period', keys.PERIOD);
