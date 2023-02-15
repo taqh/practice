@@ -324,13 +324,35 @@ input:checked + .slider::before {
 /* ---------- Screen ---------- */
 .screen{
     display: grid;
+    grid-template-areas: 
+        'operand operand'
+        'operator result'
+    ;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+    text-align: end;
     height: 12rem;
-    font-size: 3.2rem;
     padding: 1rem;
     border-radius: 1rem;
+    color: hsl(var(--White));
     background-color: hsl(var(--Theme1-Screen));
 }
-
+.op{
+    grid-area: operator;
+    font-size: 3.6rem;
+    padding-top: 1rem;
+}
+.previous-operand{
+   font-size: 1.6rem;
+   grid-area: operand;
+   font-weight: 700;
+}
+.current-operand{
+    line-height: 1;
+    font-size: 3.8rem;
+    grid-area: result;
+    margin-top: auto;
+}
 
 
 
