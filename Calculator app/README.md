@@ -29,7 +29,6 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
@@ -64,7 +63,6 @@ Users should be able to:
 
 I learnt how to use the css :has() selector to do some manipulations without JavaScript
 
-To see how you can add code snippets, see below:
 
 ```css
 .proud-of-this-css {
