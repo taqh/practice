@@ -142,34 +142,75 @@ del.addEventListener('click', (e) => {
 });
 
 
+// switch themes //
+const toggle = document.querySelector('.switch');
+const themeHolder = [...document.querySelectorAll('.swap')];
+let clickCount = 0;
 
 
+toggle.addEventListener('click', () => {
+// move the checked attribute based on number of clicks to the corresponding radio
+  clickCount++;
+  const indexToCheck = clickCount % themeHolder.length;
+  themeHolder[indexToCheck].checked = true;
+  themeHolder.forEach((theme) => {
+      if(theme.checked){
+          theme.setAttribute("data-selected", true)
+          saveTheme(theme.id)
+      } else {
+          theme.setAttribute("data-selected", false)
+      }
+  })
+  
+});
 
-// ----- Reset calclation to zero
-// clear.addEventListener('click', (e) => {
-//     if(currNum.innerText){
-//         currNum.innerText = 0;
-//     }
-//     if(operator.innerText){
-//         operator.innerText = '';
-//     }
-//     if(prevNum.innerText){
-//         prevNum.innerText = '';
-//     }
-// });
 
-// //  delete integer
-// del.addEventListener('click', (e) =>{
-//     let input = currNum.innerText.toString();
-//     currNum.innerText = input.substr(0, input.length - 1)
-// });
+const colorThemes = document.querySelectorAll('[name="theme"]');
 
-// eval.addEventListener('click', (e) => {
-//     if(!currNum.innerText){
-//         currNum.innerText = 'NaN';
-//         setTimeout(() => (currNum.innerText = ''), 1000)
-//     } else if(currNum.innerText && operator.innerText){
-//         currNum.innerText = eval(operator.innerText && currNum.innerText);
-//     } 
-// });
+// store user preference
+const saveTheme = function(theme) {
+    localStorage.setItem("theme", theme)
+}
+
+colorThemes.forEach(option => {
+    option.addEventListener("click", () => {
+        saveTheme(option.id) // save the selected theme id
+    })
+});
+
+// check the saved theme in local storage
+const getTheme = function() {
+    const activeTheme = localStorage.getItem("theme");
+    colorThemes.forEach((option) => {
+        if (option.id === activeTheme) {
+            option.checked = true; // set selected theme id to checked
+            option.setAttribute("data-selected", true) // load theme colors
+        }
+    });
+
+    // polyfill for :has()
+    document.documentElement.className = theme;
+};
+
+// Call getTheme() after the DOM has loaded
+document.addEventListener("DOMContentLoaded", getTheme);
+
+// this updates the click count based on the index of users
+// selected theme onload to avoid the slider moving backwards 
+// before it reaches the last index
+window.addEventListener('DOMContentLoaded', () => {
+    let activeTheme = localStorage.getItem("theme");
+    switch (activeTheme) {
+        case themeHolder[1].id:
+            clickCount = 1;
+            break;
+        case themeHolder[2].id:
+            clickCount = 2;
+            break;
+        default:
+            clickCount = 0;
+            break;
+    }
+});
+
 

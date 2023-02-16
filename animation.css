@@ -1,0 +1,64 @@
+/* *********************** */
+/*  ENTRANCE ANIMATION */
+/* *********************** */
+
+.header-entrance {
+    -webkit-animation: header-entrance 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: header-entrance 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+  
+  @-webkit-keyframes header-entrance {
+    0% {
+      -webkit-transform: translateZ(-5rem);
+      transform: translateZ(-5rem);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  @keyframes header-entrance {
+    0% {
+      -webkit-transform: translateZ(-5rem);
+      transform: translateZ(-5rem);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  
+  .entrance-animation {
+    -webkit-animation: entrance-animation 0.8s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: entrance-animation 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  
+  @-webkit-keyframes entrance-animation {
+    0% {
+      -webkit-transform: rotateX(80deg);
+      transform: rotateX(80deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0);
+      transform: rotateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes entrance-animation {
+    0% {
+      -webkit-transform: rotateX(80deg);
+      transform: rotateX(80deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateX(0);
+      transform: rotateX(0);
+      opacity: 1;
+    }
+  }

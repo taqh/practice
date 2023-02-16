@@ -17,24 +17,23 @@
         <h1 class="sr-only">CALCULATOR APP</h1>   
         <div class="hud">
 
-            <h1 class="app-name">calc</h1>               
+            <h1 class="app-name">calc</h1>  
+
             <div class="toggle">
                 <div class="theme-labels">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
+                    <label for="dark">1</label>
+                    <label for="light">2</label>
+                    <label for="night">3</lael>
                 </div>
                 
                 <span class="theme">THEME</span>
                 
-                
-                <label class="switch">
-                    <!-- <input type="radio" name="theme" class="swap">
-                    <input type="radio" name="theme" class="swap">
-                    <input type="radio" name="theme" class="swap"> -->
-                    <input id="toggle" class="swap" type="checkbox">
+                <span class="switch">
+                    <input type="radio" name="theme" class="swap" id="dark" data-selected="false">
+                    <input type="radio" name="theme" class="swap" id="light" data-selected="false">
+                    <input type="radio" name="theme" class="swap" id="night" data-selected="false">
                     <span class="slider"></span>
-                </label>
+                </span>
             </div>
         </div>
 

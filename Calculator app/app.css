@@ -2,57 +2,28 @@
     font-size: 62.5%;
 
     /* ------------ THEME 1 ------------  */
-    --Theme1-BG: 222 26% 31%; 
-    --Theme1-Keypad: 223 31% 20%; 
-    --Theme1-Screen: 224 36% 15%; 
+    --Theme-BG: 222 26% 31%; 
+    --Theme-Keypad: 223 31% 20%; 
+    --Theme-Screen: 224 36% 15%; 
 
     /* ----- Keys ----- */
-    --Key1-bg: 30 25% 89%;  
-    --Key1-shadow: 28 16% 65%;  
-    --Key1-shared: 225 21% 49%;  
-    --Key1-shared-shadow: 224 28% 35%;  
-    --Key1-equal: 6 63% 50%;  
-    --Key1-equal-shadow: 6 70% 34%;  
+    --Key-bg: 30 25% 89%;  
+    --Key-shadow: 28 16% 65%;
+    --Key-hover: 30 25% 97%;  
+
+    --Key-shared: 225 21% 49%;  
+    --Key-shared-hover: 225 25% 55%;  
+    --Key-shared-shadow: 224 28% 35%;
+
+    --Key-equal: 6 63% 50%;  
+    --Key-equal-hover: 6 48% 55%;  
+    --Key-equal-shadow: 6 70% 34%;  
     
     /* ----- Text ----- */ 
-    --Key1-text: 221 14% 31%;
-    --White: 0 0% 100%;
+    --Key-text: 221 14% 31%;
+    --key-text2: 0 0% 100%;
+    --screen-text: 0 0% 100%;
     
-
-    /* ------------ THEME 2 ------------ */
-    --Theme2-BG: 0 0% 90%;    
-    --Theme2-Keypad: 0 5% 81%;      
-    --Theme2-Screen: 0 0% 93%;   
-    
-    /* ----- Keys ----- */
-    --Key2-BG: 185 42% 37%;  /* Key BG*/
-    --Key2-shadow: 185 58% 25%;  /* Key Shadow */
-    --Toggle-2: 25 98% 40%;   /* Key & Toggle BG */
-    --Key2-shared-shadow: 25 99% 27%;  /* key2 shared shadow */
-    --Key2-sahred: 45 7% 89%;  /* Key BG*/
-    --Key2-equal: 35 11% 61%;  /* theme 2 equals BG*/
-    
-    /* ----- Text ----- */
-    --Dark-gray-yellow: 60 10% 19%;
-    --White: 0 0% 100%;
-
-
-    /* ------------ THEME 3 ------------ */
-    --Theme3-BG: 268 75% 9%; /* main BG*/
-    --Theme3-Screen: 268 71% 12%;  /* Toggle, Keypad & Screen BG */  
-   
-    /* ----- Keys ----- */
-    --Dark-violet: 281 89% 26%;  /* Key BG*/
-    --Vivid-magenta: 285 91% 52%;   /* Key Shadow */
-    --Pure-cyan: 176 100% 44%;  /* Key & Toggle BG */
-    --Soft-cyan: 177 92% 70%;  /* key shadow */
-    --Very-dark: 268 47% 21%;  /* Key BG*/
-    --Dark-magenta: 290 70% 36%;  /* Key Shadow*/
-    
-    /* ----- Text ----- */
-    --Light-yellow: 52 100% 62%;
-    --Very-dark-blue: 198 20% 13%;
-    --White: 0 0% 100%;
     
 
     /* Font families */
@@ -158,7 +129,7 @@ body {
     text-rendering: optimizeSpeed;
     font-weight: var(--fw-700);
     font-family: var(--ff-league);
-    background: hsl(var(--Theme1-BG));
+    background: hsl(var(--Theme-BG));
 }
 
 h2,
@@ -171,12 +142,13 @@ h3 {
     position: absolute; 
     width: 1px;
     height: 1px;
+    border: 0;
     padding: 0;
     margin: -1px; 
     overflow: hidden;
+    clip-path: inset(50%);
     clip: rect(0, 0, 0, 0);
-    white-space: nowrap; /* added line */
-    border: 0;
+    white-space: nowrap;
     
 }
 .txt-center{
@@ -243,7 +215,7 @@ body {
     display: flex; 
     font-size: 1.2rem;
     align-items: flex-end;
-    color: hsl(var(--White));
+    color: hsl(var(--screen-text));
     justify-content: space-between;
 }
 .app-name {
@@ -275,16 +247,12 @@ body {
 
 
 /* ----- Theme toggle button -----  */
-.switch {
+ .switch {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: space-around;
     width: 7rem;
     height: 2.4rem;
-}
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
 }
 .slider {
     position: absolute;
@@ -293,7 +261,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: hsl(var(--Theme1-Keypad) );
+    background-color: hsl(var(--Theme-Keypad) );
     transition: .2s;
 }
 .slider::before {
@@ -303,23 +271,89 @@ body {
     width: 1.4rem;
     top: 23%;
     left: 8%;
-    background-color: hsl(var(--Key1-equal));
+    background-color: hsl(var(--Key-equal));
     transition: 200ms;
 }
-input:checked + .slider {
-    background: hsl(var(--Theme2-Keypad));
-}
-input:checked + .slider::before {
-    transform: translateX(150%);
-    background: hsl(var(--Toggle-2));
+.slider::before :hover{
+    background-color: hsl(var(--Key-equal-hover));
 }
 .slider {
     border-radius: 2.5rem;
 }
 .slider::before{
     border-radius: 50%;
+} 
+.swap {
+    position: relative;
+    top: 50%;
+    left: 0%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    cursor: pointer;
+    appearance: none;
 }
 
+#dark:checked ~ .slider::before {
+    transform: translateX(0%);
+}
+#light:checked ~ .slider::before {
+    transform: translateX(160%);
+}
+#night:checked ~ .slider::before {
+    transform: translateX(4.5rem);
+}
+
+/* update theme based on selected radio */
+.light, /* adds a class to the document to load the following colors if no support for :has()*/
+:root:has(#light[data-selected = "true"])  {
+    --Theme-BG: 0 0% 90%;    
+    --Theme-Keypad: 0 5% 81%;      
+    --Theme-Screen: 0 0% 93%;   
+    
+    /* ----- Keys ----- */
+    --Key-bg: 45 7% 89%;  
+    --Key-shadow: 35 11% 61%;  
+    --Key-hover: 45 7% 95%; 
+    
+    --Key-shared: 185 42% 37%;  
+    --Key-shared-shadow: 185 58% 25%;  
+    --Key-shared-hover: 185 42% 55%;  
+
+    --Key-equal: 25 98% 40%;   
+    --Key-equal-hover: 25 98% 60%;  
+    --Key-equal-shadow: 25 99% 27%;  
+    
+    /* ----- Text ----- */
+    --Key-text: 60 10% 19%;
+    --Key-text2: 0 0% 100%;
+    --screen-text: 60 10% 19%;
+}
+.dark, /* adds a class to the document to load the following colors if no support for :has()*/
+:root:has(#night[data-selected = "true"]) {
+    --Theme-BG: 268 75% 9%; 
+    --Theme-Screen: 268 71% 12%;    
+    --Theme-Keypad: 268 71% 12%;    
+   
+    /* ----- Keys ----- */
+    --Key-bg: 268 47% 21%;  
+    --Key-shadow: 290 70% 36%;   
+    --Key-hover: 268 47% 45%;  
+
+    --Key-shared: 281 89% 26%;  
+    --Key-shared-shadow: 285 91% 52%;  
+    --Key-shared-hover: 281 89% 40%; 
+
+    --Key-equal: 176 100% 44%;  
+    --Key-equal-hover: 177 92% 70%; 
+    --Key-equal-shadow: 176 100% 70%;  
+    
+    /* ----- Text ----- */
+    --Key-text: 52 100% 62%;
+    --screen-text: 52 100% 62%;
+    --key-text2: 0 0% 100%;
+    --theme-equal-text: 198 20% 13%;
+}
 
 /* ---------- Screen ---------- */
 .screen{
@@ -334,8 +368,8 @@ input:checked + .slider::before {
     height: 12rem;
     padding: 1rem;
     border-radius: 1rem;
-    color: hsl(var(--White));
-    background-color: hsl(var(--Theme1-Screen));
+    color: hsl(var(--screen-text));
+    background-color: hsl(var(--Theme-Screen));
     word-break: break-all;
 }
 .operator{
@@ -365,7 +399,7 @@ input:checked + .slider::before {
     padding: 2.5rem;
     grid-template-columns: repeat(4, 1fr);
     border-radius: 1rem;
-    background-color: hsl(var(--Theme1-Keypad));
+    background-color: hsl(var(--Theme-Keypad));
 
 }
 .key{
@@ -373,21 +407,20 @@ input:checked + .slider::before {
     border: none;
     outline: transparent;
     cursor: pointer;
-    color: hsl(var(--Key1-text));
-    background: hsl(var(--Key1-bg));
-    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-shadow));
+    color: hsl(var(--Key-text));
+    background: hsl(var(--Key-bg));
+    box-shadow: 0 .4rem 0 0 hsl(var(--Key-shadow));
     transition: all 100ms linear;
     font-size: 2.5rem;
     padding-inline: 1rem;
     padding-top: .5rem;
     text-align: center;
-    /* height: 6rem; */
 }
 .num-key{
     font-size: 3.2rem;
 }
 .num-key:hover{
-    background: hsl(var(--White));  
+    background: hsl(var(--Key-hover));  
 }
 .key:active{
     box-shadow: none;
@@ -395,24 +428,40 @@ input:checked + .slider::before {
     transition: all 100ms ease-in;
 }
 .shared{
-    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-shared-shadow));
+    box-shadow: 0 .4rem 0 0 hsl(var(--Key-shared-shadow));
+}
+.shared:hover{
+    background-color: hsl(var(--Key-shared-hover));
 }
 .operator-key{
     font-weight: 700;
     font-size: 3.6rem;
 }
+.operator-key:hover{
+    background: hsl(var(--Key-hover));  
+}
 .equal{
-    background-color: hsl(var(--Key1-equal));
-    box-shadow: 0 .4rem 0 0 hsl(var(--Key1-equal-shadow));
+    background-color: hsl(var(--Key-equal));
+    color: hsl(var(--key-text2));
+    box-shadow: 0 .4rem 0 0 hsl(var(--Key-equal-shadow));
+}
+
+.equal[night = "true"] {
+    color: hsl(var(--theme-equal-text));
+}
+.equal[night = "false"] {
+    color: hsl(var(--key-text2));
+}
+.equal:hover{
+    background-color: hsl(var(--Key-equal-hover));
 }
 .large-key{
     grid-column: span 2;
-    color: hsl(var(--White) );
     padding: 1.2rem;
 }
 .shared{
-    background: hsl(var(--Key1-shared));
-    color: hsl(var(--White) );
+    background: hsl(var(--Key-shared));
+    color: hsl(var(--key-text2) );
 }
 
 
@@ -422,25 +471,24 @@ input:checked + .slider::before {
 .attribution {
     font-size: 1.3rem; 
     text-align: center;
-    color: hsl(var(--White));
+    color: hsl(var(--Key-equal));
     font-weight: 500;
 }
 .attribution a {
     text-decoration: none;
-    color: hsl(var(--Key1-equal));
+    color: hsl(var(--Key-shared));
     font-weight: 700; 
 }
 .attribution a:hover {
-    color: hsl(var(--Lime-Green)); 
+    color: hsl(var(--screen-text)); 
 }
+
+/* ---------- Mobile devices ---------- */
 @media(max-width: 75rem) {
     .attribution{
         display: none;
     }
 }
-
-
-
 @media(max-width: 55rem){
     .calculator{
         height: 80vh;
@@ -448,7 +496,6 @@ input:checked + .slider::before {
         grid-template-rows: 5rem 12rem auto;
     } 
 }
-
 @media(max-width: 37.5rem){
     .calculator{
         height: 85vh;
