@@ -5,7 +5,7 @@
 
 ### Links
 
-<h3>- Calculator app solution</h3>
+<h3>Calculator app</h3>
 
 - Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/calculator-app-using-css-grid-flexbox-and-javascript-W6lGHxH9_h)
 - Live Site URL: [Live site](https://calc-live.netlify.app)
