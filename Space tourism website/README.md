@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: https://dom-iha.github.io/space-tourism-website/
+- Live Site URL: https://domiha.netlify.app/
 
 ### Built with
 
