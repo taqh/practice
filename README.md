@@ -8,7 +8,7 @@
 
 ### Links
 
-- Frontend Mentor - Calculator app solution
+<h3>Frontend Mentor - Calculator app solution</h3>
 
 - Solution URL: [Solution URL](https://your-solution-url.com)
 - Live Site URL: [Live site URL]( https://dom-iha.github.io/Calculator-app/)
