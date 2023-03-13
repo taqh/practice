@@ -1,0 +1,13 @@
+.toggle {
+    grid-area: nav;
+    background-image: url('../images/icon-hamburger.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0;
+    padding: 0;
+    justify-self: end;
+    aspect-ratio: 1;
+    width: 3.1rem;
+    background-color: transparent;
+    cursor: pointer;
+}

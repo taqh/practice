@@ -1,8 +1,5 @@
 
-
-@forward "base/reset";
-@forward "base/base";
-@forward "base/helpers";
-
-@forward "layout/grid";
+@forward "base";
+@forward "components";
+@forward "layout";
 

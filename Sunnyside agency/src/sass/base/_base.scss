@@ -1,3 +1,4 @@
+@use "../utilities" as u;
 
 body {
     display: grid;
@@ -5,5 +6,62 @@ body {
     min-height: 100vh;
     font-size: 1.8rem;
     overflow-x: hidden;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 70vh 1fr auto;
+}
+
+.header {
+    background-image: url("../images/mobile/image-header.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    &__logo {
+        margin: 2rem;
+        padding-block: 1rem;
+    }
+    &__mobile-nav-toggle {
+        margin: 2rem;
+        margin-top: 2.5rem;
+    }
+
+}
+
+.main {
+
+    &__article{
+        padding: 2rem;
+        margin-block: 5rem;
+    }
+
+    .graphic-design {
+        background: url('../images/mobile/image-graphic-design.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+.footer {
+    background-color: hsla(u.$Dark-moderate-cyan);
+    padding-top: 4rem;
+    &__heading {
+        margin-bottom: 4rem;
+    }
+    &__links {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        padding: 0;
+        margin-bottom: 6rem;
+    }
+    &__socials {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-bottom: 5rem;
+    }
+    .attribution{
+        margin-bottom: 1rem;
+    }
+}
+
+a {
+    color: inherit;
 }

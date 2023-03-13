@@ -5,58 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/main.css">
+    <script src="index.js" defer></script>
     <link rel="icon" href="./src/images/favicon-32x32.png">
     <title>Sunnyside agency</title>
 </head>
 <body>
-    <header>
-        <div>
-            <img src="src/images/logo.svg" alt="space tourism logo" class="logo">
-        </div>
-        <button class="mobile-nav-toggle toggle">
+    <header class="header">
+
+        <a href="#" class="header__logo">
+            <img src="src/images/logo.svg" alt=" sunnyside agency logo" class="logo">
+        </a>
+
+        <button class="header__mobile-nav-toggle toggle">
             <span class="visually-hidden">Menu</span>
         </button>
-        <nav>
-            <ul>
-                <li>About</li>
-                <li>Services</li>
-                <li>Projects</li>
-                <li>Contact</li>
+
+        <nav class="header__nav">
+            <ul class="header__nav--items">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <h1>We are creatives</h1>
 
-        <a href="#main">
+        <h1 class="header__heading">We are creatives</h1>
+
+        <a href="#main" class="header__anchor">
             <img src="./src/images/icon-arrow-down.svg" alt="go to main content">
         </a>
     </header>
 
-    <main id="main">
-
+    <main id="main" class="main">
         <section class="main__showcase">
-            <img src="" alt="">
+
             <div>
-                <h2>Transform your brand</h2>
+                <picture class="image">
+                    <source media="(min-width: 70em)" srcset="./src/images/desktop/image-transform.jpg">
+                    <img src="./src/images/mobile/image-transform.jpg" alt=""> 
+                </picture>
+            </div>
+
+            <article class="main__article">
+                <h2 class="main__article--heading">Transform your brand</h2>
                 <p> 
                     We are a full-service creative agency specializing in helping brands grow fast. 
                     Engage your clients through compelling visuals that do most of the marketing for you.
                 </p>
-                <a href="#">Learn more</a>
-            </div>
-            <img src="" alt="">
+                <a href="#" class="learn">Learn more</a>
+            </article>
+
             <div>
-                <h2>Stand out to the right audience</h2>
+                <picture>
+                    <source media="(min-width: 70em)" srcset="./src/images/desktop/image-stand-out.jpg">
+                    <img src="./src/images/mobile/image-stand-out.jpg" alt="">
+                </picture>
+            </div>
+
+            <article class="main__article">
+                <h2 class="main__article--heading">Stand out to the right audience</h2>
                 <p>  
                     Using a collaborative formula of designers, researchers, photographers, videographers, and copywriters, we’ll build and extend your brand in digital places. 
                 </p>
-                <a href="#">Learn more</a>
-            </div>
-            <div>
+                <a href="#" class="learn" >Learn more</a>
+            </article>
+
+            <div class="graphic-design">
                 <h2>Graphic design</h2>
                 <p>  
                     Great design makes you memorable. We deliver artwork that underscores your brand message and captures potential clients’ attention.
                 </p>
             </div>
+
             <div>
                 <h2>Photography</h2>
                 <p>  
@@ -68,7 +88,7 @@
         <section class="main__testimonials">
             <h2>Client testimonials</h2>
             <div>
-                <img src="#" alt="client image">
+                <img src="./src/images/image-emily.jpg" alt="client image">
                 <p>  
                     We put our trust in Sunnyside and they delivered, making sure our needs were met and deadlines were always hit.
                 </p>
@@ -76,7 +96,7 @@
                 <span>Marketing Director</span>
             </div>
             <div>
-                <img src="#" alt="client image">
+                <img src="./src/images/image-thomas.jpg" alt="client image">
                 <p>  
                     Sunnyside’s enthusiasm coupled with their keen interest in our brand’s success made it a satisfying and enjoyable experience.
                 </p>
@@ -84,7 +104,7 @@
                 <span>Chief Operating Officer</span>
             </div>
             <div>
-                <img src="#" alt="client image">
+                <img src="./src/images/image-jennie.jpg" alt="client image">
                 <p>  
                     Incredible end result! Our sales increased over 400% when we worked with Sunnyside. Highly recommended!
                 </p>
@@ -94,23 +114,39 @@
         </section>
 
         <section class="main__gallery">
+            <picture class="image">
+                <source media="(min-width: 70em)" srcset="./src/images/desktop/image-gallery-milkbottles.jpg">
+                <img src="./src/images/mobile/image-gallery-milkbottles.jpg" alt=""> 
+            </picture>
+            <picture class="image">
+                <source media="(min-width: 70em)" srcset="./src/images/desktop/image-gallery-orange.jpg">
+                <img src="./src/images/mobile/image-gallery-orange.jpg" alt=""> 
+            </picture>
+            <picture class="image">
+                <source media="(min-width: 70em)" srcset="./src/images/desktop/image-gallery-cone.jpg">
+                <img src="./src/images/mobile/image-gallery-cone.jpg" alt=""> 
+            </picture>
+            <picture class="image">
+                <source media="(min-width: 70em)" srcset="./src/images/desktop/image-sugar-cubes.jpg">
+                <img src="./src/images/mobile/image-gallery-sugar-cubes.jpg" alt=""> 
+            </picture>
         </section>
     </main>
 
-    <footer>
-        <h3>Sunnyside</h3>
+    <footer class="footer">
+        <h3 class="footer__heading">sunnyside</h3>
 
-        <ul>
+        <ul class="footer__links">
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Projects</a></li>
         </ul>
 
         <div class="footer__socials">
-            <img src="./src/images/icon-facebook.svg" alt="facebook logo">
-            <img src="./src/images/icon-pinterest.svg" alt="pinterest logo">
-            <img src="./src/images/icon-instagram.svg" alt="instagram logo">
-            <img src="./src/images/icon-twitter.svg" alt="twitter logo">
+            <a href="#top"><img src="./src/images/icon-facebook.svg" alt="facebook logo"></a>
+            <a href="#top"><img src="./src/images/icon-pinterest.svg" alt="pinterest logo"></a>
+            <a href="#top"><img src="./src/images/icon-instagram.svg" alt="instagram logo"></a>
+            <a href="#top"><img src="./src/images/icon-twitter.svg" alt="twitter logo"></a>
         </div>
 
         <div class="attribution">

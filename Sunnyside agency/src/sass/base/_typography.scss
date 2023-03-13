@@ -1,0 +1,72 @@
+
+@use "../utilities" as u;
+
+h1{
+    font-family: u.$heading-font;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: .2ch;
+    text-align: center;
+}
+
+h3 {
+    font-family: u.$heading-font;
+    font-weight: 700;
+}
+
+h2,h3,p{
+    text-align: center;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 3rem + 2vw, 5rem);
+  color: hsl(u.$White);
+}
+
+h2 {
+    color: hsl(u.$Very-dark-desaturated-blue);
+    font-family: u.$heading-font;
+    font-weight: 900;
+    font-size: 3rem;
+}
+
+p {
+  font-weight: 600;
+  font-family: u.$body-font;
+  color: hsl(u.$Grayish-blue);
+}
+.learn {
+    font-weight: 900;
+    font-family: u.$heading-font;
+    text-transform: uppercase;
+    color: hsl(u.$Very-dark-desaturated-blue);
+    font-size: 1.5rem;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+.footer{
+  
+    &__heading {
+        color: hsl(u.$Dark-desaturated-cyan);
+        font-family: u.$body-font;
+        font-size: 3rem;
+        font-weight: 600;
+    }
+    &__links {
+      font-family: u.$body-font;
+      color: hsl(u.$Dark-desaturated-cyan);
+    }
+    .attribution{
+      font-family: u.$body-font;
+      color: hsl(u.$Dark-desaturated-cyan);
+      font-size: 1.4rem;
+      text-align: center;
+    }
+}

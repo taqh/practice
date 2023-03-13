@@ -1,0 +1,14 @@
+.header__nav {
+    grid-area: nav;
+    &--items {
+        display: flex;
+        flex-direction: column;
+        transform: translateY(-100%);
+    }
+    &__heading {
+        grid-area: title;
+    }
+    &__anchor {
+        grid-area: cta;
+    }
+}

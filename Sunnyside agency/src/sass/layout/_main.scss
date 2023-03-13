@@ -1,0 +1,23 @@
+
+.main{
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+    
+    &__article{
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        &--heading {
+            padding-inline: 2rem;
+        }
+        .learn{
+            align-self: center;
+        }
+    }
+
+    &__gallery{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}

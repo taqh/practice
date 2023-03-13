@@ -1,0 +1,29 @@
+.header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-areas: 
+        'logo nav'
+        'title title'
+        'cta cta'
+    ;
+    &__logo {
+        grid-area: logo;
+        height: fit-content;
+    }
+    &__nav {
+        grid-area: nav;
+        height: fit-content;
+    }
+    &__anchor {
+        grid-area: cta;
+        justify-self: center;
+       
+    }
+    &__heading {
+        grid-area: title;
+        
+        margin-top: 3rem;
+    }
+    
+}
