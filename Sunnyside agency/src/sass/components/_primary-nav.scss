@@ -1,14 +1,46 @@
+@use "../utilities" as u;
+
 .header__nav {
     grid-area: nav;
-    &--items {
-        display: flex;
-        flex-direction: column;
-        transform: translateY(-100%);
-    }
     &__heading {
         grid-area: title;
     }
     &__anchor {
         grid-area: cta;
+    }
+}
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+    transition: 250ms ease;
+    &[data-visible="false"] {
+        opacity: 0;
+        transform: scale(0);
+        transform: translateY(-150%);
+    }
+    &[data-visible="true"] {
+        opacity: 1;
+        transform: scale(1);
+        transform: translateY(0);
+    }
+    @media (max-width: 900px) {
+        position: absolute;
+        inset: 13vh 0 0 0;
+        margin-inline: auto;
+        height: fit-content;
+        width: calc(100% - 4.5rem);
+        z-index: 2;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 3rem 3rem;
+        border-color: transparent transparent white transparent;
+        inset: -3rem 0 auto auto;
     }
 }

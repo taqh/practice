@@ -16,30 +16,34 @@
             <img src="src/images/logo.svg" alt=" sunnyside agency logo" class="logo">
         </a>
 
-        <button class="header__mobile-nav-toggle toggle">
+        <button class="mobile-nav-toggle toggle">
             <span class="visually-hidden">Menu</span>
+            <span class="line top" data-active="false"></span>
+            <span class="line mid" data-active="false"></span>
+            <span class="line bottom" data-active="false"></span>
         </button>
 
         <nav class="header__nav">
-            <ul class="header__nav--items">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
+            <ul class="nav-links" data-visible="false">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">contact</a></li>
             </ul>
         </nav>
 
         <h1 class="header__heading">We are creatives</h1>
 
         <a href="#main" class="header__anchor">
-            <img src="./src/images/icon-arrow-down.svg" alt="go to main content">
+            <img class="arrow" src="./src/images/icon-arrow-down.svg" alt="go to main content">
         </a>
     </header>
 
     <main id="main" class="main">
+
         <section class="main__showcase">
 
-            <div>
+            <div id="about">
                 <picture class="image">
                     <source media="(min-width: 70em)" srcset="./src/images/desktop/image-transform.jpg">
                     <img src="./src/images/mobile/image-transform.jpg" alt=""> 
@@ -47,12 +51,12 @@
             </div>
 
             <article class="main__article">
-                <h2 class="main__article--heading">Transform your brand</h2>
+                <h2 class="article__heading">Transform your brand</h2>
                 <p> 
                     We are a full-service creative agency specializing in helping brands grow fast. 
                     Engage your clients through compelling visuals that do most of the marketing for you.
                 </p>
-                <a href="#" class="learn">Learn more</a>
+                <a href="#" class="learn learn--yellow">Learn more</a>
             </article>
 
             <div>
@@ -63,78 +67,91 @@
             </div>
 
             <article class="main__article">
-                <h2 class="main__article--heading">Stand out to the right audience</h2>
+                <h2 class="article__heading">Stand out to the right audience</h2>
                 <p>  
                     Using a collaborative formula of designers, researchers, photographers, videographers, and copywriters, we’ll build and extend your brand in digital places. 
                 </p>
-                <a href="#" class="learn" >Learn more</a>
+                <a href="#" class="learn learn--red" >Learn more</a>
             </article>
 
-            <div class="graphic-design">
+            <div class="graphic-design service" id="services">
                 <h2>Graphic design</h2>
                 <p>  
                     Great design makes you memorable. We deliver artwork that underscores your brand message and captures potential clients’ attention.
                 </p>
             </div>
 
-            <div>
+            <div class="photography service">
                 <h2>Photography</h2>
                 <p>  
                     Increase your credibility by getting the most stunning, high-quality photos that improve your business image.
                 </p>     
             </div>
+
         </section>
 
         <section class="main__testimonials">
+
             <h2>Client testimonials</h2>
-            <div>
-                <img src="./src/images/image-emily.jpg" alt="client image">
+
+            <div class="testimonial__card">
+                <img src="./src/images/image-emily.jpg" class="client-image" alt="client image">
                 <p>  
                     We put our trust in Sunnyside and they delivered, making sure our needs were met and deadlines were always hit.
                 </p>
                 <h3>Emily R.</h3>
-                <span>Marketing Director</span>
+                <span class="designation">Marketing Director</span>
             </div>
-            <div>
-                <img src="./src/images/image-thomas.jpg" alt="client image">
+
+            <div class="testimonial__card">
+                <img src="./src/images/image-thomas.jpg" class="client-image" alt="client image">
                 <p>  
                     Sunnyside’s enthusiasm coupled with their keen interest in our brand’s success made it a satisfying and enjoyable experience.
                 </p>
                 <h3>Thomas S.</h3>
-                <span>Chief Operating Officer</span>
+                <span class="designation">Chief Operating Officer</span>
             </div>
-            <div>
-                <img src="./src/images/image-jennie.jpg" alt="client image">
+
+            <div class="testimonial__card">
+                <img src="./src/images/image-jennie.jpg" class="client-image" alt="client image">
                 <p>  
                     Incredible end result! Our sales increased over 400% when we worked with Sunnyside. Highly recommended!
                 </p>
                 <h3>Jennie F.</h3>
-                <span>Business Owner</span>
+                <span class="designation">Business Owner</span>
             </div>
+
         </section>
 
-        <section class="main__gallery">
+        <section class="main__gallery" id="projects">
+
             <picture class="image">
                 <source media="(min-width: 70em)" srcset="./src/images/desktop/image-gallery-milkbottles.jpg">
                 <img src="./src/images/mobile/image-gallery-milkbottles.jpg" alt=""> 
             </picture>
+
             <picture class="image">
                 <source media="(min-width: 70em)" srcset="./src/images/desktop/image-gallery-orange.jpg">
                 <img src="./src/images/mobile/image-gallery-orange.jpg" alt=""> 
             </picture>
+
             <picture class="image">
                 <source media="(min-width: 70em)" srcset="./src/images/desktop/image-gallery-cone.jpg">
                 <img src="./src/images/mobile/image-gallery-cone.jpg" alt=""> 
             </picture>
+
             <picture class="image">
                 <source media="(min-width: 70em)" srcset="./src/images/desktop/image-sugar-cubes.jpg">
                 <img src="./src/images/mobile/image-gallery-sugar-cubes.jpg" alt=""> 
             </picture>
+
         </section>
+
     </main>
 
-    <footer class="footer">
-        <h3 class="footer__heading">sunnyside</h3>
+    <footer class="footer" id="contact">
+
+        <img src="src/images/logo.svg" class="footer__logo"/>
 
         <ul class="footer__links">
             <li><a href="#">About</a></li>

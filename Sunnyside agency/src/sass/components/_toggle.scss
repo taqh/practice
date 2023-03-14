@@ -1,13 +1,23 @@
 .toggle {
     grid-area: nav;
-    background-image: url('../images/icon-hamburger.svg');
-    background-repeat: no-repeat;
-    background-position: center;
     border: 0;
     padding: 0;
     justify-self: end;
-    aspect-ratio: 1;
-    width: 3.1rem;
+    width: 2.5rem;
     background-color: transparent;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .6rem;
+
+    .line{
+        height: .2rem;
+        width: 100%;
+        background-color: white;
+        transition: 250ms ease;
+    }
+    .top[data-active="true"] { transform: translateY(.4rem) rotate(45deg) }
+    .mid[data-active="true"] { display: none; }
+    .bottom[data-active="true"] { transform: translateY(-.4rem) rotate(-45deg) }
 }

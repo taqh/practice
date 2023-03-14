@@ -1,0 +1,39 @@
+@keyframes nav-entrance {
+    0% {
+        transform: translateY(150%);
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateY(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes nav-exit{
+    0%{
+        transform: translateY(0);
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateY(150%);
+        transform: translateX(100%);
+        transform: scale(0);
+    }
+    
+}
+
+
+@keyframes point-down {
+    0%, 100% {
+        transform: translateY(0);
+         opacity: 1;
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateY(-5%);
+         opacity: 1;
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateY(5%);
+         opacity: 0.5;
+    }
+}
