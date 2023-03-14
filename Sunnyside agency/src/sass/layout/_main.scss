@@ -1,29 +1,69 @@
+@use "../utilities" as u;
 
 .main{
     display: grid;
     grid-template-rows: 1fr auto auto;
     
+    &__showcase {
+        
+        @include u.breakpoint(screen-lg) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+            grid-template-areas: 
+                'one two'
+                'three four'
+                'five six'
+            ;
+
+            .main__article:nth-of-type(1){
+                margin: 0;
+                grid-area: one;
+            }
+            .main__article:nth-of-type(2){
+                margin: 0;
+                grid-area: four;
+            }
+
+        }
+    }
+
     &__article{
         display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 2.5rem;
         .article__heading {
-            padding-inline: 2rem;
+            @include u.breakpoint-down(screen-mid){
+                padding-inline: 2rem;
+            }
         }
         .learn{
-            align-self: center;
+            align-self: center; 
+            @include u.breakpoint(screen-lg) {
+                align-self: start;
+            }
+        }
+        @include u.breakpoint(screen-lg) {
+            align-items: center;
+            justify-content: center;
+            padding: 10rem;
         }
     }
 
     &__gallery{
         display: grid;
         grid-template-columns: 1fr 1fr;
+        @include u.breakpoint(screen-lg) {
+            grid-template-columns: repeat(4, 1fr);
+        }
     }
     
     .service {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        align-items: center;
         p{
             margin-bottom: 5rem;
         }
@@ -32,6 +72,13 @@
     &__testimonials{
         display: grid;
         gap: 7rem;
+        @include u.breakpoint(screen-lg) {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto 1fr;
+            h2{
+                grid-column: span 3;
+            }
+        }
     }
     
     .testimonial__card {

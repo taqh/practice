@@ -23,24 +23,24 @@ navToggle.addEventListener("click", (e) => {
         document.body.style.overflow = "scroll";
     }
 
-    // if (nav.getAttribute("data-visible").includes("true")) {
-    //     blur.setAttribute("data-visible", true)
-    // } else {
-    //     blur.setAttribute("data-visible", false)
-    // }
+    if (nav.getAttribute("data-visible").includes("true")) {
+        blur.setAttribute("data-visible", true)
+    } else {
+        blur.setAttribute("data-visible", false)
+    }
 });
 
-// blur.addEventListener('click', (e) => {
-//     let visibility = nav.getAttribute("data-visible");
-//     if (visibility === "true") {
-//         blur.setAttribute("data-visible", false);
-//         nav.setAttribute("data-visible", false);
-//         navToggle.setAttribute("aria-expanded", false);
-//         document.body.style.overflow = "scroll";
-//     } else {
-//         blur.setAttribute("data-visible", false);
-//         nav.setAttribute("data-visible", false);
-//         navToggle.setAttribute("aria-expanded", false);
-//         document.body.style.overflow = "scroll";
-//     }
-// });
+blur.addEventListener('click', (e) => {
+    let visibility = nav.getAttribute("data-visible");
+    if (visibility === "true") {
+        blur.setAttribute("data-visible", false);
+        nav.setAttribute("data-visible", false);
+        navToggle.setAttribute("aria-expanded", false);
+        document.body.style.overflow = "scroll";
+    } else {
+        blur.setAttribute("data-visible", false);
+        nav.setAttribute("data-visible", false);
+        navToggle.setAttribute("aria-expanded", false);
+        document.body.style.overflow = "scroll";
+    }
+});

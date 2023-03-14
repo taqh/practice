@@ -38,7 +38,16 @@ p {
    font-family: u.$body-font;
    color: hsl(u.$Grayish-blue);
 }
-
+.main__article{
+   p {
+      max-width: 40rem;
+   }
+}
+.main__article *{
+   @include u.breakpoint(screen-lg) {
+      text-align: left;
+   }
+}
 .learn {
     position: relative;
     font-weight: 900;
@@ -46,58 +55,74 @@ p {
     text-transform: uppercase;
     color: hsl(u.$Very-dark-desaturated-blue);
     font-size: 1.6rem;
+
     &--yellow::after{
       position: absolute;
       content: '';
-      height: 1rem;
-      width: calc(100% + 2rem);
-      display: block;
-      background-color: lighten(hsl(u.$Yellow), 40%);
-      inset: 1.5rem 0 0 0;
       z-index: -1;
+      height: 1rem;
+      display: block;
+      inset: 1.5rem 0 0 0;
       border-radius: 1rem;
+      width: calc(100% + 2rem);
       transform: translateX(-1rem);
+      background-color: lighten(hsl(u.$Yellow), 40%);
    }
+
     &--red::after {
       @extend .learn--yellow;
       background-color: lighten(hsl(u.$Soft-red),  20%);
    }
 }
+
 .graphic-design {
+
    h2  {
       font-size: 2.8rem;
       color: hsl(u.$Dark-desaturated-cyan);
    }
+
    p {
       color: hsl(u.$Dark-desaturated-cyan); 
       font-size: 1.6rem;
+      max-width: 35rem;
+      
    }
 }
 .photography {
+
    h2  {
       font-size: 2.8rem;
       color: hsl(u.$Dark-blue);
    }
+
    p {
       color: hsl(u.$Dark-blue); 
       font-size: 1.6rem;
+      max-width: 35rem;
+      
    }
 }
 
 .main__testimonials{
+
    h2 {
       margin-top: 4rem;
       font-size: 1.6rem;
       color: hsl(u.$Grayish-blue);
       text-transform: uppercase;
    }
+
    p {
       color: hsl(u.$Very-dark-grayish-blue);
+      max-width: 40rem;
    }
+
    h3 {
       color: hsl(u.$Very-dark-desaturated-blue);
       font-size: 1.8rem;
    }
+
    span{
       font-size: 1.4rem;
       color: hsl(u.$Grayish-blue);
@@ -109,7 +134,21 @@ p {
    color: hsl(u.$Dark-grayish-blue);
    font-family: u.$body-font;
    text-align: center;
+
+   .contact {
+      font-family: u.$heading-font;
+      color: hsl(u.$Very-dark-desaturated-blue);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.5rem;
+   }
+
+   @include u.breakpoint(screen-lg) {
+      color: hsl(u.$White);
+      font-size: 1.8rem;
+   }
 }
+
 a,
 a:visited,
 a:active {
