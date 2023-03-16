@@ -199,7 +199,8 @@ body {
 }
 @media (min-width: 64em) {
   body {
-    grid-template-rows: 80dvh 1fr auto;
+    grid-template-rows: 90vh 1fr auto;
+    grid-template-rows: 90dvh 1fr auto;
   }
 }
 
