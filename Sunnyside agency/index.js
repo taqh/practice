@@ -1,7 +1,7 @@
 const navToggle = document.querySelector(".mobile-nav-toggle");
 const navIcon = document.querySelectorAll(".line");
 const nav = document.querySelector(".nav-links");
-const links = document.querySelectorAll("#link");
+const links = document.querySelectorAll('[data-link]');
 
 
 navToggle.addEventListener("click", (e) => {
@@ -14,14 +14,12 @@ navToggle.addEventListener("click", (e) => {
         navIcon.forEach(line => {
             line.setAttribute("data-active", true);
         });
-        // document.body.style.overflow = "hidden";
     } else {
         nav.setAttribute("data-visible", false);   
         navToggle.setAttribute("aria-expanded", false);
         navIcon.forEach(line => {
             line.setAttribute("data-active", false);
         });
-        // document.body.style.overflow = "scroll";
     }
 });
 
@@ -32,7 +30,6 @@ document.body.addEventListener('scroll', () => {
             navIcon.forEach(line => {
                 line.setAttribute("data-active", false);
             });
-            // document.body.style.overflow = "scroll";
         }
 })
 
@@ -44,7 +41,6 @@ links.forEach(link => {
             navIcon.forEach(line => {
                 line.setAttribute("data-active", false);
             });
-            // document.body.style.overflow = "scroll";
         }
     });
 })  

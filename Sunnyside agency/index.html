@@ -25,10 +25,10 @@
 
         <nav class="header__nav">
             <ul class="nav-links" data-visible="false">
-                <li><a id="link" href="#about">About</a></li>
-                <li><a id="link" href="#services">Services</a></li>
-                <li><a id="link" href="#projects">Projects</a></li>
-                <li><a id="link" class="contact" href="#contact">contact</a></li>
+                <li><a data-link href="#about">About</a></li>
+                <li><a data-link href="#services">Services</a></li>
+                <li><a data-link href="#projects">Projects</a></li>
+                <li><a data-link class="contact" href="#contact">contact</a></li>
             </ul>
         </nav>
 
@@ -42,7 +42,7 @@
     <main class="main" id="main">
 
         <section class="main__showcase">
-
+            <h2 class="visually-hidden">About us</h2>
             <div id="about">
                 <picture class="cover">
                     <source media="(min-width: 64em)" srcset="./src/images/desktop/image-transform.jpg">
@@ -124,7 +124,7 @@
         </section>
 
         <section class="main__gallery" id="projects">
-
+            <h2 class="visually-hidden">Our works</h2>
             <picture class="image">
                 <source media="(min-width: 64em)" srcset="./src/images/desktop/image-gallery-milkbottles.jpg">
                 <img class="cover" src="./src/images/mobile/image-gallery-milkbottles.jpg" alt="milk bottles"> 
@@ -151,10 +151,10 @@
 
     <footer class="footer" id="contact">
 
-        <img src="src/images/logo.svg" class="footer__logo"/>
+        <img src="src/images/logo.svg" alt="sunnyside logo" class="footer__logo"/>
 
         <ul class="footer__links">
-            <li><a href="#main">About</a></li>
+            <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Projects</a></li>
         </ul>
