@@ -1,6 +1,7 @@
 const navToggle = document.querySelector(".mobile-nav-toggle");
 const navIcon = document.querySelectorAll(".line");
 const nav = document.querySelector(".nav-links");
+const links = document.querySelectorAll("#link");
 
 
 navToggle.addEventListener("click", (e) => {
@@ -13,34 +14,37 @@ navToggle.addEventListener("click", (e) => {
         navIcon.forEach(line => {
             line.setAttribute("data-active", true);
         });
-        document.body.style.overflow = "hidden";
+        // document.body.style.overflow = "hidden";
     } else {
         nav.setAttribute("data-visible", false);   
         navToggle.setAttribute("aria-expanded", false);
         navIcon.forEach(line => {
             line.setAttribute("data-active", false);
         });
-        document.body.style.overflow = "scroll";
-    }
-
-    if (nav.getAttribute("data-visible").includes("true")) {
-        blur.setAttribute("data-visible", true)
-    } else {
-        blur.setAttribute("data-visible", false)
+        // document.body.style.overflow = "scroll";
     }
 });
 
-blur.addEventListener('click', (e) => {
+document.body.addEventListener('scroll', () => {
     let visibility = nav.getAttribute("data-visible");
-    if (visibility === "true") {
-        blur.setAttribute("data-visible", false);
-        nav.setAttribute("data-visible", false);
-        navToggle.setAttribute("aria-expanded", false);
-        document.body.style.overflow = "scroll";
-    } else {
-        blur.setAttribute("data-visible", false);
-        nav.setAttribute("data-visible", false);
-        navToggle.setAttribute("aria-expanded", false);
-        document.body.style.overflow = "scroll";
-    }
-});
+        if (visibility === "true") {
+            nav.setAttribute("data-visible", false);
+            navIcon.forEach(line => {
+                line.setAttribute("data-active", false);
+            });
+            // document.body.style.overflow = "scroll";
+        }
+})
+
+links.forEach(link => {
+    link.addEventListener('click', (e) => {
+        let visibility = nav.getAttribute("data-visible");
+        if (visibility === "true") {
+            nav.setAttribute("data-visible", false);
+            navIcon.forEach(line => {
+                line.setAttribute("data-active", false);
+            });
+            // document.body.style.overflow = "scroll";
+        }
+    });
+})  

@@ -25,10 +25,10 @@
 
         <nav class="header__nav">
             <ul class="nav-links" data-visible="false">
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a class="contact" href="#contact">contact</a></li>
+                <li><a id="link" href="#about">About</a></li>
+                <li><a id="link" href="#services">Services</a></li>
+                <li><a id="link" href="#projects">Projects</a></li>
+                <li><a id="link" class="contact" href="#contact">contact</a></li>
             </ul>
         </nav>
 
@@ -44,7 +44,7 @@
         <section class="main__showcase">
 
             <div id="about">
-                <picture>
+                <picture class="cover">
                     <source media="(min-width: 64em)" srcset="./src/images/desktop/image-transform.jpg">
                     <img class="cover" src="./src/images/mobile/image-transform.jpg" alt=" transform"> 
                 </picture>
@@ -60,7 +60,7 @@
             </article>
 
             <div>
-                <picture class="image">
+                <picture class="cover">
                     <source media="(min-width: 64em)" srcset="./src/images/desktop/image-stand-out.jpg">
                     <img class="cover" src="./src/images/mobile/image-stand-out.jpg" alt="stand out">
                 </picture>
@@ -75,7 +75,7 @@
             </article>
 
             <div class="graphic-design service" id="services">
-                <h2>Graphic design</h2>
+                <h2>Graphic Design</h2>
                 <p>  
                     Great design makes you memorable. We deliver artwork that underscores your brand message and captures potential clients’ attention.
                 </p>
@@ -161,9 +161,9 @@
 
         <div class="footer__socials">
             <a href="#top"><img src="./src/images/icon-facebook.svg" alt="facebook logo"></a>
-            <a href="#top"><img src="./src/images/icon-pinterest.svg" alt="pinterest logo"></a>
             <a href="#top"><img src="./src/images/icon-instagram.svg" alt="instagram logo"></a>
             <a href="#top"><img src="./src/images/icon-twitter.svg" alt="twitter logo"></a>
+            <a href="#top"><img src="./src/images/icon-pinterest.svg" alt="pinterest logo"></a>
         </div>
 
         <div class="attribution">

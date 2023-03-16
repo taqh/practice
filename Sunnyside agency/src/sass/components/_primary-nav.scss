@@ -11,21 +11,21 @@
 }
 .nav-links {
     display: flex;
-    gap: clamp(1.5rem, 5vw, 3.5rem);
+    gap: clamp(1.5rem, 5vw, 5rem);
     background: transparent;
     position: relative;
-    transition: 250ms ease;
+    transition:  250ms ease;
     justify-content: flex-end;
     
     .contact{
         background-color: white;
         padding-inline: 2.8rem;
-        padding-block: 1.8rem;
-        border-radius: 5rem;
+        padding-block: 1.6rem;
+        border-radius: 4rem;
         transition: 200ms ease;
 
         &:hover {
-            background-color: lighten(hsl(u.$Dark-blue), 50%);
+            background-color: hsla(0, 0%, 100%, 0.3);
             color: hsl(u.$White);
         }
     }

@@ -21,8 +21,9 @@ h2,h3,p{
 }
 
 h1 {
-  font-size: clamp(1.8rem, 3rem + 2vw, 5rem);
+  font-size: clamp(1.8rem, 2.8rem + 2vw, 10rem);
   color: hsl(u.$White);
+  letter-spacing: .25ch;
 }
 
 h2 {
@@ -37,10 +38,17 @@ p {
    font-weight: 600;
    font-family: u.$body-font;
    color: hsl(u.$Grayish-blue);
+   line-height: 1.65;
 }
 .main__article{
    p {
-      max-width: 40rem;
+      max-width: 45rem;
+   }
+   @include u.breakpoint(screen-lg) {
+      h2 {
+         font-size: 4rem;
+         // align-self: start;
+      }
    }
 }
 .main__article *{
@@ -55,6 +63,7 @@ p {
     text-transform: uppercase;
     color: hsl(u.$Very-dark-desaturated-blue);
     font-size: 1.6rem;
+    
 
     &--yellow::after{
       position: absolute;
@@ -66,12 +75,20 @@ p {
       border-radius: 1rem;
       width: calc(100% + 2rem);
       transform: translateX(-1rem);
-      background-color: lighten(hsl(u.$Yellow), 40%);
+      background-color: lighten(hsl(u.$Yellow), 35%);
+      transition: 200ms linear;
+   }
+   &--yellow:hover::after {
+      background-color: hsl(u.$Yellow);
    }
 
     &--red::after {
       @extend .learn--yellow;
       background-color: lighten(hsl(u.$Soft-red),  20%);
+   }
+   &--red:hover::after {
+      background-color: hsl(u.$Soft-red);
+      transition: 200ms linear;
    }
 }
 
@@ -111,6 +128,11 @@ p {
       font-size: 1.6rem;
       color: hsl(u.$Grayish-blue);
       text-transform: uppercase;
+      letter-spacing: .3ch;
+      @include u.breakpoint(screen-lg) {
+         margin-top: 12rem;
+         font-size: 2.1rem;
+      }
    }
 
    p {
@@ -173,11 +195,26 @@ a:active {
    &__links {
       font-family: u.$body-font;
       color: hsl(u.$Dark-moderate-cyan);
+      
+      & a:hover {
+         color: hsl(u.$White);
+         transition: color 250ms ease;
+      }
+   }
+   &__socials{
+      transition: 250ms ease;
+      a:hover > img{
+         filter: brightness(1000%);
+         transition: 250ms ease;
+      }
    }
    .attribution{
       font-family: u.$body-font;
       color: hsl(u.$Dark-moderate-cyan);
       font-size: 1.2rem;
       text-align: center;
+      a {
+         color: hsl(u.$White);
+      }
    }
 }

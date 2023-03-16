@@ -7,33 +7,41 @@ body {
     font-size: 1.8rem;
     overflow-x: hidden;
     grid-template-rows: 80vh 1fr auto;
-    grid-template-rows: 80dvh 1fr auto;
+    grid-template-rows: 88dvh 1fr auto;
     @include u.breakpoint(screen-lg) {
         grid-template-rows: 100dvh 1fr auto; 
     }
 }
-.cover {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
+
 .header {
     position: relative;
     background-image: url("../images/mobile/image-header.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    @include u.breakpoint(screen-lg) {
+    @include u.breakpoint(screen-sm) {
         background-image: url("../images/desktop/image-header.jpg");
+    
     }
 
     &__logo {
         margin: 2rem;
         padding-block: 1rem;
+        @include u.breakpoint(screen-lg){
+            margin: 4rem 0 4rem 4rem;
+            padding-block: 1rem;
+            img{
+                width: 16rem;
+            }
+        }
     }
     .nav-links {
         margin: 2rem;
         padding: 1rem;
+        @include u.breakpoint(screen-lg){
+            margin: 4rem 4rem 4rem 0;
+            padding: 1rem 0;
+        }
     }
     .mobile-nav-toggle {
         margin: 2rem;
@@ -50,6 +58,12 @@ body {
 
 .arrow {
     animation: point-down 6s ease infinite;
+    @include u.breakpoint(screen-lg){
+        margin-bottom: 20rem;
+    }
+    @include u.breakpoint(screen-xl){
+        margin-bottom: 36rem;
+    }
 }
 
 .main {
@@ -62,41 +76,58 @@ body {
         background: url("../images/mobile/image-graphic-design.jpg");
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: center;
         min-height: 60rem;
         padding: 2rem;
         h2{
             margin-bottom: 2.5rem;
         }
-        @include u.breakpoint(screen-lg) {
+        @include u.breakpoint(screen-sm) {
             background: url("../images/desktop/image-graphic-design.jpg");
+            background-position: center;
+            background-size: cover;
         }
     }
     .photography {
         background: url("../images/mobile/image-photography.jpg");
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: center;
         min-height: 60rem;
         padding: 2rem;
         h2{
             margin-bottom: 2.5rem;
         }
-        @include u.breakpoint(screen-lg) {
+        @include u.breakpoint(screen-sm) {
             background: url("../images/desktop/image-photography.jpg");
+             background-position: center;
+             background-size: cover;
+
         }
     }
 
     &__testimonials {
-        padding: 2rem 2rem 10rem 2rem;
+        
         .client-image {
             height: 6rem;
             border-radius: 50%;
             margin-bottom: 4rem;
+            @include u.breakpoint(screen-lg) {
+                height: 7rem;
+                margin-top: 3rem;
+            }
         }
         p {
             margin-bottom: 4rem;
+            @include u.breakpoint(screen-lg) {
+                margin-bottom: 0;
+            }
         }
         h3 {
             margin-bottom: 1rem;
+            @include u.breakpoint(screen-lg) {
+                margin-top: 6rem;
+            }
         }
     }
 }
@@ -104,21 +135,23 @@ body {
 .footer {
   background-color: hsla(u.$Dark-moderate-cyan);
   padding-top: 4rem;
-  &__logo {
-    margin-inline: auto;
-  }
-  &__links {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    padding: 0;
-  }
-  &__socials {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-  }
-  .attribution {
-    margin-bottom: 1rem;
-  }
+    &__logo {
+        margin-top: 3rem;
+        margin-inline: auto;
+    }
+    &__links {
+        display: flex;
+        justify-content: center;
+        gap: 6rem;
+        padding: 0;
+    }
+    &__socials {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-top: 2rem;
+    }
+    .attribution {
+        margin-bottom: 1rem;
+    }
 }

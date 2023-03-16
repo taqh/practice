@@ -33,6 +33,10 @@
         flex-direction: column;
         align-items: center;
         gap: 2.5rem;
+        @include u.breakpoint(screen-lg) {
+            display: grid;
+            place-content: center;
+        }
         .article__heading {
             @include u.breakpoint-down(screen-mid){
                 padding-inline: 2rem;
@@ -41,13 +45,14 @@
         .learn{
             align-self: center; 
             @include u.breakpoint(screen-lg) {
-                align-self: start;
+                width: fit-content;
             }
         }
         @include u.breakpoint(screen-lg) {
             align-items: center;
             justify-content: center;
-            padding: 10rem;
+            padding-block: 5rem;
+            padding-inline: 13rem;
         }
     }
 
@@ -71,10 +76,15 @@
 
     &__testimonials{
         display: grid;
+        place-items: center;
+        padding: 2rem 2rem 10rem 2rem;
         gap: 7rem;
         @include u.breakpoint(screen-lg) {
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: auto 1fr;
+            min-height: 86vh;
+            gap: 5rem;
+            padding-inline: 10rem;
             h2{
                 grid-column: span 3;
             }
@@ -84,5 +94,9 @@
     .testimonial__card {
         display: grid;
         place-items: center;
+        @include u.breakpoint(screen-lg) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }

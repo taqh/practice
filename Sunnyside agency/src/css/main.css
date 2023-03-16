@@ -50,18 +50,12 @@ body {
   font-size: 1.8rem;
   overflow-x: hidden;
   grid-template-rows: 80vh 1fr auto;
-  grid-template-rows: 80dvh 1fr auto;
+  grid-template-rows: 88dvh 1fr auto;
 }
 @media (min-width: 64em) {
   body {
     grid-template-rows: 100dvh 1fr auto;
   }
-}
-
-.cover {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
 }
 
 .header {
@@ -71,7 +65,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-@media (min-width: 64em) {
+@media (min-width: 48em) {
   .header {
     background-image: url("../images/desktop/image-header.jpg");
   }
@@ -80,9 +74,24 @@ body {
   margin: 2rem;
   padding-block: 1rem;
 }
+@media (min-width: 64em) {
+  .header__logo {
+    margin: 4rem 0 4rem 4rem;
+    padding-block: 1rem;
+  }
+  .header__logo img {
+    width: 16rem;
+  }
+}
 .header .nav-links {
   margin: 2rem;
   padding: 1rem;
+}
+@media (min-width: 64em) {
+  .header .nav-links {
+    margin: 4rem 4rem 4rem 0;
+    padding: 1rem 0;
+  }
 }
 .header .mobile-nav-toggle {
   margin: 2rem;
@@ -99,6 +108,16 @@ body {
 .arrow {
   animation: point-down 6s ease infinite;
 }
+@media (min-width: 64em) {
+  .arrow {
+    margin-bottom: 20rem;
+  }
+}
+@media (min-width: 90em) {
+  .arrow {
+    margin-bottom: 36rem;
+  }
+}
 
 .main__article {
   padding: 2.5rem;
@@ -108,45 +127,64 @@ body {
   background: url("../images/mobile/image-graphic-design.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   min-height: 60rem;
   padding: 2rem;
 }
 .main .graphic-design h2 {
   margin-bottom: 2.5rem;
 }
-@media (min-width: 64em) {
+@media (min-width: 48em) {
   .main .graphic-design {
     background: url("../images/desktop/image-graphic-design.jpg");
+    background-position: center;
+    background-size: cover;
   }
 }
 .main .photography {
   background: url("../images/mobile/image-photography.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   min-height: 60rem;
   padding: 2rem;
 }
 .main .photography h2 {
   margin-bottom: 2.5rem;
 }
-@media (min-width: 64em) {
+@media (min-width: 48em) {
   .main .photography {
     background: url("../images/desktop/image-photography.jpg");
+    background-position: center;
+    background-size: cover;
   }
-}
-.main__testimonials {
-  padding: 2rem 2rem 10rem 2rem;
 }
 .main__testimonials .client-image {
   height: 6rem;
   border-radius: 50%;
   margin-bottom: 4rem;
 }
+@media (min-width: 64em) {
+  .main__testimonials .client-image {
+    height: 7rem;
+    margin-top: 3rem;
+  }
+}
 .main__testimonials p {
   margin-bottom: 4rem;
 }
+@media (min-width: 64em) {
+  .main__testimonials p {
+    margin-bottom: 0;
+  }
+}
 .main__testimonials h3 {
   margin-bottom: 1rem;
+}
+@media (min-width: 64em) {
+  .main__testimonials h3 {
+    margin-top: 6rem;
+  }
 }
 
 .footer {
@@ -154,18 +192,20 @@ body {
   padding-top: 4rem;
 }
 .footer__logo {
+  margin-top: 3rem;
   margin-inline: auto;
 }
 .footer__links {
   display: flex;
   justify-content: center;
-  gap: 4rem;
+  gap: 6rem;
   padding: 0;
 }
 .footer__socials {
   display: flex;
   justify-content: center;
-  gap: 4rem;
+  gap: 3rem;
+  margin-top: 2rem;
 }
 .footer .attribution {
   margin-bottom: 1rem;
@@ -187,6 +227,12 @@ body {
   padding: 0; /* 1 */
   text-indent: 101%;
   white-space: nowrap;
+}
+
+.cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 :root {
@@ -291,8 +337,9 @@ h2, h3, p {
 }
 
 h1 {
-  font-size: clamp(1.8rem, 3rem + 2vw, 5rem);
+  font-size: clamp(1.8rem, 2.8rem + 2vw, 10rem);
   color: hsl(0, 0%, 100%);
+  letter-spacing: 0.25ch;
 }
 
 h2 {
@@ -307,10 +354,16 @@ p {
   font-weight: 600;
   font-family: "Barlow", sans-serif;
   color: hsl(210, 4%, 67%);
+  line-height: 1.65;
 }
 
 .main__article p {
-  max-width: 40rem;
+  max-width: 45rem;
+}
+@media (min-width: 64em) {
+  .main__article h2 {
+    font-size: 4rem;
+  }
 }
 
 @media (min-width: 64em) {
@@ -337,10 +390,18 @@ p {
   border-radius: 1rem;
   width: calc(100% + 2rem);
   transform: translateX(-1rem);
-  background-color: #fff7c7;
+  background-color: #fff3ad;
+  transition: 200ms linear;
+}
+.learn--yellow:hover::after, .learn--red:hover::after {
+  background-color: hsl(51, 100%, 49%);
 }
 .learn--red::after {
   background-color: #ffd2cc;
+}
+.learn--red:hover::after {
+  background-color: hsl(7, 99%, 70%);
+  transition: 200ms linear;
 }
 
 .graphic-design h2 {
@@ -368,6 +429,13 @@ p {
   font-size: 1.6rem;
   color: hsl(210, 4%, 67%);
   text-transform: uppercase;
+  letter-spacing: 0.3ch;
+}
+@media (min-width: 64em) {
+  .main__testimonials h2 {
+    margin-top: 12rem;
+    font-size: 2.1rem;
+  }
 }
 .main__testimonials p {
   color: hsl(213, 9%, 39%);
@@ -421,11 +489,25 @@ a:active {
   font-family: "Barlow", sans-serif;
   color: hsl(168, 34%, 41%);
 }
+.footer__links a:hover {
+  color: hsl(0, 0%, 100%);
+  transition: color 250ms ease;
+}
+.footer__socials {
+  transition: 250ms ease;
+}
+.footer__socials a:hover > img {
+  filter: brightness(1000%);
+  transition: 250ms ease;
+}
 .footer .attribution {
   font-family: "Barlow", sans-serif;
   color: hsl(168, 34%, 41%);
   font-size: 1.2rem;
   text-align: center;
+}
+.footer .attribution a {
+  color: hsl(0, 0%, 100%);
 }
 
 .toggle {
@@ -474,7 +556,7 @@ a:active {
 
 .nav-links {
   display: flex;
-  gap: clamp(1.5rem, 5vw, 3.5rem);
+  gap: clamp(1.5rem, 5vw, 5rem);
   background: transparent;
   position: relative;
   transition: 250ms ease;
@@ -483,12 +565,12 @@ a:active {
 .nav-links .contact {
   background-color: white;
   padding-inline: 2.8rem;
-  padding-block: 1.8rem;
-  border-radius: 5rem;
+  padding-block: 1.6rem;
+  border-radius: 4rem;
   transition: 200ms ease;
 }
 .nav-links .contact:hover {
-  background-color: #9cd1e8;
+  background-color: hsla(0, 0%, 100%, 0.3);
   color: hsl(0, 0%, 100%);
 }
 @media (max-width: 63.99em) {
@@ -576,6 +658,12 @@ a:active {
   align-items: center;
   gap: 2.5rem;
 }
+@media (min-width: 64em) {
+  .main__article {
+    display: grid;
+    place-content: center;
+  }
+}
 @media (max-width: 56.25em) {
   .main__article .article__heading {
     padding-inline: 2rem;
@@ -586,14 +674,15 @@ a:active {
 }
 @media (min-width: 64em) {
   .main__article .learn {
-    align-self: start;
+    width: fit-content;
   }
 }
 @media (min-width: 64em) {
   .main__article {
     align-items: center;
     justify-content: center;
-    padding: 10rem;
+    padding-block: 5rem;
+    padding-inline: 13rem;
   }
 }
 .main__gallery {
@@ -616,12 +705,17 @@ a:active {
 }
 .main__testimonials {
   display: grid;
+  place-items: center;
+  padding: 2rem 2rem 10rem 2rem;
   gap: 7rem;
 }
 @media (min-width: 64em) {
   .main__testimonials {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto 1fr;
+    min-height: 86vh;
+    gap: 5rem;
+    padding-inline: 10rem;
   }
   .main__testimonials h2 {
     grid-column: span 3;
@@ -631,9 +725,15 @@ a:active {
   display: grid;
   place-items: center;
 }
+@media (min-width: 64em) {
+  .main .testimonial__card {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 .footer {
   display: grid;
   place-content: center;
-  gap: 6rem;
+  gap: 5.5rem;
 }/*# sourceMappingURL=main.css.map */
