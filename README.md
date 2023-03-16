@@ -56,4 +56,4 @@
 <h3>Sunnyside landing page</h3>
 
 - Solution URL: [Solution URL](https://your-solution-url.com)
-- Live Site URL: [Live site URL](https://dom-iha.github.io/Calculator-app/)
+- Live Site URL: [Live site URL](https://sunnyside-agency-live.netlify.app)

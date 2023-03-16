@@ -7,8 +7,6 @@
   <h2 align="center">Sunnyside agency landing page solution</h2>
   <p align="center">
     <a href="https://www.frontendmentor.io/challenges/sunnyside-agency-landing-page-7yVs3B6ef"><strong>Frontend Mentor Challenge</strong></a>
-    <br />
-    <a href="">View Demo</a>
   </p>
 </div>
 
@@ -29,7 +27,6 @@ This is a solution to the [Sunnyside agency landing page challenge on Frontend M
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 
 ## Overview
@@ -48,7 +45,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Solution URL](https://your-solution-url.com)
-- Live Site URL: [Live site](https://your-live-site-url.com)
+- Live Site URL: [Live site](https://sunnyside-agency-live.netlify.app)
 
 ## My process
 
