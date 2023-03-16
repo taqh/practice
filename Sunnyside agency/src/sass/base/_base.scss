@@ -9,7 +9,8 @@ body {
     grid-template-rows: 80vh 1fr auto;
     grid-template-rows: 88dvh 1fr auto;
     @include u.breakpoint(screen-lg) {
-        grid-template-rows: 100dvh 1fr auto; 
+        // grid-template-rows: 100dvh 1fr auto; 
+        grid-template-rows: 80dvh 1fr auto; 
     }
 }
 
