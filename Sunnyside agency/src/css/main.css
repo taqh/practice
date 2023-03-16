@@ -2,23 +2,94 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&display=swap");
 @keyframes nav-entrance {
   0% {
-    transform: translateY(150%);
-    transform: translateX(100%);
+    transform: translate(150%, -150%);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(90%, -90%);
+    opacity: 0.1;
+  }
+  20% {
+    transform: translate(80%, -80%);
+    opacity: 0.2;
+  }
+  30% {
+    transform: translate(70%, -70%);
+    opacity: 0.3;
+  }
+  40% {
+    transform: translate(60%, -60%);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(50%, -50%);
+    opacity: 0.5;
+  }
+  60% {
+    transform: translate(40%, -40%);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translate(30%, -30%);
+    opacity: 0.7;
+  }
+  80% {
+    transform: translate(20%, -20%);
+    opacity: 0.8;
+  }
+  90% {
+    transform: translate(10%, -10%);
+    opacity: 0.9;
   }
   100% {
-    transform: translateY(0);
-    transform: translateX(0);
+    transform: translate(0, 0);
+    opacity: 1;
   }
 }
 @keyframes nav-exit {
   0% {
-    transform: translateY(0);
-    transform: translateX(0);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  10% {
+    transform: translate(10%, -10%);
+    opacity: 0.9;
+  }
+  20% {
+    transform: translate(20%, -20%);
+    opacity: 0.8;
+  }
+  30% {
+    transform: translate(30%, -30%);
+    opacity: 0.7;
+  }
+  40% {
+    transform: translate(40%, -40%);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(50%, -50%);
+    opacity: 0.5;
+  }
+  60% {
+    transform: translate(60%, -60%);
+    opacity: 0.4;
+  }
+  70% {
+    transform: translate(70%, -70%);
+    opacity: 0.3;
+  }
+  80% {
+    transform: translate(80%, -80%);
+    opacity: 0.2;
+  }
+  90% {
+    transform: translate(90%, -90%);
+    opacity: 0.1;
   }
   100% {
-    transform: translateY(150%);
-    transform: translateX(100%);
-    transform: scale(0);
+    transform: translate(150%, -150%);
+    opacity: 0;
   }
 }
 @keyframes point-down {
@@ -35,13 +106,87 @@
     opacity: 0.5;
   }
 }
-@font-face {
-  font-family: "Barlow", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap");
+:root {
+  font-size: 62.5%;
 }
-@font-face {
-  font-family: "Fraunces", serif;
-  src: url("https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&display=swap");
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* make images easier to work with */
+picture,
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 body {
   display: grid;
@@ -190,6 +335,7 @@ body {
 .footer {
   background-color: hsl(168, 34%, 41%);
   padding-top: 4rem;
+  padding-bottom: 1rem;
 }
 .footer__logo {
   margin-top: 3rem;
@@ -206,9 +352,6 @@ body {
   justify-content: center;
   gap: 3rem;
   margin-top: 2rem;
-}
-.footer .attribution {
-  margin-bottom: 1rem;
 }
 
 .visually-hidden {
@@ -235,88 +378,6 @@ body {
   height: 100%;
 }
 
-:root {
-  font-size: 62.5%;
-}
-
-/* Box sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Reset margins */
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-figure,
-picture {
-  margin: 0;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  overflow-wrap: break-word;
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role=list],
-ol[role=list] {
-  list-style: none;
-}
-
-ul,
-ol {
-  list-style: none;
-  margin: 0;
-}
-
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* make images easier to work with */
-picture,
-img,
-svg {
-  max-width: 100%;
-  display: block;
-}
-
-/* make form elements easier to work with */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* remove animations for people who've turned them off */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
 h1 {
   font-family: "Fraunces", serif;
   font-weight: 900;
@@ -588,14 +649,12 @@ a:active {
     background-color: hsl(51, 100%, 49%);
   }
   .nav-links[data-visible=false] {
-    opacity: 0;
-    transform: scale(0);
     transform: translateY(-150%);
+    animation: nav-exit 250ms ease;
   }
   .nav-links[data-visible=true] {
-    opacity: 1;
-    transform: scale(1);
     transform: translateY(0);
+    animation: nav-entrance 250ms ease;
   }
   .nav-links::before {
     content: "";

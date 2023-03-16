@@ -36,14 +36,12 @@
             background-color: hsl(u.$Yellow);
         }
         &[data-visible="false"] {
-            opacity: 0;
-            transform: scale(0);
             transform: translateY(-150%);
+            animation: nav-exit 250ms ease;
         }
         &[data-visible="true"] {
-            opacity: 1;
-            transform: scale(1);
             transform: translateY(0);
+            animation: nav-entrance 250ms ease;
         }
 
         flex-direction: column;

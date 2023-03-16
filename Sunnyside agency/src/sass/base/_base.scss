@@ -135,6 +135,7 @@ body {
 .footer {
   background-color: hsla(u.$Dark-moderate-cyan);
   padding-top: 4rem;
+  padding-bottom: 1rem;
     &__logo {
         margin-top: 3rem;
         margin-inline: auto;
@@ -150,8 +151,5 @@ body {
         justify-content: center;
         gap: 3rem;
         margin-top: 2rem;
-    }
-    .attribution {
-        margin-bottom: 1rem;
     }
 }
