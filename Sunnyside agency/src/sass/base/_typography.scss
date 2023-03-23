@@ -1,37 +1,38 @@
-
 @use "../utilities" as u;
 
-h1{
-    font-family: u.$heading-font;
-    font-weight: 900;
-    line-height: 1.2;
-    margin-top: 0;
-    text-transform: uppercase;
-    letter-spacing: .2ch;
-    text-align: center;
+h1 {
+   font-family: u.$heading-font;
+   font-weight: 900;
+   line-height: 1.2;
+   margin-top: 0;
+   text-transform: uppercase;
+   letter-spacing: 0.2ch;
+   text-align: center;
 }
 
 h3 {
-    font-family: u.$heading-font;
-    font-weight: 700;
+   font-family: u.$heading-font;
+   font-weight: 700;
 }
 
-h2,h3,p{
-    text-align: center;
+h2,
+h3,
+p {
+   text-align: center;
 }
 
 h1 {
-  font-size: clamp(1.8rem, 2.8rem + 2vw, 10rem);
-  color: hsl(u.$White);
-  letter-spacing: .25ch;
+   font-size: clamp(1.8rem, 2.8rem + 2vw, 10rem);
+   color: hsl(u.$White);
+   letter-spacing: 0.25ch;
 }
 
 h2 {
-    color: hsl(u.$Very-dark-desaturated-blue);
-    font-family: u.$heading-font;
-    font-weight: 900;
-    font-size: 3.2rem;
-    line-height: 1.3;
+   color: hsl(u.$Very-dark-desaturated-blue);
+   font-family: u.$heading-font;
+   font-weight: 900;
+   font-size: 3.2rem;
+   line-height: 1.3;
 }
 
 p {
@@ -40,7 +41,7 @@ p {
    color: hsl(u.$Grayish-blue);
    line-height: 1.65;
 }
-.main__article{
+.main__article {
    p {
       max-width: 45rem;
    }
@@ -51,23 +52,22 @@ p {
       }
    }
 }
-.main__article *{
+.main__article * {
    @include u.breakpoint(screen-lg) {
       text-align: left;
    }
 }
 .learn {
-    position: relative;
-    font-weight: 900;
-    font-family: u.$heading-font;
-    text-transform: uppercase;
-    color: hsl(u.$Very-dark-desaturated-blue);
-    font-size: 1.6rem;
-    
+   position: relative;
+   font-weight: 900;
+   font-family: u.$heading-font;
+   text-transform: uppercase;
+   color: hsl(u.$Very-dark-desaturated-blue);
+   font-size: 1.6rem;
 
-    &--yellow::after{
+   &--yellow::after {
       position: absolute;
-      content: '';
+      content: "";
       z-index: -1;
       height: 1rem;
       display: block;
@@ -82,9 +82,9 @@ p {
       background-color: hsl(u.$Yellow);
    }
 
-    &--red::after {
+   &--red::after {
       @extend .learn--yellow;
-      background-color: lighten(hsl(u.$Soft-red),  20%);
+      background-color: lighten(hsl(u.$Soft-red), 20%);
    }
    &--red:hover::after {
       background-color: hsl(u.$Soft-red);
@@ -93,42 +93,37 @@ p {
 }
 
 .graphic-design {
-
-   h2  {
+   h2 {
       font-size: 2.8rem;
       color: hsl(u.$Dark-desaturated-cyan);
    }
 
    p {
-      color: hsl(u.$Dark-desaturated-cyan); 
+      color: hsl(u.$Dark-desaturated-cyan);
       font-size: 1.6rem;
       max-width: 35rem;
-      
    }
 }
 .photography {
-
-   h2  {
+   h2 {
       font-size: 2.8rem;
       color: hsl(u.$Dark-blue);
    }
 
    p {
-      color: hsl(u.$Dark-blue); 
+      color: hsl(u.$Dark-blue);
       font-size: 1.6rem;
       max-width: 35rem;
-      
    }
 }
 
-.main__testimonials{
-
+.main__testimonials {
    h2 {
       margin-top: 4rem;
       font-size: 1.6rem;
       color: hsl(u.$Grayish-blue);
       text-transform: uppercase;
-      letter-spacing: .3ch;
+      letter-spacing: 0.3ch;
       @include u.breakpoint(screen-lg) {
          margin-top: 12rem;
          font-size: 2.1rem;
@@ -145,13 +140,13 @@ p {
       font-size: 1.8rem;
    }
 
-   span{
+   span {
       font-size: 1.4rem;
       color: hsl(u.$Grayish-blue);
       font-family: u.$body-font;
    }
 }
-.nav-links{
+.nav-links {
    font-size: 2rem;
    color: hsl(u.$Dark-grayish-blue);
    font-family: u.$body-font;
@@ -174,41 +169,34 @@ p {
 a,
 a:visited,
 a:active {
-  text-decoration: none;
-  color: inherit;
+   text-decoration: none;
+   color: inherit;
 }
 
-.footer{
-  background-color: hsl(u.$Moderate-cyan);
+.footer {
+   background-color: hsl(u.$Moderate-cyan);
    &__logo {
-      filter: 
-         brightness(0) 
-         saturate(100%) 
-         invert(39%) 
-         sepia(14%) 
-         saturate(1477%) 
-         hue-rotate(115deg) 
-         brightness(94%) 
-         contrast(95%);
-         width: 17rem;
+      filter: brightness(0) saturate(100%) invert(39%) sepia(14%)
+         saturate(1477%) hue-rotate(115deg) brightness(94%) contrast(95%);
+      width: 17rem;
    }
    &__links {
       font-family: u.$body-font;
       color: hsl(u.$Dark-moderate-cyan);
-      
+
       & a:hover {
          color: hsl(u.$White);
          transition: color 250ms ease;
       }
    }
-   &__socials{
+   &__socials {
       transition: 250ms ease;
-      a:hover > img{
+      a:hover > img {
          filter: brightness(1000%);
          transition: 250ms ease;
       }
    }
-   .attribution{
+   .attribution {
       font-family: u.$body-font;
       color: hsl(u.$Dark-moderate-cyan);
       font-size: 1.2rem;
