@@ -20,7 +20,7 @@
 <h3>Todo app</h3>
 
 - Solution URL: [Solution URL](https://your-solution-url.com)
-- Live Site URL: [Live site URL](https://sunnyside-agency-live.netlify.app)
+- Live Site URL: [Live site URL](domiha-todo.netlify.app)
 
 
 <h3>E-commerce product page</h3>
@@ -61,6 +61,6 @@
 
 <h3>Sunnyside landing page</h3>
 
-- Solution URL: [Solution URL](https://your-solution-url.com)
+- Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/sunnyside-agency-landing-page-with-sass-and-javascript-kTSNM9BhOT)
 - Live Site URL: [Live site URL](https://sunnyside-agency-live.netlify.app)
 
