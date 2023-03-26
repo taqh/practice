@@ -1,0 +1,101 @@
+:root {
+   font-size: 62.5%;
+}
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+   margin: 0;
+}
+
+/* Avoid text overflows */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+   font-weight: 400;
+   overflow-wrap: break-word;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+   list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+   scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+   text-decoration-skip-ink: auto;
+}
+
+/* make images easier to work with */
+picture,
+img,
+svg {
+   max-width: 100%;
+   display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+   font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+   *,
+   *::before,
+   *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+   }
+}
+
+h1,
+h2,
+h3 {
+   font-weight: var(--fw-700);
+}
+
+/* ----- Utility classes ----- */
+.visually-hidden {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border: 0;
+}
+.flex {
+   display: flex;
+}

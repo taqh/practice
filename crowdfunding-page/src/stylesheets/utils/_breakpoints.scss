@@ -1,0 +1,26 @@
+
+$breakpoint-up: (
+    "screen-sm": 48em, //768px small tabs
+    "screen-mid": 56.25em, //900px large tabs
+    "screen-lg": 64em, //1024px desktop
+    "screen-xl": 90em, //1440px desktop
+);
+
+$breakpoint-down: (
+    "screen-sm": 26.5625em, //425px 
+    "screen-mid": 56.25em, //900px 
+    "screen-lg": 63.99em, //1024px 
+    "screen-xl": 90em, //1440px desktop
+);
+
+@mixin breakpoint($size) {
+    @media (min-width: map-get($breakpoint-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoint-down, $size)) {
+        @content;
+    }
+}

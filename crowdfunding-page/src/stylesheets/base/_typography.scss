@@ -1,0 +1,6 @@
+@use '../utils' as u;
+
+body {
+    font-family: u.$font-primary;
+    font-size: 1.6rem;
+}
