@@ -1,0 +1,79 @@
+@use "../utils/" as u;
+.main {
+   display: grid;
+   gap: 3rem;
+
+   .hero {
+      position: relative;
+      display: grid;
+      place-items: center;
+      gap: 1rem;
+      grid-template-rows: fit-content;
+      :nth-child(2),
+      :nth-child(3) {
+         grid-column: span 2;
+      }
+      &__logo {
+         position: absolute;
+         inset: -2.6rem 0 0 calc(50% - 3rem);
+      }
+
+      @include u.breakpoint-down(screen-sm) {
+         grid-template-columns: 1fr auto;
+
+         &__btn--back {
+            justify-self: end;
+            width: 100%;
+         }
+         &__btn--bookmark {
+            justify-self: start;
+         }
+      }
+      @include u.breakpoint-down(screen-xsm) {
+         &__btn--back {
+            grid-column: span 2;
+         }
+         &__btn--bookmark {
+            justify-self: center;
+            grid-column: span 2;
+         }
+      }
+   }
+
+   .dashboard {
+      position: relative;
+      display: grid;
+      gap: 2rem;
+      @include u.breakpoint(screen-mid) {
+         grid-template-columns: repeat(3, 1fr);
+         &__progress-bar {
+            grid-column: span 3;
+         }
+      }
+      hr {
+         transform: rotate(90deg);
+         border-top: 0.1rem solid hsl(var(--Black));
+      }
+   }
+
+   .project {
+      display: grid;
+      gap: 3rem;
+
+      &__item {
+         gap: 1rem;
+         display: grid;
+         @include u.breakpoint(screen-mid) {
+            grid-template-columns: 1fr 1fr;
+            &:nth-child(1),
+            :nth-child(2),
+            :nth-child(3) {
+               grid-column: span 2;
+            }
+            .item-btn {
+               justify-self: end;
+            }
+         }
+      }
+   }
+}

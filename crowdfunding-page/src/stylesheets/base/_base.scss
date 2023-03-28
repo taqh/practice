@@ -1,6 +1,101 @@
-@use '../utils' as u;
+@use "../utils" as u;
 
 body {
-    min-height: 100vh;
-    background-color: hsl(var(--Moderate-cyan));
+   background-color: hsl(var(--Gray));
+}
+#root {
+   display: grid;
+   min-height: 100vh;
+   position: relative;
+   grid-template-rows: auto 1fr;
+}
+button {
+   border: 0;
+   padding: 0;
+   background-color: transparent;
+   cursor: pointer;
+}
+.header {
+   min-height: 48.6vh;
+   background: url("../assets/images/image-hero-mobile.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   padding-inline: 1.8rem;
+   padding-block: 2.6rem;
+
+   @include u.breakpoint(screen-sm) {
+      background-size: contain;
+      background-image: url("../assets/images/image-hero-desktop.jpg");
+      min-height: 65vh;
+   }
+}
+
+.main {
+   min-height: 100%;
+   position: absolute;
+   inset: 40vh 0 0 0;
+   width: calc(100% - 4rem);
+   margin-inline: auto;
+   margin-bottom: 1rem;
+
+   @include u.breakpoint(screen-mid) {
+      width: clamp(40vw, 73rem, 100%);
+      inset: 50vh 0 0 0;
+   }
+   .hero {
+      &__btn--back {
+         padding: 1.7rem 3.5rem;
+         border-radius: 3.5rem;
+      }
+      &__btn--bookmark {
+         border-radius: 3rem;
+         display: flex;
+         align-items: center;
+         span {
+            padding: 0 2rem;
+            @include u.breakpoint-down(screen-sm) {
+               display: none;
+            }
+         }
+      }
+   }
+   .dashboard {
+      justify-items: center;
+      &__progress-bar {
+         width: calc(100% - 6rem);
+         height: 1.3rem;
+         border: 0;
+         border-radius: 2rem;
+
+         &::-webkit-progress-value {
+            background-color: hsl(var(--Moderate-cyan));
+            border-radius: 1rem;
+         }
+         &::-moz-progress-bar {
+            background-color: hsl(var(--Moderate-cyan));
+            border-radius: 1rem;
+         }
+         &::-webkit-progress-bar {
+            border-radius: 1rem;
+         }
+      }
+   }
+
+   .project {
+      &__item {
+         padding: 2rem;
+         border: solid .1rem hsl(var(--Light-gray));
+         border-radius: .8rem;
+      }
+      .item-btn {
+         padding: 1.5rem 3rem;
+         border-radius: 3rem;
+         width: fit-content;
+      }
+      .item__amount {
+         display: flex;
+         align-items: center;
+         gap: .8rem;
+      }
+   }
 }

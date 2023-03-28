@@ -1,6 +1,98 @@
-@use '../utils' as u;
+@use "../utils" as u;
 
 body {
-    font-family: u.$font-primary;
-    font-size: 1.6rem;
+   font-family: u.$font-primary;
+   font-size: 1.6rem;
+   line-height: 1.5;
+
+}
+
+.nav-links {
+   a {
+      color: hsl(var(--Black));
+      text-decoration: none;
+      font-weight: u.$font-weight-medium;
+
+      @include u.breakpoint(screen-lg) {
+         color: hsl(var(--White));
+      }
+   }
+}
+
+.hero {
+   text-align: center;
+   &__heading {
+      font-size: clamp(2.2rem, 1rem + 1.5vw, 5rem);
+      margin-top: 3rem;
+   }
+   p {
+      margin-block: 1rem;
+      font-size: 1.4rem;
+      color: hsl(var(--Dark-gray) / 0.8);
+      font-weight: u.$font-weight-medium;
+   }
+   &__btn--back {
+      color: hsl(var(--White));
+      background-color: hsl(var(--Moderate-cyan));
+      font-weight: u.$font-weight-bold;
+      &:hover {
+         background-color: hsl(var(--Dark-cyan));
+      }
+   }
+   &__btn--bookmark {
+      background-color: hsl(var(--Light-gray));
+      color: hsl(var(--Dark-gray));
+      font-weight: u.$font-weight-bold;
+   }
+   .selected {
+      color: hsl(var(--Dark-cyan));
+   }
+}
+
+.dashboard {
+   text-align: center;
+   h3 {
+      font-size: 3.2rem;
+      color: hsl(var(--Black));
+      font-weight: u.$font-weight-bold;
+   }
+   p {
+      color: hsl(var(--Dark-gray));
+      font-size: 1.4rem;
+      font-weight: u.$font-weight-medium;
+   }
+}
+
+.project {
+   &__desc{
+      color: hsl(var(--Dark-gray));
+      font-size: 1.5rem;
+   }
+   .price {
+      color: hsl(var(--Moderate-cyan));
+      font-size: 1.4rem;
+      font-weight: u.$font-weight-medium;
+   }
+   .item__desc{
+      font-size: 1.4rem;
+      color: hsl(var(--Dark-gray));
+   }
+   .item-btn {
+      background-color: hsl(var(--Moderate-cyan));
+      color: hsl(var(--White));
+      font-weight: u.$font-weight-medium;
+      font-size: 1.5rem;
+      &:hover {
+         background-color: hsl(var(--Dark-cyan));
+      }
+
+   }
+   .item__amount {
+      color: hsl(var(--Dark-gray));
+      span {
+         font-weight: u.$font-weight-bold;
+         font-size: 3.5rem;
+         color: hsl(var(--Black));
+      }
+   }
 }

@@ -1,13 +1,14 @@
-import './stylesheets/main.scss'
+import Header from "./components/Header";
+import Main from "./components/Main";
+import "./stylesheets/main.scss";
 
 function App() {
-
-  return (
-    <>
-      <Header />
-      <Main />
-    </>
-  )
+   return (
+      <>
+         <Header />
+         <Main />
+      </>
+   );
 }
 
-export default App
+export default App;

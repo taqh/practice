@@ -1,0 +1,19 @@
+.header {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: auto 1fr;
+   position: relative;
+   grid-template-areas:
+      "logo nav"
+      "hero hero";
+
+   &__logo {
+      grid-area: logo;
+   }
+   .toggle {
+      grid-area: nav;
+   }
+   &__nav {
+      grid-area: nav;
+   }
+}

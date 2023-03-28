@@ -1,0 +1,32 @@
+.modal{
+    border: 0;
+    inset: 0;
+    z-index: 100;
+    gap: 2.5rem;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    animation: fade-in 500ms forwards;
+}
+.modal::backdrop{
+    background: hsl(0 0% 0% / .7);
+    opacity: 0;
+}
+.modal[open]::backdrop{
+    animation: fade-in 500ms forwards; 
+}
+// .modal .preview{
+//     width: 50rem;
+//     height: 50rem;
+// }
+// .modal .cards{
+//     justify-content: center;
+//     gap: 2rem;
+// }
+
+.modal[open]{
+    animation: fade-in 500ms forwards;
+    display: flex;
+}
