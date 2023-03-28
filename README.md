@@ -54,15 +54,15 @@
 - Live Site URL: [Live site URL](https://sunnyside-agency-live.netlify.app) -->
 
 
-<table width="100vw">
+<table >
   <tr>
-    <th>Project</th>
+    <th width="100px">Project</th>
     <th>Solution URL</th>
     <th>Live Site URL</th>
   </tr>
   <tr>
     <td>Calculator app</td>
-    <td><a href="https://www.frontendmentor.io/solutions/calculator-app-using-css-grid-flexbox-and-javascript-W6lGHxH9_h">Solution URL</a></td>
+    <td><a href="https://www.frontendmentor.io/solutions/calculator-app-using-css-grid-flexbox-and-javascript-W6lGHxH9_h">Solution</a></td>
     <td><a href="https://calc-live.netlify.app">Live site</a></td>
   </tr>
   <tr>
