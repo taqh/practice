@@ -54,7 +54,7 @@
 - Live Site URL: [Live site URL](https://sunnyside-agency-live.netlify.app) -->
 
 
-<table align="center" style="width: 100vw;"
+<table >
   <tr>
     <th>Project</th>
     <th>Solution URL</th>
