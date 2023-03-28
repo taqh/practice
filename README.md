@@ -72,7 +72,7 @@
   </tr>
   <tr>
     <td>Todo app</td>
-    <td><a href="https://your-solution-url.com">Solution URL</a></td>
+    <td><a href="https://your-solution-url.com">Solution</a></td>
     <td><a href="https://domiha-todo.netlify.app">Live site</a></td>
   </tr>
   <tr>
