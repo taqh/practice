@@ -3,7 +3,7 @@
 
 ## Links
 
-### Calculator app
+<!-- ### Calculator app
 
 - Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/calculator-app-using-css-grid-flexbox-and-javascript-W6lGHxH9_h)
 - Live Site URL: [Live site](https://calc-live.netlify.app)
@@ -51,4 +51,63 @@
 ### Sunnyside landing page
 
 - Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/sunnyside-agency-landing-page-with-sass-and-javascript-kTSNM9BhOT)
-- Live Site URL: [Live site URL](https://sunnyside-agency-live.netlify.app)
+- Live Site URL: [Live site URL](https://sunnyside-agency-live.netlify.app) -->
+
+
+<table align="center">
+  <tr>
+    <th>Project</th>
+    <th>Solution URL</th>
+    <th>Live Site URL</th>
+  </tr>
+  <tr>
+    <td>Calculator app</td>
+    <td><a href="https://www.frontendmentor.io/solutions/calculator-app-using-css-grid-flexbox-and-javascript-W6lGHxH9_h">Solution URL</a></td>
+    <td><a href="https://calc-live.netlify.app">Live site</a></td>
+  </tr>
+  <tr>
+    <td>Multi step form</td>
+    <td><a href="https://www.frontendmentor.io/solutions/multistep-form-YWjY9ctzuj">Solution URL</a></td>
+    <td><a href="https://multistep-formlive.netlify.app">Live site</a></td>
+  </tr>
+  <tr>
+    <td>Todo app</td>
+    <td><a href="https://your-solution-url.com">Solution URL</a></td>
+    <td><a href="https://domiha-todo.netlify.app">Live site URL</a></td>
+  </tr>
+  <tr>
+    <td>E-commerce product page</td>
+    <td><a href="https://www.frontendmentor.io/solutions/html-css-javascript-xtXH4w8QVl">Solution URL</a></td>
+    <td><a href="https://e-com-product-page.netlify.app">Live site</a></td>
+  </tr>
+  <tr>
+    <td>Space tourism website</td>
+    <td><a href="https://www.frontendmentor.io/solutions/space-tourism-multipage-website-uxKXi_S_rL">Solution URL</a></td>
+    <td><a href="https://spacetourweb.netlify.app">Live site</a></td>
+  </tr>
+  <tr>
+    <td>Social media dashboard</td>
+    <td><a href="https://www.frontendmentor.io/solutions/social-media-dashboard-using-css-grid-and-javascript-Wokd8pa3wa">Solution URL</a></td>
+    <td><a href="https://socialdashboard-live.netlify.app">Live site</a></td>
+  </tr>
+  <tr>
+    <td>Intro section</td>
+    <td><a href="https://www.frontendmentor.io/solutions/html-css-javascript-glTHvZo3wi">Solution URL</a></td>
+    <td><a href="https://introsect.netlify.app">Live site URL</a></td>
+  </tr>
+  <tr>
+    <td>News homepage</td>
+    <td><a href="https://www.frontendmentor.io/solutions/new-homepage-using-css-grid-PRYr8y_kZM">Solution URL</a></td>
+    <td><a href="https://news-homepage-live.netlify.app">Live site</a></td>
+  </tr>
+  <tr>
+    <td>Testimonials grid section</td>
+    <td><a href="https://www.frontendmentor.io/solutions/testimonials-section-using-css-grid-qlmLZ_dyET">Solution URL</a></td>
+    <td><a href="https://grid-sec.netlify.app">Live site URL</a></td>
+  </tr>
+  <tr>
+    <td> Sunnyside landing page</td>
+    <td><a href="https://www.frontendmentor.io/solutions/sunnyside-agency-landing-page-with-sass-and-javascript-kTSNM9BhOT">Solution URL</a></td>
+    <td><a href="https://sunnyside-agency-live.netlify.app">Live site</a></td>
+  </tr>
+</table>
