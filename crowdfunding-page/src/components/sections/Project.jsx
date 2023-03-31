@@ -1,7 +1,7 @@
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 
-const Project = () => {
+const Project = ({ showModal }) => {
    return (
       <Card className='project'>
          <h3 className='project__heading'>About this project</h3>
@@ -29,7 +29,9 @@ const Project = () => {
                <span>101</span>
                left
             </p>
-            <Button className='item-btn'>Select Reward</Button>
+            <Button onClick={() => showModal()} className='item-btn'>
+               Select Reward
+            </Button>
          </div>
 
          <div className='project__item'>
@@ -44,7 +46,9 @@ const Project = () => {
                <span>64</span>
                left
             </p>
-            <Button className='item-btn'>Select Reward</Button>
+            <Button onClick={() => showModal()} className='item-btn'>
+               Select Reward
+            </Button>
          </div>
 
          <div className='project__item'>
@@ -59,7 +63,9 @@ const Project = () => {
                <span>0</span>
                left
             </p>
-            <Button className='item-btn'>Out of Stock</Button>
+            <Button onClick={() => showModal()} className='item-btn out'>
+               Out of Stock
+            </Button>
          </div>
       </Card>
    );

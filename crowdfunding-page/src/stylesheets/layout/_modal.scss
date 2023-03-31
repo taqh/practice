@@ -1,0 +1,48 @@
+.modal {
+   &--selection {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+         "head close"
+         "option option";
+      button {
+         grid-area: close;
+      }
+      form {
+         grid-area: option;
+         display: grid;
+         gap: 2.5rem;
+      }
+   }
+   .pledge {
+      display: grid;
+      grid-template-rows: auto;
+      grid-template-areas: 
+         'check label'
+         'text text'
+         'input form'
+      ;
+      p{
+         grid-area: text;
+      }
+      button {
+         grid-area: form;
+      }
+      .pledge__input{
+        grid-area: input; 
+      }
+   }
+
+   &--success {
+      padding-bottom: 4rem;
+      div {
+         display: grid;
+         gap: 2rem;
+         place-items: center;
+      }
+      button {
+         padding: 1rem 3rem;
+         border-radius: 5rem;
+      }
+   }
+}

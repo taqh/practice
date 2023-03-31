@@ -6,19 +6,20 @@ const Dashboard = () => {
 
    return (
       <Card className='dashboard'>
+         <h2 className="visually-hidden">Project details</h2>
          <div>
             <h3>${progress.toLocaleString()}</h3>
             <p className="dashboard__text">of $100,000 backed</p>
          </div>
 
-         <hr/>
+         <span className="rule"></span>
 
          <div>
             <h3>5,010</h3>
             <p className="dashboard__text">total backers</p>
          </div>
 
-         <hr/>
+         <span className="rule"></span>
          
          <div>
             <h3>56</h3>

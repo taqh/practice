@@ -4,7 +4,6 @@ body {
    font-family: u.$font-primary;
    font-size: 1.6rem;
    line-height: 1.5;
-
 }
 
 .nav-links {
@@ -15,6 +14,7 @@ body {
 
       @include u.breakpoint(screen-lg) {
          color: hsl(var(--White));
+         font-size: 1.4rem;
       }
    }
 }
@@ -43,6 +43,11 @@ body {
       background-color: hsl(var(--Light-gray));
       color: hsl(var(--Dark-gray));
       font-weight: u.$font-weight-bold;
+      &:hover {
+         img {
+            opacity: 0.9;
+         }
+      }
    }
    .selected {
       color: hsl(var(--Dark-cyan));
@@ -64,7 +69,7 @@ body {
 }
 
 .project {
-   &__desc{
+   &__desc {
       color: hsl(var(--Dark-gray));
       font-size: 1.5rem;
    }
@@ -73,9 +78,10 @@ body {
       font-size: 1.4rem;
       font-weight: u.$font-weight-medium;
    }
-   .item__desc{
+   .item__desc {
       font-size: 1.4rem;
       color: hsl(var(--Dark-gray));
+      margin-block: clamp(1rem, 1rem + 1vw, 2.5rem);
    }
    .item-btn {
       background-color: hsl(var(--Moderate-cyan));
@@ -85,7 +91,6 @@ body {
       &:hover {
          background-color: hsl(var(--Dark-cyan));
       }
-
    }
    .item__amount {
       color: hsl(var(--Dark-gray));
@@ -93,6 +98,53 @@ body {
          font-weight: u.$font-weight-bold;
          font-size: 3.5rem;
          color: hsl(var(--Black));
+      }
+   }
+}
+
+.modal {
+   P {
+      color: hsl(var(--Dark-gray));
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+   }
+   &--success {
+      text-align: center;
+      button {
+         color: hsl(var(--White));
+         background-color: hsl(var(--Moderate-cyan));
+      }
+   }
+
+   &--selection {
+      p {
+         color: hsl(var(--Dark-gray));
+      }
+      .price {
+         color: hsl(var(--Moderate-cyan));
+         font-size: 1.4rem;
+         font-weight: u.$font-weight-medium;
+      }
+      .pledge__label {
+         font-size: 2rem;
+         font-weight: u.$font-weight-bold;
+      }
+      .input-label {
+         color: hsl(var(--Dark-gray));
+      }
+      .pledge__amount {
+         span {
+            color: hsl(var(--Black));
+            font-weight: u.$font-weight-bold;
+            font-size: 1.8rem;
+         }
+      }
+      .submit {
+         background-color: hsl(var(--Moderate-cyan));
+         color: hsl(var(--White));
+         &:hover {
+            background-color: hsl(var(--Dark-cyan));
+         }
       }
    }
 }

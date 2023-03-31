@@ -5,7 +5,7 @@ import bookmarkedIcon from "../../assets/images/icon-bookmark-active.svg";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 
-const Hero = () => {
+const Hero = ({ showModal }) => {
    const [bookmark, setBookmark] = useState(false);
 
    const mark = () => {
@@ -20,14 +20,16 @@ const Hero = () => {
             A beautifully handcrafted monitor stand to reduce neck and eye
             strain.
          </p>
-         <Button className='hero__btn--back'>Back this project</Button>
+         <Button className='hero__btn--back' onClick={() => showModal()}>Back this project</Button>
          <Button className='hero__btn--bookmark' onClick={mark}>
             {bookmark ? (
                <img src={bookmarkedIcon} alt='bookmark icon' />
             ) : (
                <img src={bookmarkIcon} alt='bookmark icon' />
             )}
-            <span className={bookmark ? 'selected' : ''}>{bookmark ? "Bookmarked" : "Bookmark"}</span>
+            <span className={bookmark ? "selected" : ""}>
+               {bookmark ? "Bookmarked" : "Bookmark"}
+            </span>
          </Button>
       </Card>
    );

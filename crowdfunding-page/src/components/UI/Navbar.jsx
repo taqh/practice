@@ -3,16 +3,16 @@ const Navbar = ({ onToggle }) => {
       <nav className='header__nav'>
          <ul className='nav-links' data-visible={onToggle}>
             <li>
-               <a href='#'>About</a>
+               <a href='#' className="link">About</a>
             </li>
             <li>
-               <a href='#'>Discover</a>
+               <a href='#' className="link">Discover</a>
             </li>
             <li>
-               <a href='#'>Get Started</a>
+               <a href='#' className="link">Get Started</a>
             </li>
          </ul>
-         <div class='blur' data-visible={onToggle}></div>
+         <div className='blur' data-visible={onToggle}></div>
       </nav>
    );
 };
