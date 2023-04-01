@@ -17,39 +17,50 @@
 
    .pledge {
       border-radius: 0.8rem;
-      padding: clamp(1.8rem, 1rem + 2vw, 5rem);
       border: solid 0.1rem hsl(var(--Light-gray));
       &:last-of-type {
-         opacity: 0.7;
+         opacity: 0.5;
          pointer-events: none;
       }
-      &__input {
-         padding: 1rem 2rem;
-         border-radius: 3rem;
-         max-width: 11rem;
-
-         border: 0;
-         outline: .1rem solid hsl(var(--Light-gray));
-         &:focus{
-            outline-color: hsl(var(--Moderate-cyan));
+      &__info {
+         padding: clamp(1.8rem, 1rem + 2vw, 5rem);
+         .amount {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
          }
       }
-      &__amount {
-         display: flex;
-         align-items: center;
-         gap: 0.8rem;
+      &__confirm {
+         padding: 2rem;
+         position: relative;
+         border-top: 0.1rem solid hsl(var(--Light-gray));
+         // display: none;
+         .sign {
+            position: absolute;
+            inset: 0 ;
+            display: none;
+         }
+         .commit {
+            border: 0;
+            max-width: 10rem;
+            max-height: 4.4rem;
+            padding: 1rem 3rem;
+            border-radius: 3rem;
+            outline: 0.1rem solid hsl(var(--Light-gray));
+            &:focus {
+               outline-color: hsl(var(--Moderate-cyan));
+            }
+         }
+         .submit {
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            width: fit-content;
+            height: fit-content;
+         }
       }
    }
-   .submit {
-      padding: 1rem 2rem;
-      border-radius: 3rem;
-      width: fit-content;
-      height: fit-content;
-   }
-   .input-label {
-      position: absolute;
-   }
 }
+
 .modal::backdrop {
    opacity: 0;
    background: hsl(0 0% 0% / 0.7);
@@ -59,17 +70,16 @@
 }
 .modal[open] {
    animation: fade-in 500ms forwards;
-   // display: flex;
 }
 
 input[type="radio"] {
    margin: 0 0 auto 0;
-   width: 1.5rem;
-   height: 1.5rem;
+   width: 1.3rem;
+   height: 1.3rem;
    cursor: pointer;
    appearance: none;
    border-radius: 50%;
-   outline-offset: 0.4rem;
+   outline-offset: 0.3rem;
    accent-color: hsl(var(--Moderate-cyan));
    outline: 0.1rem solid hsl(var(--Dark-gray));
 }

@@ -4,7 +4,7 @@ import check from '../../assets/images/icon-check.svg'
 
 const Success = ({showModal, hideModal}) => {
    return (
-      <Modal  className='modal--success'>
+      <Modal open={''} className='modal--success'>
          <div>
             <img src={check} alt="checkmark"/>
             <h3>Thanks for your support! </h3>

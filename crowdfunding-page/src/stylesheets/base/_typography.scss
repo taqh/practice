@@ -106,9 +106,11 @@ body {
    P {
       color: hsl(var(--Dark-gray));
       font-size: 1.5rem;
-      margin-bottom: 1rem;
    }
    &--success {
+      p {
+         margin-bottom: 1rem;
+      }
       text-align: center;
       button {
          color: hsl(var(--White));
@@ -117,33 +119,45 @@ body {
    }
 
    &--selection {
-      p {
-         color: hsl(var(--Dark-gray));
-      }
-      .price {
-         color: hsl(var(--Moderate-cyan));
-         font-size: 1.4rem;
-         font-weight: u.$font-weight-medium;
-      }
-      .pledge__label {
+      h2 {
          font-size: 2rem;
-         font-weight: u.$font-weight-bold;
       }
-      .input-label {
-         color: hsl(var(--Dark-gray));
-      }
-      .pledge__amount {
-         span {
-            color: hsl(var(--Black));
+      .pledge__info {
+         .price {
+            color: hsl(var(--Moderate-cyan));
+            font-size: 1.4rem;
+            font-weight: u.$font-weight-medium;
+         }
+         .label {
+            font-size: 1.5rem;
             font-weight: u.$font-weight-bold;
-            font-size: 1.8rem;
+         }
+         .amount {
+            span {
+               color: hsl(var(--Black));
+               font-weight: u.$font-weight-bold;
+               font-size: 1.8rem;
+            }
+         }
+         .desc {
+            margin-block: 2rem;
          }
       }
-      .submit {
-         background-color: hsl(var(--Moderate-cyan));
-         color: hsl(var(--White));
-         &:hover {
-            background-color: hsl(var(--Dark-cyan));
+
+      .pledge__confirm {
+         .sign {
+            color: hsl(var(--Dark-gray));
+            font-size: 1.4rem;
+         }
+         .submit {
+            background-color: hsl(var(--Moderate-cyan));
+            color: hsl(var(--White));
+            &:hover {
+               background-color: hsl(var(--Dark-cyan));
+            }
+         }
+         .commit {
+            font-weight: u.$font-weight-bold;
          }
       }
    }

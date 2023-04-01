@@ -1,10 +1,19 @@
+@use "../utils/" as u;
+
 .modal {
    &--selection {
-      display: grid;
+      &[open] {
+         display: grid;
+      }
       grid-template-columns: 1fr auto;
+      grid-template-rows: auto;
       grid-template-areas:
          "head close"
+         "mid mid"
          "option option";
+      p {
+         grid-area: mid;
+      }
       button {
          grid-area: close;
       }
@@ -13,23 +22,70 @@
          display: grid;
          gap: 2.5rem;
       }
-   }
-   .pledge {
-      display: grid;
-      grid-template-rows: auto;
-      grid-template-areas: 
-         'check label'
-         'text text'
-         'input form'
-      ;
-      p{
-         grid-area: text;
-      }
-      button {
-         grid-area: form;
-      }
-      .pledge__input{
-        grid-area: input; 
+      .pledge {
+         &__info {
+            display: grid;
+            align-items: center;
+            gap: 2rem;
+            row-gap: 0;
+            grid-template-columns: 2rem 1fr;
+            grid-template-rows: auto;
+            grid-template-areas:
+               "check title"
+               "check value"
+               "desc desc"
+               "stock stock";
+            @include u.breakpoint(screen-lg) {
+               grid-template-columns: auto auto 1fr auto;
+               grid-template-areas:
+                  "check title value stock"
+                  ". desc desc desc";
+            }
+            input[type="radio"] {
+               grid-area: check;
+               justify-self: center;
+            }
+            .label {
+               grid-area: title;
+            }
+            .price {
+               grid-area: value;
+            }
+            .desc {
+               grid-area: desc;
+            }
+            .amount {
+               grid-area: stock;
+            }
+         }
+
+         &__confirm {
+            display: grid;
+            gap: 1rem;
+            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+               "top top"
+               "left right";
+            @include u.breakpoint(screen-lg) {
+               grid-template-columns: 1fr auto auto;
+               grid-template-areas: "top top left right";
+            }
+            p {
+               grid-area: top;
+               @include u.breakpoint-down(screen-lg) {
+                  justify-self: center;
+               }
+            }
+            input {
+               grid-area: left;
+               justify-self: center;
+            }
+            button {
+               grid-area: right;
+               justify-self: center;
+            }
+         }
       }
    }
 
