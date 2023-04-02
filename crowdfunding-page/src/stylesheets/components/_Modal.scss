@@ -1,13 +1,23 @@
 @use "../utils" as u;
 
-.modal {
-   inset: auto 0;
-   border: 0;
-   gap: 2.5rem;
+.scroll {
+   padding-block: 10rem;
+   position: fixed;
+   inset: 0;
+   overflow-y: auto;
    z-index: 100;
+   display: grid;
+}
+.center {
+   display: grid;
+   place-items: center;
+}
+.modal {
+   margin: auto;
    padding: 2rem;
-   position: absolute;
    border-radius: 1rem;
+   min-height: fit-content;
+   width: calc(100% - 4rem);
    animation: fade-in 500ms forwards;
    background-color: hsl(var(--White));
    box-shadow: 0 0 1rem hsl(var(--Black) / 0.05);
@@ -34,17 +44,20 @@
          padding: 2rem;
          position: relative;
          border-top: 0.1rem solid hsl(var(--Light-gray));
-         // display: none;
+
          .sign {
-            position: absolute;
-            inset: 0 ;
-            display: none;
+            width: fit-content;
+            margin-left: 2.5rem;
+            margin-bottom: 0.1rem;
+            @include u.breakpoint(screen-sm) {
+               margin-left: 1.5rem;
+            }
          }
          .commit {
             border: 0;
             max-width: 10rem;
             max-height: 4.4rem;
-            padding: 1rem 3rem;
+            padding: 1rem 2.5rem;
             border-radius: 3rem;
             outline: 0.1rem solid hsl(var(--Light-gray));
             &:focus {
@@ -59,21 +72,34 @@
          }
       }
    }
+   .active {
+      border: solid 0.2rem hsl(var(--Moderate-cyan));
+   }
+   .invalid {
+      border: solid 0.2rem hsl(var(--Strawberry-red));
+   }
 }
 
-.modal::backdrop {
-   opacity: 0;
-   background: hsl(0 0% 0% / 0.7);
+.backdrop {
+   z-index: 5;
+   inset: 0 0 0 0;
+   position: fixed;
+   min-width: 100vw;
+   min-height: 100vh;
+   background: hsl(var(--Black) / 0.6);
 }
-.modal[open]::backdrop {
+.modal[open].backdrop {
    animation: fade-in 500ms forwards;
 }
 .modal[open] {
    animation: fade-in 500ms forwards;
 }
+.modal[open="false"] {
+   animation: fade-out 500ms forwards;
+}
 
 input[type="radio"] {
-   margin: 0 0 auto 0;
+   margin: 0;
    width: 1.3rem;
    height: 1.3rem;
    cursor: pointer;
@@ -82,6 +108,9 @@ input[type="radio"] {
    outline-offset: 0.3rem;
    accent-color: hsl(var(--Moderate-cyan));
    outline: 0.1rem solid hsl(var(--Dark-gray));
+   &:focus-within {
+      outline-color: hsl(var(--Dark-cyan));
+   }
 }
 input[type="radio"]:checked {
    outline: 0.1rem solid hsl(var(--Moderate-cyan));

@@ -16,6 +16,7 @@ button {
    background-color: transparent;
    cursor: pointer;
    white-space: nowrap;
+   transition: background 250ms ease;
 }
 
 .header {

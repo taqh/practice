@@ -2,9 +2,8 @@
 
 .modal {
    &--selection {
-      &[open] {
-         display: grid;
-      }
+      display: grid;
+      gap: 2.5rem;
       grid-template-columns: 1fr auto;
       grid-template-rows: auto;
       grid-template-areas:
@@ -16,6 +15,9 @@
       }
       button {
          grid-area: close;
+         width: 3rem;
+         display: grid;
+         place-items: center;
       }
       form {
          grid-area: option;
@@ -35,7 +37,7 @@
                "check value"
                "desc desc"
                "stock stock";
-            @include u.breakpoint(screen-lg) {
+            @include u.breakpoint(screen-mid) {
                grid-template-columns: auto auto 1fr auto;
                grid-template-areas:
                   "check title value stock"
@@ -67,13 +69,17 @@
             grid-template-areas:
                "top top"
                "left right";
-            @include u.breakpoint(screen-lg) {
+            @include u.breakpoint(screen-mid) {
                grid-template-columns: 1fr auto auto;
                grid-template-areas: "top top left right";
             }
+            .sign {
+               grid-area: left;
+               justify-self: start;
+            }
             p {
                grid-area: top;
-               @include u.breakpoint-down(screen-lg) {
+               @include u.breakpoint-down(screen-mid) {
                   justify-self: center;
                }
             }
@@ -90,12 +96,14 @@
    }
 
    &--success {
-      padding-bottom: 4rem;
-      div {
-         display: grid;
-         gap: 2rem;
-         place-items: center;
+      gap: 2.5rem;
+      display: grid;
+      padding-block: 4rem;
+      @include u.breakpoint(screen-sm) {
+        padding: 4rem;
       }
+      place-items: center;
+      max-width: 50rem;
       button {
          padding: 1rem 3rem;
          border-radius: 5rem;

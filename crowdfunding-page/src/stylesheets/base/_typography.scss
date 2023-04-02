@@ -131,6 +131,10 @@ body {
          .label {
             font-size: 1.5rem;
             font-weight: u.$font-weight-bold;
+            cursor: pointer;
+            &:hover {
+               color: hsl(var(--Moderate-cyan));
+            }
          }
          .amount {
             span {
