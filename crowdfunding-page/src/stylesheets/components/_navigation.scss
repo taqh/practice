@@ -7,8 +7,7 @@
       padding: 0.5rem;
       z-index: 3;
       @include u.breakpoint(screen-lg) {
-         justify-self: center;
-         margin-right: 10rem;
+         margin-left: 10rem;
       }
    }
    &__nav {

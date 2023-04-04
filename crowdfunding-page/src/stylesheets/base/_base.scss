@@ -38,7 +38,6 @@ button {
 }
 
 .main {
-   min-height: 100%;
    position: absolute;
    inset: 40vh 0 0 0;
    width: calc(100% - 4rem);
@@ -50,6 +49,7 @@ button {
       inset: 34vh 0 0 0;
    }
    .hero {
+      padding-bottom: 4rem;
       &__btn--back {
          padding: 1.7rem 3.5rem;
          border-radius: 3.5rem;
