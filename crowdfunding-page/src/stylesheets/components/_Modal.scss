@@ -64,6 +64,9 @@
                outline-color: hsl(var(--Moderate-cyan));
             }
          }
+         .error:focus {
+            outline-color: hsl(var(--Strawberry-red));
+         }
          .submit {
             padding: 1rem 2rem;
             border-radius: 3rem;
@@ -77,6 +80,13 @@
    }
    .invalid {
       border: solid 0.2rem hsl(var(--Strawberry-red));
+   }
+   .error:focus {
+      outline-color: hsl(var(--Strawberry-red));
+   }
+   .disable {
+      pointer-events: none;
+      opacity: 0.6;
    }
 }
 
@@ -115,4 +125,17 @@ input[type="radio"] {
 input[type="radio"]:checked {
    outline: 0.1rem solid hsl(var(--Moderate-cyan));
    background-color: hsl(var(--Moderate-cyan));
+}
+
+// removes default spin button from input //
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+   -moz-appearance: textfield;
 }

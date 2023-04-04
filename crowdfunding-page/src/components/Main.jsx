@@ -1,18 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FormModal from "./modals/Form";
 import SuccessModal from "./modals/Success";
 import Dashboard from "./sections/Dashboard";
 import Hero from "./sections/Hero";
 import Project from "./sections/Project";
 
-
 const Main = () => {
    const [showModal, setShowModal] = useState(false);
    const [isConfirmed, setIsConfirmed] = useState(false);
 
-   const thanks = () => setIsConfirmed(true);
-   const bye = () => setIsConfirmed(false);
+   const [progress, setProgress] = useState(89914);
+   const [backers, setBackers] = useState(5010);
 
+   useEffect(() => {
+      const storedProgress = localStorage.getItem("progress");
+      const numOfBackers = localStorage.getItem("storedBackers");
+
+      if (storedProgress) {
+         setProgress(parseInt(storedProgress));
+      }
+
+      if (numOfBackers) {
+         setBackers(parseInt(numOfBackers));
+      }
+   }, []);
+
+   const thanks = (amount) => {
+      setIsConfirmed(true);
+
+      setProgress((prevProgress) => prevProgress + amount);
+      setBackers((prevBackers) => prevBackers + 1);
+
+      localStorage.setItem("progress", progress + amount);
+      localStorage.setItem("storedBackers", backers + 1);
+   };
+
+   const bye = () => setIsConfirmed(false);
    const displayDialog = () => setShowModal(true);
    const closeDialog = () => setShowModal(false);
 
@@ -26,7 +49,7 @@ const Main = () => {
             />
             <SuccessModal showModal={isConfirmed} hideModal={bye} />
             <Hero showModal={displayDialog} />
-            <Dashboard />
+            <Dashboard progress={progress} backers={backers} />
             <Project showModal={displayDialog} />
          </div>
       </main>

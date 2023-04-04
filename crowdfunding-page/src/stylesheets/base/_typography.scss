@@ -153,6 +153,9 @@ body {
             color: hsl(var(--Dark-gray));
             font-size: 1.4rem;
          }
+         p {
+            text-align: center;
+         }
          .submit {
             background-color: hsl(var(--Moderate-cyan));
             color: hsl(var(--White));

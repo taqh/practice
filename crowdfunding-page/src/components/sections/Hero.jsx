@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/images/logo-mastercraft.svg";
 import bookmarkIcon from "../../assets/images/icon-bookmark.svg";
 import bookmarkedIcon from "../../assets/images/icon-bookmark-active.svg";
@@ -8,9 +8,18 @@ import Card from "../UI/Card";
 const Hero = ({ showModal }) => {
    const [bookmark, setBookmark] = useState(false);
 
-   const mark = () => {
-      setBookmark((prevState) => !prevState);
-   };
+   useEffect(() => {
+      const isBookmarked = localStorage.getItem('bookmarked');
+      if (isBookmarked) {
+        setBookmark(JSON.parse(isBookmarked));
+      }
+    }, []);
+    
+    const mark = () => {
+      const newBookmark = !bookmark;
+      setBookmark(newBookmark);
+      localStorage.setItem('bookmarked', JSON.stringify(newBookmark));
+    };
 
    return (
       <Card className='hero'>

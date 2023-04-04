@@ -73,6 +73,12 @@
                grid-template-columns: 1fr auto auto;
                grid-template-areas: "top top left right";
             }
+            @include u.breakpoint-down(screen-xsm) {
+               grid-template-areas:
+                  "top top"
+                  "left left"
+                  "right right";
+            }
             .sign {
                grid-area: left;
                justify-self: start;
@@ -100,7 +106,7 @@
       display: grid;
       padding-block: 4rem;
       @include u.breakpoint(screen-sm) {
-        padding: 4rem;
+         padding: 4rem;
       }
       place-items: center;
       max-width: 50rem;

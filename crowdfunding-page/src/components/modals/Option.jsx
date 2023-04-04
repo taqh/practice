@@ -1,27 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../UI/Button";
 
 const Option = (props) => {
-
    const handleCheck = () => {
       props.onSelect(props.id);
    };
-   
-   const [value, setValue] = useState(props.value)
+   const [itemsLeft, setItemsLeft] = useState(props.amount);
+   const [value, setValue] = useState(props.value);
 
-   const [invalid, setInvalid] = useState(false)
+   const [invalid, setInvalid] = useState(false);
 
    const handleChange = (e) => {
-      setValue(e.target.value)
-      if(e.target.value < value){
-         setInvalid(true)
+      const currentValue = e.target.value;
+      setValue(currentValue);
+      if (currentValue < props.value) {
+         setInvalid(true);
       } else {
-         setInvalid(false)
+         setInvalid(false);
       }
-   }
+   };
+
+   const handleConfirm = (amount) => {
+      setItemsLeft((prevItemsLeft) => prevItemsLeft - 1);
+      // const newItemsLeft = itemsLeft - 1;
+      // setItemsLeft(newItemsLeft);
+      props.onConfirm(amount);
+      // localStorage.setItem("itemsInStock", newItemsLeft);
+   };
+
+   // useEffect(() => {
+   //    const available = localStorage.getItem("itemsInStock");
+   //    if (available) {
+   //       setItemsLeft(parseInt(available));
+   //    }
+   // }, []);
 
    return (
-      <div className={`pledge ${props.isChecked ? "active" : ""} ${invalid ? 'invalid' : ''}`}>
+      <div
+         className={`pledge ${props.isChecked ? "active" : ""} ${
+            props.isChecked && invalid ? "invalid" : ""
+         }`}
+      >
          <div className='pledge__info'>
             <input
                type='radio'
@@ -35,7 +54,7 @@ const Option = (props) => {
             </label>
             <p className='price'>{props.price}</p>
             <p className='amount'>
-               <span>{props.amount}</span>
+               <span>{itemsLeft}</span>
                {props.amount && "left"}
             </p>
             <p className='desc'>{props.desc}</p>
@@ -43,12 +62,26 @@ const Option = (props) => {
 
          {props.isChecked && (
             <div className='pledge__confirm'>
-               <p>Enter your pledge</p>
-               <input className={`commit ${invalid ? 'invalid' : ''}`} type='number' id='support' value={value} onChange={handleChange}/>
+               <p>
+                  {invalid
+                     ? "Should be above stated price"
+                     : "Enter your pledge"}
+               </p>
+
+               <input
+                  className={`commit ${invalid ? "error" : ""}`}
+                  type='number'
+                  id='support'
+                  value={value}
+                  onChange={handleChange}
+               />
                <label className='sign' htmlFor='support'>
                   $
                </label>
-               <Button className='submit' onClick={() => props.onConfirm()}>
+               <Button
+                  className={`submit ${invalid ? "disable" : ""}`}
+                  onClick={() => handleConfirm(+value)}
+               >
                   Continue
                </Button>
             </div>
