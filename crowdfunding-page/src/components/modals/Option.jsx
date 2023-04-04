@@ -22,18 +22,13 @@ const Option = (props) => {
 
    const handleConfirm = (amount) => {
       setItemsLeft((prevItemsLeft) => prevItemsLeft - 1);
-      // const newItemsLeft = itemsLeft - 1;
-      // setItemsLeft(newItemsLeft);
-      props.onConfirm(amount);
-      // localStorage.setItem("itemsInStock", newItemsLeft);
-   };
 
-   // useEffect(() => {
-   //    const available = localStorage.getItem("itemsInStock");
-   //    if (available) {
-   //       setItemsLeft(parseInt(available));
-   //    }
-   // }, []);
+      const newItemsLeft = itemsLeft - 1;
+      setItemsLeft(newItemsLeft);
+
+      props.onUpdateItems(props.id, newItemsLeft)
+      props.onConfirm(amount);
+   };
 
    return (
       <div
@@ -74,6 +69,8 @@ const Option = (props) => {
                   id='support'
                   value={value}
                   onChange={handleChange}
+                  min={0}
+                  max={100000}
                />
                <label className='sign' htmlFor='support'>
                   $

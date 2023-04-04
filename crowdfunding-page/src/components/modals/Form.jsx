@@ -1,7 +1,7 @@
 import Button from "../UI/Button";
 import cross from "../../assets/images/icon-close-modal.svg";
 import { Dialog, Transition } from "@headlessui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Option from "./Option";
 import { nanoid } from "nanoid";
 
@@ -43,7 +43,7 @@ const Form = ({ showModal, hideModal, onConfirm }) => {
          desc: "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
          label: "Mahogany Special Edition",
          price: "Pledge $200 or more",
-         amount: "0",
+         amount: 0,
          id: `option-${nanoid()}`,
          checked: false,
          value: 200,
@@ -67,6 +67,31 @@ const Form = ({ showModal, hideModal, onConfirm }) => {
       }));
    };
 
+   useEffect(() => {
+      const itemsInStock = localStorage.getItem("itemsInStock");
+      if (itemsInStock) {
+         setPledges(JSON.parse(itemsInStock));
+      }
+   }, []);
+
+   const updateAmount = (itemId, newItemsLeft) => {
+   
+      // check for the id of the submitted field 
+      const updatedOptions = pledges.map((pledge) => {
+         // if it matches update that field with the newItemsLeft variable
+         if (pledge.id === itemId) {
+            return { ...pledge, amount: newItemsLeft };
+         } else {
+            return{
+               ...pledge
+            }
+         }
+      });
+      setPledges(updatedOptions);
+   
+      localStorage.setItem("itemsInStock", JSON.stringify(updatedOptions));
+   };
+
    const items = pledges.map((pledge) => (
       <Option
          desc={pledge.desc}
@@ -79,6 +104,7 @@ const Form = ({ showModal, hideModal, onConfirm }) => {
          onConfirm={onConfirm}
          onSelect={handleSelect}
          value={pledge.value}
+         onUpdateItems={updateAmount}
       />
    ));
 
@@ -93,7 +119,7 @@ const Form = ({ showModal, hideModal, onConfirm }) => {
                      <Dialog.Title>Back this project</Dialog.Title>
                      <Button onClick={() => hideModal()}>
                         <span className='visually-hidden'>close dialog</span>
-                        <img src={cross} alt='cancel' />
+                        <img src={cross} alt='cancel' className="cross"/>
                      </Button>
                      <Dialog.Description>
                         Want to support us in bringing Mastercraft Bamboo

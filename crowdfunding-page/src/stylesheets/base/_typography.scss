@@ -153,8 +153,10 @@ body {
             color: hsl(var(--Dark-gray));
             font-size: 1.4rem;
          }
-         p {
-            text-align: center;
+         @include u.breakpoint-down(screen-mid){
+            p {
+               text-align: center;
+            }
          }
          .submit {
             background-color: hsl(var(--Moderate-cyan));

@@ -87,6 +87,9 @@
    .disable {
       pointer-events: none;
       opacity: 0.6;
+      &:focus-within {
+         outline: none;
+      }
    }
 }
 
@@ -121,6 +124,9 @@ input[type="radio"] {
    &:focus-within {
       outline-color: hsl(var(--Dark-cyan));
    }
+   &:hover {
+      outline-color: hsl(var(--Moderate-cyan));
+   }
 }
 input[type="radio"]:checked {
    outline: 0.1rem solid hsl(var(--Moderate-cyan));
@@ -138,4 +144,5 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
    -moz-appearance: textfield;
+   appearance: textfield;
 }
