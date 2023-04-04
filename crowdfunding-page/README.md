@@ -2,7 +2,7 @@
   <img src="https://www.frontendmentor.io/static/images/logo-mobile.svg" alt="frontendmentor" width="80">
 
   <p align="center">
-    <a href="(https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW"><strong>Frontend Mentor Challenge</strong></a>
+    <a href="https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR"><strong>Frontend Mentor Challenge</strong></a>
     <br />
   </p>
 </div>
@@ -50,7 +50,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Solution URL](https://your-solution-url.com)
+- Solution URL: [Solution URL](https://www.frontendmentor.io/solutions/crowdfundingproductpage-using-react-sass-headlessui-CJebLDKgG7)
 - Live Site URL: [Live site 🚀](https://mastercraft-page.netlify.app)
 
 ## My process
