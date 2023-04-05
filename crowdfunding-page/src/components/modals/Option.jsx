@@ -49,8 +49,8 @@ const Option = (props) => {
             </label>
             <p className='price'>{props.price}</p>
             <p className='amount'>
-               <span>{itemsLeft}</span>
-               {props.amount && "left"}
+               {itemsLeft && itemsLeft > 0 && <span>{itemsLeft}</span>}
+               {props.amount && itemsLeft > 0 && "left"}
             </p>
             <p className='desc'>{props.desc}</p>
          </div>

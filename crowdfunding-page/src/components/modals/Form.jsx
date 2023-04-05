@@ -16,7 +16,7 @@ const Form = ({ showModal, hideModal, onConfirm }) => {
       {
          desc: " Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.",
          label: "Pledge with no reward",
-         amount: null,
+        
          id: `option-${nanoid()}`,
          checked: false,
          value: 0,
@@ -25,7 +25,7 @@ const Form = ({ showModal, hideModal, onConfirm }) => {
          desc: "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.",
          label: "Bamboo Stand",
          price: "Pledge $25 or more",
-         amount: "101",
+         amount: 101,
          id: `option-${nanoid()}`,
          checked: false,
          value: 25,
@@ -34,7 +34,7 @@ const Form = ({ showModal, hideModal, onConfirm }) => {
          desc: "You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.",
          label: "Black Edition Stand",
          price: "Pledge $75 or more",
-         amount: "64",
+         amount: 64,
          id: `option-${nanoid()}`,
          checked: false,
          value: 75,
