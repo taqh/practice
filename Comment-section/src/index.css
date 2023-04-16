@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	/* Primary */
+	--ModerateBlue: hsl(238 40% 52%);
+	--SoftRed: hsl(358 79% 66%);
+	--Light-grayblue: hsl(239 57% 85%);
+	--Palered: hsl(357 100% 86%);
+
+	/* Neutral */
+	--Darkblue: hsl(212 24% 26%);
+	--GrayishBlue: hsl(211 10% 45%);
+	--Lightgray: hsl(223 19% 93%);
+	--Very-lightgray: hsl(228 33% 97%);
+	--White: hsl(0 0% 100%);
+}
+@layer base {
+	#root {
+		background: hsl(223 19% 93%);
+		/* font-weight: 400; */
+	}
+}
+@layer components {
+   
+	.comment {
+		grid-template-areas:
+			'user user '
+			'text text '
+			'vote reply';
+	}
+	.vote {
+		grid-area: vote;
+	}
+	.user {
+		grid-area: user;
+	}
+	.text {
+		grid-area: text;
+	}
+	.reply {
+		grid-area: reply;
+	}
+
+	.textfield {
+		display: grid;
+		grid-template-areas:
+			'input input'
+			'pfp send ';
+	}
+	.submit {
+		grid-area: send;
+	}
+	.input {
+		grid-area: input;
+	}
+	@media (min-width: 48em) {
+		.comment {
+			grid-template-areas:
+				'vote user reply'
+				'vote text text';
+		}
+		.textfield {
+			grid-template-areas: 'pfp input send';
+         grid-template-columns: auto 1fr auto;
+		}
+	}
+}
