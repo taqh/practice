@@ -3,13 +3,13 @@ import { useState } from 'react';
 // import Plus from '../../assets/icon-plus.svg';
 // import Minus from '../../assets/icon-minus.svg';
 import Reply from '../../assets/icon-reply.svg';
-import pfp from '../../assets/avatars/image-amyrobson.png';
+import pfp from '../../assets/avatars/image-maxblagun.png';
 import Button from '../ui/Button';
 import Plus from '../ui/Plus';
 import Minus from '../ui/Minus';
 
-function Comment(props) {
-	const [count, setCount] = useState(12);
+function Comment2(props) {
+	const [count, setCount] = useState(5);
 
 	return (
 		<div className='comment grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
@@ -17,14 +17,15 @@ function Comment(props) {
 				{' '}
 				<img src={pfp} alt='user-image' className='w-8 h-8' />
 				<p className='text-DarkBlue dark:text-Username font-bold'>
-					amyrobson
+					maxblagun
 				</p>
-				<span className='dark:text-PaleBlue'>1 month ago</span>
+				<span className='dark:text-PaleBlue'>2 weeks ago</span>
 			</div>
 			<p className='text dark:text-PaleBlue'>
-				Impressive! Though it seems the drag feature could be improved. But
-				overall it looks incredible. You've nailed the design and the
-				responsiveness at various breakpoints works really well.
+				Woah, your project looks awesome! How long have you been coding for?
+				I'm still new, but think I want to dive into React as well soon.
+				Perhaps you can give me an insight on where I can learn React?
+				Thanks!
 			</p>
 			<div className='vote h-fit bg-LightGray dark:bg-Vote flex md:flex-col md:self-center gap-2 items-center justify-center p-2 w-fit rounded-lg'>
 				<Button
@@ -52,4 +53,4 @@ function Comment(props) {
 	);
 }
 
-export default Comment;
+export default Comment2;

@@ -15,15 +15,22 @@
 	--Lightgray: hsl(223 19% 93%);
 	--Very-lightgray: hsl(228 33% 97%);
 	--White: hsl(0 0% 100%);
+
+	/* Dark mode */
+	--section-bg: hsl(206 9% 15%);
+	--comment-bg: hsl(214 7% 19%);
+	--vote: hsl(206 9% 15%);
+	--text: hsl(225 17% 91%);
+	--textarea: hsl(225 7% 24%);
+	--Tag: hsl(227 58% 65%);
 }
 @layer base {
 	#root {
-		background: hsl(223 19% 93%);
-		/* font-weight: 400; */
+		font-family: 'Rubik', 'sans-serif';
+		@apply bg-LightGray /*dark:bg-DarkGray*/;
 	}
 }
 @layer components {
-   
 	.comment {
 		grid-template-areas:
 			'user user '
@@ -63,7 +70,63 @@
 		}
 		.textfield {
 			grid-template-areas: 'pfp input send';
-         grid-template-columns: auto 1fr auto;
+			grid-template-columns: auto 1fr auto;
 		}
+	}
+}
+
+.user {
+	grid-template-columns: auto auto auto auto;
+	grid-template-areas: 'pfp name tag date';
+}
+.user > img {
+	grid-area: pfp;
+}
+.user > p {
+	grid-area: name;
+}
+.user > span:first-of-type {
+	grid-area: tag;
+}
+.user > span:last-of-type {
+	grid-area: date;
+}
+
+/* fix overflow issues on very small screens */
+@media (max-width: 21.5625em) {
+	.comment {
+		grid-template-areas:
+			'user user '
+			'text text '
+			'vote reply'
+			'update update'
+			;
+	}
+	.del {
+		grid-area: update;
+		justify-self: start;
+	}
+	.vote {
+		justify-self: center;
+	}
+
+
+
+	.user > img {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.user > p {
+		width: fit-content;
+	}
+	.user > span:last-of-type {
+		width: fit-content;
+	}
+	.user {
+
+		row-gap: 0;
+		grid-template-areas:
+			'pfp name tag'
+			'pfp date date ';
 	}
 }

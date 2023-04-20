@@ -5,19 +5,20 @@ const TextField = ({ onSubmit }) => {
 	return (
 		<form
 			onSubmit={onSubmit}
-			className='grid gap-3 textfield bg-white p-4 rounded-lg'
+			className='grid gap-3 textfield bg-white dark:bg-Gray p-5 rounded-lg shadow-sm'
 		>
-			<label htmlFor='comment' className='sr-only'></label>
+			<label htmlFor='comment' className='sr-only'>Add a comment</label>
 			<textarea
 				id='comment'
 				type='textarea'
 				placeholder='Add a comment...'
-				className='resize-none input border rounded-lg cursor-pointer hover:border-ModerateBlue focus:outline-ModerateBlue  transition px-4 py-2'
+				className='resize-none input dark:bg-TextArea dark:text-PaleBlue border dark:border-PaleBlue rounded-lg caret-ModerateBlue cursor-pointer hover:border-ModerateBlue focus-within:outline-ModerateBlue focus:border-transparent transition px-4 py-2.5'
 				rows={3}
+				
 			/>
-			<img src={avatar} alt='profile pic' className='w-8 h-8' />
-			<Button className='submit h-fit px-5 py-1.5 justify-self-end bg-ModerateBlue text-white font-medium'>
-				Send
+			<img src={avatar} alt='profile pic' className='w-11 h-11' />
+			<Button className='submit h-fit px-7 py-3 justify-self-end bg-ModerateBlue hover:bg-LightBlue text-white font-medium uppercase'>
+				send
 			</Button>
 		</form>
 	);

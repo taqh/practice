@@ -1,30 +1,28 @@
 import { useState } from 'react';
-
-// import Plus from '../../assets/icon-plus.svg';
-// import Minus from '../../assets/icon-minus.svg';
-import Reply from '../../assets/icon-reply.svg';
-import pfp from '../../assets/avatars/image-amyrobson.png';
+import reply from '../../assets/icon-reply.svg';
+import pfp from '../../assets/avatars/image-ramsesmiron.png';
 import Button from '../ui/Button';
 import Plus from '../ui/Plus';
 import Minus from '../ui/Minus';
 
-function Comment(props) {
-	const [count, setCount] = useState(12);
+function Reply(props) {
+	const [count, setCount] = useState(4);
 
 	return (
-		<div className='comment grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
+		<div className='comment ml-6 md:ml-28 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
 			<div className='user grid xsm:flex items-center xsm:gap-3'>
 				{' '}
 				<img src={pfp} alt='user-image' className='w-8 h-8' />
 				<p className='text-DarkBlue dark:text-Username font-bold'>
-					amyrobson
+					ramsesmiron
 				</p>
-				<span className='dark:text-PaleBlue'>1 month ago</span>
+				<span>1 week ago</span>
 			</div>
 			<p className='text dark:text-PaleBlue'>
-				Impressive! Though it seems the drag feature could be improved. But
-				overall it looks incredible. You've nailed the design and the
-				responsiveness at various breakpoints works really well.
+				<a className='font-medium text-ModerateBlue'>@maxblagun</a>{' '}
+				If you're still new, I'd recommend focusing on the fundamentals of
+				HTML, CSS, and JS before considering React. It's very tempting to
+				jump ahead but lay a solid foundation first.
 			</p>
 			<div className='vote h-fit bg-LightGray dark:bg-Vote flex md:flex-col md:self-center gap-2 items-center justify-center p-2 w-fit rounded-lg'>
 				<Button
@@ -45,11 +43,11 @@ function Comment(props) {
 			</div>
 
 			<Button className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:text-LightBlue font-bold'>
-				<img src={Reply} alt='reply' />
+				<img src={reply} alt='reply' />
 				<span>Reply</span>
 			</Button>
 		</div>
 	);
 }
 
-export default Comment;
+export default Reply;

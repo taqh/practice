@@ -1,5 +1,8 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
-const ChatContext = () => {
-    
-}
+const ChatContext = createContext({
+	isReplying: false,
+	reply: false,
+});
+
+export default ChatContext;
