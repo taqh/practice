@@ -16,17 +16,17 @@ export default {
 			},
 			colors: {
 				// Primary //
-				ModerateBlue: 'hsl(238 40% 52%)',
 				SoftRed: 'hsl(358 79% 66%)',
-				LightBlue: 'hsl(239 57% 85%)',
 				PaleRed: 'hsl(357 100% 86%)',
+				LightBlue: 'hsl(239 57% 85%)',
+				ModerateBlue: 'hsl(238 40% 52%)',
 
 				/* Neutral */
 				DarkBlue: 'hsl(212 24% 26%)',
 				GrayBlue: 'hsl(211 10% 45%)',
+				SoftBlue: 'hsl(227 58% 65%)',
 				LightGray: 'hsl(223 19% 93%)',
-				Tag: 'hsl(227 58% 65%)',
-				'Very-lightgray': 'hsl(228 33% 97%)',
+				Fade: 'hsl(228 33% 97%)',
 
 				// dark mode
 				// Gray: 'hsl(214 7% 19%)',

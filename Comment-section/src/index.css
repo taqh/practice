@@ -24,12 +24,42 @@
 	--textarea: hsl(225 7% 24%);
 	--Tag: hsl(227 58% 65%);
 }
-@layer base {
-	#root {
-		font-family: 'Rubik', 'sans-serif';
-		@apply bg-LightGray /*dark:bg-DarkGray*/;
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }
+@keyframes slide-in {
+	from {
+		opacity: 0;
+		transform: translateY(-2rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@layer base {
+	body {
+		font-family: 'Rubik', 'sans-serif';
+		background: hsla(0, 0%, 0%, 0.6);
+	}
+	#root {
+		@apply bg-LightGray /*dark:bg-DarkGray*/;
+	}
+	dialog[open]::backdrop {
+		animation: fade-in 500ms forwards;
+	}
+	dialog[open] {
+		animation: slide-in 500ms forwards;
+	}
+}
+
 @layer components {
 	.comment {
 		grid-template-areas:
@@ -54,7 +84,7 @@
 		display: grid;
 		grid-template-areas:
 			'input input'
-			'pfp send ';
+			'pfp send';
 	}
 	.submit {
 		grid-area: send;
@@ -99,8 +129,7 @@
 			'user user '
 			'text text '
 			'vote reply'
-			'update update'
-			;
+			'update update';
 	}
 	.del {
 		grid-area: update;
@@ -109,8 +138,6 @@
 	.vote {
 		justify-self: center;
 	}
-
-
 
 	.user > img {
 		width: 2.5rem;
@@ -123,7 +150,6 @@
 		width: fit-content;
 	}
 	.user {
-
 		row-gap: 0;
 		grid-template-areas:
 			'pfp name tag'

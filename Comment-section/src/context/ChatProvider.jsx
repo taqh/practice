@@ -1,16 +1,30 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ChatContext from './chat-context';
 
 function ChatProvider({ children }) {
 	const [isReplying, setIsReplying] = useState(false);
 
-    const reply = () =>  {
-		setIsReplying(prevState => !prevState)
+	const reply = () => {
+		setIsReplying((prevState) => !prevState);
+	};
+	const modalRef = useRef();
+
+	const showModal = () => {
+		console.log('Are you sure ?')
+		modalRef.current.showModal()
+		// console.log(modalRef.current.open)
+	}
+	const deleteComment = () => {
+		modalRef.current.close()
+		console.log('Deleted')
 	}
 
 	const chatContext = {
 		isReplying: isReplying,
-		reply: reply
+		reply: reply,
+		modalRef: modalRef,
+		showModal: showModal,
+		remove: deleteComment,
 	};
 
 	return (

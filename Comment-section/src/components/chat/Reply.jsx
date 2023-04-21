@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import reply from '../../assets/icon-reply.svg';
-import pfp from '../../assets/avatars/image-ramsesmiron.png';
-import Button from '../ui/Button';
 import Plus from '../ui/Plus';
 import Minus from '../ui/Minus';
+import Button from '../ui/Button';
+import reply from '../../assets/icon-reply.svg';
+import pfp from '../../assets/avatars/image-ramsesmiron.png';
 
 function Reply(props) {
 	const [count, setCount] = useState(4);
 
 	return (
-		<div className='comment ml-6 md:ml-28 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
+		<div className='comment ml-6 md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
 			<div className='user grid xsm:flex items-center xsm:gap-3'>
 				{' '}
 				<img src={pfp} alt='user-image' className='w-8 h-8' />
@@ -19,8 +19,8 @@ function Reply(props) {
 				<span>1 week ago</span>
 			</div>
 			<p className='text dark:text-PaleBlue'>
-				<a className='font-medium text-ModerateBlue'>@maxblagun</a>{' '}
-				If you're still new, I'd recommend focusing on the fundamentals of
+				<a className='font-medium text-ModerateBlue'>@maxblagun</a> If
+				you're still new, I'd recommend focusing on the fundamentals of
 				HTML, CSS, and JS before considering React. It's very tempting to
 				jump ahead but lay a solid foundation first.
 			</p>
@@ -29,7 +29,6 @@ function Reply(props) {
 					onClick={() => setCount((prevCount) => prevCount + 1)}
 					className='w-6 h-6 justify-center flex items-center '
 				>
-					{/* <img src={Plus} alt='upvote' /> */}
 					<Plus className='hover:fill-ModerateBlue' />
 				</Button>
 				<span className='text-ModerateBlue font-bold'>{count}</span>
@@ -37,7 +36,6 @@ function Reply(props) {
 					onClick={() => setCount((prevCount) => prevCount - 1)}
 					className='w-6 h-6 justify-center flex items-center'
 				>
-					{/* <img src={Minus} alt='downvote' /> */}
 					<Minus className='hover:fill-ModerateBlue' />
 				</Button>
 			</div>

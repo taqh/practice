@@ -1,23 +1,27 @@
-import { useState } from 'react';
-import del from '../../assets/icon-delete.svg';
-import edit from '../../assets/icon-edit.svg';
-import pfp from '../../assets/avatars/image-juliusomo.png';
-import Button from '../ui/Button';
+import { useContext, useRef, useState } from 'react';
 import Plus from '../ui/Plus';
 import Minus from '../ui/Minus';
-
+import Button from '../ui/Button';
+import edit from '../../assets/icon-edit.svg';
+import del from '../../assets/icon-delete.svg';
+import pfp from '../../assets/avatars/image-juliusomo.png';
+import Modal from '../ui/Modal';
+import ChatContext from '../../context/chat-context'
 function UserReply(props) {
 	const [count, setCount] = useState(5);
 
+	const delCtx = useContext(ChatContext)
+
 	return (
-		<div className='comment ml-6 md:ml-28 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
+		<div className='comment ml-6 md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
+			<Modal />
 			<div className='user grid xsm:gap-2 items-center'>
 				{' '}
 				<img src={pfp} alt='user-image' className='w-8 h-8' />
 				<p className='text-DarkBlue dark:text-Username font-bold'>
 					juliusomo
 				</p>
-				<span className='bg-Tag rounded-sm px-1 text-white text-sm text-center'>
+				<span className='bg-ModerateBlue dark:bg-SoftBlue rounded-sm px-1 text-white text-sm text-center'>
 					you
 				</span>
 				<span>2 days ago</span>
@@ -33,7 +37,6 @@ function UserReply(props) {
 					onClick={() => setCount((prevCount) => prevCount + 1)}
 					className='w-6 h-6 justify-center flex items-center '
 				>
-					{/* <img src={Plus} alt='upvote' /> */}
 					<Plus className='hover:fill-ModerateBlue' />
 				</Button>
 				<span className='text-ModerateBlue font-bold'>{count}</span>
@@ -41,13 +44,12 @@ function UserReply(props) {
 					onClick={() => setCount((prevCount) => prevCount - 1)}
 					className='w-6 h-6 justify-center flex items-center'
 				>
-					{/* <img src={Minus} alt='downvote' /> */}
 					<Minus className='hover:fill-ModerateBlue' />
 				</Button>
 			</div>
 
 			<div className='del flex justify-self-end gap-2'>
-				<Button className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold'>
+				<Button className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold' onClick={delCtx.showModal}>
 					<img src={del} alt='delete' />
 					<span>Delete</span>
 				</Button>
