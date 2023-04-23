@@ -2,13 +2,20 @@ import { useState } from 'react';
 import Plus from '../ui/Plus';
 import Minus from '../ui/Minus';
 import Button from '../ui/Button';
-import reply from '../../assets/icon-reply.svg';
+import replyimg from '../../assets/icon-reply.svg';
 import pfp from '../../assets/avatars/image-ramsesmiron.png';
+import TextField from '../ui/TextField';
 
 function Reply(props) {
 	const [count, setCount] = useState(4);
+	const [isReplying, setIsReplying] = useState(false);
+
+	const reply = () => {
+		setIsReplying((prevState) => !prevState);
+	};
 
 	return (
+		<>
 		<div className='comment ml-6 md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
 			<div className='user grid xsm:flex items-center xsm:gap-3'>
 				{' '}
@@ -40,11 +47,13 @@ function Reply(props) {
 				</Button>
 			</div>
 
-			<Button className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:text-LightBlue font-bold'>
-				<img src={reply} alt='reply' />
+			<Button className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:text-LightBlue font-bold' onClick={reply}>
+				<img src={replyimg} alt='reply' />
 				<span>Reply</span>
 			</Button>
 		</div>
+		{isReplying && <TextField />}
+		</>
 	);
 }
 

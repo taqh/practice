@@ -6,11 +6,11 @@ import edit from '../../assets/icon-edit.svg';
 import del from '../../assets/icon-delete.svg';
 import pfp from '../../assets/avatars/image-juliusomo.png';
 import Modal from '../ui/Modal';
-import ChatContext from '../../context/chat-context'
+import ChatContext from '../../context/ChatContext';
 function UserReply(props) {
 	const [count, setCount] = useState(5);
 
-	const delCtx = useContext(ChatContext)
+	const delCtx = useContext(ChatContext);
 
 	return (
 		<div className='comment ml-6 md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
@@ -49,7 +49,10 @@ function UserReply(props) {
 			</div>
 
 			<div className='del flex justify-self-end gap-2'>
-				<Button className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold' onClick={delCtx.showModal}>
+				<Button
+					className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold'
+					onClick={delCtx.showModal}
+				>
 					<img src={del} alt='delete' />
 					<span>Delete</span>
 				</Button>

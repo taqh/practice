@@ -1,8 +1,14 @@
-import { useRef, useState } from 'react';
-import ChatContext from './chat-context';
+import { useReducer, useRef, useState } from 'react';
+import ChatContext from './ChatContext';
+import Data from '../data/data.json';
+import chatReducer from './chatReducer';
 
 function ChatProvider({ children }) {
-	const [isReplying, setIsReplying] = useState(false);
+	// const [chat, dispatch] = useReducer(chatReducer, initialChat);
+
+	const [isReplying, setIsReplying] = useState(true);
+
+	const [comments, setComments] = useState(Data);
 
 	const reply = () => {
 		setIsReplying((prevState) => !prevState);
@@ -10,14 +16,30 @@ function ChatProvider({ children }) {
 	const modalRef = useRef();
 
 	const showModal = () => {
-		console.log('Are you sure ?')
-		modalRef.current.showModal()
-		// console.log(modalRef.current.open)
-	}
-	const deleteComment = () => {
-		modalRef.current.close()
-		console.log('Deleted')
-	}
+		modalRef.current.showModal();
+	};
+
+	const deleteComment = (id) => {
+		modalRef.current.close();
+		console.log();
+
+		// comments.comments.filter(Comment => Comment.id !== id)
+		// setComments((prevComments) =>
+		// 	prevComments.filter((comment) => {
+		// 		if (comment.id === id) {
+		// 			return {
+		// 				...(prevComments !== comment.id),
+		// 			};
+		// 		} else {
+		// 			return {
+		// 				...prevComments,
+		// 			};
+		// 		}
+		// 	})
+		// );
+	};
+
+	// console.log(comments)
 
 	const chatContext = {
 		isReplying: isReplying,
@@ -25,6 +47,7 @@ function ChatProvider({ children }) {
 		modalRef: modalRef,
 		showModal: showModal,
 		remove: deleteComment,
+		posts: comments,
 	};
 
 	return (
@@ -35,3 +58,4 @@ function ChatProvider({ children }) {
 }
 
 export default ChatProvider;
+

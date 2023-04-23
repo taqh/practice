@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Button from './Button';
 import { createPortal } from 'react-dom';
-import ChatContext from '../../context/chat-context';
+import ChatContext from '../../context/ChatContext';
 
 const Warning = (props) => {
 	const modalCtx = useContext(ChatContext);

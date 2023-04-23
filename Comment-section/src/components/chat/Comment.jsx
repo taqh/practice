@@ -3,38 +3,35 @@ import Plus from '../ui/Plus';
 import Minus from '../ui/Minus';
 import Button from '../ui/Button';
 import Reply from '../../assets/icon-reply.svg';
-import pfp from '../../assets/avatars/image-amyrobson.png';
+import amy from '../../assets/avatars/image-amyrobson.png';
+import max from '../../assets/avatars/image-maxblagun.png';
+import julius from '../../assets/avatars/image-juliusomo.png';
 import TextField from '../ui/TextField';
 import Replies from './Reply';
+import UserReply from './UserReply';
 
 function Comment(props) {
-	const [count, setCount] = useState(12);
+	const [count, setCount] = useState(+props.score);
 	const [isReplying, setIsReplying] = useState(false);
 
 	const reply = () => {
 		setIsReplying((prevState) => !prevState);
 	};
-	const [hasReplies, setHasReplies] = useState(false);
-
-	// const reply = () => {
-	// 	setIsReplying((prevState) => !prevState);
-	// };
+	// const [hasReplies, setHasReplies] = useState(false);
 
 	return (
-		<div className='gap-5 grid'>
+		<div className='gap-5 grid' id={props.id}>
 			<div className='comment grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
 				<div className='user grid xsm:flex items-center xsm:gap-3'>
 					{' '}
-					<img src={pfp} alt='user-image' className='w-8 h-8' />
+					<img src={amy} alt='user-image' className='w-8 h-8' />
 					<p className='text-DarkBlue dark:text-Username font-bold'>
-						amyrobson
+						{props.username}
 					</p>
-					<span className='dark:text-PaleBlue'>1 month ago</span>
+					<span className='dark:text-PaleBlue'>{props.createdAt}</span>
 				</div>
 				<p className='text dark:text-PaleBlue'>
-					Impressive! Though it seems the drag feature could be improved.
-					But overall it looks incredible. You've nailed the design and the
-					responsiveness at various breakpoints works really well.
+					{props.content}
 				</p>
 				<div className='vote h-fit bg-LightGray dark:bg-Vote flex md:flex-col md:self-center gap-2 items-center justify-center p-2 w-fit rounded-lg'>
 					<Button
@@ -62,10 +59,12 @@ function Comment(props) {
 			</div>
 			{isReplying && <TextField />}
 
-			{hasReplies && (
-				<ul className='border-l-2 border-l-DarkGray md:pl-10 md:ml-10 grid gap-5'>
-					<Replies />
-					<Replies />
+			{props.hasReplies && (
+				<ul className='border-l-2 border-l-Gray md:pl-10 md:ml-10 grid gap-5'>
+					<Replies 
+						
+					/>
+					<UserReply />
 				</ul>
 			)}
 		</div>
