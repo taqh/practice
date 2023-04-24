@@ -1,45 +1,41 @@
 import { useReducer, useRef, useState } from 'react';
 import ChatContext from './ChatContext';
-import Data from '../data/data.json';
+import data from '../data/data.json';
 import chatReducer from './chatReducer';
 
 function ChatProvider({ children }) {
-	// const [chat, dispatch] = useReducer(chatReducer, initialChat);
+	const [chatState, dispatch] = useReducer(chatReducer, data.comments);
 
-	const [isReplying, setIsReplying] = useState(true);
-
-	const [comments, setComments] = useState(Data);
-
-	const reply = () => {
-		setIsReplying((prevState) => !prevState);
-	};
 	const modalRef = useRef();
+	const reply = (id) => {
+		setIsReplying((prevState) => !prevState);
+		console.log(id);
+	};
 
+	const [isReplying, setIsReplying] = useState(false);
+	const [value, setValue] = useState('Test Value');
+	
+	const handleChange = (e) => {
+		const currVal = e.target.value;
+		setValue(currVal);
+		console.log(currVal);
+		dispatch({ type: 'TYPING' });
+	};
 	const showModal = () => {
 		modalRef.current.showModal();
 	};
 
-	const deleteComment = (id) => {
-		modalRef.current.close();
-		console.log();
-
-		// comments.comments.filter(Comment => Comment.id !== id)
-		// setComments((prevComments) =>
-		// 	prevComments.filter((comment) => {
-		// 		if (comment.id === id) {
-		// 			return {
-		// 				...(prevComments !== comment.id),
-		// 			};
-		// 		} else {
-		// 			return {
-		// 				...prevComments,
-		// 			};
-		// 		}
-		// 	})
-		// );
+	const postComment = (e) => {
+		e.preventDefault();
+		dispatch({ type: 'ADDED', payload: value });
 	};
 
-	// console.log(comments)
+	const deleteComment = (id) => {
+		modalRef.current.close();
+		dispatch({ type: 'DELETE' });
+		// comments.comments.filter(Comment => Comment.id !== id)
+	};
+
 
 	const chatContext = {
 		isReplying: isReplying,
@@ -47,7 +43,10 @@ function ChatProvider({ children }) {
 		modalRef: modalRef,
 		showModal: showModal,
 		remove: deleteComment,
-		posts: comments,
+		addComment: postComment,
+		posts: chatState,
+		value: value,
+		handleChange: handleChange,
 	};
 
 	return (
@@ -58,4 +57,3 @@ function ChatProvider({ children }) {
 }
 
 export default ChatProvider;
-

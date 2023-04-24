@@ -3,13 +3,13 @@ import Button from './Button';
 import { createPortal } from 'react-dom';
 import ChatContext from '../../context/ChatContext';
 
-const Warning = (props) => {
+const Warning = ({ onClick }) => {
 	const modalCtx = useContext(ChatContext);
 
 	return (
 		<dialog
 			className='m-auto bg-transparent backdrop:bg-black/50 grid place-content-center p-0'
-			onClick={props.onClick}
+			onClick={onClick}
 			ref={modalCtx.modalRef}
 		>
 			<div className='max-w-screen-xsm bg-white p-5 shadow-md rounded-lg'>
@@ -18,7 +18,7 @@ const Warning = (props) => {
 					Are you sure you want to delete this comment? This will remove
 					the comment and can't be undone.
 				</p>
-				<div className='flex gap-4 uppercase text-white'>
+				<div className='flex gap-4 uppercase text-white text-sm'>
 					<Button
 						className='w-full bg-GrayBlue hover:bg-GrayBlue/50 px-3 py-3 rounded-md uppercase'
 						onClick={modalCtx.remove}

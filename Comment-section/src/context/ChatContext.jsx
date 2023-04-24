@@ -1,15 +1,15 @@
 import { createContext } from 'react';
-import Data from '../data/data.json';
-
-// const [comments, setComments] = useState(Data);
 
 const ChatContext = createContext({
-	reply: false,
+	value: '',
+	posts: [],
 	modalRef: {},
+	reply: false,
 	isReplying: false,
 	showModal: () => {},
+	addComment: () => {},
+	handleChange: () => {},
 	deleteComment: () => {},
-	posts: Data,
 });
 
 export default ChatContext;

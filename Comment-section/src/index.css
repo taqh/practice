@@ -61,6 +61,9 @@
 }
 
 @layer components {
+	form {
+		animation: slide-in 800ms forwards;
+	}
 	.comment {
 		grid-template-areas:
 			'user user '
@@ -94,6 +97,7 @@
 	}
 	@media (min-width: 48em) {
 		.comment {
+			grid-template-columns: auto 1fr auto;
 			grid-template-areas:
 				'vote user reply'
 				'vote text text';
@@ -134,9 +138,6 @@
 	.del {
 		grid-area: update;
 		justify-self: start;
-	}
-	.vote {
-		justify-self: center;
 	}
 
 	.user > img {

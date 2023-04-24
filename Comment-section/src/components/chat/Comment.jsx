@@ -1,26 +1,30 @@
 import { useState } from 'react';
-import Plus from '../ui/Plus';
-import Minus from '../ui/Minus';
 import Button from '../ui/Button';
-import Reply from '../../assets/icon-reply.svg';
-import amy from '../../assets/avatars/image-amyrobson.png';
-import max from '../../assets/avatars/image-maxblagun.png';
-import julius from '../../assets/avatars/image-juliusomo.png';
 import TextField from '../ui/TextField';
 import Replies from './Reply';
 import UserReply from './UserReply';
+import icons from '../ui/icons';
+import avatars from '../ui/userAvatars';
+import { useContext } from 'react';
+import ChatContext from '../../context/ChatContext';
 
 function Comment(props) {
-	const [count, setCount] = useState(+props.score);
+	const [score, setScore] = useState(props.score);
+	const addCtx = useContext(ChatContext)
 	const [isReplying, setIsReplying] = useState(false);
 
-	const reply = () => {
+	const { minus, plus, reply } = icons;
+	const { amy, julius, max, ramses } = avatars;
+
+
+	const replyTo = (id) => {
 		setIsReplying((prevState) => !prevState);
+		id = props.id
+		console.log(id)
 	};
-	// const [hasReplies, setHasReplies] = useState(false);
 
 	return (
-		<div className='gap-5 grid' id={props.id}>
+		<div className='com gap-5 grid' id={props.id}>
 			<div className='comment grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
 				<div className='user grid xsm:flex items-center xsm:gap-3'>
 					{' '}
@@ -30,40 +34,36 @@ function Comment(props) {
 					</p>
 					<span className='dark:text-PaleBlue'>{props.createdAt}</span>
 				</div>
-				<p className='text dark:text-PaleBlue'>
-					{props.content}
-				</p>
-				<div className='vote h-fit bg-LightGray dark:bg-Vote flex md:flex-col md:self-center gap-2 items-center justify-center p-2 w-fit rounded-lg'>
+				<p className='text dark:text-PaleBlue'>{props.content}</p>
+				<div className='vote h-fit bg-LightGray dark:bg-Vote flex md:flex-col gap-2 items-center justify-center p-2 w-fit rounded-lg'>
 					<Button
-						onClick={() => setCount((prevCount) => prevCount + 1)}
+						onClick={() => setScore((prevCount) => prevCount + 1)}
 						className='w-6 h-6 justify-center flex items-center '
 					>
-						<Plus className='hover:fill-ModerateBlue' />
+						<img src={plus} alt='downvote' />
 					</Button>
-					<span className='text-ModerateBlue font-bold'>{count}</span>
+					<span className='text-ModerateBlue font-bold'>{score}</span>
 					<Button
-						onClick={() => setCount((prevCount) => prevCount - 1)}
+						onClick={() => setScore((prevCount) => prevCount - 1)}
 						className='w-6 h-6 justify-center flex items-center'
 					>
-						<Minus className='hover:fill-ModerateBlue' />
+						<img src={minus} alt='downvote' />
 					</Button>
 				</div>
 
 				<Button
 					className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:text-LightBlue font-bold'
-					onClick={reply}
+					onClick={replyTo}
 				>
-					<img src={Reply} alt='reply' />
+					<img src={reply} alt='reply' />
 					<span>Reply</span>
 				</Button>
 			</div>
 			{isReplying && <TextField />}
 
 			{props.hasReplies && (
-				<ul className='border-l-2 border-l-Gray md:pl-10 md:ml-10 grid gap-5'>
-					<Replies 
-						
-					/>
+				<ul className='border-l-2 pl-4 md:pl-10 md:ml-10 grid gap-5'>
+					<Replies />
 					<UserReply />
 				</ul>
 			)}
