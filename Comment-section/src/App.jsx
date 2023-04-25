@@ -1,11 +1,13 @@
 import './App.css';
-import CommentSection from './components/CommentSection';
 import ChatProvider from './context/ChatProvider';
+import CommentSection from './components/CommentSection';
 
 function App() {
 	return (
 		<ChatProvider>
-			<CommentSection />
+			<main>
+				<CommentSection />
+			</main>
 		</ChatProvider>
 	);
 }

@@ -15,18 +15,21 @@ export default function commentReducer(state, action) {
 								png: '../assets/avatars/image-juliusomo.png',
 								webp: '../assets/avatars/image-juliusomo.webp',
 							},
-							username: 'juliusomo',
 						},
+						username: 'juliusomo',
 					},
 					replies: [],
 				},
 			];
 		}
 		case 'DELETE': {
-			return console.log('deleted comment');
+			return (
+				state.filter((Comment) => Comment.id !== action.payload),
+				console.log('deleted comment')
+			);
 		}
-		case 'EDIT': {
-			return console.log('started editing');
+		case 'UPDATED': {
+			return console.log('updated comment');
 		}
 		case 'REPLY': {
 			return console.log('opened reply');

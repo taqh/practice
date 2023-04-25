@@ -24,11 +24,11 @@ export default {
 				/* Neutral */
 				DarkBlue: 'hsl(212 24% 26%)',
 				GrayBlue: 'hsl(211 10% 45%)',
-				SoftBlue: 'hsl(227 58% 65%)',
 				LightGray: 'hsl(223 19% 93%)',
 				Fade: 'hsl(228 33% 97%)',
-
+				
 				// dark mode
+				// SoftBlue: 'hsl(227 58% 65%)',
 				// Gray: 'hsl(214 7% 19%)',
 				// Username: 'hsl(0 0% 100%)',
 				// Vote: 'hsl(206 9% 15%)',

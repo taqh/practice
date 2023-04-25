@@ -33,10 +33,20 @@
 		opacity: 1;
 	}
 }
-@keyframes slide-in {
+@keyframes slide-down {
 	from {
 		opacity: 0;
 		transform: translateY(-2rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes slide-up {
+	from {
+		opacity: 0;
+		transform: translateY(1rem);
 	}
 	to {
 		opacity: 1;
@@ -56,13 +66,16 @@
 		animation: fade-in 500ms forwards;
 	}
 	dialog[open] {
-		animation: slide-in 500ms forwards;
+		animation: slide-down 500ms forwards;
 	}
 }
 
 @layer components {
-	form {
-		animation: slide-in 800ms forwards;
+	.textfield {
+		animation: slide-down 800ms forwards;
+	}
+	.edit_field{
+		animation: slide-up 800ms forwards;
 	}
 	.comment {
 		grid-template-areas:
@@ -77,6 +90,9 @@
 		grid-area: user;
 	}
 	.text {
+		grid-area: text;
+	}
+	.edit_field{
 		grid-area: text;
 	}
 	.reply {
@@ -110,7 +126,7 @@
 }
 
 .user {
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: auto auto auto 1fr;
 	grid-template-areas: 'pfp name tag date';
 }
 .user > img {
@@ -127,7 +143,7 @@
 }
 
 /* fix overflow issues on very small screens */
-@media (max-width: 21.5625em) {
+@media (max-width: 22.1875em) {
 	.comment {
 		grid-template-areas:
 			'user user '
@@ -137,9 +153,9 @@
 	}
 	.del {
 		grid-area: update;
-		justify-self: start;
+		justify-content: space-between;
+		width: 100%;
 	}
-
 	.user > img {
 		width: 2.5rem;
 		height: 2.5rem;
