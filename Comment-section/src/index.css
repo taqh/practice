@@ -66,7 +66,7 @@
 		animation: fade-in 500ms forwards;
 	}
 	dialog[open] {
-		animation: slide-down 500ms forwards;
+		animation: slide-down 650ms forwards;
 	}
 }
 
@@ -74,7 +74,7 @@
 	.textfield {
 		animation: slide-down 800ms forwards;
 	}
-	.edit_field{
+	.edit_field {
 		animation: slide-up 800ms forwards;
 	}
 	.comment {
@@ -92,7 +92,7 @@
 	.text {
 		grid-area: text;
 	}
-	.edit_field{
+	.edit_field {
 		grid-area: text;
 	}
 	.reply {

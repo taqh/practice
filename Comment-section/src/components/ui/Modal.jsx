@@ -3,9 +3,9 @@ import Button from './Button';
 import { createPortal } from 'react-dom';
 import ChatContext from '../../context/ChatContext';
 
-const Warning = ({ onClick }) => {
+const Warning = ({ onClick, id }) => {
 	const modalCtx = useContext(ChatContext);
-
+	
 	return (
 		<dialog
 			className='m-auto bg-transparent backdrop:bg-black/50 grid place-content-center p-0'
@@ -21,13 +21,13 @@ const Warning = ({ onClick }) => {
 				<div className='flex gap-4 uppercase text-white text-sm'>
 					<Button
 						className='w-full bg-GrayBlue hover:bg-GrayBlue/50 px-3 py-3 rounded-md uppercase'
-						onClick={modalCtx.remove}
+						onClick={modalCtx.cancel}
 					>
 						no, cancel
 					</Button>
 					<Button
 						className='w-full bg-SoftRed hover:bg-PaleRed px-3 py-3 rounded-md uppercase transition'
-						onClick={modalCtx.remove}
+						onClick={modalCtx.delete}
 					>
 						yes, delete
 					</Button>

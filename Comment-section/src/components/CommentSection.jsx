@@ -6,7 +6,7 @@ import ChatContext from '../context/ChatContext';
 function CommentSection() {
 	const commentCtx = useContext(ChatContext);
 	
-	const commentThread = commentCtx.posts.map((comment) => (
+	const commentThread =  commentCtx.posts.map((comment) => (
 		<Comment
 			id={comment.id}
 			score={comment.score}

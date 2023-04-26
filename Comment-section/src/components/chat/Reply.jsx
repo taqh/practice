@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import icons from '../ui/icons';
 import Button from '../ui/Button';
 import TextField from '../ui/TextField';
-import pfp from '../../assets/avatars/image-ramsesmiron.png';
 import ChatContext from '../../context/ChatContext';
 import Modal from '../ui/Modal';
 
@@ -20,9 +19,10 @@ function Reply(props) {
 	const update = (e) => {
 		setValue(e.target.value);
 	};
+
 	return (
 		<>
-			<Modal />
+			<Modal id={props.id} />
 			<div className='comment md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm'>
 				<div className='user grid xsm:flex items-center gap-2 xsm:gap-3'>
 					{' '}
@@ -47,7 +47,7 @@ function Reply(props) {
 				) : (
 					<form
 						className='edit_field flex flex-col gap-3'
-						onSubmit={replyCtx.editPost}
+						onSubmit={replyCtx.updatePost}
 					>
 						<textarea
 							rows={3}
@@ -56,9 +56,9 @@ function Reply(props) {
 							className='resize-none w-full border dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 focus:outline-ModerateBlue'
 							onChange={update}
 						></textarea>
-						<button className='sm:self-end bg-ModerateBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
+						<Button className='w-auto sm:self-end bg-ModerateBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
 							Update
-						</button>
+						</Button>
 					</form>
 				)}
 				<div className='vote h-fit bg-LightGray dark:bg-Vote flex md:flex-col gap-2 items-center justify-center p-2 w-fit rounded-lg'>

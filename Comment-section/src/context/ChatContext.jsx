@@ -6,11 +6,12 @@ const ChatContext = createContext({
 	modalRef: {},
 	reply: false,
 	isReplying: false,
-	editPost: () => {},
+	cancel: () => {},
+	delete: (id) => {},
 	showModal: () => {},
+	updatePost: () => {},
 	addComment: () => {},
 	handleChange: () => {},
-	deleteComment: () => {},
 });
 
 export default ChatContext;

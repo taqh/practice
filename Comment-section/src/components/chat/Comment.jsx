@@ -13,6 +13,7 @@ function Comment(props) {
 	const [isReplying, setIsReplying] = useState(false);
 	const [currentUser, setCurrentUser] = useState(props.currentUser);
 	const [isEditing, setIsediting] = useState(false);
+	const [value, setValue] = useState(props.content);
 
 	const { minus, plus, edit, reply, del } = icons;
 	const { amy, julius, max, ramses } = avatars;
@@ -21,7 +22,9 @@ function Comment(props) {
 		setIsReplying((prevState) => !prevState);
 		id = props.id;
 		console.log(id);
-
+	};
+	const update = (e) => {
+		setValue(e.target.value);
 	};
 
 	return (
@@ -40,7 +43,25 @@ function Comment(props) {
 					)}
 					<span className='dark:text-PaleBlue'>{props.createdAt}</span>
 				</div>
-				<p className='text dark:text-PaleBlue'>{props.content}</p>
+				{!isEditing ? (
+					<p className='text dark:text-PaleBlue'>{props.content}</p>
+				) : (
+					<form
+						className='edit_field flex flex-col gap-3'
+						onSubmit={addCtx.updatePost}
+					>
+						<textarea
+							rows={3}
+							autoFocus
+							value={value}
+							className='resize-none w-full border dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 focus:outline-ModerateBlue'
+							onChange={update}
+						></textarea>
+						<Button className='w-auto sm:self-end bg-ModerateBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
+							Update
+						</Button>
+					</form>
+				)}
 				<div className='vote h-fit bg-LightGray dark:bg-Vote flex md:flex-col gap-2 items-center justify-center p-2 w-fit rounded-lg'>
 					<Button
 						onClick={() => setScore((prevCount) => prevCount + 1)}
