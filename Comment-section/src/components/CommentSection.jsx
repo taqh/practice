@@ -2,11 +2,12 @@ import { useContext } from 'react';
 import Comment from './chat/Comment';
 import TextField from './ui/TextField';
 import ChatContext from '../context/ChatContext';
+import ThemeSwitch from './theme/ThemeSwitch';
 
 function CommentSection() {
 	const commentCtx = useContext(ChatContext);
-	
-	const commentThread =  commentCtx.posts.map((comment) => (
+	console.log('mapping');
+	const commentThread = commentCtx.posts.map((comment) => (
 		<Comment
 			id={comment.id}
 			score={comment.score}
@@ -20,12 +21,13 @@ function CommentSection() {
 			currentUser={comment.user.username === 'juliusomo'}
 		/>
 	));
-
+	console.log('finished map');
 	return (
-		<section className='flex flex-col gap-5 mx-auto text-GrayBlue max-w-screen-md min-h-screen bg-LightGray dark:bg-DarkGray px-4 md:px-5 py-10 md:py-16 transition-all'>
-				<h1 className='sr-only'>Comments</h1>
-				{commentThread}
-				<TextField />
+		<section className='flex flex-col gap-5 mx-auto text-GrayBlue max-w-screen-md min-h-screen bg-inherit px-4 md:px-5 py-8 md:py-14 transition-all'>
+			<h1 className='sr-only'>Comments</h1>
+			<ThemeSwitch />
+			{commentThread}
+			<TextField />
 		</section>
 	);
 }

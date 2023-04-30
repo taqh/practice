@@ -7,15 +7,7 @@ function ChatProvider({ children }) {
 	const chatData = data.comments
 	const [chatState, dispatch] = useReducer(chatReducer, chatData);
 	const [isReplying, setIsReplying] = useState(false);
-	const [value, setValue] = useState('Test Value');
 	const modalRef = useRef();
-
-	const handleChange = (e) => {
-		const currVal = e.target.value;
-		setValue(currVal);
-		console.log(currVal);
-		dispatch({ type: 'TYPING' });
-	};
 
 	const showModal = () => {
 		modalRef.current.showModal();
@@ -26,8 +18,7 @@ function ChatProvider({ children }) {
 		console.log(id);
 	};
 
-	const postComment = (e) => {
-		e.preventDefault();
+	const addComment = (value) => {
 		dispatch({ type: 'ADDED', payload: value });
 	};
 
@@ -48,7 +39,6 @@ function ChatProvider({ children }) {
 
 	const chatContext = {
 		reply: reply,
-		value: value,
 		posts: chatState,
 		modalRef: modalRef,
 		showModal: showModal,
@@ -56,8 +46,7 @@ function ChatProvider({ children }) {
 		delete: deleteComment,
 		updatePost: updatePost,
 		isReplying: isReplying,
-		addComment: postComment,
-		handleChange: handleChange,
+		addComment: addComment,
 	};
 
 	return (

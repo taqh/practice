@@ -1,7 +1,6 @@
 import { createContext } from 'react';
 
 const ChatContext = createContext({
-	value: '',
 	posts: [],
 	modalRef: {},
 	reply: false,
@@ -9,9 +8,9 @@ const ChatContext = createContext({
 	cancel: () => {},
 	delete: (id) => {},
 	showModal: () => {},
-	updatePost: () => {},
 	addComment: () => {},
 	handleChange: () => {},
+	updateComment: () => {},
 });
 
 export default ChatContext;

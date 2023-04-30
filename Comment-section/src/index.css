@@ -35,18 +35,8 @@
 }
 @keyframes slide-down {
 	from {
-		opacity: 0;
+		opacity: 0.5;
 		transform: translateY(-2rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-@keyframes slide-up {
-	from {
-		opacity: 0;
-		transform: translateY(1rem);
 	}
 	to {
 		opacity: 1;
@@ -57,26 +47,19 @@
 @layer base {
 	body {
 		font-family: 'Rubik', 'sans-serif';
-		background: hsla(0, 0%, 0%, 0.6);
 	}
 	#root {
-		@apply bg-LightGray /*dark:bg-DarkGray*/;
+		@apply bg-LightGray dark:bg-DarkGray transition duration-300;
 	}
 	dialog[open]::backdrop {
-		animation: fade-in 500ms forwards;
+		animation: fade-in 300ms forwards;
 	}
 	dialog[open] {
-		animation: slide-down 650ms forwards;
+		animation: slide-down 500ms forwards;
 	}
 }
 
 @layer components {
-	.textfield {
-		animation: slide-down 800ms forwards;
-	}
-	.edit_field {
-		animation: slide-up 800ms forwards;
-	}
 	.comment {
 		grid-template-areas:
 			'user user '
@@ -124,7 +107,43 @@
 		}
 	}
 }
+@layer utilities {
+	form,
+	textarea {
+		@apply transition duration-300;
+	}
 
+	.switch {
+		position: relative;
+		width: 47px;
+		height: 25px;
+		background-color: #a8aac1;
+		border-radius: 15px;
+		display: block;
+	}
+	.switch::before {
+		content: '';
+		position: absolute;
+		left: 2px;
+		bottom: 2px;
+		width: 21px;
+		height: 21px;
+		background: #fff;
+		border-radius: 15px;
+		transition: all 0.3s ease;
+	}
+	input[type='checkbox']:checked + .switch::before {
+		transform: translateX(22px);
+		background: white;
+	}
+	input[type='checkbox']:checked + .switch {
+		background: linear-gradient(
+			45deg,
+			hsl(243, 79%, 68%),
+			hsl(197, 66%, 57%)
+		);
+	}
+}
 .user {
 	grid-template-columns: auto auto auto 1fr;
 	grid-template-areas: 'pfp name tag date';

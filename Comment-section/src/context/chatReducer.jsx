@@ -24,7 +24,7 @@ export default function commentReducer(state, action) {
 		}
 		case 'DELETE': {
 			return (
-				// state.filter((Comment) => Comment.id !== action.payload),
+				state.filter((Comment) => Comment.id !== action.payload),
 				console.log('deleted comment')
 			);
 		}
@@ -33,9 +33,6 @@ export default function commentReducer(state, action) {
 		}
 		case 'REPLY': {
 			return console.log('opened reply');
-		}
-		case 'TYPING': {
-			return console.log('Typing...');
 		}
 		default: {
 			throw Error('Unknown action: ' + action.type);
