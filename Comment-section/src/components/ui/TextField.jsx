@@ -29,7 +29,7 @@ const TextField = ({ onSubmit }) => {
 				onChange={(e) => setValue(e.target.value)}
 			/>
 			<img src={avatar} alt='profile pic' className='w-11 h-11' />
-			<Button className='submit text-sm h-fit px-7 py-3 justify-self-end bg-ModerateBlue dark:bgTag hover:bg-LightBlue text-white font-medium uppercase'>
+			<Button className='submit text-sm h-fit px-7 py-3 justify-self-end bg-ModerateBlue dark:bg-SoftBlue hover:bg-LightBlue text-white font-medium uppercase'>
 				{!handler.isReplying ? 'send' : 'reply'}
 			</Button>
 		</form>

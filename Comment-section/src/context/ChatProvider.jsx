@@ -1,18 +1,36 @@
-import { useReducer, useRef, useState } from 'react';
+import { useReducer, useRef, useState, useEffect } from 'react';
 import ChatContext from './ChatContext';
 import chatReducer from './chatReducer';
 import data from '../data/data.json';
 
 function ChatProvider({ children }) {
-	const chatData = data.comments
+	const chatData = data.comments;
 	const [chatState, dispatch] = useReducer(chatReducer, chatData);
 	const [isReplying, setIsReplying] = useState(false);
 	const modalRef = useRef();
 
-	const showModal = () => {
-		modalRef.current.showModal();
-	};
+	// const showModal = () => {
+	// 	modalRef.current.removeAttribute('open')
+	// 	modalRef.current.showModal();
+	// };
 
+	//  ideally the .close() method is supposed to remove the open attribute but
+	//  for some reason im getting an error hence why i have to use this method
+
+	// heres a solution i found on github https://github.com/facebook/react/issues/24399
+	// useEffect(() => {
+	// 	const dialog = ref.current;
+	// 	dialog.showModal();
+	// 	return () => dialog.close();
+	//  }, []);
+
+
+	const showModal = () => {
+		if (!modalRef.current.open) {
+			modalRef.current.showModal();
+		}
+	};
+	
 	const reply = (id) => {
 		setIsReplying((prevState) => !prevState);
 		console.log(id);
@@ -35,7 +53,6 @@ function ChatProvider({ children }) {
 		modalRef.current.close();
 		dispatch({ type: 'DELETE', payload: id });
 	};
-
 
 	const chatContext = {
 		reply: reply,

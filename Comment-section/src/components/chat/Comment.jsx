@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import Reply from './Reply';
+import Modal from '../ui/Modal';
 import icons from '../ui/icons';
 import Button from '../ui/Button';
 import TextField from '../ui/TextField';
@@ -57,7 +58,7 @@ function Comment(props) {
 							className='resize-none w-full border cursor-pointer dark:bg-TextArea dark:border-transparent dark:focus:outline dark:focus:outline-SoftBlue dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 focus:outline-ModerateBlue'
 							onChange={update}
 						></textarea>
-						<Button className='w-auto max-sm:w-full sm:self-end bg-ModerateBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
+						<Button className='w-auto max-sm:w-full sm:self-end bg-ModerateBlue dark:bg-SoftBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
 							Update
 						</Button>
 					</form>
@@ -89,7 +90,7 @@ function Comment(props) {
 					<div className='del flex justify-self-end gap-2'>
 						<Button
 							className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold'
-							onClick={addCtx.showModal(props.id)}
+							onClick={addCtx.showModal}
 						>
 							<img src={del} alt='delete' />
 							<span>Delete</span>

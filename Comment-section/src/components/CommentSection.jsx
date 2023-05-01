@@ -3,6 +3,7 @@ import Comment from './chat/Comment';
 import TextField from './ui/TextField';
 import ChatContext from '../context/ChatContext';
 import ThemeSwitch from './theme/ThemeSwitch';
+import Modal from './ui/Modal';
 
 function CommentSection() {
 	const commentCtx = useContext(ChatContext);
@@ -24,6 +25,7 @@ function CommentSection() {
 	console.log('finished map');
 	return (
 		<section className='flex flex-col gap-5 mx-auto text-GrayBlue max-w-screen-md min-h-screen bg-inherit px-4 md:px-5 py-8 md:py-14 transition-all'>
+			<Modal />
 			<h1 className='sr-only'>Comments</h1>
 			<ThemeSwitch />
 			{commentThread}

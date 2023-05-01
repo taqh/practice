@@ -47,6 +47,7 @@
 @layer base {
 	body {
 		font-family: 'Rubik', 'sans-serif';
+		@apply bg-LightGray dark:bg-DarkGray;
 	}
 	#root {
 		@apply bg-LightGray dark:bg-DarkGray transition duration-300;

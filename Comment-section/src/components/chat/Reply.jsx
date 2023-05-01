@@ -22,7 +22,6 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username }) {
 
 	return (
 		<>
-			<Modal />
 			<div className='comment md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
 				<div className='user grid xsm:flex items-center gap-2 xsm:gap-3'>
 					{' '}
@@ -60,7 +59,7 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username }) {
 							className='resize-none w-full border dark:outline-none dark:border-transparent focus:outline-ModerateBlue dark:focus:outline-SoftBlue dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 '
 							onChange={update}
 						></textarea>
-						<Button className='w-auto max-sm:w-full sm:self-end bg-ModerateBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
+						<Button className='w-auto max-sm:w-full sm:self-end bg-ModerateBlue dark:bg-SoftBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
 							Update
 						</Button>
 					</form>
