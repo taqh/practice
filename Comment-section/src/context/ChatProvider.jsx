@@ -7,51 +7,54 @@ function ChatProvider({ children }) {
 	const chatData = data.comments;
 	const [chatState, dispatch] = useReducer(chatReducer, chatData);
 	const [isReplying, setIsReplying] = useState(false);
+	const [commentToDelete, setCommentToDelete] = useState(null)
 	const modalRef = useRef();
+	
+	//  ideally the .close() method is supposed to remove the open attribute on a dialog
+	//  but for some reason im getting an error hence why i had to test some solutions
 
+	// here's a method i first tried but i'm not sure is ideal
 	// const showModal = () => {
 	// 	modalRef.current.removeAttribute('open')
 	// 	modalRef.current.showModal();
 	// };
 
-	//  ideally the .close() method is supposed to remove the open attribute but
-	//  for some reason im getting an error hence why i have to use this method
-
-	// heres a solution i found on github https://github.com/facebook/react/issues/24399
+	// here's a solution i found on github https://github.com/facebook/react/issues/24399
 	// useEffect(() => {
 	// 	const dialog = ref.current;
 	// 	dialog.showModal();
 	// 	return () => dialog.close();
 	//  }, []);
 
+	const addComment = (value) => {
+		dispatch({ type: 'ADDED', payload: value });
+	};
 
-	const showModal = () => {
+	const showModal = (id) => {
 		if (!modalRef.current.open) {
 			modalRef.current.showModal();
 		}
+		setCommentToDelete(id)
 	};
-	
+
+	const cancelDelete = () => {
+		modalRef.current.close();
+	};
+
+	const deleteComment = () => {
+		dispatch({ type: 'DELETE', payload: commentToDelete });
+		modalRef.current.close();
+		setCommentToDelete(null)
+	};
+
 	const reply = (id) => {
 		setIsReplying((prevState) => !prevState);
 		console.log(id);
 	};
 
-	const addComment = (value) => {
-		dispatch({ type: 'ADDED', payload: value });
-	};
-
 	const updatePost = (e) => {
 		e.preventDefault();
 		dispatch({ type: 'UPDATED', payload: '' });
-	};
-
-	const cancelDelete = (id) => {
-		modalRef.current.close();
-	};
-
-	const deleteComment = (id) => {
-		modalRef.current.close();
-		dispatch({ type: 'DELETE', payload: id });
 	};
 
 	const chatContext = {

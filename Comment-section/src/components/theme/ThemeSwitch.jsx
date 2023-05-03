@@ -25,7 +25,7 @@ const ThemeSwitch = () => {
 
 	return (
 		<label
-			className={`transition duration-300  ease-in-out text-GrayBlue dark:text-PaleBlue relative flex w-full items-center justify-between gap-[15px] hover:text-almost-black dark:hover:text-gray-400 md:justify-end`}
+			className={`transition duration-300  ease-in-out text-GrayBlue dark:text-PaleBlue relative flex w-full items-center justify-between gap-[15px] hover:text-ModerateBlue dark:hover:text-SoftBlue md:justify-end`}
 		>
 			<input
 				type='checkbox'

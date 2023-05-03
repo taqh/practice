@@ -7,7 +7,7 @@ import TextField from '../ui/TextField';
 import avatars from '../ui/userAvatars';
 import UserActions from '../ui/UserActions';
 import ChatContext from '../../context/ChatContext';
-
+import { nanoid } from 'nanoid';
 function Comment(props) {
 	const addCtx = useContext(ChatContext);
 	const [score, setScore] = useState(props.score);
@@ -27,13 +27,12 @@ function Comment(props) {
 	const update = (e) => {
 		setValue(e.target.value);
 	};
-	
 	return (
 		<div className='com gap-5 grid' id={props.id}>
 			<div className='comment grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
 				<div className='user grid xsm:flex items-center xsm:gap-3 gap-2'>
 					{' '}
-					<img src={props.src} alt='user-image' className='w-8 h-8' />
+					<img src={props.src.webp} alt='user-image' className='w-8 h-8' />
 					<p className='text-DarkBlue dark:text-Username font-bold'>
 						{props.username}
 					</p>
@@ -90,7 +89,7 @@ function Comment(props) {
 					<div className='del flex justify-self-end gap-2'>
 						<Button
 							className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold'
-							onClick={addCtx.showModal}
+							onClick={() => addCtx.showModal(props.id)}
 						>
 							<img src={del} alt='delete' />
 							<span>Delete</span>
@@ -114,7 +113,7 @@ function Comment(props) {
 						<Reply
 							id={reply.id}
 							content={reply.content}
-							key={crypto.randomUUID()}
+							key={reply.id}
 							score={reply.score}
 							src={reply.user.image.png}
 							createdAt={reply.createdAt}

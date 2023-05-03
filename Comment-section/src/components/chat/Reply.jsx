@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import icons from '../ui/icons';
-import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import TextField from '../ui/TextField';
 import ChatContext from '../../context/ChatContext';
@@ -8,9 +7,9 @@ import ChatContext from '../../context/ChatContext';
 function Reply({ id, currentUser, content, score, src, replyingTo, username }) {
 	const replyCtx = useContext(ChatContext);
 	const [count, setCount] = useState(score);
+	const [value, setValue] = useState(content);
 	const [isEditing, setIsediting] = useState(false);
 	const [isReplying, setIsReplying] = useState(false);
-	const [value, setValue] = useState(content);
 	const { minus, plus, reply, del, edit } = icons;
 
 	const replyTo = () => {
@@ -92,7 +91,7 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username }) {
 					<div className='del flex justify-self-end gap-2'>
 						<Button
 							className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold'
-							onClick={replyCtx.showModal}
+							onClick={() => replyCtx.showModal(id)}
 						>
 							<img src={del} alt='delete' />
 							<span>Delete</span>

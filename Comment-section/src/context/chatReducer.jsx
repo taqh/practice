@@ -1,11 +1,12 @@
+import { nanoid } from 'nanoid';
+
 export default function commentReducer(state, action) {
-	let currId = 5;
 	switch (action.type) {
 		case 'ADDED': {
 			return [
 				...state,
 				{
-					id: currId++,
+					id: `comment_${nanoid(10)}`,
 					content: action.payload,
 					createdAt: 'few secs ago',
 					score: 1,
@@ -23,10 +24,7 @@ export default function commentReducer(state, action) {
 			];
 		}
 		case 'DELETE': {
-			return (
-				state.filter((Comment) => Comment.id !== action.payload),
-				console.log('deleted comment')
-			);
+			return state.filter((Comment) => Comment.id !== action.payload);
 		}
 		case 'UPDATED': {
 			return console.log('updated comment');
