@@ -62,6 +62,7 @@
 
 @layer components {
 	.comment {
+		grid-template-rows: auto 1fr;
 		grid-template-areas:
 			'user user '
 			'text text '

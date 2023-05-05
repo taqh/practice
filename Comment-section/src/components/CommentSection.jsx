@@ -3,7 +3,6 @@ import Comment from './chat/Comment';
 import TextField from './ui/TextField';
 import ChatContext from '../context/ChatContext';
 import ThemeSwitch from './theme/ThemeSwitch';
-import { nanoid } from 'nanoid';
 import Modal from './ui/Modal';
 
 function CommentSection() {
@@ -16,7 +15,7 @@ function CommentSection() {
 			key={comment.id}
 			content={comment.content}
 			replies={comment.replies}
-			src={comment.user.image}
+			src={comment.user.image.png}
 			createdAt={comment.createdAt}
 			username={comment.user.username}
 			hasReplies={comment.replies.length > 0}

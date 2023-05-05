@@ -9,6 +9,7 @@ const ChatContext = createContext({
 	delete: (id) => {},
 	showModal: () => {},
 	addComment: () => {},
+	addReply: () => {},
 	handleChange: () => {},
 	updateComment: () => {},
 });

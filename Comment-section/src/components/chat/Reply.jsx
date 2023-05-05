@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import icons from '../ui/icons';
 import Button from '../ui/Button';
-import TextField from '../ui/TextField';
+import ReplyField from '../ui/ReplyField';
 import ChatContext from '../../context/ChatContext';
 
-function Reply({ id, currentUser, content, score, src, replyingTo, username }) {
+function Reply({ id, currentUser, content, score, src, replyingTo, username, createdAt }) {
 	const replyCtx = useContext(ChatContext);
 	const [count, setCount] = useState(score);
 	const [value, setValue] = useState(content);
@@ -21,9 +21,8 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username }) {
 
 	return (
 		<>
-			<div className='comment md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
+			<div className='comment md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300' id={username}>
 				<div className='user grid xsm:flex items-center gap-2 xsm:gap-3'>
-					{' '}
 					<img src={src} alt='user-image' className='w-8 h-8' />
 					{currentUser && (
 						<span className='bg-ModerateBlue dark:bg-SoftBlue rounded-sm px-1 text-white text-sm text-center'>
@@ -33,15 +32,15 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username }) {
 					<p className='text-DarkBlue dark:text-Username font-bold'>
 						{username}
 					</p>
-					<span className='dark:text-PaleBlue'>1 week ago</span>
+					<span className='dark:text-PaleBlue'>{createdAt}</span>
 				</div>
 				{!isEditing ? (
 					<p
 						className={`text dark:text-PaleBlue ${
 							currentUser ? 'animate-up' : ''
 						}`}
-					>
-						<a className='font-medium dark:text-SoftBlue text-ModerateBlue'>
+					> 
+						<a href={`#${replyingTo}`} className='font-medium dark:text-SoftBlue dark:outline-SoftBlue outline-ModerateBlue text-ModerateBlue'>
 							{`@${replyingTo}`}
 						</a>{' '}
 						{content}
@@ -106,7 +105,7 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username }) {
 					</div>
 				)}
 			</div>
-			{isReplying && <TextField />}
+			{isReplying && <ReplyField id={id} replyingToReply={true} close={replyTo}/>}
 		</>
 	);
 }

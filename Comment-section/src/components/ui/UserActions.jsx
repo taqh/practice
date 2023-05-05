@@ -2,16 +2,12 @@ import { useContext, useState } from 'react';
 import Button from './Button';
 import icons from './icons';
 import ChatContext from '../../context/ChatContext';
-export default function UserActions() {
-	const [currentUser, setCurrentUser] = useState(false);
+export default function UserActions({currentUser, isReplying, setIsReplying, setIsediting,}) {
 	const { minus, plus, edit, reply, del } = icons;
-	const [isReplying, setIsReplying] = useState(false);
 
 	const addCtx = useContext(ChatContext);
     const replyTo = (id) => {
 		setIsReplying((prevState) => !prevState);
-		id = props.id;
-		console.log(id);
 	};
 
 	return (

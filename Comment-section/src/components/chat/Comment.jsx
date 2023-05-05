@@ -1,38 +1,38 @@
 import { useState, useContext } from 'react';
 import Reply from './Reply';
-import Modal from '../ui/Modal';
 import icons from '../ui/icons';
 import Button from '../ui/Button';
-import TextField from '../ui/TextField';
+import ReplyField from '../ui/ReplyField';
 import avatars from '../ui/userAvatars';
 import UserActions from '../ui/UserActions';
 import ChatContext from '../../context/ChatContext';
-import { nanoid } from 'nanoid';
 function Comment(props) {
 	const addCtx = useContext(ChatContext);
 	const [score, setScore] = useState(props.score);
 	const [isReplying, setIsReplying] = useState(false);
 	const [currentUser, setCurrentUser] = useState(props.currentUser);
 	const [isEditing, setIsediting] = useState(false);
-	const [value, setValue] = useState(props.content);
+	const [updatedText, setUpdatedText] = useState(props.content);
 
 	const { minus, plus, edit, reply, del } = icons;
 	const { amy, julius, max, ramses } = avatars;
 
-	const replyTo = (id) => {
+	const replyTo = () => {
 		setIsReplying((prevState) => !prevState);
-		id = props.id;
-		console.log(id);
 	};
+
 	const update = (e) => {
-		setValue(e.target.value);
+		e.preventDefault()
+		addCtx.updateComment(updatedText, props.id)
+		setIsediting(!isEditing)
 	};
+
 	return (
-		<div className='com gap-5 grid' id={props.id}>
+		<div className='com gap-5 grid' id={props.username}>
 			<div className='comment grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
 				<div className='user grid xsm:flex items-center xsm:gap-3 gap-2'>
 					{' '}
-					<img src={props.src.webp} alt='user-image' className='w-8 h-8' />
+					<img src={props.src} alt='user-image' className='w-8 h-8' />
 					<p className='text-DarkBlue dark:text-Username font-bold'>
 						{props.username}
 					</p>
@@ -48,14 +48,14 @@ function Comment(props) {
 				) : (
 					<form
 						className='edit_field animate-up flex flex-col gap-3'
-						onSubmit={addCtx.updatePost}
+						onSubmit={update}
 					>
 						<textarea
 							rows={3}
 							autoFocus
-							value={value}
+							value={updatedText}
 							className='resize-none w-full border cursor-pointer dark:bg-TextArea dark:border-transparent dark:focus:outline dark:focus:outline-SoftBlue dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 focus:outline-ModerateBlue'
-							onChange={update}
+							onChange={(e) => setUpdatedText(e.target.value)}
 						></textarea>
 						<Button className='w-auto max-sm:w-full sm:self-end bg-ModerateBlue dark:bg-SoftBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
 							Update
@@ -105,7 +105,7 @@ function Comment(props) {
 				)}
 			</div>
 
-			{isReplying && <TextField />}
+			{isReplying && <ReplyField id={props.id} replyingTo={props.username} close={replyTo}/>}
 
 			{props.hasReplies && (
 				<ul className='border-l-2 dark:border-Gray pl-4 md:pl-10 md:ml-10 grid gap-5 transition duration-300'>

@@ -3,15 +3,16 @@ import avatar from '../../assets/avatars/image-juliusomo.png';
 import Button from './Button';
 import ChatContext from '../../context/ChatContext';
 
-const TextField = ({ onSubmit }) => {
+const TextField = ({ id, replyingTo, close, replyingToReply }) => {
 	const handler = useContext(ChatContext);
-	const [value, setValue] = useState('');
-
+	const [reply, setReply] = useState('');
+   
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		handler.addComment(value);
-		setValue('');
+		handler.addReply(reply, id, replyingTo, replyingToReply);
+		close();
 	};
+
 	return (
 		<form
 			onSubmit={handleSubmit}
@@ -26,12 +27,12 @@ const TextField = ({ onSubmit }) => {
 				placeholder='Add a comment...'
 				className='input resize-none dark:bg-TextArea dark:text-PaleBlue dark:border-transparent outline-none dark:caret-SoftBlue border rounded-lg caret-ModerateBlue cursor-pointer hover:border-ModerateBlue focus-within:outline-ModerateBlue dark:focus-within:outline-SoftBlue focus:border-transparent transition px-4 py-2.5'
 				rows={3}
-				value={value}
-				onChange={(e) => setValue(e.target.value)}
+				value={reply}
+				onChange={(e) => setReply(e.target.value)}
 			/>
 			<img src={avatar} alt='profile pic' className='w-11 h-11' />
 			<Button className='submit text-sm h-fit px-7 py-3 justify-self-end bg-ModerateBlue dark:bg-SoftBlue hover:bg-LightBlue text-white font-medium uppercase'>
-				{!handler.isReplying ? 'send' : 'reply'}
+				reply
 			</Button>
 		</form>
 	);
