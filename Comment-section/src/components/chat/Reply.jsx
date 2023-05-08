@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react';
-import icons from '../ui/icons';
+import Vote from '../ui/Vote';
 import Button from '../ui/Button';
 import ReplyField from '../ui/ReplyField';
 import ChatContext from '../../context/ChatContext';
+import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
 
 function Reply({
 	id,
@@ -15,10 +16,8 @@ function Reply({
 	createdAt,
 }) {
 	const replyCtx = useContext(ChatContext);
-	const [count, setCount] = useState(score);
 	const [isEditing, setIsediting] = useState(false);
 	const [isReplying, setIsReplying] = useState(false);
-	const { minus, plus, reply, del, edit } = icons;
 	const [updatedText, setUpdatedText] = useState(content);
 
 	const replyTo = () => {
@@ -33,7 +32,7 @@ function Reply({
 	return (
 		<>
 			<div
-				className='comment md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'
+				className='comment md:ml-0 grid gap-y-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'
 				id={username}
 			>
 				<div className='user grid xsm:flex items-center gap-2 xsm:gap-3'>
@@ -74,49 +73,36 @@ function Reply({
 							className='resize-none w-full border dark:outline-none dark:border-transparent focus:outline-ModerateBlue dark:focus:outline-SoftBlue dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 '
 							onChange={(e) => setUpdatedText(e.target.value)}
 						></textarea>
-						<Button className='w-auto max-sm:w-full sm:self-end bg-ModerateBlue dark:bg-SoftBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
+						<Button className='w-auto max-sm:w-full sm:self-end bg-ModerateBlue dark:hover:bg-Blueish dark:bg-SoftBlue hover:bg-LightBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
 							Update
 						</Button>
 					</form>
 				)}
-				<div className='vote h-fit bg-LightGray dark:bg-Vote flex md:flex-col gap-2 items-center justify-center p-2 w-fit rounded-lg transition duration-300'>
-					<Button
-						onClick={() => setCount((prevCount) => prevCount + 1)}
-						className='w-6 h-6 justify-center flex items-center '
-					>
-						<img src={plus} alt='upvote' />
-					</Button>
-					<span className='text-ModerateBlue font-bold'>{count}</span>
-					<Button
-						onClick={() => setCount((prevCount) => prevCount - 1)}
-						className='w-6 h-6 justify-center flex items-center'
-					>
-						<img src={minus} alt='minus' />
-					</Button>
-				</div>
+
+				<Vote score={score} id={id}/>
 
 				{!currentUser ? (
 					<Button
-						className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:opacity-80 font-bold'
+						className='reply flex gap-2 items-center justify-self-end text-ModerateBlue dark:text-SoftBlue fill-ModerateBlue dark:fill-SoftBlue hover:text-LightBlue hover:fill-LightBlue dark:hover:text-Blueish dark:hover:fill-Blueish font-bold'
 						onClick={replyTo}
 					>
-						<img src={reply} alt='reply' />
+						<ReplyIcon />
 						<span>Reply</span>
 					</Button>
 				) : (
 					<div className='del flex justify-self-end gap-2'>
 						<Button
-							className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold'
+							className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed dark:hover:text-DarkRed fill-SoftRed hover:fill-PaleRed dark:hover:fill-DarkRed font-bold'
 							onClick={() => replyCtx.showModal(id)}
 						>
-							<img src={del} alt='delete' />
+							<DeleteIcon />
 							<span>Delete</span>
 						</Button>
 						<Button
-							className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:text-LightBlue font-bold'
+							className='reply flex gap-2 items-center justify-self-end text-ModerateBlue dark:text-SoftBlue fill-ModerateBlue dark:fill-SoftBlue hover:text-LightBlue hover:fill-LightBlue dark:hover:text-Blueish dark:hover:fill-Blueish font-bold'
 							onClick={() => setIsediting((prev) => !prev)}
 						>
-							<img src={edit} alt='edit' />
+							<EditIcon />
 							<span>Edit</span>
 						</Button>
 					</div>

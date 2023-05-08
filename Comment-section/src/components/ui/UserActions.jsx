@@ -1,9 +1,8 @@
 import { useContext, useState } from 'react';
 import Button from './Button';
-import icons from './icons';
 import ChatContext from '../../context/ChatContext';
+import { DeleteIcon, EditIcon, ReplyIcon } from './icons'; 
 export default function UserActions({currentUser, isReplying, setIsReplying, setIsediting,}) {
-	const { minus, plus, edit, reply, del } = icons;
 
 	const addCtx = useContext(ChatContext);
     const replyTo = (id) => {
@@ -17,7 +16,7 @@ export default function UserActions({currentUser, isReplying, setIsReplying, set
 					className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:text-LightBlue font-bold'
 					onClick={replyTo}
 				>
-					<img src={reply} alt='reply' />
+					<ReplyIcon />
 					<span>Reply</span>
 				</Button>
 			) : (
@@ -26,14 +25,14 @@ export default function UserActions({currentUser, isReplying, setIsReplying, set
 						className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed font-bold'
 						onClick={addCtx.showModal}
 					>
-						<img src={del} alt='delete' />
+						<DeleteIcon />
 						<span>Delete</span>
 					</Button>
 					<Button
 						className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:text-LightBlue font-bold'
 						onClick={() => setIsediting((prev) => !prev)}
 					>
-						<img src={edit} alt='edit' />
+						<EditIcon />
 						<span>Edit</span>
 					</Button>
 				</div>

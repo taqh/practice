@@ -15,7 +15,7 @@ const TextField = ({ onSubmit }) => {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className='textfield grid gap-3  bg-white dark:bg-Gray p-5 rounded-lg shadow-sm transition animate-down'
+			className='textfield grid gap-3 max-md:gap-x-0 bg-white dark:bg-Gray p-5 rounded-lg shadow-sm transition animate-down'
 		>
 			<label htmlFor='comment' className='sr-only'>
 				Add a comment
@@ -24,13 +24,13 @@ const TextField = ({ onSubmit }) => {
 				id='comment'
 				type='textarea'
 				placeholder='Add a comment...'
-				className='input resize-none dark:bg-TextArea dark:text-PaleBlue dark:border-transparent outline-none dark:caret-SoftBlue border rounded-lg caret-ModerateBlue cursor-pointer hover:border-ModerateBlue focus-within:outline-ModerateBlue dark:focus-within:outline-SoftBlue focus:border-transparent transition px-4 py-2.5'
+				className='input resize-none w-full border dark:outline-none dark:border-transparent focus:outline-ModerateBlue dark:focus:outline-SoftBlue dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 '
 				rows={3}
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 			/>
 			<img src={avatar} alt='profile pic' className='w-11 h-11' />
-			<Button className='submit text-sm h-fit px-7 py-3 justify-self-end bg-ModerateBlue dark:bg-SoftBlue hover:bg-LightBlue text-white font-medium uppercase'>
+			<Button className='submit text-sm h-fit px-7 py-3 justify-self-end bg-ModerateBlue dark:bg-SoftBlue dark:hover:bg-Blueish hover:bg-LightBlue text-white font-medium uppercase'>
 				{!handler.isReplying ? 'send' : 'reply'}
 			</Button>
 		</form>

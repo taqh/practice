@@ -25,7 +25,7 @@ const Warning = ({ id }) => {
 						no, cancel
 					</Button>
 					<Button
-						className='w-full bg-SoftRed hover:bg-PaleRed px-3 py-3 rounded-md uppercase transition'
+						className='w-full bg-SoftRed dark:hover:bg-DarkRed hover:bg-PaleRed px-3 py-3 rounded-md uppercase transition'
 						onClick={modalCtx.delete}
 					>
 						yes, delete

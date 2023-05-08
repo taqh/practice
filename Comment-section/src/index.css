@@ -4,25 +4,27 @@
 
 :root {
 	/* Primary */
-	--ModerateBlue: hsl(238 40% 52%);
 	--SoftRed: hsl(358 79% 66%);
-	--Light-grayblue: hsl(239 57% 85%);
 	--Palered: hsl(357 100% 86%);
+	--ModerateBlue: hsl(238, 40%, 52%);
+	--Light-grayblue: hsl(239 57% 85%);	
 
 	/* Neutral */
-	--Darkblue: hsl(212 24% 26%);
-	--GrayishBlue: hsl(211 10% 45%);
-	--Lightgray: hsl(223 19% 93%);
-	--Very-lightgray: hsl(228 33% 97%);
 	--White: hsl(0 0% 100%);
+	--Darkblue: hsl(212 24% 26%);
+	--Lightgray: hsl(223 19% 93%);
+	--GrayishBlue: hsl(211 10% 45%);
+	--Very-lightgray: hsl(228 33% 97%);
 
 	/* Dark mode */
-	--section-bg: hsl(206 9% 15%);
-	--comment-bg: hsl(214 7% 19%);
 	--vote: hsl(206 9% 15%);
 	--text: hsl(225 17% 91%);
 	--textarea: hsl(225 7% 24%);
-	--Tag: hsl(227 58% 65%);
+	--DarkRed: hsl(358, 86%, 60%);
+	--DarkBlue: hsl(239, 80%, 62%);
+	--section-bg: hsl(206 9% 15%);
+	--comment-bg: hsl(214 7% 19%);
+	--SoftBlue: hsl(227 58% 65%);
 }
 
 @keyframes fade-in {
