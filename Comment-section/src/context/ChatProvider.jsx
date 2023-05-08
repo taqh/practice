@@ -29,12 +29,8 @@ function ChatProvider({ children }) {
 		dispatch({ type: 'ADDED', payload: comment });
 	};
 
-	const addReply = (reply, id, replyingTo, replyingToReply) => {
-		if(!replyingToReply) {
-			dispatch({ type: 'REPLIED_COMMENT', payload: { reply, id, replyingTo } });
-		} else {
-			dispatch({ type: 'REPLIED_REPLY', payload: { reply, id, replyingTo } });
-		}
+	const addReply = (reply, id, replyingTo ) => {
+		dispatch({ type: 'REPLIED', payload: { reply, id, replyingTo } });
 	};
 
 	const updateComment = (text, id) => {
@@ -47,7 +43,7 @@ function ChatProvider({ children }) {
 		}
 		setCommentToDelete(id);
 	};
-
+	
 	const cancelDelete = () => {
 		modalRef.current.close();
 	};

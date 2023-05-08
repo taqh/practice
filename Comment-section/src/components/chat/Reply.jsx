@@ -4,24 +4,38 @@ import Button from '../ui/Button';
 import ReplyField from '../ui/ReplyField';
 import ChatContext from '../../context/ChatContext';
 
-function Reply({ id, currentUser, content, score, src, replyingTo, username, createdAt }) {
+function Reply({
+	id,
+	currentUser,
+	content,
+	score,
+	src,
+	replyingTo,
+	username,
+	createdAt,
+}) {
 	const replyCtx = useContext(ChatContext);
 	const [count, setCount] = useState(score);
-	const [value, setValue] = useState(content);
 	const [isEditing, setIsediting] = useState(false);
 	const [isReplying, setIsReplying] = useState(false);
 	const { minus, plus, reply, del, edit } = icons;
+	const [updatedText, setUpdatedText] = useState(content);
 
 	const replyTo = () => {
 		setIsReplying((prevState) => !prevState);
 	};
 	const update = (e) => {
-		setValue(e.target.value);
+		e.preventDefault();
+		setIsediting(!isEditing);
+		replyCtx.updateComment(updatedText, id);
 	};
 
 	return (
 		<>
-			<div className='comment md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300' id={username}>
+			<div
+				className='comment md:ml-0 grid gap-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'
+				id={username}
+			>
 				<div className='user grid xsm:flex items-center gap-2 xsm:gap-3'>
 					<img src={src} alt='user-image' className='w-8 h-8' />
 					{currentUser && (
@@ -39,8 +53,11 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username, cre
 						className={`text dark:text-PaleBlue ${
 							currentUser ? 'animate-up' : ''
 						}`}
-					> 
-						<a href={`#${replyingTo}`} className='font-medium dark:text-SoftBlue dark:outline-SoftBlue outline-ModerateBlue text-ModerateBlue'>
+					>
+						<a
+							href={`#${replyingTo}`}
+							className='font-medium dark:text-SoftBlue dark:outline-SoftBlue outline-ModerateBlue text-ModerateBlue'
+						>
 							{`@${replyingTo}`}
 						</a>{' '}
 						{content}
@@ -48,14 +65,14 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username, cre
 				) : (
 					<form
 						className='edit_field animate-up flex flex-col gap-3'
-						onSubmit={replyCtx.updatePost}
+						onSubmit={update}
 					>
 						<textarea
 							rows={3}
 							autoFocus
-							value={value}
+							value={updatedText}
 							className='resize-none w-full border dark:outline-none dark:border-transparent focus:outline-ModerateBlue dark:focus:outline-SoftBlue dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 '
-							onChange={update}
+							onChange={(e) => setUpdatedText(e.target.value)}
 						></textarea>
 						<Button className='w-auto max-sm:w-full sm:self-end bg-ModerateBlue dark:bg-SoftBlue text-white text-sm uppercase font-medium px-4 py-2.5 rounded-md'>
 							Update
@@ -80,7 +97,7 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username, cre
 
 				{!currentUser ? (
 					<Button
-						className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:text-LightBlue font-bold'
+						className='reply flex gap-2 items-center justify-self-end text-ModerateBlue hover:opacity-80 font-bold'
 						onClick={replyTo}
 					>
 						<img src={reply} alt='reply' />
@@ -105,7 +122,7 @@ function Reply({ id, currentUser, content, score, src, replyingTo, username, cre
 					</div>
 				)}
 			</div>
-			{isReplying && <ReplyField id={id} replyingToReply={true} close={replyTo}/>}
+			{isReplying && <ReplyField id={id} close={replyTo} />}
 		</>
 	);
 }

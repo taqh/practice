@@ -3,13 +3,13 @@ import avatar from '../../assets/avatars/image-juliusomo.png';
 import Button from './Button';
 import ChatContext from '../../context/ChatContext';
 
-const TextField = ({ id, replyingTo, close, replyingToReply }) => {
+const TextField = ({ id, replyingTo, close }) => {
 	const handler = useContext(ChatContext);
 	const [reply, setReply] = useState('');
    
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		handler.addReply(reply, id, replyingTo, replyingToReply);
+		handler.addReply(reply, id, replyingTo);
 		close();
 	};
 
