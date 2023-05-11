@@ -55,10 +55,15 @@
 
 
 <table width="100%">
-  <tr>
+<tr>
     <th>Project</th>
     <th>Solution URL</th>
     <th>Live Site URL</th>
+  </tr>
+  <tr>
+    <td>Interacive comments section</td>
+    <td><a href="https://www.frontendmentor.io/solutions/Solution"</a></td>
+    <td><a href="https://comments-domiha.vercel.app/">Live site</a></td>
   </tr>
   <tr>
     <td>Calculator app</td>
