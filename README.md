@@ -62,7 +62,7 @@
   </tr>
   <tr>
     <td>Interacive comments section</td>
-    <td><a href="https://www.frontendmentor.io/solutions/Solution"</a></td>
+    <td><a href="https://www.frontendmentor.io/solutions/"</a>Solution</td>
     <td><a href="https://comments-domiha.vercel.app/">Live site</a></td>
   </tr>
   <tr>
