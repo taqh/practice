@@ -64,10 +64,6 @@ Users should be able to:
 This task was quite challenging and I had to learn some things along the way. I learnt how to use the `useRef` hook to call the `showModal()` && `close()` method on the dialog element. I also learnt some new array methods and how to use them together to access and update deeply nested state. I also learnt how to use the `useContext` hook to pass data from the parent component to the child component. I learnt to use the `useReducer` hook together with context to manage multiple states.
 I also learned how to work work with dayjs and dynamically update the time since a comment was posted.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
 ```css
 .proud-of-this-css {
   overflow-wrap: break-word;
@@ -76,7 +72,16 @@ I also learned how to work work with dayjs and dynamically update the time since
 
 ```js
 const proudOfThisFunc = () => {
-  console.log('🎉')
+ const formatTime = (time) => {
+    if (typeof time === 'string') {
+      const parsedTime = Date.parse(time);
+      if (!isNaN(parsedTime)) {
+         return dayjs(parsedTime).fromNow();
+      }
+      return time;
+    }
+    return dayjs(time).fromNow();
+  };
 }
 ```
 

@@ -2,11 +2,9 @@ import { useState, useContext } from 'react';
 import Reply from './Reply';
 import Vote from '../ui/Vote';
 import Button from '../ui/Button';
-import dayjs from '../../dayjsConfig';
 import ReplyField from '../ui/ReplyField';
 import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
-
 
 function Comment(props) {
 	const addCtx = useContext(ChatContext);
@@ -14,7 +12,6 @@ function Comment(props) {
 	const [isReplying, setIsReplying] = useState(false);
 	const [updatedText, setUpdatedText] = useState(props.content);
 	const [currentUser, setCurrentUser] = useState(props.currentUser);
-	const isFromJson = typeof(props.createdAt) === 'string'
 
 	const replyTo = () => {
 		setIsReplying((prevState) => !prevState);
@@ -25,14 +22,17 @@ function Comment(props) {
 		addCtx.updateComment(updatedText, props.id);
 		setIsediting(!isEditing);
 	};
-	
-	
+
 	return (
 		<div className='com gap-5  grid' id={props.username}>
 			<div className='comment grid gap-y-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
 				<div className='user grid xsm:flex items-center xsm:gap-3 gap-2'>
 					{' '}
-					<img src={props.src} alt={props.username} className='w-8 h-8' />
+					<picture className='w-8 h-8'>
+						<source srcSet={props.src.webp} type='image/webp' />
+						<source srcSet={props.src.png} type='image/png' />
+						<img src={props.src.png} alt={props.username} />
+					</picture>
 					<p className='text-DarkBlue dark:text-Username font-bold'>
 						{props.username}
 					</p>
@@ -42,11 +42,7 @@ function Comment(props) {
 						</span>
 					)}
 					<span className='dark:text-PaleBlue'>
-						{/* because the json timestamps are strings calling the dayjs methods would display NaN */}
-						{/* so i first need to check if its from the data.json file or not before calling the dayjs() */}
-						{isFromJson
-							? props.createdAt
-							: dayjs(props.createdAt).fromNow()}
+						{addCtx.formatTime(props.createdAt)}
 					</span>
 				</div>
 				{!isEditing ? (
@@ -121,7 +117,7 @@ function Comment(props) {
 							key={reply.id}
 							score={reply.score}
 							content={reply.content}
-							src={reply.user.image.png}
+							src={reply.user.image}
 							createdAt={reply.createdAt}
 							replyingTo={reply.replyingTo}
 							username={reply.user.username}

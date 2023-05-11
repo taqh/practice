@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { MoonIcon, SunIcon } from '../ui/icons';
 
 const ThemeSwitch = () => {
 	const [darkMode, setDarkMode] = useState(false);
@@ -30,14 +29,13 @@ const ThemeSwitch = () => {
 		>
 			<input
 				type='checkbox'
-				className='m-t border-none dark:focus-within:outline-SoftBlue focus-within:outline-ModerateBlue absolute top-0 left-0 z-10 h-full w-full cursor-pointer appearance-none'
+				className='border-none dark:focus-within:outline-SoftBlue focus-within:outline-ModerateBlue absolute top-0 left-0 z-10 h-full w-full cursor-pointer appearance-none'
 				checked={darkMode}
 				role='switch'
 				aria-checked={darkMode}
 				onChange={() => setDarkMode(!darkMode)}
 			/>
 			<span className='switch rounded-2xl' aria-hidden='true'></span>
-			{/* {darkMode ? <SunIcon /> : <MoonIcon />} */}
 		</label>
 	);
 };

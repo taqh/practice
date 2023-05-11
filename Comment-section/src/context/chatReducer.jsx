@@ -13,8 +13,8 @@ export default function commentReducer(state, action) {
 					score: 1,
 					user: {
 						image: {
-							png: 'src/assets/avatars/image-juliusomo.png',
-							webp: 'src/assets/avatars/image-juliusomo.webp',
+							png: '../../public/avatars/image-juliusomo.png',
+							webp: '../../public/avatars/image-juliusomo.webp',
 						},
 						username: 'juliusomo',
 					},
@@ -64,8 +64,8 @@ export default function commentReducer(state, action) {
 							replyingTo: replyingTo,
 							user: {
 								image: {
-									png: 'src/assets/avatars/image-juliusomo.png',
-									webp: 'src/assets/avatars/image-juliusomo.webp',
+									png: '../../public/avatars/image-juliusomo.png',
+									webp: '../../public/avatars/image-juliusomo.webp',
 								},
 								username: 'juliusomo',
 							},
@@ -101,8 +101,8 @@ export default function commentReducer(state, action) {
 							replyingTo: name,
 							user: {
 								image: {
-									png: 'src/assets/avatars/image-juliusomo.png',
-									webp: 'src/assets/avatars/image-juliusomo.webp',
+									png: '../../public/avatars/image-juliusomo.png',
+									webp: '../../public/avatars/image-juliusomo.webp',
 								},
 								username: 'juliusomo',
 							},

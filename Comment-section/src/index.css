@@ -37,8 +37,8 @@
 }
 @keyframes slide-down {
 	from {
-		opacity: 0.5;
-		transform: translateY(-2rem);
+		opacity: 0.8;
+		transform: translateY(-2.3rem);
 	}
 	to {
 		opacity: 1;
@@ -67,8 +67,8 @@
 		grid-template-rows: auto 1fr;
 		grid-template-columns: 1fr;
 		grid-template-areas:
-			'user user '
-			'text text '
+			'user user'
+			'text text'
 			'vote reply';
 	}
 	.vote {
@@ -152,7 +152,7 @@
 	grid-template-columns: auto auto auto 1fr;
 	grid-template-areas: 'pfp name tag date';
 }
-.user > img {
+.user > picture, img {
 	grid-area: pfp;
 }
 .user > p {
@@ -169,8 +169,8 @@
 @media (max-width: 22.1875em) {
 	.comment {
 		grid-template-areas:
-			'user user '
-			'text text '
+			'user user'
+			'text text'
 			'vote reply'
 			'update update';
 	}
@@ -179,7 +179,7 @@
 		justify-content: space-between;
 		width: 100%;
 	}
-	.user > img {
+	.user > picture, img {
 		width: 2.5rem;
 		height: 2.5rem;
 	}
@@ -193,6 +193,6 @@
 		row-gap: 0;
 		grid-template-areas:
 			'pfp name tag'
-			'pfp date date ';
+			'pfp date date';
 	}
 }

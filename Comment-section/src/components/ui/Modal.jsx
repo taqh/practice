@@ -3,12 +3,12 @@ import Button from './Button';
 import { createPortal } from 'react-dom';
 import ChatContext from '../../context/ChatContext';
 
-const Warning = ({ id }) => {
+const Warning = () => {
 	const modalCtx = useContext(ChatContext);
 	
 	return (
 		<dialog
-			className='m-auto bg-transparent backdrop:bg-black/50 grid place-content-center p-0'
+			className='scale-0 m-auto bg-transparent backdrop:bg-black/50 grid place-content-center p-0'
 			ref={modalCtx.modalRef}
 		>
 			<div className='max-w-screen-xsm bg-white dark:bg-DarkGray p-5 shadow-md rounded-lg'>

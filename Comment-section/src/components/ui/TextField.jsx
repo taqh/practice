@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import avatar from '../../assets/avatars/image-juliusomo.png';
 import Button from './Button';
 import ChatContext from '../../context/ChatContext';
+import avatar from '../../assets/avatars/image-juliusomo.png';
 
 const TextField = () => {
 	const handler = useContext(ChatContext);
@@ -31,7 +31,7 @@ const TextField = () => {
 			/>
 			<img src={avatar} alt='profile pic' className='w-11 h-11' />
 			<Button className='submit text-sm h-fit px-7 py-3 justify-self-end bg-ModerateBlue dark:bg-SoftBlue dark:hover:bg-Blueish hover:bg-LightBlue text-white font-medium uppercase'>
-				{!handler.isReplying ? 'send' : 'reply'}
+				send
 			</Button>
 		</form>
 	);

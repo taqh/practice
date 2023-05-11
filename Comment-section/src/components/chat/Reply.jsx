@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import Vote from '../ui/Vote';
 import Button from '../ui/Button';
-import dayjs from '../../dayjsConfig';
 import ReplyField from '../ui/ReplyField';
 import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
@@ -20,7 +19,6 @@ function Reply({
 	const [isEditing, setIsediting] = useState(false);
 	const [isReplying, setIsReplying] = useState(false);
 	const [updatedText, setUpdatedText] = useState(content);
-	const isFromJson = typeof(createdAt) === 'string'
 
 	const replyTo = () => {
 		setIsReplying((prevState) => !prevState);
@@ -30,7 +28,7 @@ function Reply({
 		setIsediting(!isEditing);
 		replyCtx.updateComment(updatedText, id);
 	};
-	
+
 	return (
 		<>
 			<div
@@ -38,7 +36,11 @@ function Reply({
 				id={username}
 			>
 				<div className='user grid xsm:flex items-center gap-2 xsm:gap-3'>
-					<img src={src} alt={username} className='w-8 h-8' />
+					<picture className='w-8 h-8'>
+						<source srcSet={src.webp} type='image/webp' />
+						<source srcSet={src.png} type='image/png' />
+						<img src={src.png} alt={username} />
+					</picture>
 					{currentUser && (
 						<span className='bg-ModerateBlue dark:bg-SoftBlue rounded-sm px-1 text-white text-sm text-center'>
 							you
@@ -48,11 +50,7 @@ function Reply({
 						{username}
 					</p>
 					<span className='dark:text-PaleBlue'>
-						{/* because the json timestamps are strings calling the dayjs methods would display NaN */}
-						{/* so i first need to check if its from the data.json file or not before calling the dayjs() */}
-						{isFromJson
-							? createdAt
-							: dayjs(createdAt).fromNow()}
+						{replyCtx.formatTime(createdAt)}
 					</span>
 				</div>
 				{!isEditing ? (

@@ -33,7 +33,7 @@ export default {
 				lg: '64em',
 				xl: '80em',
 				xxl: '90em',
-				"max-md": { max: "47.98em" },
+				'max-md': { max: '47.98em' },
 				'max-sm': { max: '26.5em' },
 			},
 			colors: {
@@ -47,7 +47,7 @@ export default {
 				DarkBlue: 'hsl(212 24% 26%)',
 				GrayBlue: 'hsl(211 10% 45%)',
 				LightGray: 'hsl(223 19% 93%)',
-				
+
 				// dark mode
 				Gray: 'hsl(214 7% 19%)',
 				Vote: 'hsl(206 9% 15%)',
@@ -56,12 +56,10 @@ export default {
 				TextArea: 'hsl(225 7% 24%)',
 				SoftBlue: 'hsl(227 61% 66%)',
 				PaleBlue: 'hsl(225 17% 91%)',
-				DarkRed: 'hsl(358 86% 60%)', 
+				DarkRed: 'hsl(358 86% 60%)',
 				Blueish: 'hsl(239 80% 62%)',
 			},
 		},
 	},
-	plugins: [
-		/*require('@tailwindcss/forms')*/
-	],
+	plugins: [],
 };
