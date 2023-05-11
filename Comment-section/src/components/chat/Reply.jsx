@@ -74,7 +74,6 @@ function Reply({
 					>
 						<textarea
 							rows={3}
-							autoFocus
 							value={updatedText}
 							className='resize-none w-full border dark:outline-none dark:border-transparent focus:outline-ModerateBlue dark:focus:outline-SoftBlue dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 '
 							onChange={(e) => setUpdatedText(e.target.value)}

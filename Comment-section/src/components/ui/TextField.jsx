@@ -15,7 +15,7 @@ const TextField = () => {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className='textfield grid gap-3 max-md:gap-x-0 bg-white dark:bg-Gray p-5 rounded-lg shadow-sm transition animate-down'
+			className='textfield grid gap-3 max-md:gap-x-0 bg-white dark:bg-Gray p-5 rounded-lg shadow-sm transition'
 		>
 			<label htmlFor='comment' className='sr-only'>
 				Add a comment

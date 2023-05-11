@@ -60,7 +60,6 @@ function Comment(props) {
 					>
 						<textarea
 							rows={3}
-							autoFocus
 							value={updatedText}
 							className='resize-none w-full border cursor-pointer dark:bg-TextArea dark:border-transparent dark:focus:outline dark:focus:outline-SoftBlue dark:text-PaleBlue caret-ModerateBlue dark:caret-SoftBlue rounded-md p-2 focus:outline-ModerateBlue'
 							onChange={(e) => setUpdatedText(e.target.value)}
