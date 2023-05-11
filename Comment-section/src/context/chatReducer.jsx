@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { nanoid } from 'nanoid';
 
 export default function commentReducer(state, action) {
@@ -8,14 +9,12 @@ export default function commentReducer(state, action) {
 				{
 					id: nanoid(),
 					content: action.payload,
-					createdAt: 'few secs ago',
+					createdAt: dayjs(),
 					score: 1,
 					user: {
 						image: {
-							image: {
-								png: '../assets/avatars/image-juliusomo.png',
-								webp: '../assets/avatars/image-juliusomo.webp',
-							},
+							png: 'src/assets/avatars/image-juliusomo.png',
+							webp: 'src/assets/avatars/image-juliusomo.webp',
 						},
 						username: 'juliusomo',
 					},
@@ -47,7 +46,7 @@ export default function commentReducer(state, action) {
 			if (isReplyingToComment) {
 				const commentIndex = state.findIndex(
 					(comment) => comment.id === id
-				); 
+				);
 				if (commentIndex === -1) {
 					return state;
 				}
@@ -60,13 +59,13 @@ export default function commentReducer(state, action) {
 						{
 							id: nanoid(),
 							content: reply,
-							createdAt: 'just now',
+							createdAt: dayjs(),
 							score: 1,
 							replyingTo: replyingTo,
 							user: {
 								image: {
-									png: '../../assets/avatars/image-ramsesmiron.png',
-									webp: '../../assets/avatars/image-ramsesmiron.webp',
+									png: 'src/assets/avatars/image-juliusomo.png',
+									webp: 'src/assets/avatars/image-juliusomo.webp',
 								},
 								username: 'juliusomo',
 							},
@@ -78,8 +77,7 @@ export default function commentReducer(state, action) {
 					updatedComment,
 					...state.slice(commentIndex + 1),
 				];
-			} 
-			else {
+			} else {
 				const commentIndex = state.findIndex((comment) =>
 					comment.replies.some((reply) => reply.id === id)
 				);
@@ -103,8 +101,8 @@ export default function commentReducer(state, action) {
 							replyingTo: name,
 							user: {
 								image: {
-									png: '../../assets/avatars/image-ramsesmiron.png',
-									webp: '../../assets/avatars/image-ramsesmiron.webp',
+									png: 'src/assets/avatars/image-juliusomo.png',
+									webp: 'src/assets/avatars/image-juliusomo.webp',
 								},
 								username: 'juliusomo',
 							},
@@ -128,7 +126,7 @@ export default function commentReducer(state, action) {
 						} else {
 							return comment;
 						}
-				   })
+				  })
 				: state.map((comment) => {
 						const updatedReplies = comment.replies.map((reply) => {
 							if (reply.id === id) {
@@ -138,7 +136,7 @@ export default function commentReducer(state, action) {
 							}
 						});
 						return { ...comment, replies: updatedReplies };
-				   });
+				  });
 			return updatedComment;
 		}
 

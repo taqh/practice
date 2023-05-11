@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import Modal from './ui/Modal';
 import Comment from './chat/Comment';
 import TextField from './ui/TextField';
-import ChatContext from '../context/ChatContext';
 import ThemeSwitch from './theme/ThemeSwitch';
-import Modal from './ui/Modal';
+import ChatContext from '../context/ChatContext';
 
 function CommentSection() {
 	const { posts } = useContext(ChatContext);
@@ -11,8 +11,8 @@ function CommentSection() {
 	const commentThread = posts.map((comment) => (
 		<Comment
 			id={comment.id}
-			score={comment.score}
 			key={comment.id}
+			score={comment.score}
 			content={comment.content}
 			replies={comment.replies}
 			src={comment.user.image.png}

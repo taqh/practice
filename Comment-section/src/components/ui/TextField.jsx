@@ -3,7 +3,7 @@ import avatar from '../../assets/avatars/image-juliusomo.png';
 import Button from './Button';
 import ChatContext from '../../context/ChatContext';
 
-const TextField = ({ onSubmit }) => {
+const TextField = () => {
 	const handler = useContext(ChatContext);
 	const [value, setValue] = useState('');
 

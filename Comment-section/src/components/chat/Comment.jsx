@@ -2,36 +2,37 @@ import { useState, useContext } from 'react';
 import Reply from './Reply';
 import Vote from '../ui/Vote';
 import Button from '../ui/Button';
-import avatars from '../ui/userAvatars';
+import dayjs from '../../dayjsConfig';
 import ReplyField from '../ui/ReplyField';
-import UserActions from '../ui/UserActions';
 import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
 
+
 function Comment(props) {
 	const addCtx = useContext(ChatContext);
-	const { amy, julius, max, ramses } = avatars;
 	const [isEditing, setIsediting] = useState(false);
 	const [isReplying, setIsReplying] = useState(false);
 	const [updatedText, setUpdatedText] = useState(props.content);
 	const [currentUser, setCurrentUser] = useState(props.currentUser);
+	const isFromJson = typeof(props.createdAt) === 'string'
 
 	const replyTo = () => {
 		setIsReplying((prevState) => !prevState);
 	};
 
 	const update = (e) => {
-		e.preventDefault()
-		addCtx.updateComment(updatedText, props.id)
-		setIsediting(!isEditing)
+		e.preventDefault();
+		addCtx.updateComment(updatedText, props.id);
+		setIsediting(!isEditing);
 	};
-
+	
+	
 	return (
 		<div className='com gap-5  grid' id={props.username}>
 			<div className='comment grid gap-y-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
 				<div className='user grid xsm:flex items-center xsm:gap-3 gap-2'>
 					{' '}
-					<img src={props.src} alt='user-image' className='w-8 h-8' />
+					<img src={props.src} alt={props.username} className='w-8 h-8' />
 					<p className='text-DarkBlue dark:text-Username font-bold'>
 						{props.username}
 					</p>
@@ -40,10 +41,22 @@ function Comment(props) {
 							you
 						</span>
 					)}
-					<span className='dark:text-PaleBlue'>{props.createdAt}</span>
+					<span className='dark:text-PaleBlue'>
+						{/* because the json timestamps are strings calling the dayjs methods would display NaN */}
+						{/* so i first need to check if its from the data.json file or not before calling the dayjs() */}
+						{isFromJson
+							? props.createdAt
+							: dayjs(props.createdAt).fromNow()}
+					</span>
 				</div>
 				{!isEditing ? (
-					<p className={`text dark:text-PaleBlue ${currentUser ? 'animate-up' : ''}`}>{props.content}</p>
+					<p
+						className={`text dark:text-PaleBlue ${
+							currentUser ? 'animate-up' : ''
+						}`}
+					>
+						{props.content}
+					</p>
 				) : (
 					<form
 						className='edit_field animate-up flex flex-col gap-3'
@@ -61,8 +74,8 @@ function Comment(props) {
 						</Button>
 					</form>
 				)}
-				
-				<Vote score={props.score} id={props.id}/>
+
+				<Vote score={props.score} id={props.id} />
 
 				{!currentUser ? (
 					<Button
@@ -92,20 +105,26 @@ function Comment(props) {
 				)}
 			</div>
 
-			{isReplying && <ReplyField id={props.id} replyingTo={props.username} close={replyTo}/>}
+			{isReplying && (
+				<ReplyField
+					id={props.id}
+					replyingTo={props.username}
+					close={replyTo}
+				/>
+			)}
 
 			{props.hasReplies && (
 				<ul className='border-l-2 dark:border-Gray pl-4 md:pl-10 md:ml-10 grid gap-5 transition duration-300'>
 					{props.replies.map((reply) => (
 						<Reply
 							id={reply.id}
-							content={reply.content}
 							key={reply.id}
 							score={reply.score}
+							content={reply.content}
 							src={reply.user.image.png}
 							createdAt={reply.createdAt}
-							username={reply.user.username}
 							replyingTo={reply.replyingTo}
+							username={reply.user.username}
 							currentUser={reply.user.username === 'juliusomo'}
 						/>
 					))}

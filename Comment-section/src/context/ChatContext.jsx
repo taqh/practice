@@ -6,10 +6,10 @@ const ChatContext = createContext({
 	reply: false,
 	isReplying: false,
 	cancel: () => {},
-	delete: (id) => {},
+	delete: () => {},
+	addReply: () => {},
 	showModal: () => {},
 	addComment: () => {},
-	addReply: () => {},
 	handleChange: () => {},
 	updateComment: () => {},
 });
