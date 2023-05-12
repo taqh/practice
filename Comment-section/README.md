@@ -43,8 +43,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [solution](https://your-solution-url.com)
-- Live Site URL: [live site](https://your-live-site-url.com)
+- Solution URL: [solution](https://www.frontendmentor.io/solutions/interactive-comments-section-with-dark-theme-and-timestamps-OWwBzgVPV-)
+- Live Site URL: [live site](https://comment-sec.netlify.app/)
 
 ## My process
 
