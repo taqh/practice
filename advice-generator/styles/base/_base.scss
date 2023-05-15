@@ -46,8 +46,7 @@ body {
 		transition: box-shadow 300ms ease-in-out;
 
 		// this was to fix an issue with the button not being centered on ios
-		left: 50%;
-		transform: translateX(-50%);
+		left: 44%;
 		// end of fix
 		
 		&:hover {
