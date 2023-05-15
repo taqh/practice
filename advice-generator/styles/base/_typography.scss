@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&display=swap');
+
+body {
+	font-family: 'Manrope', sans-serif;
+}
+
+.advice{
+   text-align: center;
+   &__id {
+      font-weight: 800;
+      font-size: clamp(0.75rem, calc(0.5rem + 1vw), 0.9rem);
+      letter-spacing: .4ch;
+      color: var(--Neon-Green);
+      text-transform: uppercase;
+   }
+   &__quote {
+      font-weight: 800;
+      font-size: clamp(1.35rem, calc(1rem + 1vw), 1.8rem);
+      color: var(--Light-Cyan);
+   }
+}

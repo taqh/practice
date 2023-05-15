@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Adviser</title>
+	</head>
+	<body>
+		<main id="app">
+			<h1 class="sr-only">Advice Generator</h1>
+			<div class="advice">
+				<span class="advice__id">advice #117</span>
+				<p class="advice__quote">
+					“It is easy to sit up and take notice, what's difficult is
+					getting up and taking action.”
+				</p>
+				<div hidden class="loader">
+					<svg viewBox="25 25 50 50">
+						<circle r="20" cy="50" cx="50"></circle>
+					</svg>
+				</div>
+				<picture class="advice__divider">
+					<source
+						media="(min-width: 38rem)"
+						srcset="assets/pattern-divider-desktop.svg"
+						type="image/svg+xml"
+					/>
+					<img src="assets/pattern-divider-mobile.svg" alt="line" />
+				</picture>
+				<button class="advice__btn">
+					<span class="sr-only">click to get a new advice</span>
+					<img src="/assets/icon-dice.svg" alt="refresh" />
+				</button>
+			</div>
+		</main>
+		<script type="module" src="/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+@use '../utils' as u;
+
+body {
+	background-color: var(--Dark-Blue);
+}
+
+#app {
+	display: grid;
+	padding: 1.2rem;
+	min-height: 100vh;
+	place-content: center;
+}
+
+.advice {
+	display: grid;
+	max-width: 33.6em;
+	position: relative;
+	place-items: center;
+	margin-bottom: 2rem;
+	min-height: 20.65em;
+	padding-inline: 2rem;
+	padding-block: 2.7rem;
+	border-radius: 0.8rem;
+	transition: all 300ms ease-in-out;
+	background-color: var(--Dark-Grayish-Blue);
+	box-shadow: 0 0 1rem 0.2rem var(--Dark-Blue);
+
+	&__divider {
+		margin-bottom: 1.3rem;
+		// align-self: start;
+	}
+	&__quote{
+		margin-block: 1.2rem;
+	}
+	&__btn {
+		width: 4rem;
+		height: 4rem;
+		border: none;
+		bottom: -2rem;
+		display: grid;
+		cursor: pointer;
+		border-radius: 50%;
+		position: absolute;
+		margin-inline: auto;
+		place-content: center;
+		background-color: var(--Neon-Green);
+		transition: box-shadow 300ms ease-in-out;
+
+		&:hover {
+			box-shadow: 0 0 1rem 0.2rem var(--Neon-Green);
+		}
+
+		&:focus {
+			box-shadow: 0 0 1rem 0.2rem var(--Neon-Green);
+		}
+
+		&[data-loading='true'] {
+			animation: spin 1s infinite linear;
+		}
+	}
+}
+.fade{
+	animation: fade-in 650ms forwards;
+}
+.slide{
+	animation: slide-in 650ms forwards;
+}
+.loader[hidden='false'] {
+  height: 100%;
+  display: grid;
+  place-content: center;
+}
