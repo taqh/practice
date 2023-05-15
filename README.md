@@ -111,9 +111,9 @@
     <td><a href="https://grid-sec.netlify.app">Live site</a></td>
   </tr>
   <tr>
-    <td>Advise generator app</td>
-    <td><a href="https://www.frontendmentor.io/solutions/testimonials-section-using-css-grid-qlmLZ_dyET">Solution</a></td>
-    <td><a href="https://grid-sec.netlify.app">Live site</a></td>
+    <td>Advice generator app</td>
+    <td><a href="https://www.frontendmentor.io/solutions/advice-generator-app-using-sass-and-javascript-OH9U-_LayG">Solution</a></td>
+    <td><a href="https://advice-generator-app-live.netlify.app/">Live site</a></td>
   </tr>
   <tr>
     <td> Sunnyside landing page</td>
