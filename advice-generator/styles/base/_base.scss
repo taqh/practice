@@ -27,7 +27,6 @@ body {
 
 	&__divider {
 		margin-bottom: 1.3rem;
-		// align-self: start;
 	}
 	&__quote{
 		margin-block: 1.2rem;
@@ -46,6 +45,11 @@ body {
 		background-color: var(--Neon-Green);
 		transition: box-shadow 300ms ease-in-out;
 
+		// this was to fix an issue with the button not being centered on ios
+		left: 50%;
+		transform: translateX(-50%);
+		// end of fix
+		
 		&:hover {
 			box-shadow: 0 0 1rem 0.2rem var(--Neon-Green);
 		}
