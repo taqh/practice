@@ -3,7 +3,7 @@ import './styles/main.scss';
 const quoteId = document.querySelector('.advice__id');
 const quote = document.querySelector('.advice__quote');
 const fetchBtn = document.querySelector('.advice__btn');
-
+const dice = document.querySelector('.dice')
 // Note: Advice is cached for 2 seconds. Any repeat-request within 2 seconds will return the same piece of advice.
 async function getAdvice() {
 	try {
@@ -11,31 +11,33 @@ async function getAdvice() {
 		const adviceSlip = await response.json();
 
 		if (!response.ok) {
-			throw new Error(`Something went wrong, click the dice to try again`);
+			throw new Error(`Something went wrong`);
 		}
 
 		const adviceId = adviceSlip.slip.id;
 		const advice = adviceSlip.slip.advice;
 
-		fetchBtn.removeAttribute('data-loading');
-		quote.classList.add('fade');
-		quoteId.classList.add('slide');
+		setTimeout(() => {
+			quote.classList.add('fade');
+			quoteId.classList.add('slide');
+			quote.innerText = `“${advice}”`;
+			quoteId.innerText = `advice #${adviceId}`;
+			dice.removeAttribute('data-loading');
+		}, 2000);
 
-		quote.innerText = `“${advice}”`;
-		quoteId.innerText = `advice #${adviceId}`;
 	} catch (error) {
 		quoteId.innerText = `oops`;
-		quote.innerText = `Something went wrong, click the dice to try again`;
-		fetchBtn.removeAttribute('data-loading');
+		quote.innerText = `Something went wrong, please try again later`;
+		dice.removeAttribute('data-loading');
 	}
 	setTimeout(() => {
 		quote.classList.remove('fade');
 		quoteId.classList.remove('slide');
-	}, 600);
+	}, 800);
 }
 
 fetchBtn.addEventListener('click', () => {
 	getAdvice();
 	// loader.removeAttribute('hidden');
-	fetchBtn.setAttribute('data-loading', 'true');
+	dice.setAttribute('data-loading', 'true');
 });
