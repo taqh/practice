@@ -9,7 +9,7 @@ function RootLayout() {
 	return (
 		<div id='app' className={activePage}>
 			<Navigation />
-			<main id='main' className={`container container--${activePage}`}>
+			<main id='main' className={`main main--${activePage}`}>
 				<Outlet />
 			</main>
 		</div>

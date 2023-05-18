@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import PageContext from './PageContext';
 
 function PageProvider({children}) {
-	const activePage = 'home';
+	const [activePage, setActivePage] = useState('home');
 
 	const switchPage = (path) => {
-		console.log(path);
+		setActivePage(path)
 	};
 
 	const pageContext = {

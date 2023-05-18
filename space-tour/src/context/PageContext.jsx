@@ -2,7 +2,7 @@ import { createContext } from 'react';
 
 const PageContext = createContext({
 	activePage: '',
-	switchActive: () => {},
+	switchActivePage: () => {},
 });
 
 export default PageContext;

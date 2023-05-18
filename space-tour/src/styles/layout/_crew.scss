@@ -1,47 +1,13 @@
-/* Crew Layout */
 @use '../utils' as u;
 
-@include u.breakpoint(screen-md) {
-
-}
-.crew {
-	--flow-space: 2rem;
+.main--crew {
 	grid-template-areas:
 		'title'
 		'image'
 		'tabs'
 		'content';
-}
 
-.crew > picture {
-	grid-area: image;
-	max-width: 60%;
-	border-bottom: 1px solid hsl(var(--clr-white) / 0.1);
-}
-
-.crew > .dot-indicators {
-	grid-area: tabs;
-}
-
-.crew > .crew-details {
-	grid-area: content;
-}
-
-.crew-details h2 {
-	color: hsl(var(--clr-white) / 0.5);
-}
-
-@media (min-width: 35em) {
-	.numbered-title {
-		justify-self: start;
-		margin-top: 2rem;
-	}
-	.destination-meta {
-		flex-direction: row;
-		justify-content: space-evenly;
-	}
-
-	.crew {
+	@include u.breakpoint(screen-sm) {
 		padding-bottom: 0;
 		grid-template-areas:
 			'title'
@@ -49,49 +15,9 @@
 			'tabs'
 			'image';
 	}
-}
-
-@media (min-width: 45em) {
-	.grid-container {
-		text-align: left;
+	@include u.breakpoint(screen-md) {
 		column-gap: var(--container-gap, 2rem);
-		grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(
-				2rem,
-				1fr
-			);
-	}
 
-	.home > *:first-child {
-		grid-column: 2;
-	}
-
-	.home > *:last-child {
-		grid-column: 3;
-	}
-
-	.home {
-		padding-bottom: max(6rem, 20vh);
-		align-items: end;
-	}
-
-	.destination {
-		justify-items: start;
-		align-content: start;
-		grid-template-areas:
-			'. title title .'
-			'. image tabs.'
-			'. image content .';
-	}
-
-	.destination > picture {
-		max-width: 90%;
-	}
-	.destination-meta {
-		--gap: min(6vw, 6rem);
-		justify-content: start;
-	}
-
-	.crew {
 		grid-template-columns: minmax(1rem, 1fr) minmax(0, 37rem) minmax(0, 23rem) minmax(
 				1rem,
 				1fr
@@ -102,10 +28,53 @@
 			'. content image .'
 			'. tabs image .';
 	}
+}
 
-	.crew > picture {
+.main--crew > *:not(:first-child) {
+	margin-top: 2rem;
+}
+.crew__heading {
+	grid-area: title;
+}
+.crew-image {
+	grid-area: image;
+	max-width: 60%;
+	border-bottom: 1px solid hsl(var(--clr-white) / 0.1);
+
+	@include u.breakpoint(screen-md) {
 		grid-column: span 2;
 		align-self: end;
 		max-width: 90%;
 	}
+}
+
+.crew__tab {
+	grid-area: tabs;
+	display: flex;
+	gap: var(--gap, 1rem);
+}
+
+.crew-details {
+	grid-area: content;
+}
+
+.name {
+	margin-top: 1rem;
+}
+
+.dot {
+	border: 0;
+	padding: 0.5em;
+	cursor: pointer;
+	border-radius: 50%;
+	background-color: hsl(var(--clr-white) / 0.25);
+
+	&:hover,
+	&:focus {
+		background-color: hsl(var(--clr-white) / 0.5);
+	}
+}
+
+.dot > [aria-selected='true'] {
+	background-color: hsl(var(--clr-white) / 1);
 }

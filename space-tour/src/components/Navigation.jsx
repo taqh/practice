@@ -6,15 +6,11 @@ import PageContext from '../context/PageContext';
 
 function Navigation() {
 	const [showMenu, setShowMenu] = useState(false);
-	const { switchActive } = useContext(PageContext);
-
-	const dispatchPath = (path) =>{
-		console.log(path)
-	}
+	const { switchActivePage } = useContext(PageContext);
 
 	return (
 		<>
-			<a className='skip-to-content sr-only' href='#main'>
+			<a className='skip-to-content' href='#main'>
 				Skip to content
 			</a>
 			<header className='header'>
@@ -34,6 +30,7 @@ function Navigation() {
 									isActive ? 'link--active' : 'link'
 								}
 								end
+								onClick={() => switchActivePage('home')}
 							>
 								<span aria-hidden='true' className='link-num'>
 									00
@@ -47,6 +44,7 @@ function Navigation() {
 								className={({ isActive }) =>
 									isActive ? 'link--active' : 'link'
 								}
+								onClick={() => switchActivePage('destination')}
 							>
 								<span aria-hidden='true' className='link-num'>
 									01
@@ -60,6 +58,7 @@ function Navigation() {
 								className={({ isActive }) =>
 									isActive ? 'link--active' : 'link'
 								}
+								onClick={() => switchActivePage('crew')}
 							>
 								<span aria-hidden='true' className='link-num'>
 									02
@@ -73,6 +72,7 @@ function Navigation() {
 								className={({ isActive }) =>
 									isActive ? 'link--active' : 'link'
 								}
+								onClick={() => switchActivePage('technology')}
 							>
 								<span aria-hidden='true' className='link-num'>
 									03

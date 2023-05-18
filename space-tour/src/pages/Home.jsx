@@ -1,14 +1,22 @@
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import PageContext from '../context/PageContext';
 
 function HomePage() {
 	const navigate = useNavigate();
+	const { switchActivePage } = useContext(PageContext);
+
+	const explore = () => {
+		navigate('/destination');
+		switchActivePage('destination');
+	};
 
 	return (
 		<>
 			<div className='breifing'>
 				<h1 className='home__heading'>
 					So, you want to travel to
-					<span className='large__text'>Space</span>
+					<span className='home__heading--large'>Space</span>
 				</h1>
 				<p className='txt-accent'>
 					Let’s face it if you want to go to space, you might as well
@@ -17,11 +25,8 @@ function HomePage() {
 					of this world experience!
 				</p>
 			</div>
-			<div>
-				<Link
-					onClick={navigate('/destination')}
-					className='explore-btn'
-				>
+			<div className='explore'>
+				<Link onClick={explore} className='explore-btn'>
 					Explore
 				</Link>
 			</div>

@@ -1,14 +1,9 @@
 @use '../utils' as u;
 
-:root {
-	--gap: clamp(1.5rem, 5vw, 3.5rem);
-	--line-gap: 2rem;
-}
-
 .logo {
 	margin: 2rem clamp(1.5rem, 5vw, 3.5rem);
-	// @include u.breakpoint(screen-md) {
-	// 	margin-block: 1rem;
+	// @include u.breakpoint-down(screen-md) {
+	// 	margin:0;
 	// }
 }
 
@@ -50,7 +45,7 @@
 		gap: var(--gap, 1rem);
 		transition: 300ms ease;
 		background: hsl(var(--clr-white) / 0.05);
-
+		margin-bottom: 2rem;
 		@include u.breakpoint(screen-md) {
 			margin-block: 2rem;
 		}

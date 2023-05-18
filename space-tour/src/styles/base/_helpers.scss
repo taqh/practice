@@ -1,3 +1,8 @@
+:root {
+	--gap: clamp(1.5rem, 5vw, 3.5rem);
+	--line-gap: 2rem;
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -19,16 +24,19 @@
 	transform: translateY(-100%);
 	background: hsl(var(--clr-white));
 	transition: transform 250ms ease-in;
+	font-family: var(--ff-barlow-cond);
 }
 
 .skip-to-content:focus {
 	transform: translateY(0);
 }
 
-.flow > *:where(:not(:first-child)) {
-	margin-top: var(--flow-space, 1rem);
-}
-
+// .flow > *:where(:not(:first-child)) {
+// 	margin-top: var(--flow-space, 1rem);
+// }
+// .flow > *:where(:not(:first-child)) {
+// 	margin-top: var(--flow-space, 1rem);
+// }
 @keyframes spin {
 	from {
 		transform: rotate(0deg);

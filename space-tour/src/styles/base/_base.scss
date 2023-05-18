@@ -1,3 +1,4 @@
+// Root styles //
 #app {
 	display: grid;
 	line-height: 1.5;
@@ -7,14 +8,20 @@
 	font-size: var(--fs-400);
 	color: hsl(var(--clr-white));
 	font-family: var(--ff-barlow);
+	transition: background 300ms ease;
 	background-position: bottom center;
 	grid-template-rows: min-content 1fr;
 	background-color: hsl(var(--clr-dark));
-	transition: background 300ms ease;
-}
 
-/* home */
-.container {
+	@media (min-width: 29.6878em) {
+		background-position: center center;
+	}
+
+}
+button {
+	cursor: pointer;
+}
+.main {
 	display: grid;
 	text-align: center;
 	place-items: center;
@@ -22,14 +29,11 @@
 	padding-bottom: 4rem;
 }
 
-.container p:not([class]){
-	max-width: 50ch;
-}
+// page specific //
 .home {
 	background: url(../assets/home/background-home-mobile.jpg);
-	
+
 	@media (min-width: 29.6878em) {
-		background-position: center center;
 		background-image: url(../assets/home/background-home-tablet.jpg);
 	}
 	@media (min-width: 51.255em) {
@@ -37,12 +41,9 @@
 	}
 }
 
-/* destination */
 .destination {
 	background-image: url(../assets/destination/background-destination-mobile.jpg);
-
 	@media (min-width: 29.6878em) {
-		background-position: center center;
 		background-image: url(../assets/destination/background-destination-tablet.jpg);
 	}
 	@media (min-width: 51.255em) {
@@ -50,12 +51,10 @@
 	}
 }
 
-/* crew */
 .crew {
 	background-image: url(../assets/crew/background-crew-mobile.jpg);
 
 	@media (min-width: 29.6878em) {
-		background-position: center center;
 		background-image: url(../assets/crew/background-crew-tablet.jpg);
 	}
 	@media (min-width: 51.255em) {
@@ -63,15 +62,49 @@
 	}
 }
 
-/* Technology */
 .technology {
 	background-image: url(../assets/technology/background-technology-mobile.jpg);
 
-	@media (min-width: 35rem) {
-		background-position: center center;
+	@media (min-width: 29.6878em) {
 		background-image: url(../assets/technology/background-technology-tablet.jpg);
 	}
-	@media (min-width: 45rem) {
+	@media (min-width: 51.255em) {
 		background-image: url(../assets/technology/background-technology-desktop.jpg);
 	}
 }
+
+.destination__btn {
+	border: 0;
+	padding: 0.5rem 0;
+	position: relative;
+	background-color: transparent;
+
+	&::after{
+		content: '';
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		display: block;
+		height: 0.2rem;
+		position: absolute;
+		transform: scaleX(0);
+		transform-origin: center;
+		background-color: hsl(var(--clr-white) / 0.5);
+		transition: transform 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	}
+	&:focus::after {
+		transform: scaleX(1);
+		transform-origin: center;
+	}
+	&:hover::after {
+		transform: scaleX(1);
+		transform-origin: center;
+	}
+	
+}
+
+.btn--active::after {
+	transform: scale(1);
+	background-color: hsl(var(--clr-white));
+}
+
