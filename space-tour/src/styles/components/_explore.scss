@@ -1,0 +1,29 @@
+.explore-btn {
+   z-index: 1;
+   padding: 0 2em;
+   aspect-ratio: 1;
+   border-radius: 50%;
+   position: relative;
+   place-items: center;
+   display: inline-grid;
+   text-decoration: none;
+   background: hsl(var(--clr-white));
+}
+
+.explore-btn::after {
+   content: '';
+   z-index: -1;
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+   position: absolute;
+   border-radius: 50%;
+   background: hsl( var(--clr-white) / .1);
+   transition: opacity 500ms linear, transform 700ms ease-in-out;
+}
+
+.explore-btn:hover::after,
+.explore-btn:focus::after {
+   opacity: 1;
+   transform: scale(1.5);
+}

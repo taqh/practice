@@ -35,7 +35,7 @@ function Technology() {
 					className='technology-details flow'
 					id='launch-tab'
 					role='tabpanel'
-					tabindex='0'
+					tabIndex='0'
 				>
 					<header className='flow flow--space-small'>
 						<h2 className='fs-500 ff-serif uppercase'>
@@ -47,10 +47,11 @@ function Technology() {
 					</header>
 					<p>
 						A launch vehicle or carrier rocket is a rocket-propelled
-						vehicle used to carry a payload from Earth's surface to space,
-						usually to Earth orbit or beyond. Our WEB-X carrier rocket is
-						the most powerful in operation. Standing 150 metres tall, it's
-						quite an awe-inspiring sight on the launch pad!
+						vehicle used to carry a payload from Earth&apos;s surface to
+						space, usually to Earth orbit or beyond. Our WEB-X carrier
+						rocket is the most powerful in operation. Standing 150 metres
+						tall, it&apos;s quite an awe-inspiring sight on the launch
+						pad!
 					</p>
 				</article>
 
@@ -60,7 +61,7 @@ function Technology() {
 					className='technology-details flow'
 					id='capsule-tab'
 					role='tabpanel'
-					tabindex='0'
+					tabIndex='0'
 				>
 					<header className='flow flow--space-small'>
 						<h2 className='fs-600 ff-serif uppercase'>
@@ -70,10 +71,11 @@ function Technology() {
 					</header>
 					<p>
 						A space capsule is an often-crewed spacecraft that uses a
-						blunt-body reentry capsule to reenter the Earth's atmosphere
-						without wings. Our capsule is where you'll spend your time
-						during the flight. It includes a space gym, cinema, and plenty
-						of other activities to keep you entertained.
+						blunt-body reentry capsule to reenter the Earth&apos;s
+						atmosphere without wings. Our capsule is where you&apos;ll
+						spend your time during the flight. It includes a space gym,
+						cinema, and plenty of other activities to keep you
+						entertained.
 					</p>
 				</article>
 
@@ -83,7 +85,7 @@ function Technology() {
 					className='technology-details flow'
 					id='spaceport-tab'
 					role='tabpanel'
-					tabindex='0'
+					tabIndex='0'
 				>
 					<header className='flow flow--space-small'>
 						<h2 className='fs-600 ff-serif uppercase'>
@@ -103,30 +105,30 @@ function Technology() {
 				<picture id='launch-image'>
 					<source
 						media='(max-width: 50em)'
-						srcSet={src.webp - lanscape}
+						srcSet={'lanscape'}
 						type='image/webp'
 					/>
 					<source
 						media='(max-width: 50em)'
-						srcSet={src.png - landscape}
+						srcSet={'landscape'}
 						type='image/png'
 					/>
-					<img src={src.png - portrait} alt='Launch vehicle' />
+					<img src={'portrait'} alt='Launch vehicle' />
 				</picture>
 
 				{/* <!-- space capsule --> */}
 				<picture hidden id='capsule-image'>
 					<source
 						media='(max-width: 50em)'
-						srcSet={src.webp - lanscape}
+						srcSet={'lanscape'}
 						type='image/webp'
 					/>
 					<source
 						media='(max-width: 50em)'
-						srcSet={src.png - landscape}
+						srcSet={'landscape'}
 						type='image/png'
 					/>
-					<img src={src.png - portrait} alt='space capsule' />
+					<img src={'portrait'} alt='space capsule' />
 				</picture>
 
 				{/* <!-- spaceport --> */}
@@ -134,15 +136,15 @@ function Technology() {
 				<picture hidden id='spaceport-image'>
 					<source
 						media='(max-width: 50em)'
-						srcSet={src.webp - lanscape}
+						srcSet={'lanscape'}
 						type='image/webp'
 					/>
 					<source
 						media='(max-width: 50em)'
-						srcSet={src.png - landscape}
+						srcSet={'landscape'}
 						type='image/png'
 					/>
-					<img src={src.png - portrait} alt='spaceport' />
+					<img src={'portrait'} alt='spaceport' />
 				</picture>
 			</div>
 		</>

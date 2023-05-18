@@ -1,0 +1,24 @@
+
+$breakpoint-up: (
+    "screen-sm": 29.6878em, //475px 
+    "screen-md": 51.255em, //820px large tabs
+    "screen-lg": 64em, //1024px desktop
+);
+
+$breakpoint-down: (
+    "screen-sm": 29.6875em, //475px 
+    "screen-md": 51.25em, //820px 
+    "screen-lg": 63.99em, //1024px 
+);
+
+@mixin breakpoint($size) {
+    @media (min-width: map-get($breakpoint-up, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoint-down, $size)) {
+        @content;
+    }
+}

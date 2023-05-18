@@ -1,0 +1,39 @@
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap; 
+	border: 0;
+}
+
+.skip-to-content {
+   z-index: 9999;
+	padding: 0.5em 1em;
+	position: absolute;
+	margin-inline: auto;
+	color: hsl(var(--clr-dark));
+	transform: translateY(-100%);
+	background: hsl(var(--clr-white));
+	transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+	transform: translateY(0);
+}
+
+.flow > *:where(:not(:first-child)) {
+	margin-top: var(--flow-space, 1rem);
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

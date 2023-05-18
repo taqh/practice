@@ -1,0 +1,43 @@
+@use '../utils' as u;
+
+.toggle {
+	padding: 0;
+	border: 0;
+	z-index: 10;
+	gap: 0.25rem;
+	display: flex;
+	width: 1.5rem;
+	cursor: pointer;
+	justify-self: end;
+	margin: 0.3125rem;
+	flex-direction: column;
+	justify-content: center;
+	background: transparent;
+	position: absolute;
+	right: 1rem;
+	top: 2rem;
+	&:focus-visible {
+		outline: 0.125rem solid hsl(var(--clr-white));
+		outline-offset: 0.3125rem;
+	}
+	.line {
+		width: 100%;
+		height: 0.1875rem;
+		transition: 300ms ease;
+		border-radius: 0.125rem;
+		background-color: hsl(var(--clr-white));
+	}
+	.top[data-active='true'] {
+		transform: translateY(0.25rem) rotate(45deg);
+	}
+	.mid[data-active='true'] {
+		display: none;
+	}
+	.bottom[data-active='true'] {
+		transform: translateY(-0.1875rem) rotate(-45deg);
+	}
+
+	@include u.breakpoint(screen-sm) {
+		display: none;
+	}	
+}

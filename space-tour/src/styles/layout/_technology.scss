@@ -1,0 +1,122 @@
+/* Technology Layout */
+
+/* Mobile */
+
+@media (max-width: 35em) {
+	.cover {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 2em;
+	}
+	.launch-image {
+		width: 100vw;
+	}
+
+	.numbered-title {
+		align-self: center;
+	}
+	.number-indicators {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 2em;
+		flex: 1 1 1;
+		order: 1;
+	}
+	.number-indicators {
+		flex: 1 1 1;
+	}
+	.technology-details {
+		order: 2;
+		padding-inline: 4em;
+	}
+
+	.technology-details h2 {
+		color: hsl(var(--clr-white) / 0.8);
+		font-size: var(--fs-400);
+	}
+}
+
+/* Tablet */
+
+@media (max-width: 50em) {
+	.cover {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 2em;
+	}
+
+	.launch-image img {
+		width: 100vw;
+	}
+
+	.numbered-title {
+		align-self: center;
+	}
+
+	.number-indicators {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 2em;
+		flex: 1 1 1;
+		order: 1;
+	}
+
+	.number-indicators {
+		flex: 1 1 1;
+	}
+	.technology-details {
+		order: 2;
+		padding-inline: 4em;
+	}
+
+	.technology-details h2 {
+		color: hsl(var(--clr-white) / 0.8);
+		font-size: var(--fs-400);
+	}
+}
+
+/* Desktop */
+@media (min-width: 50em) {
+	.flex-container {
+		text-align: left;
+	}
+	.launch-image {
+		align-self: end;
+		max-width: 90%;
+	}
+
+	.tech {
+		padding-inline: 6em;
+	}
+	.cover {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+	}
+
+	.cover > .number-indicators {
+		flex: 1 1 1;
+		padding-inline-start: 8em;
+	}
+	.cover > .technology-details {
+		flex: 2;
+		padding-inline: 4em;
+	}
+	.cover > .launch-details {
+		flex: 3;
+	}
+
+	.technology-details h2 {
+		color: hsl(var(--clr-white) / 0.8);
+		font-size: var(--fs-400);
+	}
+}

@@ -6,30 +6,30 @@ function Destination() {
 			</h1>
 
 			<picture id='moon-image'>
-				<source srcSet={src.webp} type='image/webp' />
-				<source srcSet={src.png} type='image/png' />
-				<img src={src.png} alt='' />
+				<source srcSet={'src.webp'} type='image/webp' />
+				<source srcSet={''} type='image/png' />
+				<img src={''} alt='' />
 			</picture>
 
 			{/* <!-- Mars --> */}
 			<picture hidden id='mars-image'>
-				<source srcSet={src.webp} type='image/webp' />
-				<source srcSet={src.png} type='image/png' />
-				<img src={src.png} alt='' />
+				<source srcSet={'src.webp'} type='image/webp' />
+				<source srcSet={''} type='image/png' />
+				<img src={''} alt='' />
 			</picture>
 
 			{/* <!-- Europa --> */}
 			<picture hidden id='europa-image'>
-				<source srcSet={src.webp} type='image/webp' />
-				<source srcSet={src.png} type='image/png' />
-				<img src={src.png} alt='' />
+				<source srcSet={'src.webp'} type='image/webp' />
+				<source srcSet={''} type='image/png' />
+				<img src={''} alt='' />
 			</picture>
 
 			{/* <!-- Titan --> */}
 			<picture hidden id='titan-image'>
-				<source srcSet={src.webp} type='image/webp' />
-				<source srcSet={src.png} type='image/png' />
-				<img src={src.png} alt='' />
+				<source srcSet={'src.webp'} type='image/webp' />
+				<source srcSet={'src.png'} type='image/png' />
+				<img src={''} alt='' />
 			</picture>
 
 			{/* <!-- Tab list --> */}
@@ -69,8 +69,8 @@ function Destination() {
 					Europa
 				</button>
 				<button
-					aria-selected='false'
 					role='tab'
+					aria-selected='false'
 					aria-controls='titan-tab'
 					className='uppercase ff-sans-cond txt-accent letter-spacing-2'
 					tabIndex='-1'

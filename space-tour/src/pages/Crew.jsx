@@ -127,24 +127,24 @@ function Crew() {
 			</article>
 
 			<picture id='commander-image'>
-				<source srcSet={src.webp} type='image/webp' />
-				<source srcSet={src.png} type='image/png' />
-				<img src={src.png} alt='Douglas Hurley' />
+				<source srcSet={'src.webp'} type='image/webp' />
+				<source srcSet={'src.png'} type='image/png' />
+				<img src={'src.png'} alt='Douglas Hurley' />
 			</picture>
 			<picture hidden id='mission-image'>
-				<source srcSet={src.webp} type='image/webp' />
-				<source srcSet={src.png} type='image/png' />
-				<img src={src.png} alt='Mark Shuttleworth' />
+				<source srcSet={'src.webp'} type='image/webp' />
+				<source srcSet={'src.png'} type='image/png' />
+				<img src={'src.png'} alt='Mark Shuttleworth' />
 			</picture>
 			<picture hidden id='pilot-image'>
-				<source srcSet={src.webp} type='image/webp' />
-				<source srcSet={src.png} type='image/png' />
-				<img src={src.png} alt='Victor glover' />
+				<source srcSet={'src.webp'} type='image/webp' />
+				<source srcSet={'src.png'} type='image/png' />
+				<img src={'src.png'} alt='Victor glover' />
 			</picture>
 			<picture hidden id='crew-image'>
-				<source srcSet={src.webp} type='image/webp' />
-				<source srcSet={src.png} type='image/png' />
-				<img src={src.png} alt='Anousheh ansari' />
+				<source srcSet={'src.webp'} type='image/webp' />
+				<source srcSet={'src.png'} type='image/png' />
+				<img src={'src.png'} alt='Anousheh ansari' />
 			</picture>
 		</>
 	);

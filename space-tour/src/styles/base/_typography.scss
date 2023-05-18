@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Bellefair&display=swap');
+:root {
+	/* font-sizes */
+	--fs-900: clamp(5rem, 2.2rem + 8vw, 9.375rem);
+	--fs-800: 3.5rem;
+	--fs-700: 1.5rem;
+	--fs-600: 1rem;
+	--fs-500: 1rem;
+	--fs-400: 0.9375rem;
+	--fs-300: 1rem;
+	--fs-200: 0.875rem;
+
+	/* font-families */
+	--ff-bellefair: 'Bellefair', serif; // serif
+	--ff-barlow: 'Barlow', sans-serif; // sans normal
+	--ff-barlow-cond: 'Barlow Condensed', sans-serif; //sans-cond
+
+	// letter-spacing
+	--ls-1: 4.75px;
+	--ls-2: 2.7px;
+	--ls-3: 2.35px;
+
+	// font weight
+	--fw-bold: 700;
+	--fw-regular: 400;
+}
+
+@media (min-width: 29.6875em) {
+	:root {
+		--fs-800: 5rem;
+		--fs-700: 2.5rem;
+		--fs-600: 1.5rem;
+		--fs-500: 1.25rem;
+		--fs-400: 1rem;
+	}
+}
+
+@media (min-width: 51.25em) {
+	:root {
+		/* font-sizes */
+		--fs-800: 6.25rem;
+		--fs-700: 3.5rem;
+		--fs-600: 2rem;
+		--fs-500: 1.75rem;
+		--fs-400: 1.125rem;
+	}
+}
+.header {
+	&__nav {
+		a {
+			letter-spacing: 2.7px;
+			text-transform: uppercase;
+			color: hsl(var(--clr-white));
+			font-family: var(--ff-barlow-cond);
+			text-decoration: none;
+		}
+		.link-num {
+			font-weight: 700;
+		}
+	}
+}
+.txt-accent{
+	color: hsl(var(--clr-light));
+}
+.home {
+	.explore-btn {
+		font-size: 2rem;
+		text-transform: uppercase;
+		color: hsl(var(--clr-dark));
+		font-family: var(--ff-bellefair);
+	}
+
+	&__heading {
+		font-size: var(--fs-500);
+		text-transform: uppercase;
+		letter-spacing: var(--ls-1);
+		color: hsl(var(--clr-light));
+		font-family: var(--ff-barlow-cond);
+		font-weight: var(--fw-regular);
+
+		.large__text {
+			display: block;
+			font-size: var(--fs-900);
+			color: hsl(var(--clr-white));
+			font-family: var(--ff-bellefair);
+		}
+	}
+}

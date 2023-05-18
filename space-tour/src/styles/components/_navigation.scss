@@ -1,0 +1,156 @@
+@use '../utils' as u;
+
+:root {
+	--gap: clamp(1.5rem, 5vw, 3.5rem);
+	--line-gap: 2rem;
+}
+
+.logo {
+	margin: 2rem clamp(1.5rem, 5vw, 3.5rem);
+	// @include u.breakpoint(screen-md) {
+	// 	margin-block: 1rem;
+	// }
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	gap: var(--gap, 1rem);
+	transition: all 300ms ease;
+	justify-content: space-between;
+
+	&::after {
+		@include u.breakpoint(screen-md) {
+			content: '';
+			order: 1;
+			height: 1px;
+			width: 100%;
+			display: block;
+			position: relative;
+			margin-right: -5rem;
+			background: hsl(var(--clr-white) / 0.25);
+		}
+	}
+
+	@include u.breakpoint(screen-md) {
+		nav {
+			order: 2;
+		}
+	}
+
+	@include u.breakpoint-down(screen-md) {
+		align-items: start;
+	}
+
+	&__nav {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		list-style: none;
+		gap: var(--gap, 1rem);
+		transition: 300ms ease;
+		background: hsl(var(--clr-white) / 0.05);
+
+		@include u.breakpoint(screen-md) {
+			margin-block: 2rem;
+		}
+		@include u.breakpoint(screen-sm) {
+			padding-inline: clamp(3rem, 5vw, 7rem);
+		}
+		/* backdrop-filter: blur(1.5rem); */
+	}
+}
+/* check if the browser supports backdrop-filter  */
+@supports (backdrop-filter: blur(1.5rem)) {
+	.header__nav {
+		background: hsl(var(--clr-light) / 0.05);
+		backdrop-filter: blur(1.8rem);
+	}
+}
+
+@include u.breakpoint-down(screen-sm) {
+	.header__nav {
+		margin: 0;
+		z-index: 5;
+		position: fixed;
+		inset: 0 0 0 30%;
+		--line-gap: 0.5rem;
+		flex-direction: column;
+		transform: translateX(100%);
+		padding-block: min(20rem, 15vh) 2rem;
+		transition: transform 400ms ease-in-out;
+
+		&[data-visible='true'] {
+			transform: translateX(0);
+		}
+	}
+}
+
+@media (min-width: 29.6875em) and (max-width: 51.25em) {
+	.link-num {
+		display: none;
+	}
+}
+
+.header__nav > * {
+	cursor: pointer;
+	position: relative;
+	padding: var(--line-gap, 0.5rem) 0;
+
+	@include u.breakpoint-down(screen-sm) {
+		padding-inline: 2rem;
+	}
+}
+
+.link {
+	&-num {
+		margin-right: 0.5em;
+	}
+	&:focus::after {
+		transform: scaleY(1);
+		transform-origin: top;
+	}
+	&:hover::after {
+		transform: scaleY(1);
+		transform-origin: top;
+	}
+	&::after {
+		content: '';
+		right: 0;
+		@include u.breakpoint-down(screen-sm) {
+			top: 0;
+		}
+		height: 100%;
+		width: 0.2rem;
+		margin-bottom: 0;
+		position: absolute;
+		transform: scaleY(0);
+		transform-origin: bottom;
+		background-color: hsl(var(--clr-white) / 0.5);
+		transition: transform 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	}
+	@include u.breakpoint(screen-sm) {
+		&::after {
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 0.2rem;
+			transform: scaleX(0);
+			transform-origin: bottom right;
+		}
+		&:focus::after {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+		&:hover::after {
+			transform: scaleX(1);
+			transform-origin: bottom left;
+		}
+	}
+}
+
+.link--active::after {
+	@extend .link;
+	transform: scale(1);
+	background-color: hsl(var(--clr-white));
+}

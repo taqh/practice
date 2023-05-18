@@ -1,0 +1,29 @@
+.error {
+	display: grid;
+	place-content: center;
+	min-height: 100vh;
+	background-position: center;
+	grid-template-columns: auto 1fr;
+	background: url('../assets/destination/background-destination-desktop.jpg');
+}
+.error > div {
+	display: grid;
+	place-items: center;
+	padding: 1rem;
+}
+.error > img {
+	animation: spin linear infinite 100s;
+	justify-self: center;
+}
+.home-btn {
+   transition: 300ms ease;
+	border: 0;
+	color: hsl(var(--clr-light));
+	border-radius: 5px;
+	background: transparent;
+	cursor: pointer;
+	&:hover {
+		background: hsl(var(--clr-light));
+		color: hsl(var(--clr-dark));
+	}
+}
