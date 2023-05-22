@@ -49,6 +49,8 @@
 }
 .main p:not([class]) {
 	max-width: 50ch;
+	color: hsl(var(--clr-light));
+	line-height: 1.6;
 }
 
 .txt-accent {
@@ -56,11 +58,16 @@
 }
 
 .numbered-title {
+	margin-block: 0.5rem;
 	font-size: var(--fs-500);
 	text-transform: uppercase;
 	letter-spacing: var(--ls-1);
 	font-weight: var(--fw-regular);
 	font-family: var(--ff-barlow-cond);
+	@include u.breakpoint(screen-sm) {
+		margin-top: 0.5rem;
+		margin-bottom: 0;
+	}
 }
 
 .numbered-title span {
@@ -86,7 +93,7 @@
 
 .home {
 	.explore-btn {
-		font-size: 2rem;
+		font-size: clamp(1.25rem, calc(1rem + 1.5vw), 2.291875rem);
 		text-transform: uppercase;
 		color: hsl(var(--clr-dark));
 		font-family: var(--ff-bellefair);
@@ -97,8 +104,8 @@
 		text-transform: uppercase;
 		letter-spacing: var(--ls-1);
 		color: hsl(var(--clr-light));
-		font-family: var(--ff-barlow-cond);
 		font-weight: var(--fw-regular);
+		font-family: var(--ff-barlow-cond);
 
 		&--large {
 			display: block;
@@ -129,6 +136,8 @@
 		font-size: var(--fs-2);
 		text-transform: uppercase;
 		color: hsl(var(--clr-light));
+		font-weight: var(--fw-regular);
+		font-family: var(--ff-barlow-cond);
 	}
 	.spacetime {
 		font-family: var(--ff-bellefair);
@@ -140,6 +149,7 @@
 	.designation {
 		font-size: var(--fs-600);
 		text-transform: uppercase;
+		font-weight: var(--fw-regular);
 		font-family: var(--ff-bellefair);
 		color: hsl(var(--clr-white) / 0.5);
 	}
@@ -154,7 +164,19 @@
 }
 
 .main--technology {
-	
+	@include u.breakpoint(screen-md) {
+		text-align: left;
+	}
+
+	.technology__heading {
+		@include u.breakpoint(screen-sm) {
+			padding-left: 2rem;
+		}
+		@include u.breakpoint(screen-md) {
+			padding: 0;
+		}
+	}
+
 	.terminology {
 		font-size: var(--fs-400);
 		text-transform: uppercase;
@@ -162,16 +184,10 @@
 		font-weight: var(--fw-regular);
 		font-family: var(--ff-bellefair);
 	}
-	.tech{
+	.tech {
 		display: block;
 		font-size: var(--fs-700);
 		text-transform: uppercase;
 		font-family: var(--ff-bellefair);
-	}
-	@include u.breakpoint(screen-md) {
-		text-align: left;
-	}
-	p:not([class]){
-		color: hsl(var(--clr-light));
 	}
 }

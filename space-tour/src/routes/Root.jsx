@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation';
 import { useContext } from 'react';
 import PageContext from '../context/PageContext';
 
-function RootLayout() {
+function Root() {
 	const { activePage } = useContext(PageContext);
 
 	return (
@@ -16,4 +16,4 @@ function RootLayout() {
 	);
 }
 
-export default RootLayout;
+export default Root;

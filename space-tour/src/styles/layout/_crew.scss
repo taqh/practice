@@ -30,9 +30,7 @@
 	}
 }
 
-.main--crew > *:not(:first-child) {
-	margin-top: 2rem;
-}
+
 .crew__heading {
 	grid-area: title;
 }
@@ -40,7 +38,9 @@
 	grid-area: image;
 	max-width: 60%;
 	border-bottom: 1px solid hsl(var(--clr-white) / 0.1);
-
+	@include u.breakpoint-down(screen-sm){
+		margin-top: 1.5rem;
+	}
 	@include u.breakpoint(screen-md) {
 		grid-column: span 2;
 		align-self: end;
@@ -51,30 +51,25 @@
 .crew__tab {
 	grid-area: tabs;
 	display: flex;
-	gap: var(--gap, 1rem);
+	gap: clamp(1rem, calc(1vw + 0.8rem), 1.5rem);
+	@include u.breakpoint-down(screen-md){
+		margin-block: 2.5rem;
+	}
+	@include u.breakpoint-down(screen-sm){
+		margin-block: 2rem;
+	}
 }
 
 .crew-details {
 	grid-area: content;
-}
-
-.name {
-	margin-top: 1rem;
-}
-
-.dot {
-	border: 0;
-	padding: 0.5em;
-	cursor: pointer;
-	border-radius: 50%;
-	background-color: hsl(var(--clr-white) / 0.25);
-
-	&:hover,
-	&:focus {
-		background-color: hsl(var(--clr-white) / 0.5);
+	@include u.breakpoint(screen-sm){
+		margin-top: 3.75rem;
+	}
+	@include u.breakpoint(screen-md){
+		margin-top: 0;
 	}
 }
 
-.dot > [aria-selected='true'] {
-	background-color: hsl(var(--clr-white) / 1);
+.name {
+	margin-top: 0.5rem;
 }

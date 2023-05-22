@@ -9,14 +9,14 @@
 		'content';
 
 	@include u.breakpoint(screen-md) {
-		justify-items: start;
+		// justify-items: start;
 		align-content: start;
 		grid-template-areas:
 			'. title title .'
 			'. image tabs .'
 			'. image content .';
 		column-gap: var(--container-gap, 2rem);
-		grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(
+		grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 35rem)) minmax(
 				2rem,
 				1fr
 			);
@@ -29,7 +29,6 @@
 .destination__image {
 	grid-area: image;
 	max-width: 60%;
-	align-self: start;
 	@include u.breakpoint(screen-md) {
 		max-width: 90%;
 	}
@@ -37,7 +36,7 @@
 
 .tab-list {
 	display: flex;
-	gap: var(--gap, 1rem);
+	gap: clamp(1rem, calc(1vw + 0.8rem), 2rem);
 }
 
 .destination__heading {
@@ -49,7 +48,7 @@
 .destination-info {
 	grid-area: content;
 	& p {
-		margin-top: 2rem;
+		// margin-top: 2rem;
 	}
 }
 .destination-meta {
@@ -60,23 +59,15 @@
 	flex-direction: column;
 	border-top: 1px solid hsl(var(--clr-white) / 0.1);
 
-	@include u.breakpoint(screen-md) {
-		flex-direction: row;
-		gap: min(6vw, 6rem);
-		justify-content: start;
-	}
 	@include u.breakpoint(screen-sm) {
 		flex-direction: row;
 		justify-content: space-evenly;
 	}
+	@include u.breakpoint(screen-md) {
+		gap: min(6vw, 6rem);
+		justify-content: start;
+	}
 }
 .destination-meta p {
 	font-size: 1.75rem;
-}
-
-@include u.breakpoint(screen-sm) {
-	.numbered-title {
-		justify-self: start;
-		margin-top: 2rem;
-	}
 }

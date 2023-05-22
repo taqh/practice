@@ -1,10 +1,12 @@
 @use '../utils' as u;
 
 .logo {
-	margin: 2rem clamp(1.5rem, 5vw, 3.5rem);
-	// @include u.breakpoint-down(screen-md) {
-	// 	margin:0;
-	// }
+	margin: 1.25rem clamp(1rem, 5vw, 3.5rem);
+
+	@include u.breakpoint-down(screen-sm) {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
 }
 
 .header {

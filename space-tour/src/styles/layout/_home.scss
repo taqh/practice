@@ -1,7 +1,18 @@
 @use '../utils/' as u;
 
-@include u.breakpoint(screen-md) {
-	.main--home {
+.main--home {
+	.explore{
+		margin-top: 4rem;
+	}
+
+	.home__heading{
+		margin-top: 1.5rem;
+		@include u.breakpoint(screen-sm){
+			margin-top: 4.625rem;
+		}
+	}
+
+	@include u.breakpoint(screen-md) {
 		text-align: left;
 		column-gap: var(--container-gap, 2rem);
 		grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(
@@ -10,15 +21,15 @@
 			);
 		padding-bottom: max(6rem, 15.1vh);
 		align-items: end;
-	}
 
-	.breifing {
-		grid-column: 2;
-	}
+		.breifing {
+			grid-column: 2;
+		}
 
-	.explore {
-		grid-column: 3;
-		margin-top: 1rem;
-		justify-self: end;
+		.explore {
+			grid-column: 3;
+			margin-top: 1rem;
+			justify-self: end;
+		}
 	}
 }
