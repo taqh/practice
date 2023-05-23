@@ -1,15 +1,7 @@
-import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import PageContext from '../context/PageContext';
 
 function HomePage() {
 	const navigate = useNavigate();
-	const { switchActivePage } = useContext(PageContext);
-
-	const explore = () => {
-		navigate('/destination');
-		switchActivePage('destination');
-	};
 
 	return (
 		<>
@@ -26,7 +18,7 @@ function HomePage() {
 				</p>
 			</div>
 			<div className='explore'>
-				<Link onClick={explore} className='explore-btn'>
+				<Link onClick={() => navigate('/destination')} className='explore-btn'>
 					Explore
 				</Link>
 			</div>

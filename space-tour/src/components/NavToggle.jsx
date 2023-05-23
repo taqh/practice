@@ -6,7 +6,7 @@ const NavToggle = ({ onClick, onToggle }) => {
 			aria-controls='primary-nav'
 			aria-expanded={onToggle}
 		>
-			<span className='sr-only' aria-expanded='false'>Menu</span>
+			<span className='sr-only'>Navigation</span>
 			<span className='line top' data-active={onToggle}></span>
 			<span className='line mid' data-active={onToggle}></span>
 			<span className='line bottom' data-active={onToggle}></span>

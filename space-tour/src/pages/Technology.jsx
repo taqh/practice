@@ -1,7 +1,18 @@
 import portrait from '../assets/technology/image-launch-vehicle-portrait.jpg';
 import landscape from '../assets/technology/image-launch-vehicle-landscape.jpg';
+import { technology } from '../data/data.json';
+import { useState } from 'react';
 
 function Technology() {
+	const [currentSlide, setCurrentSlide] = useState(technology[0]);
+
+	const changeSlide = (target) => {
+		const targetSlide = technology.findIndex(
+			(tech) => tech.name.toLowerCase() === target
+		);
+
+		setCurrentSlide(technology[targetSlide])
+	};
 	return (
 		<>
 			<h1 className='numbered-title technology__heading'>
@@ -10,26 +21,29 @@ function Technology() {
 
 			<div className='technology__tab' role='tablist'>
 				<button
-					aria-selected='true'
+					aria-selected={currentSlide.name.toLowerCase() === 'launch vehicle'}
 					aria-controls='launch-tab'
 					role='tab'
 					className='num-btn'
+					onClick={() => changeSlide('launch vehicle')}
 				>
 					<span className='sr-only'>Launch vehicle</span>1
 				</button>
 				<button
 					role='tab'
-					aria-selected='false'
+					aria-selected={currentSlide.name.toLowerCase() === 'space capsule'}
 					aria-controls='capsule-tab'
 					className='num-btn'
+					onClick={() => changeSlide('space capsule')}
 				>
 					<span className='sr-only'>Space capsule</span>2
 				</button>
 				<button
 					role='tab'
-					aria-selected='false'
+					aria-selected={currentSlide.name.toLowerCase() === 'spaceport'}
 					aria-controls='spaceport-tab'
 					className='num-btn'
+					onClick={() => changeSlide('spaceport')}
 				>
 					<span className='sr-only'>Spaceport</span>3
 				</button>
@@ -38,14 +52,10 @@ function Technology() {
 			<article className='technology__details' role='tabpanel' tabIndex='0'>
 				<div>
 					<h2 className='terminology'>The terminology...</h2>
-					<p className='tech-name'>Launch vehicle</p>
+					<p className='tech-name'>{currentSlide.name}</p>
 				</div>
 				<p>
-					A launch vehicle or carrier rocket is a rocket-propelled vehicle
-					used to carry a payload from Earth&apos;s surface to space,
-					usually to Earth orbit or beyond. Our WEB-X carrier rocket is the
-					most powerful in operation. Standing 150 metres tall, it&apos;s
-					quite an awe-inspiring sight on the launch pad!
+					{currentSlide.description}
 				</p>
 			</article>
 
@@ -60,7 +70,7 @@ function Technology() {
 					srcSet={landscape}
 					type='image/png'
 				/>
-				<img src={portrait} alt='Launch vehicle' />
+				<img src={portrait} alt={`image of ${currentSlide.name}`}/>
 			</picture>
 		</>
 	);

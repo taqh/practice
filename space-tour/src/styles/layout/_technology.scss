@@ -2,18 +2,18 @@
 
 .main--technology {
 	padding-inline: 0;
-	grid-template-rows: auto 1fr;
 	grid-template-areas:
-		'title'
-		'image'
-		'tabs'
-		'content';
-
+	'title'
+	'image'
+	'tabs'
+	'content';
+	
 	@include u.breakpoint(screen-md) {
 		grid-template-areas:
-			'. title title .'
-			'. tabs content image'
-			'. tabs content image';
+		'. title title .'
+		'. tabs content image'
+		'. tabs content image';
+		grid-template-rows: auto 1fr;
 		column-gap: var(--container-gap, 2rem);
 		grid-template-columns:minmax(1rem, 8.3125rem) minmax(2rem, min-content) minmax(0, 30rem) minmax(
 				2rem,

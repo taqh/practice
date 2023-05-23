@@ -22,10 +22,9 @@
 			'. content image .'
 			'. tabs image .';
 		column-gap: var(--container-gap, 2rem);
-		grid-template-columns: minmax(1rem, 1fr) minmax(0, 37rem) minmax(0, 23rem) minmax(
-				1rem,
-				1fr
-			);
+		// grid-template-rows: min-content 1fr minmax(0, 5.425rem);
+		grid-template-rows: min-content 1fr max-content;
+		grid-template-columns: minmax(1rem, 7.3125rem) minmax(0, 38.375rem) minmax(0, 1fr) minmax(1rem, 7.3125rem) ;
 	}
 }
 
@@ -65,6 +64,7 @@
 .crew__tab {
 	grid-area: tabs;
 	display: flex;
+	// margin-bottom: 6rem;
 	gap: clamp(1rem, calc(1vw + 0.8rem), 1.5rem);
 	@include u.breakpoint-down(screen-sm) {
 		margin-block: 2rem;

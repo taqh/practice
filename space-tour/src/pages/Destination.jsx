@@ -1,7 +1,18 @@
+import { useState } from 'react';
+import { destinations } from '../data/data.json';
 import moon from '../assets/destination/image-moon.png';
 import moon_alt from '../assets/destination/image-moon.webp';
 
 function Destination() {
+	const [currentLocation, setCurrentLocation] = useState(destinations[0]);
+
+	const changeLocation = (target) => {
+		const targetLocation = destinations.findIndex(
+			(location) => location.name.toLowerCase() === target
+		);
+		setCurrentLocation(destinations[targetLocation]);
+	};
+
 	return (
 		<>
 			<h1 className='numbered-title destination__heading'>
@@ -9,9 +20,12 @@ function Destination() {
 			</h1>
 
 			<picture className='destination__image'>
-				<source srcSet={moon_alt} type='image/webp' />
-				<source srcSet={moon} type='image/png' />
-				<img src={moon} alt={''} />
+				<source srcSet={currentLocation.images.webp} type='image/webp' />
+				<source srcSet={currentLocation.images.png} type='image/png' />
+				<img
+					src={currentLocation.images.png}
+					alt={`Image of ${currentLocation.name}`}
+				/>
 			</picture>
 
 			<div
@@ -22,32 +36,36 @@ function Destination() {
 				<button
 					role='tab'
 					className='tab-btn'
-					aria-selected='true'
+					aria-selected={currentLocation.name.toLowerCase() === 'moon'}
 					aria-controls='moon-tab'
+					onClick={() => changeLocation('moon')}
 				>
 					Moon
 				</button>
 				<button
 					role='tab'
 					className='tab-btn'
-					aria-selected='false'
+					aria-selected={currentLocation.name.toLowerCase() === 'mars'}
 					aria-controls='mars-tab'
+					onClick={() => changeLocation('mars')}
 				>
 					Mars
 				</button>
 				<button
 					role='tab'
 					className='tab-btn'
-					aria-selected='false'
+					aria-selected={currentLocation.name.toLowerCase() === 'europa'}
 					aria-controls='europa-tab'
+					onClick={() => changeLocation('europa')}
 				>
 					Europa
 				</button>
 				<button
 					role='tab'
 					className='tab-btn'
-					aria-selected='false'
+					aria-selected={currentLocation.name.toLowerCase() === 'titan'}
 					aria-controls='titan-tab'
+					onClick={() => changeLocation('titan')}
 				>
 					Titan
 				</button>
@@ -55,29 +73,22 @@ function Destination() {
 
 			<article
 				className='destination__info'
-				id='moon-tab'
+				id={`${currentLocation.name.toLowerCase()}-tab`}
 				tabIndex='0'
 				role='tabpanel'
 			>
-				<h2 className='destination__name'>Moon</h2>
+				<h2 className='destination__name'>{currentLocation.name}</h2>
 
-				<p>
-					See our planet as you’ve never seen it before. A perfect relaxing
-					trip away to help regain perspective and come back refreshed.
-					While you’re there, take in some history by visiting the Luna 2
-					and Apollo 11 landing sites.
-				</p>
+				<p>{currentLocation.description}</p>
 
 				<div className='destination__details'>
 					<div>
 						<h3 className='detail__heading'>Avg. distance</h3>
-						<p className='spacetime'>384,400 km</p>
+						<p className='spacetime'>{currentLocation.distance}</p>
 					</div>
 					<div>
-						<h3 className='detail__heading'>
-							Est. travel time
-						</h3>
-						<p className='spacetime'>3 days</p>
+						<h3 className='detail__heading'>Est. travel time</h3>
+						<p className='spacetime'>{currentLocation.travel}</p>
 					</div>
 				</div>
 			</article>

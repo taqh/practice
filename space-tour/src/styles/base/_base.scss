@@ -53,6 +53,7 @@ button {
 
 .destination {
 	background-image: url(../assets/destination/background-destination-mobile.jpg);
+	
 	@media (min-width: 29.6878em) {
 		background-image: url(../assets/destination/background-destination-tablet.jpg);
 	}
@@ -71,20 +72,21 @@ button {
 		background-image: url(../assets/crew/background-crew-desktop.jpg);
 	}
 
-	.dot {
+	.crew-btn {
 		border: 0;
 		padding: 0.5em;
 		cursor: pointer;
 		border-radius: 50%;
+		transition: ease-in-out 0.3s;
 		background-color: hsl(var(--clr-white) / 0.25);
-
 		&:hover,
 		&:focus {
 			background-color: hsl(var(--clr-white) / 0.5);
+			transition: outline 0.1s ease-in-out;
 		}
 	}
 
-	.dot[aria-selected='true'] {
+	.crew-btn[aria-selected='true'] {
 		background-color: hsl(var(--clr-white) / 1);
 	}
 }
@@ -141,7 +143,7 @@ button {
 		transform: scaleX(0);
 		transform-origin: center;
 		background-color: hsl(var(--clr-white) / 0.5);
-		transition: transform 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+		transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 	}
 	&:focus::after {
 		transform: scaleX(1);
@@ -151,9 +153,9 @@ button {
 		transform: scaleX(1);
 		transform-origin: center;
 	}
-}
-
-.btn--active::after {
-	transform: scale(1);
-	background-color: hsl(var(--clr-white));
+	&[aria-selected='true']::after {
+		transform: scale(1);
+		background-color: hsl(var(--clr-white));
+		transition: 300ms ease;
+	}
 }

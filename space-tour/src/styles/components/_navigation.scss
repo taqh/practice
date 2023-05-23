@@ -7,6 +7,10 @@
 		width: 2.5rem;
 		height: 2.5rem;
 	}
+	@include u.breakpoint(screen-sm) {
+		width: 3rem;
+		height: 3rem;
+	}
 }
 
 .header {
@@ -45,14 +49,18 @@
 		display: flex;
 		list-style: none;
 		gap: var(--gap, 1rem);
-		transition: 300ms ease;
+		transition: 300ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 		background: hsl(var(--clr-white) / 0.05);
 		margin-bottom: 2rem;
 		@include u.breakpoint(screen-md) {
 			margin-block: 2.5rem;
 		}
 		@include u.breakpoint(screen-sm) {
-			padding-inline: clamp(2.875rem, calc(2rem + 5vw), 8.6875rem);
+			padding-inline: clamp(2.875rem, calc(1rem + 4vw), 4.6875rem);
+		}
+		@include u.breakpoint(screen-md) {
+			padding-left: clamp(2.875rem, calc(3rem + 5vw), 7.6875rem);
+			padding-right: clamp(2.875rem, calc(4.6rem + 6vw), 10.3125rem);
 		}
 		//  backdrop-filter: blur(1.5rem); 
 	}

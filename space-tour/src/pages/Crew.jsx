@@ -1,7 +1,18 @@
-import crew from '../assets/crew/image-douglas-hurley.png'
-import crew_alt from '../assets/crew/image-douglas-hurley.webp'
+import { useState } from 'react';
+import crew_img from '../assets/crew/image-douglas-hurley.png';
+import crew_alt from '../assets/crew/image-douglas-hurley.webp';
+import { crew } from '../data/data.json';
 
 function Crew() {
+	const [currentMember, setCurrentMember] = useState(crew[0]);
+
+	const switchMember = (role) => {
+		const nextMember = crew.findIndex(
+			(member) => member.role.toLowerCase() === role
+		);
+		setCurrentMember(crew[nextMember]);
+	};
+
 	return (
 		<>
 			<h1 className='numbered-title crew__heading'>
@@ -15,58 +26,54 @@ function Crew() {
 			>
 				<button
 					role='tab'
-					aria-selected='true'
+					aria-selected={currentMember.role.toLowerCase() === 'commander'}
 					aria-controls='commander-tab'
-					className='dot'
+					className='crew-btn'
+					onClick={() => switchMember('commander')}
 				>
 					<span className='sr-only'>The commander</span>
 				</button>
 				<button
 					role='tab'
-					aria-selected='false'
-					aria-controls='mission-tab'
-					className='dot'
+					aria-selected={currentMember.role.toLowerCase() === 'mission specialist'}
+					aria-controls='mission_specialist-tab'
+					className='crew-btn'
+					onClick={() => switchMember('mission specialist')}
 				>
 					<span className='sr-only'>The mission specialist</span>
 				</button>
 				<button
-					aria-selected='false'
+					aria-selected={currentMember.role.toLowerCase() === 'pilot'}
 					aria-controls='pilot-tab'
 					role='tab'
-					className='dot'
+					className='crew-btn'
+					onClick={() => switchMember('pilot')}
 				>
 					<span className='sr-only'>The pilot</span>
 				</button>
 				<button
 					role='tab'
-					aria-selected='false'
-					aria-controls='crew-tab'
-					className='dot'
+					aria-selected={currentMember.role.toLowerCase() === 'flight engineer'}
+					aria-controls='flight_engineer-tab'
+					className='crew-btn'
+					onClick={() => switchMember('flight engineer')}
 				>
-					<span className='sr-only'>The crew engineer</span>
+					<span className='sr-only'>The flight engineer</span>
 				</button>
 			</div>
 
-			<article
-				className='crew__details'
-				id='commander-tab'
-				role='tabpanel'
-			>
+			<article className='crew__details' id={`${currentMember.role.replace(' ', '_').toLowerCase()}-tab`} role='tabpanel'>
 				<header>
-					<h2 className='crew__role'>Commander</h2>
-					<p className='crew__name'>Douglas Hurley</p>
+					<h2 className='crew__role'>{currentMember.role}</h2>
+					<p className='crew__name'>{currentMember.name}</p>
 				</header>
-				<p>
-					Douglas Gerald Hurley is an American engineer, former Marine
-					Corps pilot and former NASA astronaut. He launched into space for
-					the third time as commander of Crew Dragon Demo-2.
-				</p>
+				<p>{currentMember.bio}</p>
 			</article>
 
 			<picture className='crew__image'>
-				<source srcSet={crew_alt} type='image/webp' />
-				<source srcSet={crew} type='image/png' />
-				<img src={crew} alt='Douglas Hurley' />
+				<source srcSet={currentMember.images.webp} type='image/webp' />
+				<source srcSet={currentMember.images.png} type='image/png' />
+				<img src={currentMember.images.png} alt={`${currentMember.name}`}/>
 			</picture>
 		</>
 	);
