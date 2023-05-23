@@ -13,7 +13,7 @@ function HomePage() {
 
 	return (
 		<>
-			<div className='breifing'>
+			<div className='home__breifing'>
 				<h1 className='home__heading'>
 					So, you want to travel to
 					<span className='home__heading--large'>Space</span>

@@ -2,15 +2,14 @@ function Specialist() {
 	return (
 		<>
 			<article
-				hidden
-				className='crew-details flow'
+				className='crew__details'
 				id='mission-tab'
 				role='tabpanel'
 				tabIndex='0'
 			>
-				<header className='flow flow--space-small'>
-					<h2 className='fs-600 ff-serif uppercase'>Mission Specialist</h2>
-					<p className='fs-700 uppercase ff-serif'>Mark Shuttleworth</p>
+				<header>
+					<h2 className='crew__role'>Mission Specialist</h2>
+					<p className='crew__name'>Mark Shuttleworth</p>
 				</header>
 				<p>
 					Mark Richard Shuttleworth is the founder and CEO of Canonical,
@@ -20,7 +19,7 @@ function Specialist() {
 				</p>
 			</article>
 
-			<picture hidden id='mission-image'>
+			<picture className='crew__image'>
 				<source srcSet={'src.webp'} type='image/webp' />
 				<source srcSet={'src.png'} type='image/png' />
 				<img src={'src.png'} alt='Mark Shuttleworth' />

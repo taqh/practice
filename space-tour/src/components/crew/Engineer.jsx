@@ -2,16 +2,15 @@ function Engineer() {
 	return (
 		<>
 			<article
-				hidden
-				className='crew-details flow'
+				className='crew__details'
 				id='crew-tab'
 				role='tabpanel'
 				tabIndex='0'
 			>
-				<header className='flow flow--space-small'>
-					<h2 className='fs-600 ff-serif uppercase'>Flight Engineer</h2>
-					<p className='fs-700 uppercase ff-serif'>Anousheh Ansari</p>
-				</header>
+				<div>
+					<h2 className='crew__role'>Flight Engineer</h2>
+					<p className='crew__name'>Anousheh Ansari</p>
+				</div>
 				<p>
 					Anousheh Ansari is an Iranian American engineer and co-founder of
 					Prodea Systems. Ansari was the fourth self-funded space tourist,
@@ -20,11 +19,11 @@ function Engineer() {
 				</p>
 			</article>
 
-         <picture hidden id='crew-image'>
+			<picture className='crew__image'>
 				<source srcSet={'src.webp'} type='image/webp' />
 				<source srcSet={'src.png'} type='image/png' />
 				<img src={'src.png'} alt='Anousheh ansari' />
-			</picture> 
+			</picture>
 		</>
 	);
 }

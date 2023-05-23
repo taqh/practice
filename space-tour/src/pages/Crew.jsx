@@ -48,13 +48,13 @@ function Crew() {
 			</div>
 
 			<article
-				className='crew-details'
+				className='crew__details'
 				id='commander-tab'
 				role='tabpanel'
 			>
 				<header>
-					<h2 className='designation'>Commander</h2>
-					<p className='name'>Douglas Hurley</p>
+					<h2 className='crew__role'>Commander</h2>
+					<p className='crew__name'>Douglas Hurley</p>
 				</header>
 				<p>
 					Douglas Gerald Hurley is an American engineer, former Marine
@@ -63,7 +63,7 @@ function Crew() {
 				</p>
 			</article>
 
-			<picture className='crew-image'>
+			<picture className='crew__image'>
 				<source srcSet={crew_alt} type='image/webp' />
 				<source srcSet={crew} type='image/png' />
 				<img src={crew} alt='Douglas Hurley' />

@@ -1,32 +1,31 @@
 @use '../utils/' as u;
 
 .main--home {
-	.explore{
-		margin-top: 4rem;
-	}
+	@include u.breakpoint(screen-md) {
+		align-items: end;
+		text-align: left;
+		column-gap: var(--container-gap, 2rem);
+		padding-bottom: clamp(3rem, calc(2rem + 5vw), 8.1875rem);
+		grid-template-columns: minmax(2rem, 8.3125rem) repeat(2, minmax(0, 1fr)) minmax(
+				2rem,
+				8.3125rem
+			);
 
-	.home__heading{
+		.home__breifing {
+			grid-column: 2;
+		}
+	}
+	
+	.home__heading {
 		margin-top: 1.5rem;
-		@include u.breakpoint(screen-sm){
+		@include u.breakpoint(screen-sm) {
 			margin-top: 4.625rem;
 		}
 	}
-
-	@include u.breakpoint(screen-md) {
-		text-align: left;
-		column-gap: var(--container-gap, 2rem);
-		grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(
-				2rem,
-				1fr
-			);
-		padding-bottom: max(6rem, 15.1vh);
-		align-items: end;
-
-		.breifing {
-			grid-column: 2;
-		}
-
-		.explore {
+	
+	.explore {
+		margin-top: 4rem;
+		@include u.breakpoint(screen-md) {
 			grid-column: 3;
 			margin-top: 1rem;
 			justify-self: end;

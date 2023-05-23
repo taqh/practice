@@ -2,15 +2,14 @@ function Pilot() {
 	return (
 		<>
 			<article
-				hidden
-				className='crew-details flow'
+				className='crew__details'
 				id='pilot-tab'
 				role='tabpanel'
 				tabIndex='0'
 			>
-				<header className='flow flow--space-small'>
-					<h2 className='fs-600 ff-serif uppercase'>Pilot</h2>
-					<p className='fs-700 uppercase ff-serif'>Victor Glover</p>
+				<header>
+					<h2 className='crew__role'>Pilot</h2>
+					<p className='crew__name'>Victor Glover</p>
 				</header>
 				<p>
 					Pilot on the first operational flight of the SpaceX Crew Dragon
@@ -20,7 +19,7 @@ function Pilot() {
 				</p>
 			</article>
 
-			<picture hidden id='pilot-image'>
+			<picture className='crew__image'>
 				<source srcSet={'src.webp'} type='image/webp' />
 				<source srcSet={'src.png'} type='image/png' />
 				<img src={'src.png'} alt='Victor glover' />

@@ -15,13 +15,13 @@ function Destination() {
 			</picture>
 
 			<div
-				className='tab-list'
+				className='destination__tab'
 				role='tablist'
 				aria-label='destination list'
 			>
 				<button
 					role='tab'
-					className='destination__btn'
+					className='tab-btn'
 					aria-selected='true'
 					aria-controls='moon-tab'
 				>
@@ -29,7 +29,7 @@ function Destination() {
 				</button>
 				<button
 					role='tab'
-					className='destination__btn'
+					className='tab-btn'
 					aria-selected='false'
 					aria-controls='mars-tab'
 				>
@@ -37,7 +37,7 @@ function Destination() {
 				</button>
 				<button
 					role='tab'
-					className='destination__btn'
+					className='tab-btn'
 					aria-selected='false'
 					aria-controls='europa-tab'
 				>
@@ -45,7 +45,7 @@ function Destination() {
 				</button>
 				<button
 					role='tab'
-					className='destination__btn'
+					className='tab-btn'
 					aria-selected='false'
 					aria-controls='titan-tab'
 				>
@@ -54,7 +54,7 @@ function Destination() {
 			</div>
 
 			<article
-				className='destination-info'
+				className='destination__info'
 				id='moon-tab'
 				tabIndex='0'
 				role='tabpanel'
@@ -68,13 +68,13 @@ function Destination() {
 					and Apollo 11 landing sites.
 				</p>
 
-				<div className='destination-meta'>
+				<div className='destination__details'>
 					<div>
-						<h3 className='meta__heading'>Avg. distance</h3>
+						<h3 className='detail__heading'>Avg. distance</h3>
 						<p className='spacetime'>384,400 km</p>
 					</div>
 					<div>
-						<h3 className='meta__heading'>
+						<h3 className='detail__heading'>
 							Est. travel time
 						</h3>
 						<p className='spacetime'>3 days</p>

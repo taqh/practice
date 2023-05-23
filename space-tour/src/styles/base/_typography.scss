@@ -47,14 +47,11 @@
 		--fs-400: 1.125rem;
 	}
 }
-.main p:not([class]) {
-	max-width: 50ch;
-	color: hsl(var(--clr-light));
-	line-height: 1.6;
-}
 
-.txt-accent {
+.main p:not([class]) {
+	max-width: 44ch;
 	color: hsl(var(--clr-light));
+	line-height: 1.7;
 }
 
 .numbered-title {
@@ -66,6 +63,10 @@
 	font-family: var(--ff-barlow-cond);
 	@include u.breakpoint(screen-sm) {
 		margin-top: 0.5rem;
+		margin-bottom: 0;
+	}
+	@include u.breakpoint(screen-md) {
+		margin-top: 2.25rem;
 		margin-bottom: 0;
 	}
 }
@@ -91,7 +92,13 @@
 	}
 }
 
-.home {
+.main{
+	@include u.breakpoint(screen-md) {
+		text-align: left;
+	}
+}
+
+.main--home {
 	.explore-btn {
 		font-size: clamp(1.25rem, calc(1rem + 1.5vw), 2.291875rem);
 		text-transform: uppercase;
@@ -99,7 +106,7 @@
 		font-family: var(--ff-bellefair);
 	}
 
-	&__heading {
+	.home__heading {
 		font-size: var(--fs-500);
 		text-transform: uppercase;
 		letter-spacing: var(--ls-1);
@@ -116,58 +123,57 @@
 	}
 }
 
+
 .main--destination {
-	.destination__btn {
+	.tab-btn {
 		text-transform: uppercase;
 		letter-spacing: var(--ls-2);
 		color: hsl(var(--clr-light));
 		font-family: var(--ff-barlow-cond);
 	}
+
 	.destination__name {
 		font-size: var(--fs-800);
 		text-transform: uppercase;
 		font-weight: var(--fw-regular);
 		font-family: var(--ff-bellefair);
 	}
-	@include u.breakpoint(screen-md) {
-		text-align: left;
-	}
-	.meta__heading {
+
+	.detail__heading {
 		font-size: var(--fs-2);
 		text-transform: uppercase;
 		color: hsl(var(--clr-light));
 		font-weight: var(--fw-regular);
 		font-family: var(--ff-barlow-cond);
 	}
+
 	.spacetime {
 		font-family: var(--ff-bellefair);
 		text-transform: uppercase;
+		font-size: 1.75rem;
 	}
 }
 
+
 .main--crew {
-	.designation {
+	.crew__role {
 		font-size: var(--fs-600);
 		text-transform: uppercase;
 		font-weight: var(--fw-regular);
 		font-family: var(--ff-bellefair);
 		color: hsl(var(--clr-white) / 0.5);
 	}
-	.name {
+
+	.crew__name {
 		font-size: var(--fs-700);
 		text-transform: uppercase;
 		font-family: var(--ff-bellefair);
 	}
-	@include u.breakpoint(screen-md) {
-		text-align: left;
-	}
+
 }
 
-.main--technology {
-	@include u.breakpoint(screen-md) {
-		text-align: left;
-	}
 
+.main--technology {
 	.technology__heading {
 		@include u.breakpoint(screen-sm) {
 			padding-left: 2rem;
@@ -184,7 +190,8 @@
 		font-weight: var(--fw-regular);
 		font-family: var(--ff-bellefair);
 	}
-	.tech {
+
+	.tech-name {
 		display: block;
 		font-size: var(--fs-700);
 		text-transform: uppercase;

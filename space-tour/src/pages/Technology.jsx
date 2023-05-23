@@ -8,7 +8,7 @@ function Technology() {
 				<span aria-hidden='true'>03</span> Space launch 101
 			</h1>
 
-			<div className='numbered-tab' role='tablist'>
+			<div className='technology__tab' role='tablist'>
 				<button
 					aria-selected='true'
 					aria-controls='launch-tab'
@@ -35,16 +35,10 @@ function Technology() {
 				</button>
 			</div>
 
-			<article
-				className='technology-details flow tech-tab'
-				role='tabpanel'
-				tabIndex='0'
-			>
-				<div className='flow flow--space-small'>
+			<article className='technology__details' role='tabpanel' tabIndex='0'>
+				<div>
 					<h2 className='terminology'>The terminology...</h2>
-					<p className='tech'>
-						Launch vehicle
-					</p>
+					<p className='tech-name'>Launch vehicle</p>
 				</div>
 				<p>
 					A launch vehicle or carrier rocket is a rocket-propelled vehicle
@@ -55,7 +49,7 @@ function Technology() {
 				</p>
 			</article>
 
-			<picture className='tech-image'>
+			<picture className='technology__image'>
 				<source
 					media='(max-width: 51.255em)'
 					srcSet={landscape}

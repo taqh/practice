@@ -49,12 +49,12 @@
 		background: hsl(var(--clr-white) / 0.05);
 		margin-bottom: 2rem;
 		@include u.breakpoint(screen-md) {
-			margin-block: 2rem;
+			margin-block: 2.5rem;
 		}
 		@include u.breakpoint(screen-sm) {
-			padding-inline: clamp(3rem, 5vw, 7rem);
+			padding-inline: clamp(2.875rem, calc(2rem + 5vw), 8.6875rem);
 		}
-		/* backdrop-filter: blur(1.5rem); */
+		//  backdrop-filter: blur(1.5rem); 
 	}
 }
 /* check if the browser supports backdrop-filter  */
@@ -71,7 +71,6 @@
 		z-index: 5;
 		position: fixed;
 		inset: 0 0 0 30%;
-		--line-gap: 0.5rem;
 		flex-direction: column;
 		transform: translateX(100%);
 		padding-block: min(20rem, 15vh) 2rem;
@@ -92,7 +91,7 @@
 .header__nav > * {
 	cursor: pointer;
 	position: relative;
-	padding: var(--line-gap, 0.5rem) 0;
+	padding: 2.1875rem 0;
 
 	@include u.breakpoint-down(screen-sm) {
 		padding-inline: 2rem;

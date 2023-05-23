@@ -1,16 +1,11 @@
 function Spaceport() {
 	return (
 		<>
-			<article
-				hidden
-				className='technology-details flow spaceport-tab'
-				role='tabpanel'
-				tabIndex='0'
-			>
-				<header className='flow flow--space-small'>
-					<h2 className='fs-600 ff-serif uppercase'>The terminology...</h2>
-					<p className='fs-700 uppercase ff-serif'>Spaceport</p>
-				</header>
+			<article className='technology__details' role='tabpanel' tabIndex='0'>
+				<div>
+					<h2 className='terminology'>The terminology...</h2>
+					<p className='tech-name'>Spaceport</p>
+				</div>
 				<p>
 					A spaceport or cosmodrome is a site for launching (or receiving)
 					spacecraft, by analogy to the seaport for ships or airport for
@@ -20,7 +15,7 @@ function Spaceport() {
 				</p>
 			</article>
 
-			<picture hidden className='spaceport-image'>
+			<picture hidden className='technology__image'>
 				<source
 					media='(max-width: 50em)'
 					srcSet={'lanscape'}
