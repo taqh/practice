@@ -39,6 +39,9 @@
 	grid-area: tabs;
 	display: flex;
 	gap: clamp(1rem, calc(1vw + 0.8rem), 2rem);
+	@include u.breakpoint-down(screen-md) {
+		margin-top: 2rem;
+	}
 }
 
 

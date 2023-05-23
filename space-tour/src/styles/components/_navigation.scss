@@ -95,6 +95,7 @@
 
 	@include u.breakpoint-down(screen-sm) {
 		padding-inline: 2rem;
+		padding-block: 0.3rem;
 	}
 }
 
