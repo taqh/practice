@@ -11,7 +11,7 @@ function Technology() {
 			(tech) => tech.name.toLowerCase() === target
 		);
 
-		setCurrentSlide(technology[targetSlide])
+		setCurrentSlide(technology[targetSlide]);
 	};
 	return (
 		<>
@@ -21,7 +21,9 @@ function Technology() {
 
 			<div className='technology__tab' role='tablist'>
 				<button
-					aria-selected={currentSlide.name.toLowerCase() === 'launch vehicle'}
+					aria-selected={
+						currentSlide.name.toLowerCase() === 'launch vehicle'
+					}
 					aria-controls='launch-tab'
 					role='tab'
 					className='num-btn'
@@ -31,7 +33,9 @@ function Technology() {
 				</button>
 				<button
 					role='tab'
-					aria-selected={currentSlide.name.toLowerCase() === 'space capsule'}
+					aria-selected={
+						currentSlide.name.toLowerCase() === 'space capsule'
+					}
 					aria-controls='capsule-tab'
 					className='num-btn'
 					onClick={() => changeSlide('space capsule')}
@@ -54,23 +58,24 @@ function Technology() {
 					<h2 className='terminology'>The terminology...</h2>
 					<p className='tech-name'>{currentSlide.name}</p>
 				</div>
-				<p>
-					{currentSlide.description}
-				</p>
+				<p>{currentSlide.description}</p>
 			</article>
 
 			<picture className='technology__image'>
 				<source
 					media='(max-width: 51.255em)'
-					srcSet={landscape}
+					srcSet={currentSlide.images.landscape}
 					type='image/webp'
 				/>
 				<source
 					media='(max-width: 51.255em)'
-					srcSet={landscape}
+					srcSet={currentSlide.images.landscape}
 					type='image/png'
 				/>
-				<img src={portrait} alt={`image of ${currentSlide.name}`}/>
+				<img
+					src={currentSlide.images.portrait}
+					alt={`image of ${currentSlide.name}`}
+				/>
 			</picture>
 		</>
 	);
