@@ -1,7 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { destinations } from '../data/data.json';
-import moon from '../assets/destination/image-moon.png';
-import moon_alt from '../assets/destination/image-moon.webp';
 
 function Destination() {
 	const [currentLocation, setCurrentLocation] = useState(destinations[0]);
@@ -12,6 +10,18 @@ function Destination() {
 		);
 		setCurrentLocation(destinations[targetLocation]);
 	};
+
+	useEffect(() => {
+		// const timeout = setTimeout(() => {
+		// 	setCurrentLocation((prevLocation) => {
+		// 		const nextIndex = (prevLocation + 1) % destinations.length;
+		// 		return destinations[nextIndex];
+		// 	});
+		// }, 15000);
+
+		// return () => clearTimeout(timeout);
+	}, [currentLocation]);
+
 
 	return (
 		<>

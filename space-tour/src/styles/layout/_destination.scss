@@ -27,7 +27,12 @@
 .destination__image {
 	margin-top: 2rem;
 	grid-area: image;
-	max-width: 60%;
+	max-width: 50%;
+	@include u.breakpoint(screen-sm) {
+		max-width: 18.75rem;
+		align-self: end;
+		justify-self: center;
+	}
 	@include u.breakpoint(screen-md) {
 		max-width: 90%;
 		align-self: end;

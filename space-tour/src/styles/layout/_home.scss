@@ -3,7 +3,7 @@
 .main--home {
 	@include u.breakpoint(screen-md) {
 		align-items: end;
-		text-align: left;
+		justify-items: start;
 		column-gap: var(--container-gap, 2rem);
 		padding-bottom: clamp(3rem, calc(2rem + 5vw), 8.1875rem);
 		grid-template-columns: minmax(2rem, 8.3125rem) repeat(2, minmax(0, 1fr)) minmax(

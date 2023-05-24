@@ -31,17 +31,75 @@
 	transform: translateY(0);
 }
 
-// .flow > *:where(:not(:first-child)) {
-// 	margin-top: var(--flow-space, 1rem);
-// }
-// .flow > *:where(:not(:first-child)) {
-// 	margin-top: var(--flow-space, 1rem);
-// }
 @keyframes spin {
 	from {
 		transform: rotate(0deg);
 	}
 	to {
 		transform: rotate(360deg);
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes grow {
+	from {
+		transform: scale(0.8);
+		opacity: .8;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes slide-right {
+	from {
+		opacity: 0;
+		transform: translateX(-2.5rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-left {
+	from {
+		opacity: 0;
+		transform: translateX(2.5rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-down {
+	from {
+		opacity: 0;
+		transform: translateY(-2.5rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-up {
+	from {
+		opacity: 0;
+		transform: translateY(2.5rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }

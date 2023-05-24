@@ -22,8 +22,7 @@
 			'. content image .'
 			'. tabs image .';
 		column-gap: var(--container-gap, 2rem);
-		// grid-template-rows: min-content 1fr minmax(0, 5.425rem);
-		grid-template-rows: min-content 1fr max-content;
+		grid-template-rows: min-content 1fr auto;
 		grid-template-columns: minmax(1rem, 7.3125rem) minmax(0, 38.375rem) minmax(0, 1fr) minmax(1rem, 7.3125rem) ;
 	}
 }
@@ -49,7 +48,7 @@
 
 .crew__image {
 	grid-area: image;
-	max-width: 60%;
+	max-width: 55%;
 	border-bottom: 1px solid hsl(var(--clr-white) / 0.1);
 	@include u.breakpoint-down(screen-sm) {
 		margin-top: 1.5rem;
@@ -64,12 +63,14 @@
 .crew__tab {
 	grid-area: tabs;
 	display: flex;
-	// margin-bottom: 6rem;
 	gap: clamp(1rem, calc(1vw + 0.8rem), 1.5rem);
 	@include u.breakpoint-down(screen-sm) {
 		margin-block: 2rem;
 	}
 	@include u.breakpoint-down(screen-md) {
 		margin-block: 2.5rem;
+	}
+	@include u.breakpoint(screen-md) {
+		padding-bottom: 4rem;
 	}
 }

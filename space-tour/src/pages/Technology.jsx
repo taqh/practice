@@ -1,7 +1,5 @@
-import portrait from '../assets/technology/image-launch-vehicle-portrait.jpg';
-import landscape from '../assets/technology/image-launch-vehicle-landscape.jpg';
-import { technology } from '../data/data.json';
 import { useState } from 'react';
+import { technology } from '../data/data.json';
 
 function Technology() {
 	const [currentSlide, setCurrentSlide] = useState(technology[0]);
@@ -13,6 +11,7 @@ function Technology() {
 
 		setCurrentSlide(technology[targetSlide]);
 	};
+
 	return (
 		<>
 			<h1 className='numbered-title technology__heading'>

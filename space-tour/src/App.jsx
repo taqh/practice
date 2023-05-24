@@ -1,11 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import PageProvider from './context/PageProvider';
 import DestinationPage from './pages/Destination';
 import TechnologyPage from './pages/Technology';
-import Root from './routes/Root';
 import ErrorPage from './pages/Error';
 import HomePage from './pages/Home';
 import CrewPage from './pages/Crew';
+import Root from './routes/Root';
 import './styles/main.scss';
 
 function App() {
@@ -24,9 +23,7 @@ function App() {
 	]);
 
 	return (
-		<PageProvider>
-			<RouterProvider router={router} />
-		</PageProvider>
+		<RouterProvider router={router} />
 	);
 }
 

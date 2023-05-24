@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [URL](https://your-solution-url.com)
-- Live Site URL: [URL](https://your-live-site-url.com)
+- Live Site URL: [URL](https://spacetourlive.netlify.app/)
 
 ## My process
 
@@ -51,10 +51,6 @@ Users should be able to:
 ### What I learned
 
 I learnt to use react router for routing.
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 
 ```css
 .proud-of-this-css {
@@ -79,8 +75,8 @@ I will be furthering my knowledge in react and using react router to build more 
 
 ## Author
 
-- Website - [Taqib](https://www.your-site.com)
-- Twitter - [@_Mihaq](https://github.com/Dom-iha)
+- Website - [Taqib](https://github.com/Dom-iha)
+- Twitter - [@_Mihaq](https://twitter.com/_Mihaq)
 
 ## Acknowledgments
 

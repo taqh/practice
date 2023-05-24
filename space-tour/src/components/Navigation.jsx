@@ -1,12 +1,10 @@
-import { NavLink } from 'react-router-dom';
 import logo from '../assets/shared/logo.svg';
-import { useContext, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import NavToggle from './NavToggle';
-import PageContext from '../context/PageContext';
+import { useState } from 'react';
 
 function Navigation() {
 	const [showMenu, setShowMenu] = useState(false);
-	const { switchActivePage } = useContext(PageContext);
 
 	return (
 		<>
@@ -30,7 +28,7 @@ function Navigation() {
 									isActive ? 'link--active' : 'link'
 								}
 								end
-								onClick={() => switchActivePage('home')}
+								onClick={() => setShowMenu(!showMenu)}
 							>
 								<span aria-hidden='true' className='link-num'>
 									00
@@ -44,7 +42,7 @@ function Navigation() {
 								className={({ isActive }) =>
 									isActive ? 'link--active' : 'link'
 								}
-								onClick={() => switchActivePage('destination')}
+								onClick={() => setShowMenu(!showMenu)}
 							>
 								<span aria-hidden='true' className='link-num'>
 									01
@@ -58,7 +56,7 @@ function Navigation() {
 								className={({ isActive }) =>
 									isActive ? 'link--active' : 'link'
 								}
-								onClick={() => switchActivePage('crew')}
+								onClick={() => setShowMenu(!showMenu)}
 							>
 								<span aria-hidden='true' className='link-num'>
 									02
@@ -72,7 +70,7 @@ function Navigation() {
 								className={({ isActive }) =>
 									isActive ? 'link--active' : 'link'
 								}
-								onClick={() => switchActivePage('technology')}
+								onClick={() => setShowMenu(!showMenu)}
 							>
 								<span aria-hidden='true' className='link-num'>
 									03
