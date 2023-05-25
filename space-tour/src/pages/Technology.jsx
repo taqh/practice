@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { technology } from '../data/data.json';
+// import portrait from '../assets/technology/imagename.jpg'
 
 function Technology() {
 	const [currentSlide, setCurrentSlide] = useState(technology[0]);

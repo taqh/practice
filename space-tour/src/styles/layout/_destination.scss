@@ -28,12 +28,14 @@
 	margin-top: 2rem;
 	grid-area: image;
 	max-width: 50%;
+	min-height: 10.625rem;
 	@include u.breakpoint(screen-sm) {
 		max-width: 18.75rem;
 		align-self: end;
 		justify-self: center;
 	}
 	@include u.breakpoint(screen-md) {
+		margin-top: 0;
 		max-width: 90%;
 		align-self: end;
 		justify-self: center;
