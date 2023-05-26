@@ -12,14 +12,18 @@ function Destination() {
 	};
 
 	useEffect(() => {
-		// const timeout = setTimeout(() => {
-		// 	setCurrentLocation((prevLocation) => {
-		// 		const nextIndex = (prevLocation + 1) % destinations.length;
-		// 		return destinations[nextIndex];
-		// 	});
-		// }, 15000);
+		const currentDestination = destinations.findIndex(
+			(destination) => destination.name === currentLocation.name
+		);
+		const timeout = setTimeout(() => {
+			setCurrentLocation((prevLocation) => {
+				const nextDestination =
+					(currentDestination + 1) % destinations.length;
+				return destinations[nextDestination];
+			});
+		}, 15000);
 
-		// return () => clearTimeout(timeout);
+		return () => clearTimeout(timeout);
 	}, [currentLocation]);
 
 

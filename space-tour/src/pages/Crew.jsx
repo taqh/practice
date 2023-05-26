@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import crew_img from '../assets/crew/image-douglas-hurley.png';
-import crew_alt from '../assets/crew/image-douglas-hurley.webp';
+import { useEffect, useState } from 'react';
 import { crew } from '../data/data.json';
 
 function Crew() {
@@ -12,6 +10,20 @@ function Crew() {
 		);
 		setCurrentMember(crew[nextMember]);
 	};
+
+	useEffect(() => {
+		const currMemberIndex = crew.findIndex(
+			(member) => member.name === currentMember.name
+		);
+		const timeout = setTimeout(() => {
+			setCurrentMember((prev) => {
+				const nextMemberIndex = (currMemberIndex + 1) % crew.length;
+				return crew[nextMemberIndex];
+			});
+		}, 15000);
+
+		return () => clearTimeout(timeout);
+	}, [currentMember]);
 
 	return (
 		<>
@@ -35,7 +47,9 @@ function Crew() {
 				</button>
 				<button
 					role='tab'
-					aria-selected={currentMember.role.toLowerCase() === 'mission specialist'}
+					aria-selected={
+						currentMember.role.toLowerCase() === 'mission specialist'
+					}
 					aria-controls='mission_specialist-tab'
 					className='crew-btn'
 					onClick={() => switchMember('mission specialist')}
@@ -53,7 +67,9 @@ function Crew() {
 				</button>
 				<button
 					role='tab'
-					aria-selected={currentMember.role.toLowerCase() === 'flight engineer'}
+					aria-selected={
+						currentMember.role.toLowerCase() === 'flight engineer'
+					}
 					aria-controls='flight_engineer-tab'
 					className='crew-btn'
 					onClick={() => switchMember('flight engineer')}
@@ -62,7 +78,11 @@ function Crew() {
 				</button>
 			</div>
 
-			<article className='crew__details' id={`${currentMember.role.replace(' ', '_').toLowerCase()}-tab`} role='tabpanel'>
+			<article
+				className='crew__details'
+				id={`${currentMember.role.replace(' ', '_').toLowerCase()}-tab`}
+				role='tabpanel'
+			>
 				<header>
 					<h2 className='crew__role'>{currentMember.role}</h2>
 					<p className='crew__name'>{currentMember.name}</p>
@@ -73,7 +93,7 @@ function Crew() {
 			<picture className='crew__image'>
 				<source srcSet={currentMember.images.webp} type='image/webp' />
 				<source srcSet={currentMember.images.png} type='image/png' />
-				<img src={currentMember.images.png} alt={`${currentMember.name}`}/>
+				<img src={currentMember.images.png} alt={`${currentMember.name}`} />
 			</picture>
 		</>
 	);

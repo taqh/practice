@@ -1,42 +1,47 @@
 @use '../utils/' as u;
 
+.main--crew,
+.main--destination {
+	overflow-y: hidden;
+	// prevent scrollbar when animating in
+}
+
 // shared
 .numbered-title {
 	animation: slide-right 1s ease-in forwards;
 }
 
 // home
-.main--home{
+.main--home {
 	.explore-btn {
 		animation: grow 1.4s ease-in forwards;
 	}
-	.home__heading{
-		animation: fade-in 1.4s ease-in ;
+	.home__heading {
+		animation: fade-in 1.4s ease-in;
 		&--large {
-			animation: fade-in 1.8s ease-out ;
+			animation: fade-in 1.8s ease-out;
 		}
 	}
 	p {
 		animation: fade-in 2.2s ease-in forwards;
 	}
-
 }
 
 // destination
 .destination__image {
 	animation: spin 480s linear infinite;
 }
-.destination__name{
+.destination__name {
 	animation: fade-in 1s ease-in;
 }
 .destination__info > p {
 	animation: fade-in 1.3s ease-in;
 }
-.detail__heading{
-	animation: fade-in 1.5s ease-in;
+.detail__heading {
+	animation: fade-in 1.6s ease-in;
 }
-.spacetime{
-	animation: fade-in 1.7s ease-in;
+.spacetime {
+	animation: fade-in 1.9s ease-in;
 }
 .tab-btn:nth-child(n) {
 	animation: slide-right 1.4s ease-in-out;
@@ -64,18 +69,17 @@
 	.tab-btn:nth-child(4) {
 		animation: slide-up 0.8s ease-in-out forwards;
 	}
-	
 }
 
 // technology
-.main--technology{
-	.terminology{
+.main--technology {
+	.terminology {
 		animation: fade-in 0.9s ease-in;
 	}
-	.tech-name{
+	.tech-name {
 		animation: fade-in 1.2s ease-in;
 	}
-	.technology__details > p{
+	.technology__details > p {
 		animation: fade-in 1.5s ease-in;
 	}
 
@@ -99,7 +103,7 @@
 		.num-btn:nth-child(3) {
 			animation: slide-up 1.5s ease-in-out;
 		}
-	
+
 		.technology__image {
 			animation: slide-left 1s ease-in forwards;
 		}
@@ -114,13 +118,13 @@
 	}
 }
 .crew__role {
-	animation: slide-left 1.4s ease;
+	animation: fade-in 1.2s ease;
 }
-.crew__name{
-	animation: fade-in 1.8s ease-in;
+.crew__name {
+	animation: fade-in 1.7s ease-in;
 }
 .crew__details > p {
-	animation: slide-left 1.2s ease;
+	animation: fade-in 2s ease;
 }
 
 .crew-btn:nth-child(n) {
@@ -149,5 +153,4 @@
 	.crew-btn:nth-child(4) {
 		animation: slide-left 1.5s ease-in forwards;
 	}
-	
 }
