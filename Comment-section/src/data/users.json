@@ -1,38 +1,38 @@
 [
-	{
-		"currentUser": {
-			"image": {
-				"png": "../../assets/avatars/image-juliusomo.png",
-				"webp": "../../assets/avatars/image-juliusomo.webp"
-			},
-			"username": "juliusomo"
-		}
-	},
-	{
-		"user": {
-			"image": {
-				"png": "../../assets/avatars/image-amyrobson.png",
-				"webp": "../../assets/avatars/image-amyrobson.webp"
-			},
-			"username": "amyrobson"
-		}
-	},
-	{
-		"user": {
-			"image": {
-				"png": "../../assets/avatars/image-maxblagun.png",
-				"webp": "../../assets/avatars/image-maxblagun.webp"
-			},
-			"username": "maxblagun"
-		}
-	},
-	{
-		"user": {
-			"image": {
-				"png": "../../assets/avatars/image-ramsesmiron.png",
-				"webp": "../../assets/avatars/image-ramsesmiron.webp"
-			},
-			"username": "ramsesmiron"
-		}
-	}
+   {
+      "currentUser": {
+         "image": {
+            "png": "./assets/avatars/image-juliusomo.png",
+            "webp": "./assets/avatars/image-juliusomo.webp"
+         },
+         "username": "juliusomo"
+      }
+   },
+   {
+      "user": {
+         "image": {
+            "png": "./assets/avatars/image-amyrobson.png",
+            "webp": "./assets/avatars/image-amyrobson.webp"
+         },
+         "username": "amyrobson"
+      }
+   },
+   {
+      "user": {
+         "image": {
+            "png": "./assets/avatars/image-maxblagun.png",
+            "webp": "./assets/avatars/image-maxblagun.webp"
+         },
+         "username": "maxblagun"
+      }
+   },
+   {
+      "user": {
+         "image": {
+            "png": "./assets/avatars/image-ramsesmiron.png",
+            "webp": "./assets/avatars/image-ramsesmiron.webp"
+         },
+         "username": "ramsesmiron"
+      }
+   }
 ]

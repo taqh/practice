@@ -55,10 +55,22 @@
 		@apply bg-LightGray dark:bg-DarkGray transition duration-300;
 	}
 	dialog[open]::backdrop {
-		animation: fade-in 300ms forwards;
+		animation: fade-in 450ms forwards;
 	}
 	dialog[open] {
 		animation: slide-down 500ms forwards;
+	}
+
+	::-webkit-scrollbar {
+		width: 0.935rem;
+	}
+	::-webkit-scrollbar-thumb{
+		border-radius: 100vh;
+		border: 0.2rem var(--Light-grayblue) solid;
+		background-color: var(--ModerateBlue);
+	}
+	::-webkit-scrollbar-track {
+		background-color: var(--Light-grayblue);
 	}
 }
 

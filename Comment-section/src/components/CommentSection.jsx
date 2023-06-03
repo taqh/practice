@@ -24,7 +24,7 @@ function CommentSection() {
 	));
 
 	return (
-		<section className='flex flex-col gap-5 mx-auto text-GrayBlue max-w-screen-md min-h-screen bg-inherit px-4 md:px-5 py-7 md:py-14 transition-all'>
+		<section className='flex flex-col gap-5 mx-auto text-GrayBlue max-w-screen-md min-h-screen bg-inherit px-4 md:px-5 py-7 md:py-10 transition-all'>
 			<Modal />
 			<h1 className='sr-only'>Comments</h1>
 			<ThemeSwitch />
