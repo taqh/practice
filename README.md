@@ -20,6 +20,11 @@
     <td><a href="https://calc-live.netlify.app">Live site</a></td>
   </tr>
   <tr>
+    <td>REST Countries API with theme switcher</td>
+    <td><a href="https://www.frontendmentor.io/solutions/multistep-form-YWjY9ctzuj">Solution</a></td>
+    <td><a href="https://multistep-formlive.netlify.app">Live site</a></td>
+  </tr>
+  <tr>
     <td>Multi step form</td>
     <td><a href="https://www.frontendmentor.io/solutions/multistep-form-YWjY9ctzuj">Solution</a></td>
     <td><a href="https://multistep-formlive.netlify.app">Live site</a></td>
