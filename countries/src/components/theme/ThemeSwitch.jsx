@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Sun, Moon } from '../Icons';
 
 const ThemeSwitch = () => {
    const [darkMode, setDarkMode] = useState(false);
@@ -25,7 +26,7 @@ const ThemeSwitch = () => {
 
    return (
       <label
-         className={`transition duration-300 ease-in-out text-GrayBlue dark:text-PaleBlue relative flex w-fit items-center gap-[15px] hover:text-ModerateBlue dark:hover:text-SoftBlue ml-auto`}
+         className={`fill-DarkBg dark:fill-White transition duration-300 ease-in-out text-GrayBlue dark:text-PaleBlue relative flex w-fit items-center gap-[15px] hover:text-ModerateBlue dark:hover:text-SoftBlue ml-auto`}
          htmlFor='toggle'
       >
          <input
@@ -38,7 +39,8 @@ const ThemeSwitch = () => {
             aria-checked={darkMode}
             onChange={() => setDarkMode(!darkMode)}
          />
-         <span className='switch rounded-2xl' aria-hidden='true'></span>
+         <span className='sr-only'>Change Theme</span>
+         {!darkMode ? <Sun aria-hidden='true' /> : <Moon aria-hidden='true' />}
       </label>
    );
 };

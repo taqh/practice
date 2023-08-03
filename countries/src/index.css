@@ -2,3 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+   --Dark-Blue: hsl(209, 23%, 22%); /* Dark Mode Elements */
+   --Very-Dark-Blue: hsl(207, 26%, 17%); /* Dark Mode Background */
+   --VeryDark-Blue: hsl(200, 15%, 8%); /* Light Mode Text */
+   --Dark-Gray: hsl(0, 0%, 52%); /* Light Mode Input */
+   --Very-ight-Gray: hsl(0, 0%, 98%); /* Light Mode Background */
+   --White: hsl(0, 0%, 100%); /* Dark Mode Text & Light Mode Elements */
+}
+
+@layer base {
+   body {
+      @apply bg-LightBg dark:bg-DarkBg;
+   }
+}
+
+@layer components {
+   .countries__grid {
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+   }
+}
