@@ -54,35 +54,35 @@ function CountryDetails(props) {
                   />
                   <article className='flex flex-col gap-6 min-h-[400px]'>
                      <h2 className='font-semibold'>{params.name}</h2>
-                     {/* <div>
+                     <div>
                         <p className='font-semibold mb-1.5'>
                            Native name:{' '}
-                           <span className='font-light'>
+                           {/* <span className='font-light'>
                               {details.name.nativeName}
-                           </span>
+                           </span> */}
                         </p>
                         <p className='font-semibold mb-1.5'>
                            Population:{' '}
-                           <span className='font-light'>
+                           {/* <span className='font-light'>
                               {details.population.toLocaleString()}
-                           </span>
+                           </span> */}
                         </p>
                         <p className='font-semibold mb-1.5'>
                            Region:{' '}
-                           <span className='font-light'>{details.region}</span>
+                           {/* <span className='font-light'>{details.region}</span> */}
                         </p>
                         <p className='font-semibold mb-1.5'>
                            Sub Region:{' '}
-                           <span className='font-light'>
+                           {/* <span className='font-light'>
                               {details.subregion}
-                           </span>
+                           </span> */}
                         </p>
                         <p className='font-semibold mb-1.5'>
                            Capital:{' '}
-                           <span className='font-light'>{details.capital}</span>
+                           {/* <span className='font-light'>{details.capital}</span> */}
                         </p>
                      </div>
-                     <div>
+                     {/* <div>
                         <p className='font-semibold mb-1.5'>
                            Top Level Domain:{' '}
                            <span className='font-light'>
