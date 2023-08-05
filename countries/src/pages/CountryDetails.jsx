@@ -48,7 +48,7 @@ function CountryDetails(props) {
                </Link>
                <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>
                   <img
-                     src={details.flags.svg}
+                     // src={details.flags.svg}
                      className='min-h-[200px]'
                      alt={`flag of ${params.name}`}
                   />
