@@ -6,7 +6,7 @@ function CountryDetails(props) {
    const [error, setError] = useState(false);
    const [loading, setLoading] = useState(false);
    const [countryDetails, setCountryDetails] = useState([]);
-   const details = countryDetails[0];
+   // const details = countryDetails[0];
 
    const getCountryDetails = async () => {
       setLoading(true);
@@ -16,8 +16,8 @@ function CountryDetails(props) {
          );
          const data = await response.json();
          if (response.ok) {
-            setCountryDetails(data);
-            console.log(data);
+            setCountryDetails(data[0]);
+            console.log(data[0]);
          }
       } catch (error) {
          console.error(error);
@@ -31,80 +31,101 @@ function CountryDetails(props) {
       return () => {};
    }, []);
 
+   const loader = (
+      <div className='min-h-[60vh] grid place-content-center'>
+         <h1 className='text-DarkBlue dark:text-white'>loading...</h1>
+      </div>
+   );
+
    return (
       <>
+         <Link
+            to='..'
+            relative='path'
+            className='w-fit h-fit py-2 px-6 mt-8 bg-White dark:bg-DarkBlue rounded-md shadow-md'
+         >
+            Back
+         </Link>
          {loading ? (
-            <div className='min-h-[75vh] flex items-center justify-center'>
-               <p>Loading...</p>
-            </div>
+            loader
          ) : (
-            <>
-               <Link
-                  to='..'
-                  relative='path'
-                  className='w-fit h-fit py-2 px-6 mt-8 bg-White dark:bg-DarkBlue rounded-md shadow-md'
-               >
-                  Back
-               </Link>
-               <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>
-                  <img
-                     // src={details.flags.svg}
-                     className='min-h-[200px]'
-                     alt={`flag of ${params.name}`}
-                  />
-                  <article className='flex flex-col gap-6 min-h-[400px]'>
-                     <h2 className='font-semibold'>{params.name}</h2>
-                     <div>
-                        <p className='font-semibold mb-1.5'>
-                           Native name:{' '}
-                           {/* <span className='font-light'>
-                              {details.name.nativeName}
-                           </span> */}
-                        </p>
-                        <p className='font-semibold mb-1.5'>
-                           Population:{' '}
-                           {/* <span className='font-light'>
-                              {details.population.toLocaleString()}
-                           </span> */}
-                        </p>
-                        <p className='font-semibold mb-1.5'>
-                           Region:{' '}
-                           {/* <span className='font-light'>{details.region}</span> */}
-                        </p>
-                        <p className='font-semibold mb-1.5'>
-                           Sub Region:{' '}
-                           {/* <span className='font-light'>
-                              {details.subregion}
-                           </span> */}
-                        </p>
-                        <p className='font-semibold mb-1.5'>
-                           Capital:{' '}
-                           {/* <span className='font-light'>{details.capital}</span> */}
-                        </p>
-                     </div>
-                     {/* <div>
-                        <p className='font-semibold mb-1.5'>
-                           Top Level Domain:{' '}
-                           <span className='font-light'>
-                              {details.name.nativeName}
-                           </span>
-                        </p>
-                        <p className='font-semibold mb-1.5'>
-                           Currencies:{' '}
-                           <span className='font-light'>
-                              {details.currencies}
-                           </span>
-                        </p>
-                        <p className='font-semibold mb-1.5'>
-                           Languages:{' '}
-                           <span className='font-light'>
-                              {details.languages}
-                           </span>
-                        </p>
-                     </div> */}
-                  </article>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>
+               <img
+                  // src={countryDetails.flags.svg}
+                  className='min-h-[200px]'
+                  alt={`flag of ${params.name}`}
+               />
+               <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr]'>
+                  <h2 className='font-bold text-2xl capitalize'>
+                     {params.name}
+                  </h2>
+                  <div className='col-start-1'>
+                     <p className='font-semibold mb-1.5'>
+                        Native name:{' '}
+                        <span className='font-light'>
+                           {/* {countryDetails.name.nativeName} */}
+                        </span>
+                     </p>
+                     <p className='font-semibold mb-1.5'>
+                        Population:{' '}
+                        <span className='font-light'>
+                           {/* {countryDetails.population.toLocaleString()} */}
+                        </span>
+                     </p>
+                     <p className='font-semibold mb-1.5'>
+                        Region:{' '}
+                        <span className='font-light'>
+                           {countryDetails.region}
+                        </span>
+                     </p>
+                     <p className='font-semibold mb-1.5'>
+                        Sub Region:{' '}
+                        <span className='font-light'>
+                           {countryDetails.subregion}
+                        </span>
+                     </p>
+                     <p className='font-semibold mb-1.5'>
+                        Capital:{' '}
+                        <span className='font-light'>
+                           {countryDetails.capital}
+                        </span>
+                     </p>
+                  </div>
+                  <div className=''>
+                     <p className='font-semibold mb-1.5'>
+                        Top Level Domain:{' '}
+                        <span className='font-light'>{countryDetails.tld}</span>
+                     </p>
+                     <p className='font-semibold mb-1.5'>
+                        Currencies:{' '}
+                        <span className='font-light'>
+                           {/* {countryDetails.currencies} */}
+                        </span>
+                     </p>
+                     <p className='font-semibold mb-1.5'>
+                        Languages:{' '}
+                        <span className='font-light'>
+                           {/* {countryDetails.languages} */}
+                        </span>
+                     </p>
+                  </div>
+               </article>
+
+               <div className='flex flex-col md:flex-row gap-3 h-fit md:col-start-2 md:items-center'>
+                  <p className='font-semibold '>Border Countries:</p>
+                  <ul className='flex gap-3'>
+                     <li className='shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'>
+                        <Link>France</Link>
+                     </li>
+                     <li className='shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'>
+                        <Link>Germany</Link>
+                     </li>
+                     <li className='shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'>
+                        <Link>Netherlands</Link>
+                     </li>
+                  </ul>
                </div>
-            </>
+            </div>
          )}
       </>
    );
