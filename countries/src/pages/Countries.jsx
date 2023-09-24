@@ -1,12 +1,13 @@
 import CountryCard from '../components/CountryCard';
 import { useEffect, useState } from 'react';
-import { Arrow } from '../components/Icons';
+import { Arrow, Search } from '../components/Icons';
 
 function Countries() {
    const [error, setError] = useState(false);
-   const [loading, setLoading] = useState(false);
-   const [countries, setCountries] = useState([]);
    const [expand, setExpand] = useState(false)
+   const [loading, setLoading] = useState(false);
+   // const [region, setRegion] = useState([]);
+   const [countries, setCountries] = useState([]);
 
 
    const getCountries = async () => {
@@ -43,8 +44,9 @@ function Countries() {
 
    const nations = countries.map((country) => (
       <CountryCard
-         key={country.alpha2Code}
+         alt={country.flags.alt}
          region={country.region}
+         key={country.alpha2Code}
          flag={country.flags.svg}
          capital={country.capital}
          name={country.name.common}
@@ -64,14 +66,16 @@ function Countries() {
             <input
                type='text'
                placeholder='search for a country...'
-               className='h-fit placeholder:text-DarkBlue dark:placeholder:text-White p-4 rounded-md shadow-md outline-0 dark:bg-DarkBlue dark:text-white transition-colors duration-300'
+               className='md:w-[460px] h-fit placeholder:text-DarkBlue dark:placeholder:text-White p-4 rounded-md shadow-md outline-0 dark:bg-DarkBlue dark:text-white transition-colors duration-300'
             />
+            {/* <Search /> */}
             <div className='relative w-fit'>
                <button className='w-fit flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue transition-colors duration-300 stroke-DarkBlue dark:stroke-White' onClick={() => setExpand(!expand)}>
                   <span>Filter by region</span>
                   <Arrow />
                </button>
-               <ul className={`select ${expand ? 'absolute' : 'hidden'} px-6 py-4 w-full right-0 top-[4rem] bg-White dark:bg-DarkBlue flex flex-col gap-2 shadow-md rounded-md`}>
+               <ul className={`select ${expand ? 'absolute' : 'hidden'} px-6 py-4 w-full right-0 top-[4rem] bg-White dark:bg-DarkBlue flex flex-col gap-2 shadow-md rounded-md z-10`}>
+                  <li><button onClick={() => filterRegion('all')}>All</button></li>
                   <li><button onClick={() => filterRegion('africa')}>Africa</button></li>
                   <li><button onClick={() => filterRegion('americas')}>America</button></li>
                   <li><button onClick={() => filterRegion('asia')}>Asia</button></li>
@@ -83,7 +87,7 @@ function Countries() {
          {loading ? (
             loader
          ) : (
-            <section className='countries__grid grid gap-16'>{nations}</section>
+            <section className='countries__grid grid gap-20'>{nations}</section>
          )}
       </>
    );

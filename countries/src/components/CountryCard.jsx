@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function CountryCard(props) {
    const params = useParams();
@@ -6,16 +7,16 @@ function CountryCard(props) {
    return (
       <Link
          to={`${name}`}
-         className='shadow-md rounded-md bg-White dark:text-White text-DarkBlue dark:bg-DarkBlue transition-colors duration-300'
+         className='hover:scale-105 shadow-md rounded-md bg-White dark:text-White text-DarkBlue dark:bg-DarkBlue transition duration-300'
       >
          <div>
             <img
                src={props.flag}
-               alt={`The flag of ${props.name}`}
-               className='min-h-[200px] '
+               alt={props.alt}
+               className='h-[199px] md:h-[160px] min-w-full object-cover rounded-t-md'
             />
          </div>
-         <div className='p-5 flex flex-col gap-5'>
+         <div className='p-6 flex flex-col gap-5'>
             <p className='font-bold'>{props.name}</p>
             <div>
                <p className='font-semibold mb-1.5'>

@@ -23,12 +23,25 @@ export const Moon = () => {
 export const Arrow = () => {
    return (
       <svg width='10' height='6' xmlns='http://www.w3.org/2000/svg'>
+         <path stroke='' stroke-width='1.5' fill='none' d='m1 1 4 4 4-4' />
+      </svg>
+   );
+};
+export const Search = () => {
+   return (
+      <svg
+         strokeWidth='2'
+         stroke='currentColor'
+         viewBox='0 0 24 24'
+         fill='none'
+         xmlns='http://www.w3.org/2000/svg'
+         width='26' height='26'
+      >
          <path
-            stroke=''
-            stroke-width='1.5'
-            fill='none'
-            d='m1 1 4 4 4-4'
-         />
+            d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+            strokeLinejoin='round'
+            strokeLinecap='round'
+         ></path>
       </svg>
    );
 };

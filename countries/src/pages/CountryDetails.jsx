@@ -6,7 +6,6 @@ function CountryDetails(props) {
    const [error, setError] = useState(false);
    const [loading, setLoading] = useState(false);
    const [countryDetails, setCountryDetails] = useState([]);
-   // const details = countryDetails[0];
 
    const getCountryDetails = async () => {
       setLoading(true);
@@ -26,6 +25,7 @@ function CountryDetails(props) {
       setLoading(false);
    };
 
+   
    useEffect(() => {
       getCountryDetails();
       return () => {};
@@ -37,39 +37,47 @@ function CountryDetails(props) {
       </div>
    );
 
+   const errorMsg = (
+      <div className='min-h-[60vh] grid place-content-center'>
+         <h1 className='text-DarkBlue dark:text-white'>The page you requested does&apos;t exist</h1>
+      </div>
+   );
+
    return (
       <>
          <Link
             to='..'
             relative='path'
-            className='w-fit h-fit py-2 px-6 mt-8 bg-White dark:bg-DarkBlue rounded-md shadow-md'
+            className='w-fit h-fit py-2 px-12 mt-14 bg-White dark:bg-DarkBlue rounded-md shadow-md'
          >
             Back
          </Link>
          {loading ? (
             loader
          ) : (
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10'>
-               <img
-                  // src={countryDetails.flags.svg}
-                  className='min-h-[200px]'
-                  alt={`flag of ${params.name}`}
-               />
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20'>
+               <div>
+                  <img
+                     src={countryDetails.flags?.svg}
+                     alt={countryDetails.flags?.alt}
+                     className='object-cover md:h-[400px] min-w-full rounded-sm'
+                  />
+               </div>
                <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr]'>
                   <h2 className='font-bold text-2xl capitalize'>
-                     {params.name}
+                     {countryDetails.name?.common}
                   </h2>
                   <div className='col-start-1'>
                      <p className='font-semibold mb-1.5'>
                         Native name:{' '}
                         <span className='font-light'>
-                           {/* {countryDetails.name.nativeName} */}
+                           {/* {countryDetails.name?.nativeName} */}
                         </span>
                      </p>
                      <p className='font-semibold mb-1.5'>
                         Population:{' '}
                         <span className='font-light'>
-                           {/* {countryDetails.population.toLocaleString()} */}
+                           {countryDetails.population?.toLocaleString()}
                         </span>
                      </p>
                      <p className='font-semibold mb-1.5'>
@@ -94,37 +102,44 @@ function CountryDetails(props) {
                   <div className=''>
                      <p className='font-semibold mb-1.5'>
                         Top Level Domain:{' '}
-                        <span className='font-light'>{countryDetails.tld}</span>
+                        <span className='font-light'>
+                           {countryDetails.tld ? countryDetails.tld.join(', ') : ''}
+                        </span>
                      </p>
                      <p className='font-semibold mb-1.5'>
                         Currencies:{' '}
                         <span className='font-light'>
-                           {/* {countryDetails.currencies} */}
+                        {countryDetails.currencies
+                           ? Object.keys(countryDetails.currencies).map(currencyCode => (
+                              <span key={currencyCode}>
+                                 {countryDetails.currencies[currencyCode].name} ({currencyCode})
+                              </span>
+                           ))
+                        : ''}
                         </span>
                      </p>
                      <p className='font-semibold mb-1.5'>
                         Languages:{' '}
                         <span className='font-light'>
-                           {/* {countryDetails.languages} */}
+                           {countryDetails.languages? Object.values(countryDetails.languages).join(', ') : ''}
                         </span>
                      </p>
                   </div>
-               </article>
 
-               <div className='flex flex-col md:flex-row gap-3 h-fit md:col-start-2 md:items-center'>
-                  <p className='font-semibold '>Border Countries:</p>
-                  <ul className='flex gap-3'>
-                     <li className='shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'>
-                        <Link>France</Link>
-                     </li>
-                     <li className='shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'>
-                        <Link>Germany</Link>
-                     </li>
-                     <li className='shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'>
-                        <Link>Netherlands</Link>
-                     </li>
-                  </ul>
-               </div>
+                  <div className='flex flex-col md:flex-row gap-3 h-fit md:col-span-2 md:items-center'>
+                     <p className='font-semibold '>Border Countries:</p>
+                     <ul className='flex gap-3 flex-wrap'>
+                        {countryDetails.borders?.map((country, index) => (
+                           <li
+                              key={index}
+                              className='shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'
+                           >
+                              <Link to='.'>{country}</Link>
+                           </li>
+                        ))}
+                     </ul>
+                  </div>
+               </article>
             </div>
          )}
       </>
