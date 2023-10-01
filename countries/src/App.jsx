@@ -5,6 +5,7 @@ import Countries from './pages/Countries';
 import Explore from './pages/Explore';
 import CountryDetails from './pages/CountryDetails';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import CountryProvider from './context/CountryProvider';
 
 const router = createBrowserRouter([
    {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-   return <RouterProvider router={router} />;
+   return (
+      <CountryProvider>
+         <RouterProvider router={router} />;
+      </CountryProvider>
+   );
 }
 
 export default App;

@@ -1,11 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useParams, useNavigate, useLoaderData } from 'react-router-dom';
+import { Back } from '../components/Icons';
+import CountryContext from '../context/CountryContext';
 
-function CountryDetails(props) {
+function CountryDetails() {
    const params = useParams();
+   const navigate = useNavigate(); 
    const [error, setError] = useState(false);
    const [loading, setLoading] = useState(false);
    const [countryDetails, setCountryDetails] = useState([]);
+   const context = useContext(CountryContext)
+   const [countries, setCountries] = useState(context.countryList)
+   const [borderCountries, setBorderCountries] = useState([])
 
    const getCountryDetails = async () => {
       setLoading(true);
@@ -25,11 +31,36 @@ function CountryDetails(props) {
       setLoading(false);
    };
 
-   
+   console.log(countries)
+
    useEffect(() => {
       getCountryDetails();
       return () => {};
    }, []);
+
+   useEffect(() => {
+      const getBorderCountryName = () => {
+         countryDetails?.borders?.map((border, index) => {
+            console.log(border)
+            const altSpelling = countries?.find((country) => country.altSpellings[0] === border)
+            
+            // const borderCountry = countries[fullName].name?.common
+            // setBorderCountries(borderCountry)
+            console.log('ran')
+            // console.log(altSpelling)
+
+            // return {
+            //    ...borderCountries,
+            //    borderCountry
+            // }
+         })
+      }
+
+      getBorderCountryName()
+      return () => {};
+   }, [countries, countryDetails]);
+
+  
 
    const loader = (
       <div className='min-h-[60vh] grid place-content-center'>
@@ -45,25 +76,25 @@ function CountryDetails(props) {
 
    return (
       <>
-         <Link
-            to='..'
-            relative='path'
-            className='w-fit h-fit py-2 px-12 mt-14 bg-White dark:bg-DarkBlue rounded-md shadow-md'
+         <button
+            onClick={() => navigate(-1)}
+            className='flex gap-3 items-center w-fit h-fit py-2 px-8 mt-12 bg-White dark:bg-DarkBlue rounded-md shadow-md'
          >
+            <Back aria-hidden='true'/>
             Back
-         </Link>
+         </button>
          {loading ? (
             loader
          ) : (
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-6 md:gap-20'>
                <div>
                   <img
                      src={countryDetails.flags?.svg}
                      alt={countryDetails.flags?.alt}
-                     className='object-cover md:h-[400px] min-w-full rounded-sm'
+                     className='object-cover lg:h-[400px] min-w-full rounded-sm'
                   />
                </div>
-               <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr]'>
+               <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr_auto]'>
                   <h2 className='font-bold text-2xl capitalize'>
                      {countryDetails.name?.common}
                   </h2>
@@ -125,20 +156,22 @@ function CountryDetails(props) {
                         </span>
                      </p>
                   </div>
-
-                  <div className='flex flex-col md:flex-row gap-3 h-fit md:col-span-2 md:items-center'>
-                     <p className='font-semibold '>Border Countries:</p>
+                  
+                  {countryDetails.borders?.length > 0 && (   
+                  <div className='flex flex-col lg:flex-row gap-3 md:col-span-2 m:items-center'>
+                     <p className='font-semibold whitespace-nowrap'>Border Countries:</p>
                      <ul className='flex gap-3 flex-wrap'>
-                        {countryDetails.borders?.map((country, index) => (
+                        {borderCountries.map((borderCountry, index) => (
                            <li
                               key={index}
-                              className='shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'
+                              className='h-fit shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'
                            >
-                              <Link to='.'>{country}</Link>
+                              <Link to={`/countries/${borderCountry}`}>{borderCountry}</Link>
                            </li>
                         ))}
                      </ul>
                   </div>
+                  )}
                </article>
             </div>
          )}

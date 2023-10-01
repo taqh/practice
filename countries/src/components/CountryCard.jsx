@@ -1,10 +1,11 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function CountryCard(props) {
-   const params = useParams();
    const name = props.name.toLowerCase();
+   
    return (
+      // <motion.div>
       <Link
          to={`${name}`}
          className='hover:scale-105 shadow-md rounded-md bg-White dark:text-White text-DarkBlue dark:bg-DarkBlue transition duration-300'
@@ -34,6 +35,7 @@ function CountryCard(props) {
             </div>
          </div>
       </Link>
+      // </motion.div> 
    );
 }
 

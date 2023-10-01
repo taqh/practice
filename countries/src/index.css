@@ -15,6 +15,17 @@
    body {
       @apply bg-LightBg dark:bg-DarkBg;
    }
+   ::-webkit-scrollbar {
+		width: 0.935rem;
+	}
+	::-webkit-scrollbar-thumb{
+		border-radius: 100vh;
+		border: 0.2rem var(--Dark-Blue) solid;
+		background-color: var(--VeryDark-Blue);
+	}
+	::-webkit-scrollbar-track {
+		background-color: var(--Dark-Blue);
+	}
 }
 
 @layer components {
