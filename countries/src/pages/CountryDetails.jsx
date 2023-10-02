@@ -17,7 +17,7 @@ function CountryDetails() {
       setLoading(true);
       try {
          const response = await fetch(
-            `https://restcountries.com/v3.1/name/${params.name}`
+            `https://restcountries.com/v3.1/name/${params.name.replace(/-/g, ' ')}`
          );
          const data = await response.json();
          if (response.ok) {
@@ -31,8 +31,6 @@ function CountryDetails() {
       setLoading(false);
    };
 
-   console.log(countries)
-
    useEffect(() => {
       getCountryDetails();
       return () => {};
@@ -40,23 +38,15 @@ function CountryDetails() {
 
    useEffect(() => {
       const getBorderCountryName = () => {
-         countryDetails?.borders?.map((border, index) => {
-            console.log(border)
-            const altSpelling = countries?.find((country) => country.altSpellings[0] === border)
+         const mappedBorderCountries = countryDetails?.borders?.map((border) => {
+            const fullName = countries?.find((country) => country.cca3 === border)
+            return fullName ? fullName.name.common : border;
             
-            // const borderCountry = countries[fullName].name?.common
-            // setBorderCountries(borderCountry)
-            console.log('ran')
-            // console.log(altSpelling)
-
-            // return {
-            //    ...borderCountries,
-            //    borderCountry
-            // }
          })
+         setBorderCountries(mappedBorderCountries);
       }
 
-      getBorderCountryName()
+      getBorderCountryName();
       return () => {};
    }, [countries, countryDetails]);
 
@@ -102,7 +92,7 @@ function CountryDetails() {
                      <p className='font-semibold mb-1.5'>
                         Native name:{' '}
                         <span className='font-light'>
-                           {/* {countryDetails.name?.nativeName} */}
+                           {countryDetails.name?.nativeName[0]?.common}
                         </span>
                      </p>
                      <p className='font-semibold mb-1.5'>
@@ -161,12 +151,12 @@ function CountryDetails() {
                   <div className='flex flex-col lg:flex-row gap-3 md:col-span-2 m:items-center'>
                      <p className='font-semibold whitespace-nowrap'>Border Countries:</p>
                      <ul className='flex gap-3 flex-wrap'>
-                        {borderCountries.map((borderCountry, index) => (
+                        {borderCountries?.map((borderCountry, index) => (
                            <li
                               key={index}
                               className='h-fit shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'
                            >
-                              <Link to={`/countries/${borderCountry}`}>{borderCountry}</Link>
+                              <Link to={`/countries/${borderCountry.toLowerCase().replace(/\s+/g, '-')}`}>{borderCountry}</Link>
                            </li>
                         ))}
                      </ul>

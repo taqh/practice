@@ -7,7 +7,7 @@ function CountryCard(props) {
    return (
       // <motion.div>
       <Link
-         to={`${name}`}
+         to={`${name.replace(/\s+/g, '-')}`}
          className='hover:scale-105 shadow-md rounded-md bg-White dark:text-White text-DarkBlue dark:bg-DarkBlue transition duration-300'
       >
          <div>
