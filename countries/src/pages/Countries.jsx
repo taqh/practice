@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import CountryCard from '../components/CountryCard';
 import { Arrow, Search, Clear } from '../components/Icons';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function Countries() {
    const [query, setQuery] = useState('');
@@ -9,7 +10,7 @@ function Countries() {
    const [expanded, setExpanded] = useState(false);
    const [countries, setCountries] = useState([]);
    const [filteredCountries, setFilteredCountries] = useState([]);
-   const [selectedRegion, setSelectedRegion] = useState('Filter by region');
+   const [activeRegion, setActiveRegion] = useState('Filter by region');
    const countryPerPage = 12;
    const filterButtons = [
       { name: 'All', code: 'all' },
@@ -18,6 +19,7 @@ function Countries() {
       { name: 'Asia', code: 'asia' },
       { name: 'Europe', code: 'europe' },
       { name: 'Oceania', code: 'oceania' },
+      { name: 'Antarctic', code: 'antarctic' },
    ];
 
    const getCountries = async () => {
@@ -27,6 +29,7 @@ function Countries() {
          const data = await response.json();
          if (response.ok) {
             setCountries(data);
+            setFilteredCountries(data);
             setLoading(false);
             console.log(data);
          }
@@ -37,14 +40,21 @@ function Countries() {
    };
 
    const filterByRegion = (selected) => {
+      console.log(selected);
       filterButtons.map((button) => {
          if (selected === 'all') {
-            setSelectedRegion('Filter by region');
+            setActiveRegion('Filter by region');
          } else if (button.code === selected) {
-            setSelectedRegion(button.name);
+            setActiveRegion(button.name);
          }
          return button;
       });
+
+      const filteredRegion = countries.filter(
+         (country) => country.region === selected
+      );
+      setFilteredCountries(filteredRegion);
+      console.log(filteredRegion);
       setExpanded(false);
    };
 
@@ -78,18 +88,6 @@ function Countries() {
    const clearQuery = () => {
       setQuery('');
    };
-
-   const nations = countries.map((country) => (
-      <CountryCard
-         alt={country.flags.alt}
-         region={country.region}
-         key={country.name.common}
-         flag={country.flags.svg}
-         capital={country.capital}
-         name={country.name.common}
-         population={country.population}
-      />
-   ));
 
    const loader = (
       <div className='min-h-[60vh] grid place-content-center'>
@@ -126,7 +124,7 @@ function Countries() {
                   className='w-52 justify-between flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue transition-colors duration-300 stroke-DarkBlue dark:stroke-White'
                   onClick={() => setExpanded(!expanded)}
                >
-                  <span>{selectedRegion}</span>
+                  <span>{activeRegion}</span>
                   <span
                      className={`transition duration-200 ${
                         expanded && 'rotate-[180deg]'
@@ -144,7 +142,7 @@ function Countries() {
                      <li key={region.code}>
                         <button
                            className='w-full text-left px-6 hover:bg-LightBg dark:hover:bg-DarkBg transition-colors duration-200'
-                           onClick={() => filterByRegion(region.code)}
+                           onClick={() => filterByRegion(region.name)}
                         >
                            {region.name}
                         </button>
@@ -156,7 +154,21 @@ function Countries() {
          {loading ? (
             loader
          ) : (
-            <section className='countries__grid grid gap-20'>{nations}</section>
+            <motion.section layout className='countries__grid grid gap-20'>
+               <AnimatePresence>
+                  {filteredCountries.map((country) => (
+                     <CountryCard
+                        alt={country.flags.alt}
+                        region={country.region}
+                        key={country.name.common}
+                        flag={country.flags.svg}
+                        capital={country.capital}
+                        name={country.name.common}
+                        population={country.population}
+                     />
+                  ))}
+               </AnimatePresence>
+            </motion.section>
          )}
       </>
    );

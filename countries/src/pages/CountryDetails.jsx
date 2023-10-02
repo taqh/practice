@@ -133,7 +133,7 @@ function CountryDetails() {
                         {countryDetails.currencies
                            ? Object.keys(countryDetails.currencies).map(currencyCode => (
                               <span key={currencyCode}>
-                                 {countryDetails.currencies[currencyCode].name} ({currencyCode})
+                                 {countryDetails.currencies[currencyCode].name} ({currencyCode}){' '}
                               </span>
                            ))
                         : ''}
