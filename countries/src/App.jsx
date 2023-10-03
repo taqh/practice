@@ -16,7 +16,7 @@ const router = createBrowserRouter([
          { index: true, element: <Explore /> },
          {
             path: '/countries',
-            element: <Countries /> /*loader={CountriesLoader}*/,
+            element: <Countries />,
          },
          { path: '/countries/:name', element: <CountryDetails /> },
       ],
