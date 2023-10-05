@@ -6,7 +6,7 @@ function CountryCard(props) {
 
    return (
       <motion.div
-         className='hover:scale-105 shadow-md rounded-md bg-White dark:text-White text-DarkBlue dark:bg-DarkBlue transition duration-300'
+         className='hover:scale-105 shadow-md rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300'
          layout
          animate={{ opacity: 1 }}
          initial={{ opacity: 0 }}

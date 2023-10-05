@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams, useNavigate, useLoaderData } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Back } from '../components/Icons';
 import CountryContext from '../context/CountryContext';
 
@@ -8,10 +8,10 @@ function CountryDetails() {
    const navigate = useNavigate(); 
    const [error, setError] = useState(false);
    const [loading, setLoading] = useState(false);
+   const {countryList} = useContext(CountryContext);
+   const [countries, setCountries] = useState(countryList);
    const [countryDetails, setCountryDetails] = useState([]);
-   const context = useContext(CountryContext)
-   const [countries, setCountries] = useState(context.countryList)
-   const [borderCountries, setBorderCountries] = useState([])
+   const [borderCountries, setBorderCountries] = useState([]);
 
    const getCountryDetails = async () => {
       setLoading(true);
@@ -27,6 +27,7 @@ function CountryDetails() {
       } catch (error) {
          console.error(error);
          setError(true);
+         setLoading(false);
       }
       setLoading(false);
    };
@@ -45,7 +46,6 @@ function CountryDetails() {
          })
          setBorderCountries(mappedBorderCountries);
       }
-
       getBorderCountryName();
       return () => {};
    }, [countries, countryDetails]);
@@ -68,7 +68,7 @@ function CountryDetails() {
       <>
          <button
             onClick={() => navigate(-1)}
-            className='flex gap-3 items-center w-fit h-fit py-2 px-8 mt-12 bg-White dark:bg-DarkBlue rounded-md shadow-md'
+            className='flex gap-3 items-center w-fit h-fit py-2 px-8 mt-12 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition-colors duration-300 '
          >
             <Back aria-hidden='true'/>
             Back
@@ -84,7 +84,7 @@ function CountryDetails() {
                      className='object-cover lg:h-[400px] min-w-full rounded-sm'
                   />
                </div>
-               <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr_auto]'>
+               <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr_auto] text-DarkBg dark:text-White transition duration-300'>
                   <h2 className='font-bold text-2xl capitalize'>
                      {countryDetails.name?.common}
                   </h2>
@@ -154,7 +154,7 @@ function CountryDetails() {
                         {borderCountries?.map((borderCountry, index) => (
                            <li
                               key={index}
-                              className='h-fit shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue dark:text-White text-DarkBlue bg-White'
+                              className='h-fit shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue bg-White  transition duration-300'
                            >
                               <Link to={`/countries/${borderCountry.toLowerCase().replace(/\s+/g, '-')}`}>{borderCountry}</Link>
                            </li>

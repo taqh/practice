@@ -1,4 +1,4 @@
-import { useReducer, useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import CountryContext from './CountryContext';
 
 function ChatProvider({ children }) {

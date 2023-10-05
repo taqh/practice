@@ -42,9 +42,9 @@ function Countries() {
    const filterByRegion = (selected) => {
       console.log(selected);
       filterButtons.map((button) => {
-         if (selected === 'all') {
+         if (selected === 'All') {
             setActiveRegion('Filter by region');
-         } else if (button.code === selected) {
+         } else if (button.name === selected) {
             setActiveRegion(button.name);
          }
          return button;
@@ -53,7 +53,11 @@ function Countries() {
       const filteredRegion = countries.filter(
          (country) => country.region === selected
       );
-      setFilteredCountries(filteredRegion);
+      if (selected === 'All') {
+         setFilteredCountries(countries);
+      } else {
+         setFilteredCountries(filteredRegion);
+      }
       console.log(filteredRegion);
       setExpanded(false);
    };
@@ -110,7 +114,7 @@ function Countries() {
                   autoComplete='off'
                   placeholder='Search for a country...'
                   onChange={(e) => setQuery(e.target.value)}
-                  className='w-full h-fit bg-transparent placeholder:text-DarkBlue placeholder:text-sm dark:placeholder:text-White px-4  outline-0 transition-colors duration-300'
+                  className='w-full h-fit bg-transparent placeholder:text-sm placeholder:text-DarkBlue dark:placeholder:text-White px-4 border-none outline-none transition duration-300'
                />
                {query && (
                   <button className='' onClick={() => clearQuery()}>
@@ -121,12 +125,12 @@ function Countries() {
             </label>
             <div className='relative w-fit'>
                <button
-                  className='w-52 justify-between flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue transition-colors duration-300 stroke-DarkBlue dark:stroke-White'
+                  className='w-52 justify-between flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition duration-300 stroke-DarkBlue dark:stroke-White'
                   onClick={() => setExpanded(!expanded)}
                >
                   <span>{activeRegion}</span>
                   <span
-                     className={`transition duration-200 ${
+                     className={`transition duration-300 ${
                         expanded && 'rotate-[180deg]'
                      }`}
                   >
@@ -136,12 +140,12 @@ function Countries() {
                <ul
                   className={`select ${
                      expanded ? 'max-h-auto py-4' : 'max-h-0 py-0'
-                  } absolute z-10 overflow-hidden transition-all duration-200 w-full right-0 top-[3.8rem] flex flex-col gap-2 shadow-md rounded-md bg-White dark:bg-DarkBlue`}
+                  } absolute z-10 overflow-hidden transition-all duration-300 w-full right-0 top-[3.8rem] flex flex-col gap-2 shadow-md rounded-md bg-White dark:bg-DarkBlue`}
                >
                   {filterButtons.map((region) => (
                      <li key={region.code}>
                         <button
-                           className='w-full text-left px-6 hover:bg-LightBg dark:hover:bg-DarkBg transition-colors duration-200'
+                           className='w-full text-left px-6 hover:bg-LightBg dark:hover:bg-DarkBg text-DarkBg dark:text-White transition duration-300'
                            onClick={() => filterByRegion(region.name)}
                         >
                            {region.name}

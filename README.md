@@ -22,7 +22,7 @@
   <tr>
     <td>REST Countries API with theme switcher</td>
     <td><a href="https://www.frontendmentor.io/solutions/multistep-form-YWjY9ctzuj">Solution</a></td>
-    <td><a href="https://multistep-formlive.netlify.app">Live site</a></td>
+    <td><a href="https://worlds-nations.netlify.app">Live site</a></td>
   </tr>
   <tr>
     <td>Multi step form</td>
@@ -75,12 +75,12 @@
     <td><a href="https://advice-generator-app-live.netlify.app/">Live site</a></td>
   </tr>
   <tr>
-    <td> Sunnyside landing page</td>
+    <td>Sunnyside landing page</td>
     <td><a href="https://www.frontendmentor.io/solutions/sunnyside-agency-landing-page-with-sass-and-javascript-kTSNM9BhOT">Solution</a></td>
     <td><a href="https://sunnyside-agency-live.netlify.app">Live site</a></td>
   </tr>
   <tr>
-    <td> Crowdfunding product page</td>
+    <td>Crowdfunding product page</td>
     <td><a href="https://www.frontendmentor.io/solutions/crowdfundingproductpage-using-react-sass-headlessui-CJebLDKgG7">Solution</a></td>
     <td><a href="https://mastercraft-page.netlify.app">Live site</a></td>
   </tr>

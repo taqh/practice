@@ -13,8 +13,11 @@
 
 @layer base {
    body {
-      @apply bg-LightBg dark:bg-DarkBg;
+      @apply bg-LightBg dark:bg-DarkBg transition duration-300;
    }
+   #root {
+      @apply bg-LightBg dark:bg-DarkBg transition duration-300;
+   }  
    ::-webkit-scrollbar {
 		width: 0.935rem;
 	}
