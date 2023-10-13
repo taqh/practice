@@ -68,7 +68,7 @@ function CountryDetails() {
       <>
          <button
             onClick={() => navigate(-1)}
-            className='flex gap-3 items-center w-fit h-fit py-2 px-8 mt-12 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition-colors duration-300 '
+            className='flex gap-3 items-center w-fit h-fit py-2 px-8 mt-7 md:mt-10 lg:mt-12 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition-colors duration-300 '
          >
             <Back aria-hidden='true'/>
             Back
@@ -89,31 +89,31 @@ function CountryDetails() {
                      {countryDetails.name?.common}
                   </h2>
                   <div className='col-start-1'>
-                     <p className='font-semibold mb-1.5'>
+                     <p className='font-semibold mb-2'>
                         Native name:{' '}
                         <span className='font-light'>
-                           {countryDetails.name?.nativeName[0]?.common}
+                           {countryDetails.name?.nativeName? Object.values(countryDetails.name.nativeName)[0].common : ''}
                         </span>
                      </p>
-                     <p className='font-semibold mb-1.5'>
+                     <p className='font-semibold mb-2'>
                         Population:{' '}
                         <span className='font-light'>
                            {countryDetails.population?.toLocaleString()}
                         </span>
                      </p>
-                     <p className='font-semibold mb-1.5'>
+                     <p className='font-semibold mb-2'>
                         Region:{' '}
                         <span className='font-light'>
                            {countryDetails.region}
                         </span>
                      </p>
-                     <p className='font-semibold mb-1.5'>
+                     <p className='font-semibold mb-2'>
                         Sub Region:{' '}
                         <span className='font-light'>
                            {countryDetails.subregion}
                         </span>
                      </p>
-                     <p className='font-semibold mb-1.5'>
+                     <p className='font-semibold mb-2'>
                         Capital:{' '}
                         <span className='font-light'>
                            {countryDetails.capital}
@@ -121,13 +121,13 @@ function CountryDetails() {
                      </p>
                   </div>
                   <div className=''>
-                     <p className='font-semibold mb-1.5'>
+                     <p className='font-semibold mb-2'>
                         Top Level Domain:{' '}
                         <span className='font-light'>
                            {countryDetails.tld ? countryDetails.tld.join(', ') : ''}
                         </span>
                      </p>
-                     <p className='font-semibold mb-1.5'>
+                     <p className='font-semibold mb-2'>
                         Currencies:{' '}
                         <span className='font-light'>
                         {countryDetails.currencies
@@ -139,7 +139,7 @@ function CountryDetails() {
                         : ''}
                         </span>
                      </p>
-                     <p className='font-semibold mb-1.5'>
+                     <p className='font-semibold mb-2'>
                         Languages:{' '}
                         <span className='font-light'>
                            {countryDetails.languages? Object.values(countryDetails.languages).join(', ') : ''}

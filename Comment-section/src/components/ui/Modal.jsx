@@ -4,12 +4,13 @@ import { createPortal } from 'react-dom';
 import ChatContext from '../../context/ChatContext';
 
 const Warning = () => {
-   const modalCtx = useContext(ChatContext);
+   const modalContext = useContext(ChatContext);
 
    return (
       <dialog
          className='scale-0 m-auto bg-transparent backdrop:bg-black/50 grid place-content-center p-0'
-         ref={modalCtx.modalRef}
+         ref={modalContext.modalRef}
+         onClose={modalContext.cancel} // remove the modal from the DOM when users press esc on their keyboard it sets deleting to false in the context
       >
          <div className='max-w-screen-xsm bg-white dark:bg-DarkGray p-5 shadow-md rounded-lg'>
             <h2 className='text-DarkBlue text-xl font-bold dark:text-Username'>
@@ -22,13 +23,13 @@ const Warning = () => {
             <div className='flex gap-4 uppercase text-white text-sm'>
                <Button
                   className='w-full bg-GrayBlue hover:bg-GrayBlue/50 px-3 py-3 rounded-md uppercase'
-                  onClick={modalCtx.cancel}
+                  onClick={modalContext.cancel}
                >
                   no, cancel
                </Button>
                <Button
                   className='w-full bg-SoftRed dark:hover:bg-DarkRed hover:bg-PaleRed px-3 py-3 rounded-md uppercase transition'
-                  onClick={modalCtx.delete}
+                  onClick={modalContext.delete}
                >
                   yes, delete
                </Button>

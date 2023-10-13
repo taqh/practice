@@ -6,7 +6,7 @@ import ThemeSwitch from './theme/ThemeSwitch';
 import ChatContext from '../context/ChatContext';
 
 function CommentSection() {
-	const { posts } = useContext(ChatContext);
+	const { posts, deleting } = useContext(ChatContext);
 
 	const commentThread = posts.map((comment) => (
 		<Comment
@@ -25,7 +25,7 @@ function CommentSection() {
 
 	return (
 		<section className='flex flex-col gap-5 mx-auto text-GrayBlue max-w-screen-md min-h-screen bg-inherit px-4 md:px-5 py-7 md:py-10 transition-all'>
-			<Modal />
+			{deleting && <Modal />}
 			<h1 className='sr-only'>Comments</h1>
 			<ThemeSwitch />
 			{commentThread}

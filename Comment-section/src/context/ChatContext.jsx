@@ -5,6 +5,7 @@ const ChatContext = createContext({
    modalRef: {},
    reply: false,
    isReplying: false,
+   deleting: false,
    cancel: () => {},
    delete: () => {},
    addReply: () => {},

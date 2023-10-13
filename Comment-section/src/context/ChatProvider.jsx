@@ -9,12 +9,13 @@ function ChatProvider({ children }) {
       JSON.parse(localStorage.getItem('COMMENTS')) || data.comments;
    const [chatState, dispatch] = useReducer(chatReducer, chatData);
    const [commentToDelete, setCommentToDelete] = useState(null);
+   const [deleting, setDeleting] = useState(false);
    const modalRef = useRef();
 
    //  ideally the .close() method is supposed to remove the open attribute on a dialog
    //  but for some reason im getting an error hence why i had to test some solutions
    // here's a solution i found on github https://github.com/facebook/react/issues/24399
-   // I ended up using somethinf different however
+   // I ended up using something different however
 
    const formatTime = (time) => {
       // because the json timestamps are strings calling the dayjs methods would display NaN
@@ -57,20 +58,27 @@ function ChatProvider({ children }) {
    };
 
    const showModal = (id) => {
-      if (!modalRef.current.open) {
-         modalRef.current.showModal();
-      }
+      setDeleting(true);
       setCommentToDelete(id);
    };
 
+   // ensure showModal() is only called when the modal component is available in the DOM
+   useEffect(() => {
+      if (deleting && modalRef.current && !modalRef.current.open) {
+         modalRef.current.showModal();
+      }
+   }, [deleting]);
+
    const cancelDelete = () => {
       modalRef.current.close();
+      setDeleting(false);
    };
 
    const deleteComment = () => {
       dispatch({ type: 'DELETED', payload: commentToDelete });
       modalRef.current.close();
       setCommentToDelete(null);
+      setDeleting(false);
    };
 
    const chatContext = {
@@ -83,6 +91,7 @@ function ChatProvider({ children }) {
       formatTime: formatTime,
       addComment: addComment,
       updateComment: updateComment,
+      deleting: deleting,
    };
 
    return (
