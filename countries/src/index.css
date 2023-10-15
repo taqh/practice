@@ -17,25 +17,22 @@
    }
    #root {
       @apply bg-LightBg dark:bg-DarkBg transition duration-300;
-   }  
+   }
    ::-webkit-scrollbar {
-		width: 0.935rem;
-	}
-	::-webkit-scrollbar-thumb{
-		border-radius: 100vh;
-		border: 0.2rem var(--Dark-Blue) solid;
-		background-color: var(--VeryDark-Blue);
-	}
-	::-webkit-scrollbar-track {
-		background-color: var(--Dark-Blue);
-	}
+      width: 0.935rem;
+   }
+   ::-webkit-scrollbar-thumb {
+      border-radius: 100vh;
+      border: 0.2rem var(--Dark-Blue) solid;
+      background-color: var(--VeryDark-Blue);
+   }
+   ::-webkit-scrollbar-track {
+      background-color: var(--Dark-Blue);
+   }
 }
 
 @layer components {
    .countries__grid {
-      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-   }
-   .select{
-     
+      grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
    }
 }

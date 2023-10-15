@@ -62,27 +62,37 @@ function Countries() {
       setExpanded(false);
    };
 
-   const filterByQuery = (query) => {
-      const filtered = countries.filter((country) => {
+   
+   
+   useEffect(() => {
+      const Search = (query) => {
          const queryLower = query.toLowerCase();
-         const name = country.name.common.toLowerCase();
-         const capital = country.capital?.[0].toLowerCase();
-         const region = country.region.toLowerCase();
-         const subregion = country.subregion.toLowerCase();
-         const currency = country.currencies?.[0].toLowerCase();
-         const language = country.languages?.[0].toLowerCase();
-         const nativeName = country.name.nativeName?.common.toLowerCase();
-         return (
-            name.includes(queryLower) ||
-            capital.includes(queryLower) ||
-            region.includes(queryLower) ||
-            subregion.includes(queryLower) ||
-            currency.includes(queryLower) ||
-            language.includes(queryLower) ||
-            nativeName.includes(queryLower)
-         );
-      });
-   };
+         const queryTrimmed = queryLower.trim();
+         if (queryTrimmed === '') {
+            setFilteredCountries(countries);
+            return;
+         }
+         
+         const searched = countries.filter((country) => {
+            const name = country.name.common.toLowerCase();
+            const capital = country.capital?.[0].toLowerCase();
+            const region = country.region.toLowerCase();
+            const subregion = country.subregion?.toLowerCase();
+            const nativeName = country.name.nativeName?.common?.toLowerCase();
+            return (
+               name?.includes(queryLower) ||
+               capital?.includes(queryLower) ||
+               region?.includes(queryLower) ||
+               subregion?.includes(queryLower) ||
+               nativeName?.includes(queryLower)
+            );
+         });
+         setFilteredCountries(searched);
+      };
+
+      Search(query);
+      return () => {};
+   }, [query, countries]);
 
    useEffect(() => {
       getCountries();
