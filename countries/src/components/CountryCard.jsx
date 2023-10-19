@@ -11,7 +11,6 @@ function CountryCard(props) {
          animate={{ opacity: 1 }}
          initial={{ opacity: 0 }}
          exit={{ opacity: 0 }}
-         // transition={{ duration: 0.5 }}
       >
          <Link to={`${name.replace(/\s+/g, '-')}`}>
             <div>
@@ -35,7 +34,7 @@ function CountryCard(props) {
                   </p>
                   <p className='font-semibold mb-1.5'>
                      Capital:{' '}
-                     <span className='font-light'>{props.capital}</span>
+                     <span className='font-light'>{props.capital?.join(', ')}</span>
                   </p>
                </div>
             </div>

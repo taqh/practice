@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 function Countries() {
    const [query, setQuery] = useState('');
    const [error, setError] = useState(false);
+   const [noResults, setNoResults] = useState(false); // [1]
    const [loading, setLoading] = useState(false);
    const [expanded, setExpanded] = useState(false);
    const [countries, setCountries] = useState([]);
@@ -62,8 +63,6 @@ function Countries() {
       setExpanded(false);
    };
 
-   
-   
    useEffect(() => {
       const Search = (query) => {
          const queryLower = query.toLowerCase();
@@ -88,6 +87,11 @@ function Countries() {
             );
          });
          setFilteredCountries(searched);
+         if (queryTrimmed !== '' &&  searched.length === 0) {
+            setNoResults(true);
+         } else {
+            setNoResults(false);
+         }
       };
 
       Search(query);
@@ -99,22 +103,28 @@ function Countries() {
       return () => {};
    }, []);
 
-   const clearQuery = () => {
-      setQuery('');
-   };
-
    const loader = (
       <div className='min-h-[60vh] grid place-content-center'>
          <h1 className='text-DarkBlue dark:text-white'>loading...</h1>
       </div>
    );
 
+   const results = (
+      <div className='flex flex-wrap justify-center gap-1'>
+         <h1 className='text-DarkBlue dark:text-white text-lg'>{`No results found for`}</h1>
+         <span className='text-DarkBlue dark:text-white text-lg font-bold px-1 border h-fit rounded-md'>{`"${query}"`}</span>
+      </div>
+   );
+
+   const hud = loading ? loader : noResults ? results : null;
+
+
    return (
       <>
          <div className='flex flex-col gap-5 lg:flex-row md:justify-between mt-5'>
             <label
                htmlFor='search'
-               className='md:w-[450px] flex items-center py-5 px-6 rounded-md shadow-md dark:bg-DarkBlue dark:text-white transition duration-300'
+               className='md:w-[450px] h-fit flex items-center py-5 px-6 rounded-md shadow-md dark:bg-DarkBlue dark:text-white transition duration-300'
             >
                <Search aria-hidden='true' />
                <input
@@ -127,7 +137,7 @@ function Countries() {
                   className='w-full h-fit bg-transparent placeholder:text-sm placeholder:text-DarkBlue dark:placeholder:text-White px-4 border-none outline-none transition duration-300'
                />
                {query && (
-                  <button className='' onClick={() => clearQuery()}>
+                  <button className='' onClick={() => setQuery('')}>
                      <span className='sr-only'>clear input</span>
                      <Clear aria-hidden='true' />
                   </button>
@@ -165,8 +175,8 @@ function Countries() {
                </ul>
             </div>
          </div>
-         {loading ? (
-            loader
+         {hud ? (
+            hud
          ) : (
             <motion.section layout className='countries__grid grid gap-20'>
                <AnimatePresence>

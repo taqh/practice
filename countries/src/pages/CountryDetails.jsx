@@ -6,12 +6,13 @@ import CountryContext from '../context/CountryContext';
 function CountryDetails() {
    const params = useParams();
    const navigate = useNavigate(); 
+   const { countryList } = useContext(CountryContext);
    const [error, setError] = useState(false);
    const [loading, setLoading] = useState(false);
-   const {countryList} = useContext(CountryContext);
    const [countries, setCountries] = useState(countryList);
    const [countryDetails, setCountryDetails] = useState([]);
    const [borderCountries, setBorderCountries] = useState([]);
+   const [borderToVisit, setBorderToVisit] = useState('');
 
    const getCountryDetails = async () => {
       setLoading(true);
@@ -36,6 +37,30 @@ function CountryDetails() {
       getCountryDetails();
       return () => {};
    }, []);
+
+   useEffect(() => {
+      const fetchNewDetails = async () => {
+         setLoading(true);
+         try {
+            const response = await fetch(
+               `https://restcountries.com/v3.1/name/${borderToVisit.replace(/-/g, ' ')}`
+            );
+            const data = await response.json();
+            if (response.ok) {
+               setCountryDetails(data[0]);
+               console.log(data[0]);
+            }
+         } catch (error) {
+            console.error(error);
+            setError(true);
+            setLoading(false);
+         }
+         setLoading(false);
+      };
+      fetchNewDetails();
+
+      return () => {setBorderToVisit('')};
+   }, [borderToVisit])  
 
    useEffect(() => {
       const getBorderCountryName = () => {
@@ -116,7 +141,7 @@ function CountryDetails() {
                      <p className='font-semibold mb-2'>
                         Capital:{' '}
                         <span className='font-light'>
-                           {countryDetails.capital}
+                           {countryDetails.capital?.join(', ')}
                         </span>
                      </p>
                   </div>
@@ -124,7 +149,7 @@ function CountryDetails() {
                      <p className='font-semibold mb-2'>
                         Top Level Domain:{' '}
                         <span className='font-light'>
-                           {countryDetails.tld ? countryDetails.tld.join(', ') : ''}
+                           {countryDetails.tld?.join(', ')}
                         </span>
                      </p>
                      <p className='font-semibold mb-2'>
@@ -156,7 +181,7 @@ function CountryDetails() {
                               key={index}
                               className='h-fit shadow-md rounded-sm py-1 px-2.5 dark:bg-DarkBlue bg-White  transition duration-300'
                            >
-                              <Link to={`/countries/${borderCountry.toLowerCase().replace(/\s+/g, '-')}`}>{borderCountry}</Link>
+                              <Link to={`/countries/${borderCountry.toLowerCase().replace(/\s+/g, '-')}`} onClick={(() => setBorderToVisit(borderCountry))}>{borderCountry}</Link>
                            </li>
                         ))}
                      </ul>
