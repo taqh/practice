@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
 import CountryCard from '../components/CountryCard';
 import { Arrow, Search, Clear } from '../components/Icons';
-import { motion, AnimatePresence } from 'framer-motion';
 
 function Countries() {
    const [query, setQuery] = useState('');
    const [error, setError] = useState(false);
-   const [noResults, setNoResults] = useState(false); // [1]
    const [loading, setLoading] = useState(false);
-   const [expanded, setExpanded] = useState(false);
    const [countries, setCountries] = useState([]);
+   const [expanded, setExpanded] = useState(false);
+   const [noResults, setNoResults] = useState(false);
    const [filteredCountries, setFilteredCountries] = useState([]);
    const [activeRegion, setActiveRegion] = useState('Filter by region');
-   const countryPerPage = 12;
+   const countriesPerPage = 12;
    const filterButtons = [
       { name: 'All', code: 'all' },
       { name: 'Africa', code: 'africa' },
@@ -22,23 +21,27 @@ function Countries() {
       { name: 'Oceania', code: 'oceania' },
       { name: 'Antarctic', code: 'antarctic' },
    ];
-
-   const getCountries = async () => {
-      setLoading(true);
-      try {
-         const response = await fetch('https://restcountries.com/v3.1/all');
-         const data = await response.json();
-         if (response.ok) {
-            setCountries(data);
-            setFilteredCountries(data);
-            setLoading(false);
-            console.log(data);
+   
+   useEffect(() => {
+      const getCountries = async () => {
+         setLoading(true);
+         try {
+            const response = await fetch('https://restcountries.com/v3.1/all');
+            const data = await response.json();
+            if (response.ok) {
+               setCountries(data);
+               setFilteredCountries(data);
+               setLoading(false);
+               console.log(data);
+            }
+         } catch (error) {
+            console.error(error);
+            setError(true);
          }
-      } catch (error) {
-         console.error(error);
-         setError(true);
-      }
-   };
+      };
+      getCountries();
+      return () => {};
+   }, []);
 
    const filterByRegion = (selected) => {
       console.log(selected);
@@ -87,7 +90,8 @@ function Countries() {
             );
          });
          setFilteredCountries(searched);
-         if (queryTrimmed !== '' &&  searched.length === 0) {
+         
+         if (queryTrimmed !== '' && searched.length === 0) {
             setNoResults(true);
          } else {
             setNoResults(false);
@@ -95,29 +99,34 @@ function Countries() {
       };
 
       Search(query);
+      // console.log(noResults);
       return () => {};
    }, [query, countries]);
-
-   useEffect(() => {
-      getCountries();
-      return () => {};
-   }, []);
-
+   
+   const clearInput = () => {
+      setQuery('');
+      setNoResults(false);
+   };
+   
+   const errorUI = (
+      <div className='flex flex-wrap justify-center gap-1'>
+         <h1 className='text-DarkBlue dark:text-white text-lg'>{`No results found for`}</h1>
+         <span className='text-DarkBlue dark:text-white text-lg font-bold px-1 border dark:border-White border-DarkBlue h-fit rounded-md'>{`"${query}"`}</span>
+      </div>
+   );
    const loader = (
       <div className='min-h-[60vh] grid place-content-center'>
          <h1 className='text-DarkBlue dark:text-white'>loading...</h1>
       </div>
    );
-
-   const results = (
+   const errorMsg = (
       <div className='flex flex-wrap justify-center gap-1'>
-         <h1 className='text-DarkBlue dark:text-white text-lg'>{`No results found for`}</h1>
-         <span className='text-DarkBlue dark:text-white text-lg font-bold px-1 border h-fit rounded-md'>{`"${query}"`}</span>
+         <h1 className='text-DarkBlue dark:text-white'>An error occured please </h1>
+         <button className='w-fit h-fit py-2 px-6 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition-colors duration-300 '>Try again</button>
       </div>
    );
-
-   const hud = loading ? loader : noResults ? results : null;
-
+      
+   const hud = loading ? loader : noResults ? errorUI : error ? errorMsg : null;
 
    return (
       <>
@@ -137,7 +146,7 @@ function Countries() {
                   className='w-full h-fit bg-transparent placeholder:text-sm placeholder:text-DarkBlue dark:placeholder:text-White px-4 border-none outline-none transition duration-300'
                />
                {query && (
-                  <button className='' onClick={() => setQuery('')}>
+                  <button className='' onClick={() => clearInput()}>
                      <span className='sr-only'>clear input</span>
                      <Clear aria-hidden='true' />
                   </button>
@@ -178,8 +187,7 @@ function Countries() {
          {hud ? (
             hud
          ) : (
-            <motion.section layout className='countries__grid grid gap-20'>
-               <AnimatePresence>
+            <section className='countries__grid grid gap-20'>
                   {filteredCountries.map((country) => (
                      <CountryCard
                         alt={country.flags.alt}
@@ -191,8 +199,7 @@ function Countries() {
                         population={country.population}
                      />
                   ))}
-               </AnimatePresence>
-            </motion.section>
+            </section>
          )}
       </>
    );

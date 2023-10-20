@@ -6,10 +6,10 @@ function useCountry () {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const getCountries = async () => {
+    const getCountries = async (params) => {
         setLoading(true);
         try {
-           const response = await fetch('https://restcountries.com/v3.1/all');
+           const response = await fetch(`https://restcountries.com/v3.1/${params}`);
            const data = await response.json();
            if (response.ok) {
               setCountries(data);
