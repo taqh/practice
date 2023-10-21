@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import CountryCard from '../components/CountryCard';
 import { Arrow, Search, Clear } from '../components/Icons';
+import { Skeleton } from '../components/Skeleton';
 
 function Countries() {
    const [query, setQuery] = useState('');
@@ -10,9 +11,10 @@ function Countries() {
    const [expanded, setExpanded] = useState(false);
    const [noResults, setNoResults] = useState(false);
    const [filteredCountries, setFilteredCountries] = useState([]);
+   const [countriesToDisplay, setCountriesToDisplay] = useState(12);
    const [activeRegion, setActiveRegion] = useState('Filter by region');
-   const countriesPerPage = 12;
-   const filterButtons = [
+   const displayedCountries = filteredCountries.slice(0, countriesToDisplay);
+   const regions = [
       { name: 'All', code: 'all' },
       { name: 'Africa', code: 'africa' },
       { name: 'Americas', code: 'americas' },
@@ -21,7 +23,8 @@ function Countries() {
       { name: 'Oceania', code: 'oceania' },
       { name: 'Antarctic', code: 'antarctic' },
    ];
-   
+   const dummyList = new Array(12).fill(null);
+
    useEffect(() => {
       const getCountries = async () => {
          setLoading(true);
@@ -43,15 +46,23 @@ function Countries() {
       return () => {};
    }, []);
 
+   const loadMore = () => {
+      setCountriesToDisplay(countriesToDisplay + 12);
+      console.log(countriesToDisplay);
+   };
+
    const filterByRegion = (selected) => {
+      // reset amount of countries displayed each time user changes region
+      setCountriesToDisplay(() => 12);
+
       console.log(selected);
-      filterButtons.map((button) => {
+      regions.map((region) => {
          if (selected === 'All') {
             setActiveRegion('Filter by region');
-         } else if (button.name === selected) {
-            setActiveRegion(button.name);
+         } else if (region.name === selected) {
+            setActiveRegion(region.name);
          }
-         return button;
+         return region;
       });
 
       const filteredRegion = countries.filter(
@@ -66,6 +77,19 @@ function Countries() {
       setExpanded(false);
    };
 
+   // enable user collapse filter list by pressing the 'esc' key
+   useEffect(() => {
+      const handleEscape = (e) => {
+         if (e.key === 'Escape') {
+            setExpanded(false);
+         }
+      };
+      window.addEventListener('keydown', handleEscape);
+      return () => {
+         window.removeEventListener('keydown', handleEscape);
+      };
+   }, []);
+
    useEffect(() => {
       const Search = (query) => {
          const queryLower = query.toLowerCase();
@@ -74,7 +98,7 @@ function Countries() {
             setFilteredCountries(countries);
             return;
          }
-         
+
          const searched = countries.filter((country) => {
             const name = country.name.common.toLowerCase();
             const capital = country.capital?.[0].toLowerCase();
@@ -90,7 +114,7 @@ function Countries() {
             );
          });
          setFilteredCountries(searched);
-         
+
          if (queryTrimmed !== '' && searched.length === 0) {
             setNoResults(true);
          } else {
@@ -102,30 +126,38 @@ function Countries() {
       // console.log(noResults);
       return () => {};
    }, [query, countries]);
-   
+
    const clearInput = () => {
       setQuery('');
       setNoResults(false);
    };
-   
+
    const errorUI = (
       <div className='flex flex-wrap justify-center gap-1'>
          <h1 className='text-DarkBlue dark:text-white text-lg'>{`No results found for`}</h1>
          <span className='text-DarkBlue dark:text-white text-lg font-bold px-1 border dark:border-White border-DarkBlue h-fit rounded-md'>{`"${query}"`}</span>
       </div>
    );
+
    const loader = (
-      <div className='min-h-[60vh] grid place-content-center'>
-         <h1 className='text-DarkBlue dark:text-white'>loading...</h1>
+      <div className='countries__grid grid gap-20'>
+         {dummyList.map((_, index) => (
+            <Skeleton key={index} />
+         ))}
       </div>
    );
+
    const errorMsg = (
       <div className='flex flex-wrap justify-center gap-1'>
-         <h1 className='text-DarkBlue dark:text-white'>An error occured please </h1>
-         <button className='w-fit h-fit py-2 px-6 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition-colors duration-300 '>Try again</button>
+         <h1 className='text-DarkBlue dark:text-white'>
+            An error occured please{' '}
+         </h1>
+         <button className='w-fit h-fit py-2 px-6 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition-colors duration-300 '>
+            Try again
+         </button>
       </div>
    );
-      
+
    const hud = loading ? loader : noResults ? errorUI : error ? errorMsg : null;
 
    return (
@@ -154,7 +186,7 @@ function Countries() {
             </label>
             <div className='relative w-fit'>
                <button
-                  className='w-52 justify-between flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition duration-300 stroke-DarkBlue dark:stroke-White'
+                  className='w-52 justify-between flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White focus-within:outline-DarkBlue dark:focus-within:outline-White transition duration-300 stroke-DarkBlue dark:stroke-White'
                   onClick={() => setExpanded(!expanded)}
                >
                   <span>{activeRegion}</span>
@@ -171,11 +203,12 @@ function Countries() {
                      expanded ? 'max-h-auto py-4' : 'max-h-0 py-0'
                   } absolute z-10 overflow-hidden transition-all duration-300 w-full right-0 top-[3.8rem] flex flex-col gap-2 shadow-md rounded-md bg-White dark:bg-DarkBlue`}
                >
-                  {filterButtons.map((region) => (
-                     <li key={region.code}>
+                  {regions.map((region) => (
+                     <li key={region.name}>
                         <button
-                           className='w-full text-left px-6 hover:bg-LightBg dark:hover:bg-DarkBg text-DarkBg dark:text-White transition duration-300'
+                           className='w-full text-left px-6 hover:bg-LightBg dark:hover:bg-DarkBg text-DarkBg dark:text-White focus-within:outline-DarkBlue dark:focus-within:outline-White transition duration-300'
                            onClick={() => filterByRegion(region.name)}
+                           tabIndex={expanded ? '0' : '-1'} // prevent the buttons from being focusable when list is collapsed
                         >
                            {region.name}
                         </button>
@@ -188,18 +221,28 @@ function Countries() {
             hud
          ) : (
             <section className='countries__grid grid gap-20'>
-                  {filteredCountries.map((country) => (
-                     <CountryCard
-                        alt={country.flags.alt}
-                        region={country.region}
-                        key={country.name.common}
-                        flag={country.flags.svg}
-                        capital={country.capital}
-                        name={country.name.common}
-                        population={country.population}
-                     />
-                  ))}
+               {displayedCountries.map((country) => (
+                  <CountryCard
+                     alt={country.flags.alt}
+                     region={country.region}
+                     key={country.name.common}
+                     flag={country.flags.svg}
+                     capital={country.capital}
+                     name={country.name.common}
+                     population={country.population}
+                  />
+               ))}
             </section>
+         )}
+         {countriesToDisplay <= filteredCountries.length && (
+            <div className='flex justify-center'>
+               <button
+                  className='self-center w-fit h-fit py-2 px-6 mt-6 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White focus-within:outline-DarkBlue dark:focus-within:outline-White transition-colors duration-300'
+                  onClick={() => loadMore()}
+               >
+                  Load More
+               </button>
+            </div>
          )}
       </>
    );

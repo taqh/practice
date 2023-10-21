@@ -4,6 +4,7 @@ import { Back } from '../components/Icons';
 import CountryContext from '../context/CountryContext';
 
 function CountryDetails() {
+   scrollTo(0, 0, 'smooth');
    const params = useParams();
    const navigate = useNavigate(); 
    const { countryList } = useContext(CountryContext);
@@ -93,7 +94,7 @@ function CountryDetails() {
       <>
          <button
             onClick={() => navigate(-1)}
-            className='flex gap-3 items-center w-fit h-fit py-2 px-8 mt-7 md:mt-10 lg:mt-12 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White transition-colors duration-300 '
+            className='flex gap-3 items-center w-fit h-fit py-2 px-8 mt-7 md:mt-10 lg:mt-12 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White focus-within:outline-DarkBlue dark:focus-within:outline-White transition-colors duration-300 '
          >
             <Back aria-hidden='true'/>
             Back

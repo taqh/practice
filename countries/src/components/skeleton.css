@@ -1,0 +1,45 @@
+.skeleton-card {
+   overflow: hidden;
+   @apply w-full shadow-lg rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300;
+}
+
+.skeleton-flag {
+   @apply h-[199px] md:h-[160px];
+}
+
+.skeleton-content {
+   padding: 1.5rem;
+}
+
+.skeleton-name {
+   width: 6.875rem;
+   height: 1.25rem;
+   margin-bottom: 1.2rem;
+}
+
+.skeleton-stats {
+   display: grid;
+   gap: 0.5rem;
+}
+
+.skeleton-stat {
+   height: 1rem;
+}
+
+.skeleton-flag,
+.skeleton-stat,
+.skeleton-name {
+  background: linear-gradient(90deg, #f9f9f9 25%, #eee 50%, #f9f9f9 75%);
+  @apply dark:bg-[linear-gradient(45deg,_var(--Dark-Blue),_var(--Very-Dark-Blue))];
+  background-size: 200% 100%;
+  animation: loading 3s infinite;
+}
+
+@keyframes loading {
+   0% {
+      background-position: 200% 0;
+   }
+   100% {
+      background-position: -200% 0;
+   }
+}

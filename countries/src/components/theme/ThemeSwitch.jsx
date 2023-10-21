@@ -33,7 +33,7 @@ const ThemeSwitch = () => {
             id='toggle'
             name='toggle'
             type='checkbox'
-            className='border-none dark:focus-within:outline-SoftBlue focus-within:outline-ModerateBlue absolute top-0 left-0 z-10 h-full w-full cursor-pointer appearance-none'
+            className='border-none focus-within:outline-DarkBlue dark:focus-within:outline-White absolute top-0 left-0 z-10 h-full w-full cursor-pointer appearance-none'
             checked={darkMode}
             role='switch'
             aria-checked={darkMode}
