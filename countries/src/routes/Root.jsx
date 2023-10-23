@@ -5,7 +5,7 @@ function Root() {
    return (
       <div id='app' className='min-h-screen dark:bg-DarkBg transition-colors duration-300'>
          <Header />
-         <main className='grid gap-12 max-w-[87.5rem] min-h-[80vh] mx-auto p-8 md:px-14'>
+         <main className='grid gap-12 max-w-[82.5rem] min-h-[80vh] mx-auto p-4 md:p-6'>
             <Outlet />
          </main>
       </div>

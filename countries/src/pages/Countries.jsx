@@ -34,7 +34,9 @@ function Countries() {
             if (response.ok) {
                setCountries(data);
                setFilteredCountries(data);
-               setLoading(false);
+               setTimeout(() => {
+                  setLoading(false);
+               }, 1000);
                console.log(data);
             }
          } catch (error) {
@@ -162,7 +164,7 @@ function Countries() {
 
    return (
       <>
-         <div className='flex flex-col gap-5 lg:flex-row md:justify-between mt-5'>
+         <div className='flex flex-col gap-7 lg:flex-row md:justify-between mt-5'>
             <label
                htmlFor='search'
                className='md:w-[450px] h-fit flex items-center py-5 px-6 rounded-md shadow-md dark:bg-DarkBlue dark:text-white transition duration-300'
@@ -178,7 +180,7 @@ function Countries() {
                   className='w-full h-fit bg-transparent placeholder:text-sm placeholder:text-DarkBlue dark:placeholder:text-White px-4 border-none outline-none transition duration-300'
                />
                {query && (
-                  <button className='' onClick={() => clearInput()}>
+                  <button onClick={() => clearInput()}>
                      <span className='sr-only'>clear input</span>
                      <Clear aria-hidden='true' />
                   </button>
@@ -199,14 +201,14 @@ function Countries() {
                   </span>
                </button>
                <ul
-                  className={`select ${
-                     expanded ? 'max-h-auto py-4' : 'max-h-0 py-0'
+                  className={`select px-2 ${
+                     expanded ? 'max-h-auto  py-2' : 'max-h-0 py-0'
                   } absolute z-10 overflow-hidden transition-all duration-300 w-full right-0 top-[3.8rem] flex flex-col gap-2 shadow-md rounded-md bg-White dark:bg-DarkBlue`}
                >
                   {regions.map((region) => (
                      <li key={region.name}>
                         <button
-                           className='w-full text-left px-6 hover:bg-LightBg dark:hover:bg-DarkBg text-DarkBg dark:text-White focus-within:outline-DarkBlue dark:focus-within:outline-White transition duration-300'
+                           className='w-full text-left px-4 hover:bg-LightBg dark:hover:bg-DarkBg text-DarkBg dark:text-White focus-within:outline-DarkBlue dark:focus-within:outline-White transition duration-300'
                            onClick={() => filterByRegion(region.name)}
                            tabIndex={expanded ? '0' : '-1'} // prevent the buttons from being focusable when list is collapsed
                         >
@@ -220,7 +222,7 @@ function Countries() {
          {hud ? (
             hud
          ) : (
-            <section className='countries__grid grid gap-20'>
+            <section className='countries__grid grid gap-16'>
                {displayedCountries.map((country) => (
                   <CountryCard
                      alt={country.flags.alt}
