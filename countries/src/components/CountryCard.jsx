@@ -5,7 +5,7 @@ function CountryCard(props) {
 
    return (
       <div
-         className='hover:scale-105 shadow-md rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300'
+         className='max-md:max-w-[300px] w-full hover:scale-105 shadow-md rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300'
       >
          <Link to={`${name.replace(/\s+/g, '-')}`}>
             <div>

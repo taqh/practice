@@ -96,6 +96,7 @@ function Countries() {
       const Search = (query) => {
          const queryLower = query.toLowerCase();
          const queryTrimmed = queryLower.trim();
+         const queryEmpty = queryTrimmed === '';
          if (queryTrimmed === '') {
             setFilteredCountries(countries);
             return;
@@ -117,7 +118,7 @@ function Countries() {
          });
          setFilteredCountries(searched);
 
-         if (queryTrimmed !== '' && searched.length === 0) {
+         if (!queryEmpty && searched.length === 0) {
             setNoResults(true);
          } else {
             setNoResults(false);
@@ -222,7 +223,7 @@ function Countries() {
          {hud ? (
             hud
          ) : (
-            <section className='countries__grid grid gap-16'>
+            <section className='countries__grid grid gap-16 justify-items-center'>
                {displayedCountries.map((country) => (
                   <CountryCard
                      alt={country.flags.alt}
@@ -236,7 +237,7 @@ function Countries() {
                ))}
             </section>
          )}
-         {countriesToDisplay <= filteredCountries.length && (
+         {!noResults && countriesToDisplay <= filteredCountries.length &&  (
             <div className='flex justify-center'>
                <button
                   className='self-center w-fit h-fit py-2 px-6 mt-6 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White focus-within:outline-DarkBlue dark:focus-within:outline-White transition-colors duration-300'
