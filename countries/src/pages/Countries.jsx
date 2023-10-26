@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import CountryCard from '../components/CountryCard';
 import { Arrow, Search, Clear } from '../components/Icons';
 import { Skeleton } from '../components/Skeleton';
+import BackToTop from '../components/BackToTop';
 
 function Countries() {
    const [query, setQuery] = useState('');
@@ -126,7 +127,7 @@ function Countries() {
       };
 
       Search(query);
-      // console.log(noResults);
+      
       return () => {};
    }, [query, countries]);
 
@@ -143,7 +144,7 @@ function Countries() {
    );
 
    const loader = (
-      <div className='countries__grid grid gap-20'>
+      <div className='countries__grid grid gap-16'>
          {dummyList.map((_, index) => (
             <Skeleton key={index} />
          ))}
@@ -223,7 +224,7 @@ function Countries() {
          {hud ? (
             hud
          ) : (
-            <section className='countries__grid grid gap-16 justify-items-center'>
+            <section className='countries__grid grid gap-16'>
                {displayedCountries.map((country) => (
                   <CountryCard
                      alt={country.flags.alt}
@@ -237,7 +238,8 @@ function Countries() {
                ))}
             </section>
          )}
-         {!noResults && countriesToDisplay <= filteredCountries.length &&  (
+         <BackToTop />
+         {!noResults && countriesToDisplay <= filteredCountries.length && (
             <div className='flex justify-center'>
                <button
                   className='self-center w-fit h-fit py-2 px-6 mt-6 rounded-md shadow-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White focus-within:outline-DarkBlue dark:focus-within:outline-White transition-colors duration-300'

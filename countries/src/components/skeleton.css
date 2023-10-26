@@ -1,6 +1,6 @@
 .skeleton-card {
    overflow: hidden;
-   @apply w-full shadow-lg rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300;
+   @apply w-full shadow-lg rounded-md bg-White dark:bg-DarkBlue transition duration-300;
 }
 
 .skeleton-flag {
@@ -14,7 +14,7 @@
 .skeleton-name {
    width: 6.875rem;
    height: 1.25rem;
-   margin-bottom: 1.2rem;
+   margin-bottom: 2rem;
 }
 
 .skeleton-stats {
@@ -26,20 +26,30 @@
    height: 1rem;
 }
 
-.skeleton-flag,
-.skeleton-stat,
-.skeleton-name {
-  background: linear-gradient(90deg, #f9f9f9 25%, #eee 50%, #f9f9f9 75%);
-  @apply dark:bg-[linear-gradient(45deg,_var(--Dark-Blue),_var(--Very-Dark-Blue))];
-  background-size: 200% 100%;
-  animation: loading 3s infinite;
+.skeleton {
+   border-radius: 0.125rem;
+   background: var(--Skeleton-Content); /* refer to index.css to see color combination */
+   background-size: 200% 100%;
+   animation: beat 3s infinite;
 }
 
 @keyframes loading {
    0% {
-      background-position: 200% 0;
+      background-position: 200%;
    }
    100% {
-      background-position: -200% 0;
+      background-position: -200%;
+   }
+}
+
+@keyframes beat {
+   0% {
+      opacity: 100%;
+   }
+   50% {
+      opacity: 50%;
+   }
+   100% {
+      opacity: 100%;
    }
 }

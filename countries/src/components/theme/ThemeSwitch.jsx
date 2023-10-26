@@ -40,8 +40,9 @@ const ThemeSwitch = () => {
             onChange={() => setDarkMode(!darkMode)}
          />
          <span className='sr-only'>Change Theme</span>
-         <span className={`transition duration-300 ${darkMode && 'rotate-[360deg]'}`}>
-            {!darkMode ? <Sun aria-hidden='true' /> : <Moon aria-hidden='true' />}
+         <span className='flex gap-3'>
+            <span className={`transition duration-300 ${darkMode && 'rotate-[360deg]'}`}>{!darkMode ? <Sun aria-hidden='true' /> : <Moon aria-hidden='true' />}</span>
+            <span>{darkMode ? 'Dark' : 'Light'}</span>
          </span>
       </label>
    );

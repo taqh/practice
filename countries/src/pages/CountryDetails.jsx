@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Back } from '../components/Icons';
 import CountryContext from '../context/CountryContext';
 
@@ -14,6 +14,7 @@ function CountryDetails() {
    const [countryDetails, setCountryDetails] = useState([]);
    const [borderCountries, setBorderCountries] = useState([]);
    const [borderToVisit, setBorderToVisit] = useState('');
+   const location = useLocation();
 
    const getCountryDetails = async () => {
       setLoading(true);
@@ -38,6 +39,8 @@ function CountryDetails() {
       getCountryDetails();
       return () => {};
    }, []);
+
+   console.log(location.pathname.split('/')[2]);
 
    useEffect(() => {
       const fetchNewDetails = async () => {

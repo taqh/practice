@@ -3,36 +3,66 @@
 @tailwind utilities;
 
 :root {
-   --Dark-Blue: hsl(209, 23%, 22%); /* Dark Mode Elements */
-   --Very-Dark-Blue: hsl(207, 26%, 17%); /* Dark Mode Background */
-   --VeryDark-Blue: hsl(200, 15%, 8%); /* Light Mode Text */
+   --Blue: hsl(209, 23%, 22%); /* Dark Mode Elements */
+   --Dark-Blue: hsl(207, 26%, 17%); /* Dark Mode Background */
+   --Very-Dark-Blue: hsl(200, 15%, 8%); /* Light Mode Text */
    --Dark-Gray: hsl(0, 0%, 52%); /* Light Mode Input */
-   --Very-ight-Gray: hsl(0, 0%, 98%); /* Light Mode Background */
+   --Light-Gray: hsl(0, 0%, 98%); /* Light Mode Background */
    --White: hsl(0, 0%, 100%); /* Dark Mode Text & Light Mode Elements */
+
+
+   /* Scrollbar */
+   --ScrollTrack: hsl(0, 0%, 80%); 
+   --Scrollbar: hsl(207, 26%, 20%); 
+   --Scrollhover: hsl(207, 26%, 15%); 
+
+   /* skeleton */
+   --Skeleton-Content:  hsl(0, 0%, 92%);
+}
+
+/* Tailwind will apply these colors when in Dark Mode */
+.dark {
+   --ScrollTrack: hsl(209, 23%, 22%); 
+   --Scrollbar: hsl(0, 0%, 80%); 
+   --Scrollhover: hsl(0, 0%, 60%); 
+   --Skeleton-Content: linear-gradient(90deg, hsl(0, 0%, 52%), hsl(0, 0%, 52%));
 }
 
 @layer base {
    body {
       @apply bg-LightBg dark:bg-DarkBg transition duration-300;
    }
+
    #root {
       @apply bg-LightBg dark:bg-DarkBg transition duration-300;
    }
+
    ::-webkit-scrollbar {
-      width: 0.935rem;
+      @apply w-3.5;
    }
-   ::-webkit-scrollbar-thumb {
-      border-radius: 100vh;
-      border: 0.2rem var(--Dark-Blue) solid;
-      background-color: var(--VeryDark-Blue);
-   }
+
    ::-webkit-scrollbar-track {
-      background-color: var(--Dark-Blue);
+      @apply bg-Scrolltrack transition duration-300;
+   } 
+
+   ::-webkit-scrollbar-thumb {
+     @apply bg-scrollbar border-[2.5px] border-Scrolltrack border-solid rounded-[100vh] transition duration-300;
+   }
+  
+   ::-webkit-scrollbar-thumb:hover {
+      @apply bg-scrollhover;
    }
 }
 
 @layer components {
    .countries__grid {
-      grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
+   }
+
+   @media screen and (max-width: 48rem) {
+      .countries__grid {
+         grid-template-columns: repeat(auto-fill, minmax(auto, 18rem));
+         justify-content: center;
+      }
    }
 }

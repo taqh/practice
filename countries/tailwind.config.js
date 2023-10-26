@@ -16,6 +16,11 @@ export default {
             // Dark mode
             DarkBlue: 'hsl(209, 23%, 22%)',
             DarkBg: 'hsl(207, 26%, 17%)',
+
+            // applies colors from css custom properties
+            scrollbar: 'var(--Scrollbar)', // scrollbar thumb background
+            Scrolltrack: 'var(--ScrollTrack)', // scrollbar track background
+            scrollhover: 'var(--Scrollhover)', // scrollbar thumb hover
          },
          screens: {
             xsm: '23.4375em',

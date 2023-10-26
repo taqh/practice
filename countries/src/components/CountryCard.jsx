@@ -5,13 +5,13 @@ function CountryCard(props) {
 
    return (
       <div
-         className='max-md:max-w-[300px] w-full hover:scale-105 shadow-md rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300'
+         className='mx-md:max-w-[300px] w-ull hover:scale-105 shadow-md rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300'
       >
          <Link to={`${name.replace(/\s+/g, '-')}`}>
             <div>
                <img
                   src={props.flag}
-                  alt={props.alt}
+                  alt={props.alt ? props.alt : `The flag of ${props.name}`}
                   className='h-[160px] min-w-full object-cover rounded-t-md'
                />
             </div>
