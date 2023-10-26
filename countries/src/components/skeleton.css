@@ -27,8 +27,6 @@
 }
 
 .skeleton {
-   overflow: hidden;
-   position: relative;
    border-radius: 0.125rem;
    background: var(
       --Skeleton-Content
@@ -42,7 +40,7 @@
    @apply w-full h-[240px] sm:h-[279px] md:h-[390px] rounded-md shadow-md; 
 }
 
-.name {
+.skeleton-heading {
    width: 70%;
    height: 2rem;
    margin-bottom: 1rem;
@@ -61,7 +59,7 @@
    margin-bottom: 0.5rem;
 }
 
-.border-country {
+.skeleton-item {
    border-radius: 0.125rem;
    width: 6.875rem;
    height: 1.5rem;
@@ -69,22 +67,6 @@
 
 
 /* load animations  */
-.skeleton::before {
-   content: "";
-   position: absolute;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background: linear-gradient(
-      90deg,
-      transparent,
-      var(--Skeleton-Content),
-      transparent
-   );
-   background-size: 200% 100%;
-   animation: load 1.5s infinite;
-}
 
 @keyframes load {
    0% {

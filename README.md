@@ -47,7 +47,7 @@
   <tr>
     <td>Space tourism website v2</td>
     <td><a href="https://www.frontendmentor.io/solutions/space-tourism-multipage-website-uxKXi_S_rL">Solution</a></td>
-    <td><a href="https://spacetourweb.netlify.app">Live site</a></td>
+    <td><a href="https://spacetourlive.netlify.app">Live site</a></td>
   </tr>
   <tr>
     <td>Social media dashboard</td>
