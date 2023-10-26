@@ -17,7 +17,7 @@
    --Scrollhover: hsl(207, 26%, 15%); 
 
    /* skeleton */
-   --Skeleton-Content:  hsl(0, 0%, 92%);
+   --Skeleton-Content:  hsl(0, 0%, 90%);
 }
 
 /* Tailwind will apply these colors when in Dark Mode */
@@ -25,7 +25,7 @@
    --ScrollTrack: hsl(209, 23%, 22%); 
    --Scrollbar: hsl(0, 0%, 80%); 
    --Scrollhover: hsl(0, 0%, 60%); 
-   --Skeleton-Content: linear-gradient(90deg, hsl(0, 0%, 52%), hsl(0, 0%, 52%));
+   --Skeleton-Content:  hsl(0, 0%, 52%);
 }
 
 @layer base {

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Back } from '../components/Icons';
 import CountryContext from '../context/CountryContext';
+import { DetailSkeleton } from '../components/DetailSkeleton';
 
 function CountryDetails() {
    scrollTo(0, 0, 'smooth');
@@ -9,12 +10,13 @@ function CountryDetails() {
    const navigate = useNavigate(); 
    const { countryList } = useContext(CountryContext);
    const [error, setError] = useState(false);
-   const [loading, setLoading] = useState(false);
+   const [loading, setLoading] = useState(true);
    const [countries, setCountries] = useState(countryList);
    const [countryDetails, setCountryDetails] = useState([]);
    const [borderCountries, setBorderCountries] = useState([]);
    const [borderToVisit, setBorderToVisit] = useState('');
    const location = useLocation();
+   // const [curretPath, setCurrentPath] = useState(location.pathname.split('/')[2]);
 
    const getCountryDetails = async () => {
       setLoading(true);
@@ -79,14 +81,6 @@ function CountryDetails() {
       return () => {};
    }, [countries, countryDetails]);
 
-  
-
-   const loader = (
-      <div className='min-h-[60vh] grid place-content-center'>
-         <h1 className='text-DarkBlue dark:text-white'>loading...</h1>
-      </div>
-   );
-
    const errorMsg = (
       <div className='min-h-[60vh] grid place-content-center'>
          <h1 className='text-DarkBlue dark:text-white'>The page you requested does&apos;t exist</h1>
@@ -103,7 +97,7 @@ function CountryDetails() {
             Back
          </button>
          {loading ? (
-            loader
+            <DetailSkeleton />
          ) : (
             <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-6 md:gap-20'>
                <div>
