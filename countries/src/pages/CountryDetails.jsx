@@ -8,6 +8,7 @@ function CountryDetails() {
    scrollTo(0, 0, 'smooth');
    const params = useParams();
    const navigate = useNavigate(); 
+   const location = useLocation();
    const { countryList } = useContext(CountryContext);
    const [error, setError] = useState(false);
    const [loading, setLoading] = useState(true);
@@ -15,7 +16,6 @@ function CountryDetails() {
    const [countryDetails, setCountryDetails] = useState([]);
    const [borderCountries, setBorderCountries] = useState([]);
    const [borderToVisit, setBorderToVisit] = useState('');
-   const location = useLocation();
    // const [curretPath, setCurrentPath] = useState(location.pathname.split('/')[2]);
 
    const getCountryDetails = async () => {
@@ -28,11 +28,14 @@ function CountryDetails() {
          if (response.ok) {
             setCountryDetails(data[0]);
             console.log(data[0]);
+            setTimeout(() => { // simulate loading to avoid flickering
+               setLoading(false);
+            }, 1000);
          }
       } catch (error) {
-         console.error(error);
          setError(true);
          setLoading(false);
+         console.error(error);
       }
       setLoading(false);
    };
@@ -104,11 +107,11 @@ function CountryDetails() {
                   <img
                      src={countryDetails.flags?.svg}
                      alt={countryDetails.flags?.alt}
-                     className='object-cover lg:h-[400px] min-w-full rounded-sm'
+                     className='object-cover min-w-full rounded-sm'
                   />
                </div>
                <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr_auto] text-DarkBg dark:text-White transition duration-300'>
-                  <h2 className='font-bold text-2xl capitalize'>
+                  <h2 className='font-bold text-3xl capitalize md:col-span-2'>
                      {countryDetails.name?.common}
                   </h2>
                   <div className='col-start-1'>

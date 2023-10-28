@@ -24,7 +24,7 @@ function Countries() {
       { name: 'Oceania', code: 'oceania' },
       { name: 'Antarctic', code: 'antarctic' },
    ];
-   const dummyList = new Array(12).fill(null);
+   const dummyList = new Array(12).fill(null); // create an array of 12 null values to map over and display skeleton loaders
 
    useEffect(() => {
       const getCountries = async () => {
@@ -35,14 +35,15 @@ function Countries() {
             if (response.ok) {
                setCountries(data);
                setFilteredCountries(data);
-               setTimeout(() => {
+               setTimeout(() => { // simulate loading to avoid flickering
                   setLoading(false);
                }, 1000);
                console.log(data);
             }
          } catch (error) {
-            console.error(error);
             setError(true);
+            setLoading(false);
+            console.error(error);
          }
       };
       getCountries();
@@ -166,7 +167,7 @@ function Countries() {
 
    return (
       <>
-         <div className='flex flex-col gap-7 lg:flex-row md:justify-between mt-5'>
+         <div className='flex flex-col gap-8 lg:flex-row md:justify-between mt-5'>
             <label
                htmlFor='search'
                className='md:w-[450px] h-fit flex items-center py-5 px-6 rounded-md shadow-md dark:bg-DarkBlue dark:text-white transition duration-300'

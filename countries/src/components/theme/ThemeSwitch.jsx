@@ -25,26 +25,20 @@ const ThemeSwitch = () => {
    }, [darkMode]);
 
    return (
-      <label
-         className={`fill-DarkBg dark:fill-White transition duration-300 ease-in-out text-GrayBlue dark:text-PaleBlue relative flex w-fit items-center gap-[15px] hover:text-ModerateBlue dark:hover:text-SoftBlue ml-auto`}
-         htmlFor='toggle'
+      <button
+         className='flex w-fit items-center gap-3.5 ml-auto fill-DarkBg dark:fill-White border-none focus-within:outline-DarkBlue dark:focus-within:outline-White text-DarkBg dark:text-White transition duration-300'
+         onClick={() => setDarkMode(!darkMode)}
       >
-         <input
-            id='toggle'
-            name='toggle'
-            type='checkbox'
-            className='border-none focus-within:outline-DarkBlue dark:focus-within:outline-White absolute top-0 left-0 z-10 h-full w-full cursor-pointer appearance-none'
-            checked={darkMode}
-            role='switch'
-            aria-checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
-         />
          <span className='sr-only'>Change Theme</span>
-         <span className='flex gap-3'>
-            <span className={`transition duration-300 ${darkMode && 'rotate-[360deg]'}`}>{!darkMode ? <Sun aria-hidden='true' /> : <Moon aria-hidden='true' />}</span>
-            <span>{darkMode ? 'Dark' : 'Light'}</span>
+         <span className='flex gap-2.5 max-sm:text-sm font-medium items-center'>
+            <span className={`transition duration-300 ${darkMode && 'rotate-[360deg]'}`}>
+               {!darkMode ? <Sun aria-hidden='true' /> : <Moon aria-hidden='true' />}
+            </span>
+            <span>
+               {darkMode ? 'Dark' : 'Light'} Mode
+            </span>
          </span>
-      </label>
+      </button>
    );
 };
 
