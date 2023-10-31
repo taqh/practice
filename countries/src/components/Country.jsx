@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 
-function CountryCard(props) {
+function Country(props) {
    const name = props.name.toLowerCase();
 
    return (
-      <div
+      <li
          className='mx-md:max-w-[300px] max-h-[350px] hover:scale-105 shadow-md rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300'
-      >
-         <Link to={`${name.replace(/\s+/g, '-')}`}>
+      >  
+         <Link to={`${name.replace(/\s+/g, '-')}`} className='dark:focus-visible:outline-White outline-DarkBlue'> {/* replace(/\s+/g, '-') is used to replace all spaces with dashes */}
             <div>
                <img
                   src={props.flag}
@@ -34,8 +34,8 @@ function CountryCard(props) {
                </div>
             </div>
          </Link>
-      </div>
+      </li>
    );
 }
 
-export default CountryCard;
+export default Country;

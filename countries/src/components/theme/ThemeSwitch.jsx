@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Sun, Moon } from '../Icons';
+import { Sun, Moon } from '../ui/Icons';
 
 const ThemeSwitch = () => {
    const [darkMode, setDarkMode] = useState(false);
@@ -31,12 +31,18 @@ const ThemeSwitch = () => {
       >
          <span className='sr-only'>Change Theme</span>
          <span className='flex gap-2.5 max-sm:text-sm font-medium items-center'>
-            <span className={`transition duration-300 ${darkMode && 'rotate-[360deg]'}`}>
-               {!darkMode ? <Sun aria-hidden='true' /> : <Moon aria-hidden='true' />}
+            <span
+               className={`transition duration-300 ${
+                  darkMode && 'rotate-[360deg]'
+               }`}
+            >
+               {!darkMode ? (
+                  <Sun aria-hidden='true' />
+               ) : (
+                  <Moon aria-hidden='true' />
+               )}
             </span>
-            <span>
-               {darkMode ? 'Dark' : 'Light'} Mode
-            </span>
+            <span>{darkMode ? 'Dark' : 'Light'} Mode</span>
          </span>
       </button>
    );

@@ -38,7 +38,7 @@
    }
 
    ::-webkit-scrollbar {
-      @apply w-3.5;
+      @apply w-3;
    }
 
    ::-webkit-scrollbar-track {
@@ -46,7 +46,7 @@
    } 
 
    ::-webkit-scrollbar-thumb {
-     @apply bg-scrollbar border-[2.5px] border-Scrolltrack border-solid rounded-[100vh] transition duration-300;
+     @apply bg-scrollbar border-[2px] border-Scrolltrack border-solid rounded-[100vh] transition duration-300;
    }
   
    ::-webkit-scrollbar-thumb:hover {
@@ -55,14 +55,16 @@
 }
 
 @layer components {
-   .countries__grid {
+   .country-list {
+      gap: 4rem;
+      display: grid;
       grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
    }
 
    @media screen and (max-width: 48rem) {
-      .countries__grid {
-         grid-template-columns: repeat(auto-fill, minmax(auto, 18rem));
+      .country-list {
          justify-content: center;
+         grid-template-columns: repeat(auto-fill, minmax(auto, 18rem));
       }
    }
 }

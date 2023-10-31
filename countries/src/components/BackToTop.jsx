@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Arrow } from '../components/Icons';
+import { Arrow } from './ui/Icons';
 
 function BackToTop() {
    const [isVisible, setIsVisible] = useState(false);
@@ -25,7 +25,9 @@ function BackToTop() {
 
    return (
       <button
-         className={`${isVisible ? 'translate-y-0' : 'translate-y-28'} z-50 flex items-center justify-center fixed w-14 h-14 bottom-10 right-10 p-2 rounded-full shadow-md bg-White dark:bg-DarkBlue focus-within:outline-DarkBlue dark:focus-within:outline-White stroke-DarkBlue dark:stroke-White transition duration-300`}
+         className={`${
+            isVisible ? 'translate-y-0' : 'translate-y-28'
+         } z-50 flex items-center justify-center fixed w-14 h-14 bottom-10 right-10 p-2 rounded-full shadow-md bg-White dark:bg-DarkBlue focus-visible:outline-DarkBlue dark:focus-visible:outline-White stroke-DarkBlue dark:stroke-White transition duration-300`}
          onClick={() => scrollTo(0, 0)}
       >
          <span className='sr-only'>scroll to top</span>

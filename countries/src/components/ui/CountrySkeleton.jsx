@@ -1,6 +1,6 @@
 import './skeleton.css';
 
-export const Skeleton = () => {
+export const CountrySkeleton = () => {
    return (
       <div className='skeleton-card'>
          <div className='skeleton skeleton-flag'></div>
