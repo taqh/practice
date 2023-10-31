@@ -82,7 +82,7 @@ function CountryDetails() {
                      className='object-cover max-h-[250px] md:max-h-[400px] min-w-full rounded-sm'
                   />
                </div>
-               <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr_auto] text-DarkBg dark:text-White transition duration-300'>
+               <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr_auto] text-TxtLight dark:text-White transition duration-300'>
                   <h2 className='font-bold text-3xl capitalize md:col-span-2'>
                      {countryDetails.name?.common}
                   </h2>

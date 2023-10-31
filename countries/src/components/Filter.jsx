@@ -113,7 +113,7 @@ function Filter({ query, setQuery, setCurrentMax, countries, setFilteredCountrie
       <div className='flex flex-col gap-8 lg:flex-row md:justify-between mt-5'>
          <label
             htmlFor='search'
-            className='md:w-[450px] h-fit flex items-center py-5 px-6 rounded-md shadow-md dark:bg-DarkBlue dark:text-white transition duration-300'
+            className='md:w-[470px] h-fit flex items-center py-5 px-6 rounded-md shadow-md dark:bg-DarkBlue dark:text-white transition duration-300'
          >
             <Search aria-hidden='true' />
             <input
@@ -123,7 +123,7 @@ function Filter({ query, setQuery, setCurrentMax, countries, setFilteredCountrie
                autoComplete='off'
                placeholder='Search for a country...'
                onChange={(e) => setQuery(e.target.value)}
-               className='w-full h-fit bg-transparent placeholder:text-sm placeholder:text-DarkBlue dark:placeholder:text-White px-4 border-none outline-none transition duration-300'
+               className='w-full h-fit bg-transparent placeholder:text-sm placeholder:text-LightInput dark:placeholder:text-White px-4 border-none outline-none transition duration-300'
             />
             {query && (
                <button onClick={() => clearInput()}>
@@ -132,9 +132,9 @@ function Filter({ query, setQuery, setCurrentMax, countries, setFilteredCountrie
                </button>
             )}
          </label>
-         <div className='select relative w-fit'>
+         <div className='select relative max-w-[210px]'>
             <button
-               className='w-52 justify-between flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue text-DarkBg dark:text-White focus-visible:outline-DarkBlue dark:focus-visible:outline-White transition duration-300 stroke-DarkBlue dark:stroke-White'
+               className='whitespace-nowrap justify-between flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue text-TxtLight dark:text-White focus-visible:outline-DarkBlue dark:focus-visible:outline-White transition duration-300 stroke-DarkBlue dark:stroke-White'
                onClick={() => setExpanded(!expanded)}
             >
                <span>{activeRegion}</span>
@@ -156,7 +156,7 @@ function Filter({ query, setQuery, setCurrentMax, countries, setFilteredCountrie
                {regions.map((region) => (
                   <li key={region.name}>
                      <button
-                        className='w-full text-left px-4 hover:bg-LightBg dark:hover:bg-DarkBg text-DarkBg dark:text-White focus-visbile:outline-DarkBlue dark:focus-visible:outline-White transition duration-300'
+                        className='w-full text-left px-4 hover:bg-LightBg dark:hover:bg-DarkBg text-TxtLight dark:text-White focus-visbile:outline-DarkBlue dark:focus-visible:outline-White transition duration-300'
                         onClick={() => filterByRegion(region.name)}
                         tabIndex={expanded ? '0' : '-1'} // prevent the buttons from being focusable when list is collapsed
                      >

@@ -56,7 +56,7 @@
 
 @layer components {
    .country-list {
-      gap: 4rem;
+      gap: 4.5rem;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
    }

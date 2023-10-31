@@ -5,7 +5,7 @@ function Country(props) {
 
    return (
       <li
-         className='mx-md:max-w-[300px] max-h-[350px] hover:scale-105 shadow-md rounded-md bg-White dark:bg-DarkBlue dark:text-White text-DarkBlue transition duration-300'
+         className='mx-md:max-w-[300px] hover:scale-105 shadow-md rounded-md bg-White dark:bg-DarkBlue dark:text-White text-TxtLight transition duration-300'
       >  
          <Link to={`${name.replace(/\s+/g, '-')}`} className='dark:focus-visible:outline-White outline-DarkBlue'> {/* replace(/\s+/g, '-') is used to replace all spaces with dashes */}
             <div>
@@ -17,21 +17,21 @@ function Country(props) {
             </div>
             <div className='p-6 flex flex-col gap-4'>
                <p className='font-bold'>{props.name}</p>
-               <div>
-                  <p className='font-semibold mb-1'>
+               <ul>
+                  <li className='font-semibold mb-1'>
                      Population:{' '}
                      <span className='font-light'>
                         {props.population.toLocaleString()}
                      </span>
-                  </p>
-                  <p className='font-semibold mb-1'>
+                  </li>
+                  <li className='font-semibold mb-1'>
                      Region: <span className='font-light'>{props.region}</span>
-                  </p>
-                  <p className='font-semibold mb-1'>
+                  </li>
+                  <li className='font-semibold mb-1'>
                      Capital:{' '}
                      <span className='font-light'>{props.capital?.join(', ')}</span>
-                  </p>
-               </div>
+                  </li>
+               </ul>
             </div>
          </Link>
       </li>
