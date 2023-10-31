@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://worlds-nations.netlify.app)
 
 ## My process
 
@@ -48,27 +48,11 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [React Router](https://reactrouter.com/en/main/start/tutorial) - For routing
 - [Tailwind](https://tailwindcss.com/docs/installation) - For styles
-- [Framer Motion](https://www.framer.com/motion/) - For animations
 
 ### What I learned
 
-I learned to use framer motion  for animating react apps, I also learnt to use some advanced features of react router
+I learned to use some advanced features of react router, and API manipulation
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
 
 ### Continued development
 

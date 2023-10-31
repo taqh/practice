@@ -15,7 +15,6 @@ function ChatProvider({ children }) {
             if (response.ok) {
                setCountries(data);
                setLoading(false);
-               console.log(data);
             }
          } catch (error) {
             console.error(error);

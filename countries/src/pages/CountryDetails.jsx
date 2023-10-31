@@ -18,41 +18,41 @@ function CountryDetails() {
    const [paramsName, setParamsName] = useState(params.name);
    // const [curretPath, setCurrentPath] = useState(location.pathname.split('/')[2]);
 
-   useEffect(() => {
-      const getCountryDetails = async () => {
-         setLoading(true);
-         try {
-            const response = await fetch(
-               `https://restcountries.com/v3.1/name/${paramsName.replace(/-/g,' ')}`
-            );
-            const data = await response.json();
-            if (response.ok) {
-               setCountryDetails(data[0]);
-               console.log(data[0]);
-               // simulate loading to avoid flickering
-               setTimeout(() => {
-                  setLoading(false);
-               }, 1000);
-            }
-         } catch (error) {
-            setError(true);
-            setLoading(false);
-            console.error(error);
+   const getCountryDetails = async () => {
+      setLoading(true);
+      try {
+         const response = await fetch(
+            `https://restcountries.com/v3.1/name/${paramsName.replace(/-/g,' ')}`
+         );
+         const data = await response.json();
+         if (response.ok) {
+            setCountryDetails(data[0]);
+            // simulate loading to avoid flickering
+            setTimeout(() => {
+               setLoading(false);
+            }, 1000);
          }
+      } catch (error) {
+         setError(true);
          setLoading(false);
-      };
+         console.error(error);
+      }
+      setLoading(false);
+   };
+
+   useEffect(() => {
       getCountryDetails();
       return () => {};
    }, [paramsName]);
 
    useEffect(() => {
       const getBorderCountryName = () => {
-         const mappedBorderCountries = countryDetails?.borders?.map((border) => {
+         const mappedBorders = countryDetails?.borders?.map((border) => {
             const fullName = countryList?.find((country) => country.cca3 === border)
             return fullName ? fullName.name.common : border;
             
          })
-         setBorderCountries(mappedBorderCountries);
+         setBorderCountries(mappedBorders);
       };
       getBorderCountryName();
       return () => {};
@@ -72,7 +72,7 @@ function CountryDetails() {
          {loading ? (
             <DetailSkeleton />
          ) : error ? (
-            <Error onClick={() => ('')}/>
+            <Error onClick={() => getCountryDetails()}/>
          ) : (
             <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-6 md:gap-20'>
                <div>
@@ -153,7 +153,7 @@ function CountryDetails() {
                            <Link 
                               to={`/countries/${borderCountry.toLowerCase().replace(/\s+/g, '-')}`} 
                               onClick={(() => setParamsName(borderCountry))}
-                              className='block px-2.5 py-2 focus-visible:outline-DarkBlue dark:focus-visible:outline-White'
+                              className='block px-2.5 py-1.5 focus-visible:outline-DarkBlue dark:focus-visible:outline-White'
                            >
                               {borderCountry}
                            </Link>

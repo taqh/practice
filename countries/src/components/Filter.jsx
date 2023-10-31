@@ -62,7 +62,6 @@ function Filter({ query, setQuery, setCurrentMax, countries, setFilteredCountrie
    const filterByRegion = (selected) => {
       setCurrentMax(() => maxCountries); // reset amount of countries displayed each time user changes region
 
-      console.log(selected);
       regions.map((region) => {
          if (selected === 'All') {
             setActiveRegion('Filter by region');
@@ -82,7 +81,6 @@ function Filter({ query, setQuery, setCurrentMax, countries, setFilteredCountrie
          setFilteredCountries(filteredRegion);
       }
       setExpanded(false);
-      console.log(filteredRegion);
    };
 
    // enable user collapse filter list by pressing the 'esc' key

@@ -30,7 +30,6 @@ function Countries() {
                // simulate loading to avoid flickering
                setLoading(false);
             }, 1000);
-            console.log(data);
          }
       } catch (error) {
          setError(true);
@@ -50,7 +49,7 @@ function Countries() {
    const errorUI = (
       <div className='h-fit max-w-screen-md justify-self-center flex gap-3 flex-wrap justify-center text-DarkBlue dark:text-white text-lg'>
          <h2>{`No results found for`}</h2>
-         <span className='break-all font-bold px-1 boder dark:border-White border-DarkBlue h-fit rounded-lg'>{`"${query}"`}</span>
+         <span className='break-all font-bold px-1 border dark:border-White border-DarkBlue h-fit rounded-lg'>{`"${query}"`}</span>
       </div>
    );
 
@@ -62,9 +61,7 @@ function Countries() {
       </div>
    );
 
-   const errorMsg = (
-      <Error onClick={() => getCountries()}/>
-   );
+   const errorMsg = <Error onClick={() => getCountries()} />;
 
    const hud = loading ? loader : noResults ? errorUI : error ? errorMsg : null;
 
@@ -97,7 +94,7 @@ function Countries() {
          )}
          <BackToTop />
          {!noResults && currentMax <= filteredCountries.length && (
-            <LoadMore loadMore={loadMore} />
+            <LoadMore onClick={() => loadMore()} />
          )}
       </>
    );
