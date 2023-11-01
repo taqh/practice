@@ -132,9 +132,9 @@ function Filter({ query, setQuery, setCurrentMax, countries, setFilteredCountrie
                </button>
             )}
          </label>
-         <div className='select relative max-w-[210px]'>
+         <div className='select relative w-fit'>
             <button
-               className='whitespace-nowrap justify-between flex items-center gap-8 h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue text-TxtLight dark:text-White focus-visible:outline-DarkBlue dark:focus-visible:outline-White transition duration-300 stroke-DarkBlue dark:stroke-White'
+               className='whitespace-nowrap w-52 justify-between flex items-center h-fit py-4 px-6 shadow-md rounded-md bg-White dark:bg-DarkBlue text-TxtLight dark:text-White focus-visible:outline-DarkBlue dark:focus-visible:outline-White transition duration-300 stroke-DarkBlue dark:stroke-White'
                onClick={() => setExpanded(!expanded)}
             >
                <span>{activeRegion}</span>

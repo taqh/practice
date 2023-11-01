@@ -79,7 +79,7 @@ function CountryDetails() {
                   <img
                      src={countryDetails.flags?.svg}
                      alt={countryDetails.flags?.alt}
-                     className='object-cover max-h-[250px] md:max-h-[400px] min-w-full rounded-sm'
+                     className='object-cover max-sm:min-h-[220px] max-h-[250px] md:max-h-[400px] min-w-full rounded-sm'
                   />
                </div>
                <article className='grid md:grid-cols-2 gap-6 md:grid-rows-[auto_1fr_auto] text-TxtLight dark:text-White transition duration-300'>
