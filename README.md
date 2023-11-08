@@ -1,5 +1,5 @@
 
-# This is a Repository of my solutions to challenges on Frontend Mentor and other practice projects.</h2>
+# This Repository contains my solutions to challenges on Frontend Mentor, and other practice projects.
 
 ## Links
 
