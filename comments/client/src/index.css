@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	/* Primary */
+	--SoftRed: hsl(358, 79%, 66%);
+	--Palered: hsl(357 100% 86%);
+	--ModerateBlue: hsl(238, 40%, 52%);
+	--Light-grayblue: hsl(239 57% 85%);
+
+	/* Neutral */
+	--White: hsl(0 0% 100%);
+	--Darkblue: hsl(212 24% 26%);
+	--Lightgray: hsl(223 19% 93%);
+	--GrayishBlue: hsl(211 10% 45%);
+	--Very-lightgray: hsl(228 33% 97%);
+
+	/* Dark mode */
+	--vote: hsl(206 9% 15%);
+	--text: hsl(225 17% 91%);
+	--textarea: hsl(225 7% 24%);
+	--DarkRed: hsl(358, 86%, 60%);
+	--DarkBlue: hsl(239, 81%, 63%);
+	--section-bg: hsl(204, 6%, 15%);
+	--comment-bg: hsl(214 7% 19%);
+	--SoftBlue: hsl(227, 61%, 66%);
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes slide-down {
+	from {
+		opacity: 0.8;
+		transform: translateY(-2.3rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@layer base {
+	body {
+		font-family: 'Rubik', 'sans-serif';
+		@apply bg-LightGray dark:bg-DarkGray;
+	}
+	#root {
+		@apply bg-LightGray dark:bg-DarkGray transition duration-300;
+	}
+	dialog[open]::backdrop {
+		animation: fade-in 450ms forwards;
+	}
+	dialog[open] {
+		animation: slide-down 500ms forwards;
+	}
+
+	::-webkit-scrollbar {
+		width: 0.935rem;
+	}
+	::-webkit-scrollbar-thumb{
+		border-radius: 100vh;
+		border: 0.2rem var(--Light-grayblue) solid;
+		background-color: var(--ModerateBlue);
+	}
+	::-webkit-scrollbar-track {
+		background-color: var(--Light-grayblue);
+	}
+}
+
+@layer components {
+	.comment {
+		grid-template-rows: auto 1fr;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'user user'
+			'text text'
+			'vote reply';
+	}
+	.vote {
+		grid-area: vote;
+	}
+	.user {
+		grid-area: user;
+	}
+	.text {
+		grid-area: text;
+	}
+	.edit_field {
+		grid-area: text;
+	}
+	.reply {
+		grid-area: reply;
+	}
+
+	.textfield {
+		display: grid;
+		grid-template-areas:
+			'input input'
+			'pfp send';
+	}
+	.submit {
+		grid-area: send;
+	}
+	.input {
+		grid-area: input;
+	}
+	@media (min-width: 48em) {
+		.comment {
+			grid-template-columns: auto 1fr auto;
+			grid-template-areas:
+				'vote user reply'
+				'vote text text';
+		}
+		.textfield {
+			grid-template-areas: 'pfp input send';
+			grid-template-columns: auto 1fr auto;
+		}
+	}
+}
+@layer utilities {
+	form,
+	textarea {
+		@apply transition duration-300;
+	}
+
+	.switch {
+		position: relative;
+		width: 46px;
+		height: 24px;
+		background-color: hsl(235, 17%, 71%);
+		border-radius: 16px;
+	}
+	.switch::before {
+		content: '';
+		position: absolute;
+		left: 2px;
+		bottom: 2px;
+		width: 20px;
+		height: 20px;
+		background: var(--White);
+		border-radius: 50%;
+		transition: all 300ms ease;
+	}
+	input[type='checkbox']:checked + .switch::before {
+		transform: translateX(22px);
+		background: white;
+	}
+	input[type='checkbox']:checked + .switch {
+		background: linear-gradient(
+			45deg,
+			hsl(243, 79%, 68%),
+			hsl(197, 66%, 57%)
+		);
+	}
+}
+.user {
+	grid-template-columns: auto auto auto 1fr;
+	grid-template-areas: 'pfp name tag date';
+}
+.user > picture, img {
+	grid-area: pfp;
+}
+.user > p {
+	grid-area: name;
+}
+.user > span:first-of-type {
+	grid-area: tag;
+}
+.user > span:last-of-type {
+	grid-area: date;
+}
+
+/* fix overflow issues on very small screens */
+@media (max-width: 22.1875em) {
+	.comment {
+		grid-template-areas:
+			'user user'
+			'text text'
+			'vote reply'
+			'update update';
+	}
+	.del {
+		grid-area: update;
+		justify-content: space-between;
+		width: 100%;
+	}
+	.user > picture, img {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.user > p {
+		width: fit-content;
+	}
+	.user > span:last-of-type {
+		width: fit-content;
+	}
+	.user {
+		row-gap: 0;
+		grid-template-areas:
+			'pfp name tag'
+			'pfp date date';
+	}
+}
