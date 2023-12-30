@@ -7,7 +7,7 @@ const TextField = ({ id, replyingTo, close }) => {
    const handler = useContext(ChatContext);
    const [reply, setReply] = useState('');
 
-   const handleSubmit = (e) => {
+   const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
       handler.addReply(reply, id, replyingTo);
       close();

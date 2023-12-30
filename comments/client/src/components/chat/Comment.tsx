@@ -10,15 +10,15 @@ function Comment(props) {
    const addCtx = useContext(ChatContext);
    const [isEditing, setIsediting] = useState(false);
    const [isReplying, setIsReplying] = useState(false);
-   const [updatedText, setUpdatedText] = useState(props.content);
-   const [currentUser, setCurrentUser] = useState(props.currentUser);
+   const [updatedText, setUpdatedText] = useState<string>(props.content);
+   const [currentUser, setCurrentUser] = useState<string>(props.currentUser);
 
    const replyTo = () => {
       setIsReplying((prevState) => !prevState);
    };
 
-   const update = (e) => {
-      e.preventDefault();
+   const update = (event: React.FormEvent) => {
+      event.preventDefault();
       addCtx.updateComment(updatedText, props.id);
       setIsediting(!isEditing);
    };
