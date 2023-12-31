@@ -7,9 +7,37 @@ const TextField = () => {
    const handler = useContext(ChatContext);
    const [value, setValue] = useState('');
 
+   const postComment = async () => {
+      try {
+         const response = await fetch('http://localhost:5000/comments', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+               text: value,
+            }),
+         });
+
+         if (!response.ok) {
+            console.error(
+               'Failed to post comment:',
+               response.status,
+               response.statusText
+            );
+         } else {
+            console.log('Comment posted successfully');
+         }
+      } catch (error) {
+         console.error('Error posting comment:', error);
+      }
+   }
+   
    const handleSubmit = (e) => {
       e.preventDefault();
-      handler.addComment(value);
+
+      postComment();
+      // handler.addComment(value);
       setValue('');
    };
    return (
