@@ -14,6 +14,12 @@
     <td><a href="https://www.frontendmentor.io/solutions/"</a>Solution</td>
     <td><a href="https://comment-sec.netlify.app">Live site</a></td>
   </tr>
+        <tr>
+    <td>Interacive comments section v2</td>
+    <td><a href="https://www.frontendmentor.io/solutions/"</a>Solution</td>
+    <td><a href="https://comment-sec.netlify.app">Live site</a></td>
+  </tr>
+
   <tr>
     <td>Calculator app</td>
     <td><a href="https://www.frontendmentor.io/solutions/calculator-app-using-css-grid-flexbox-and-javascript-W6lGHxH9_h">Solution</a></td>
