@@ -27,16 +27,18 @@ function ChatProvider({ children }) {
         setLoading(false);
       }
     };
-    
+
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 2000);
 
     getComments();
-    return () => {clearTimeout(timeout)};
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
-  const formatTime = (time: string | number) => {
+  const formatTime = (time: string | object) => {
     // because the json timestamps are strings calling the dayjs methods would display NaN
     // so i first need to check if its from the data.json file || local storage
 
@@ -59,21 +61,86 @@ function ChatProvider({ children }) {
     localStorage.setItem('COMMENTS', JSON.stringify(chatState));
   }, [chatState]);
 
-  const addComment = (comment: string) => {
-    if (comment.trim().length !== 0) {
-      dispatch({ type: 'ADDED', payload: comment });
-    } else return;
-  };
-
-  const addReply = (reply: string, id: string, replyingTo: string) => {
-    if (reply.trim().length !== 0) {
-      dispatch({ type: 'REPLIED', payload: { reply, id, replyingTo } });
-    } else return;
-  };
-
-  const updateComment = (text: string, id: string) => {
+  const addComment = async (text: string) => {
     if (text.trim().length !== 0) {
-      dispatch({ type: 'UPDATED', payload: { text, id } });
+      try {
+        const response = await fetch('http://localhost:5000/comments', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json', // Corrected headers object
+          },
+          body: JSON.stringify({
+            id: crypto.randomUUID(),
+            text: text,
+          }),
+        });
+  
+        if (!response.ok) {
+          console.error(
+            'Failed to post reply:',
+            response.status,
+            response.statusText
+          );
+        } else {
+          console.log('Reply posted successfully');
+        }
+      } catch (error) {
+        console.error('Error posting reply:', error);
+      }
+    } else return;
+  };
+
+  const addReply = async (text: string, id: string, replyingTo: string) => {
+    try {
+      const response = await fetch('http://localhost:5000/comments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Corrected headers object
+        },
+        body: JSON.stringify({
+          id: id,
+          text: text,
+          replyingTo: replyingTo,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error(
+          'Failed to post reply:',
+          response.status,
+          response.statusText
+        );
+      } else {
+        console.log('Reply posted successfully');
+      }
+    } catch (error) {
+      console.error('Error posting reply:', error);
+    }
+  };
+
+  const updateComment = async (text: string, id: string) => {
+    try {
+      const response = await fetch(`http://localhost:5000/comments/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: id,
+          text: text,
+        }),
+      });
+      if (!response.ok) {
+        console.error(
+          'Failed to put comment:',
+          response.status,
+          response.statusText
+        );
+      } else {
+        console.log('Comment updated successfully');
+      }
+    } catch (error) {
+      console.error('Error updating comment:', error);
     }
   };
 
@@ -94,8 +161,33 @@ function ChatProvider({ children }) {
     setDeleting(false);
   };
 
-  const deleteComment = () => {
-    dispatch({ type: 'DELETED', payload: commentToDelete });
+  const deleteComment = async (id: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/comments/${props.id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application.json',
+          },
+          body: JSON.stringify({
+            id: id,
+          }),
+        }
+      );
+      if (!response.ok) {
+        console.log(
+          'Failed to delete comment:',
+          response.status,
+          response.statusText
+        );
+      } else {
+        console.log('created successfully');
+      }
+    } catch (error) {
+      console.error('failed to delete' + error);
+    }
+
     modalRef.current.close();
     setCommentToDelete(null);
     setDeleting(false);

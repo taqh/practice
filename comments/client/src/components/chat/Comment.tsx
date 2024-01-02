@@ -7,7 +7,7 @@ import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
 
 function Comment(props) {
-  const addCtx = useContext(ChatContext);
+  const state = useContext(ChatContext);
   const [isEditing, setIsediting] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
   const [updatedText, setUpdatedText] = useState<string>(props.content);
@@ -15,45 +15,16 @@ function Comment(props) {
 
   const replyTo = () => {
     setIsReplying((prevState) => !prevState);
-  };
-
-  const deleteComment = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:5000/comments/${props.id}`,
-        {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application.json',
-          },
-          body: JSON.stringify({
-            id: props.id,
-          }),
-        }
-      );
-      if (!response.ok) {
-        console.log(
-          'Failed to delete comment:',
-          response.status,
-          response.statusText
-        );
-      } else {
-        console.log('created successfully');
-      }
-    } catch (error) {
-      console.error('failed to delete' + error);
-    }
-  };
+  };  
 
   const update = (event: React.FormEvent) => {
     event.preventDefault();
-    // addCtx.updateComment(updatedText, props.id);
-    deleteComment(); // this is the wrong place for the delete function will change later
+    state.updateComment(updatedText, props.id);
     setIsediting(!isEditing);
   };
 
   return (
-    <div className='com gap-5  grid' id={props.username}>
+    <li className='com gap-5  grid' id={props.username}>
       <div className='comment grid gap-y-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
         <div className='user grid xsm:flex items-center xsm:gap-3 gap-2'>
           {' '}
@@ -71,7 +42,7 @@ function Comment(props) {
             </span>
           )}
           <span className='dark:text-PaleBlue'>
-            {addCtx.formatTime(props.createdAt)}
+            {state.formatTime(props.createdAt)}
           </span>
         </div>
         {!isEditing ? (
@@ -117,7 +88,7 @@ function Comment(props) {
           <div className='del flex justify-self-end gap-2'>
             <Button
               className='reply flex gap-2 items-center justify-self-end text-SoftRed fill-SoftRed hover:text-PaleRed dark:hover:text-DarkRed hover:fill-PaleRed dark:hover:fill-DarkRed font-bold'
-              onClick={() => addCtx.showModal(props.id)}
+              onClick={() => state.showModal(props.id)}
             >
               <DeleteIcon aria-hidden='true' />
               <span>Delete</span>
@@ -154,7 +125,7 @@ function Comment(props) {
           ))}
         </ul>
       )}
-    </div>
+    </li>
   );
 }
 

@@ -14,8 +14,17 @@ function Reply({
   replyingTo,
   username,
   createdAt,
+}: {
+  id: string;
+  currentUser: boolean;
+  content: string;
+  src: string;
+  score: number;
+  replyingTo: string;
+  username: string;
+  createdAt: string | object;
 }) {
-  const replyCtx = useContext(ChatContext);
+  const state = useContext(ChatContext);
   const [isEditing, setIsediting] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
   const [updatedText, setUpdatedText] = useState(content);
@@ -24,37 +33,11 @@ function Reply({
     setIsReplying((prevState) => !prevState);
   };
 
-  const putComment = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/comments/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          id: id,
-          text: updatedText,
-        }),
-      });
-      if (!response.ok) {
-        console.error(
-          'Failed to put comment:',
-          response.status,
-          response.statusText
-        );
-      } else {
-        console.log('Comment updated successfully');
-      }
-    } catch (error) {
-      console.error('Error updating comment:', error);
-    }
-  };
-
   const update = (e) => {
     e.preventDefault();
-    putComment();
+
     setIsediting(!isEditing);
-    // replyCtx.updateComment(updatedText, id);
+    state.updateComment(updatedText, id);
   };
 
   return (
@@ -78,7 +61,7 @@ function Reply({
             {username}
           </p>
           <span className='dark:text-PaleBlue'>
-            {replyCtx.formatTime(createdAt)}
+            {state.formatTime(createdAt)}
           </span>
         </div>
         {!isEditing ? (
@@ -100,7 +83,11 @@ function Reply({
             className='edit_field animate-up flex flex-col gap-3'
             onSubmit={update}
           >
+            <label htmlFor='update' className='sr-only'>
+              Update reply
+            </label>
             <textarea
+              id='update'
               rows={3}
               value={updatedText}
               className='resize-none w-full border dark:outline-none dark:border-transparent focus:outline-ModerateBlue dark:focus:outline-SoftBlue dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 '
@@ -126,7 +113,7 @@ function Reply({
           <div className='del flex justify-self-end gap-2'>
             <Button
               className='reply flex gap-2 items-center justify-self-end text-SoftRed hover:text-PaleRed dark:hover:text-DarkRed fill-SoftRed hover:fill-PaleRed dark:hover:fill-DarkRed font-bold'
-              onClick={() => replyCtx.showModal(id)}
+              onClick={() => state.showModal(id)}
             >
               <DeleteIcon aria-hidden='true' />
               <span>Delete</span>

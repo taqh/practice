@@ -8,32 +8,7 @@ const TextField = ({ id, replyingTo, close }) => {
   const [reply, setReply] = useState('');
 
   const postReply = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/comments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // Corrected headers object
-        },
-         body: JSON.stringify({
-            id: id,
-            text: reply,
-            replyingTo: replyingTo,
-         }),
-      });
-
-      if (!response.ok) {
-        console.error(
-          'Failed to post reply:',
-          response.status,
-          response.statusText
-        );
-      } else {
-        console.log('Reply posted successfully');
-      }
-    } catch (error) {
-      console.error('Error posting reply:', error);
-    }
-  };
+    
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

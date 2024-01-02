@@ -33,7 +33,7 @@ function CommentSection() {
           <p>Loading comments...</p>
         </div>
       ) : comments.length > 0 ? (
-        comments
+        <ul className='flex flex-col gap-5'>{comments}</ul>
       ) : (
         <div className='grid grid-rows-1 my-auto text-center'>
           <p>No comments yet.</p>
