@@ -74,7 +74,7 @@ function ChatProvider({ children }) {
             text: text,
           }),
         });
-  
+
         if (!response.ok) {
           console.error(
             'Failed to post reply:',
@@ -91,30 +91,32 @@ function ChatProvider({ children }) {
   };
 
   const addReply = async (text: string, id: string, replyingTo: string) => {
-    try {
-      const response = await fetch('http://localhost:5000/comments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', // Corrected headers object
-        },
-        body: JSON.stringify({
-          id: id,
-          text: text,
-          replyingTo: replyingTo,
-        }),
-      });
+    if (text.trim().length !== 0) {
+      try {
+        const response = await fetch('http://localhost:5000/comments', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json', // Corrected headers object
+          },
+          body: JSON.stringify({
+            id: id,
+            text: text,
+            replyingTo: replyingTo,
+          }),
+        });
 
-      if (!response.ok) {
-        console.error(
-          'Failed to post reply:',
-          response.status,
-          response.statusText
-        );
-      } else {
-        console.log('Reply posted successfully');
+        if (!response.ok) {
+          console.error(
+            'Failed to post reply:',
+            response.status,
+            response.statusText
+          );
+        } else {
+          console.log('Reply posted successfully');
+        }
+      } catch (error) {
+        console.error('Error posting reply:', error);
       }
-    } catch (error) {
-      console.error('Error posting reply:', error);
     }
   };
 

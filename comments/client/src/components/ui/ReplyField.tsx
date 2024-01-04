@@ -1,20 +1,16 @@
 import avatar from '../../assets/avatars/image-juliusomo.png';
 import ChatContext from '../../context/ChatContext';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from './Button';
 
-const TextField = ({ id, replyingTo, close }) => {
-  const handler = useContext(ChatContext);
+const TextField = ({ id, replyingTo, close }:{id: string, replyingTo: string, close: () => void}) => {
+  const state = useContext(ChatContext);
   const [reply, setReply] = useState('');
-
-  const postReply = async () => {
-    
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    postReply();
-    // handler.addReply(reply, id, replyingTo);
+    state.addReply(reply, id, replyingTo);
     close();
   };
 

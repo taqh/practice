@@ -1,15 +1,21 @@
 const fs = require('fs');
 const path = require('path');
-const { mainModule } = require('process');
 
-const filePath = path.dirname(__dirname, 'data', 'comments.json');
+const filePath = path.join(
+  path.dirname(process.mainModule.filename),
+  'data',
+  'comments.json'
+);
 
 exports.addComment = (text) => {
   console.log(text);
   fs.readFile(filePath, (err, fileContent) => {
+    let comments = [];
     if (err) {
+      console.log(err);
       return;
     }
-    console.log(fileContent)
+    comments.push(JSON.parse(fileContent))
+    console.log(comments);
   });
 };
