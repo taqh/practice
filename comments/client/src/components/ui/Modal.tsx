@@ -29,7 +29,7 @@ const Warning = () => {
                </Button>
                <Button
                   className='w-full bg-SoftRed dark:hover:bg-DarkRed hover:bg-PaleRed px-3 py-3 rounded-md uppercase transition'
-                  onClick={modalContext.delete}
+                  onClick={modalContext.deleteComment}
                >
                   yes, delete
                </Button>

@@ -22,12 +22,12 @@ const ChatContext = createContext({
   isReplying: false,
   deleting: false,
   cancel: () => {},
-  delete: () => {},
   addReply: () => {},
   showModal: () => {},
-  formatTime: () => {},
   addComment: () => {},
+  formatTime: () => {},
   handleChange: () => {},
+  deleteComment: () => {},
   updateComment: () => {},
 });
 

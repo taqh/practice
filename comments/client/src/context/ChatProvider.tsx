@@ -163,18 +163,14 @@ function ChatProvider({ children }) {
     setDeleting(false);
   };
 
-  const deleteComment = async (id: string) => {
+  const deleteComment = async () => {
+    console.log(commentToDelete);
     try {
       const response = await fetch(
-        `http://localhost:5000/comments/${props.id}`,
+        `http://localhost:5000/comments/${commentToDelete}`,
         {
           method: 'DELETE',
-          headers: {
-            'Content-Type': 'application.json',
-          },
-          body: JSON.stringify({
-            id: id,
-          }),
+          // params: JSON.stringify(commentToDelete)
         }
       );
       if (!response.ok) {
@@ -184,10 +180,10 @@ function ChatProvider({ children }) {
           response.statusText
         );
       } else {
-        console.log('created successfully');
+        console.log('deleted successfully');
       }
     } catch (error) {
-      console.error('failed to delete' + error);
+      console.error('failed to delete ' + error);
     }
 
     modalRef.current.close();
@@ -196,17 +192,17 @@ function ChatProvider({ children }) {
   };
 
   const chatContext = {
-    loading: loading,
     posts: chatData,
+    loading: loading,
     addReply: addReply,
     modalRef: modalRef,
+    deleting: deleting,
     showModal: showModal,
     cancel: cancelDelete,
-    delete: deleteComment,
     formatTime: formatTime,
     addComment: addComment,
+    deleteComment: deleteComment,
     updateComment: updateComment,
-    deleting: deleting,
   };
 
   return (

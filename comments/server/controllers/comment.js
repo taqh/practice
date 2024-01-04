@@ -1,5 +1,5 @@
 const comments = require('../data/comments.json');
-const { addComment } = require('../model/comment');
+const { addComment, deleteComment } = require('../model/comment');
 
 exports.getComments = (req, res, next) => {
   console.log('GET Request made');
@@ -32,7 +32,7 @@ exports.createComment = (req, res, next) => {
   //    _id: new mongoose.Types.ObjectId(),
   //    text: req.body.text,
   // });
-  console.log(req.body);
+  // console.log(req.body);
 };
 
 exports.updateComment = (req, res, next) => {
@@ -59,6 +59,8 @@ exports.updateComment = (req, res, next) => {
 
 exports.deleteComment = (req, res, next) => {
   console.log('DELETE request made');
+  console.log(req.params);
+  deleteComment(req.params.id);
   res.status(200).json({
     message: 'Comment deleted successfully!',
     commentId: req.body,
