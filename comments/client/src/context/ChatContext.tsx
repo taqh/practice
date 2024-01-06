@@ -16,12 +16,16 @@ const structure = {
 
 const ChatContext = createContext({
   loading: false,
+  username: '',
   posts: [structure],
   modalRef: {},
+  authRef: {},
   reply: false,
   isReplying: false,
   deleting: false,
+  authenticated: false,
   cancel: () => {},
+  setUser: () => {},
   addReply: () => {},
   showModal: () => {},
   addComment: () => {},

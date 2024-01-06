@@ -1,18 +1,19 @@
 import { useReducer, useRef, useState, useEffect } from 'react';
 import ChatContext from './ChatContext';
-import chatReducer from './chatReducer';
 import dayjs from '../dayjsConfig';
 import { Comment as CommentType } from '../types';
 
 function ChatProvider({ children }) {
   const initialState: CommentType[] = [];
   const [chatData, setChatData] = useState<CommentType[]>(initialState);
-  const [chatState, dispatch] = useReducer(chatReducer, chatData);
   const [commentToDelete, setCommentToDelete] = useState(null);
   const [deleting, setDeleting] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [username, setUsername] = useState(JSON.parse(localStorage.getItem('USERNAME')) || '');
 
   const modalRef = useRef();
+  const authRef = useRef();
 
   useEffect(() => {
     const getComments = async () => {
@@ -57,9 +58,16 @@ function ChatProvider({ children }) {
     return dayjs(time).fromNow();
   };
 
-  useEffect(() => {
-    localStorage.setItem('COMMENTS', JSON.stringify(chatState));
-  }, [chatState]);
+  useEffect (() => {
+    JSON.parse(localStorage.getItem('USERNAME')) ? setAuthenticated(true) : authRef.current.showModal();
+  }, [authenticated])
+
+  const setUser =  (username: string) => {
+    // setUsername(username);
+    localStorage.setItem('USERNAME', JSON.stringify(username));
+    setAuthenticated(true);
+    authRef.current.close();
+  } 
 
   const addComment = async (text: string) => {
     if (text.trim().length !== 0) {
@@ -72,6 +80,7 @@ function ChatProvider({ children }) {
           body: JSON.stringify({
             id: crypto.randomUUID(),
             text: text,
+            username: username,
           }),
         });
 
@@ -193,14 +202,18 @@ function ChatProvider({ children }) {
 
   const chatContext = {
     posts: chatData,
+    setUser: setUser,
     loading: loading,
     addReply: addReply,
     modalRef: modalRef,
+    authRef: authRef,
     deleting: deleting,
+    username: username,
     showModal: showModal,
     cancel: cancelDelete,
     formatTime: formatTime,
     addComment: addComment,
+    authenticated: authenticated,
     deleteComment: deleteComment,
     updateComment: updateComment,
   };
