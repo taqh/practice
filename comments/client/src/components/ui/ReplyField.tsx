@@ -20,11 +20,11 @@ const TextField = ({ id, replyingTo, close }:{id: string, replyingTo: string, cl
       className='textfield grid gap-3 max-md:gap-x-0 bg-white dark:bg-Gray p-5 rounded-lg shadow-sm transition animate-down'
     >
       <label htmlFor='comment' className='sr-only'>
-        Add a comment
+        Add a reply
       </label>
       <textarea
         id='comment'
-        placeholder='Add a comment...'
+        placeholder='Add a reply...'
         className='input resize-none w-full border dark:outline-none dark:border-transparent focus:outline-ModerateBlue dark:focus:outline-SoftBlue dark:bg-TextArea dark:text-PaleBlue caret-ModerateBlue rounded-md p-2 '
         rows={3}
         value={reply}

@@ -1,5 +1,5 @@
 const comments = require('../data/comments.json');
-const { addComment, deleteComment } = require('../model/comment');
+const { addComment, deleteComment, update, addReply } = require('../model/comment');
 
 exports.getComments = (req, res, next) => {
   console.log('GET Request made');
@@ -37,6 +37,7 @@ exports.createComment = (req, res, next) => {
 
 exports.updateComment = (req, res, next) => {
   console.log('PUT Request made');
+  update(req.body);
   res.status(200).json({
     message: 'Comment updated successfully!',
     comment: req.body,
@@ -77,3 +78,13 @@ exports.deleteComment = (req, res, next) => {
   //     });
   //   });
 };
+
+exports.createReply = (req, res, next) =>{
+  console.log('PUT request made');
+  console.log(req.params);
+  addReply(req.body);
+  res.status(200).json({
+    message: 'Comment deleted successfully!',
+    commentId: req.body,
+  });
+}

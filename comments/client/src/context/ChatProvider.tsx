@@ -93,10 +93,10 @@ function ChatProvider({ children }) {
   const addReply = async (text: string, id: string, replyingTo: string) => {
     if (text.trim().length !== 0) {
       try {
-        const response = await fetch('http://localhost:5000/comments', {
-          method: 'POST',
+        const response = await fetch('http://localhost:5000/comments/' + id, {
+          method: 'PUT',
           headers: {
-            'Content-Type': 'application/json', // Corrected headers object
+            'Content-Type': 'application/json', 
           },
           body: JSON.stringify({
             id: id,
@@ -123,7 +123,7 @@ function ChatProvider({ children }) {
   const updateComment = async (text: string, id: string) => {
     try {
       const response = await fetch(`http://localhost:5000/comments/${id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
