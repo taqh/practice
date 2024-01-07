@@ -5,6 +5,7 @@ import ReplyField from '../ui/ReplyField';
 import { useState, useContext } from 'react';
 import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
+import { Reply as ReplyType } from '../../types';
 
 function Comment(props) {
   const state = useContext(ChatContext);
@@ -15,10 +16,11 @@ function Comment(props) {
 
   const replyTo = () => {
     setIsReplying((prevState) => !prevState);
-  };  
+  };
 
   const update = (event: React.FormEvent) => {
     event.preventDefault();
+
     state.updateComment(updatedText, props.id);
     setIsediting(!isEditing);
   };
@@ -110,7 +112,7 @@ function Comment(props) {
 
       {props.hasReplies && (
         <ul className='border-l-2 dark:border-Gray pl-4 md:pl-10 md:ml-10 grid gap-5 transition duration-300'>
-          {props.replies.map((reply) => (
+          {props.replies.map((reply: ReplyType) => (
             <Reply
               id={reply.id}
               key={reply.id}
@@ -120,7 +122,7 @@ function Comment(props) {
               createdAt={reply.createdAt}
               replyingTo={reply.replyingTo}
               username={reply.user.username}
-              currentUser={reply.user.username === 'juliusomo'}
+              currentUser={reply.user.username === state.username}
             />
           ))}
         </ul>

@@ -4,6 +4,7 @@ import ReplyField from '../ui/ReplyField';
 import { useContext, useState } from 'react';
 import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
+import { Reply as ReplyType } from '../../types';
 
 function Reply({
   id,
@@ -18,7 +19,7 @@ function Reply({
   id: string;
   currentUser: boolean;
   content: string;
-  src: string;
+  src: object;
   score: number;
   replyingTo: string;
   username: string;
@@ -33,8 +34,8 @@ function Reply({
     setIsReplying((prevState) => !prevState);
   };
 
-  const update = (e) => {
-    e.preventDefault();
+  const update = (event: React.FormEvent) => {
+    event.preventDefault();
 
     setIsediting(!isEditing);
     state.updateComment(updatedText, id);

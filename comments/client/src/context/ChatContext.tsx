@@ -1,9 +1,25 @@
 import { createContext } from 'react';
+// import { Comment as CommentTypes } from '../types'
 const structure = {
   id: '',
   score: 0,
   content: '',
-  replies: [],
+  replies: [
+    {
+      id: '',
+      score: 0,
+      content: '',
+      replyingTo: '',
+      user: {
+        image: {
+          png: '',
+          webp: '',
+        },
+        username: '',
+      },
+      createdAt: '',
+    },
+  ],
   user: {
     image: {
       png: '',
@@ -18,8 +34,8 @@ const ChatContext = createContext({
   loading: false,
   username: '',
   posts: [structure],
-  modalRef: {},
-  authRef: {},
+  modalRef: null,
+  authRef: null,
   reply: false,
   isReplying: false,
   deleting: false,
@@ -30,7 +46,6 @@ const ChatContext = createContext({
   showModal: () => {},
   addComment: () => {},
   formatTime: () => {},
-  handleChange: () => {},
   deleteComment: () => {},
   updateComment: () => {},
 });

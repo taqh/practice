@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from 'react';
-import Modal from './ui/Modal';
+import { useContext } from 'react';
+import DeleteModal from './shared/DeleteModal';
 import Comment from './chat/Comment';
 import TextField from './ui/TextField';
 import ThemeSwitch from './theme/ThemeSwitch';
 import ChatContext from '../context/ChatContext';
-import AuthModal from '../components/AuthModal';
+import AuthModal from './shared/AuthModal';
 
 function CommentSection() {
-  const { posts, deleting, loading, authenticated, username } = useContext(ChatContext);
+  const { posts, deleting, loading, authenticated, username } =
+    useContext(ChatContext);
 
   const comments = posts.map((comment) => (
     <Comment
@@ -27,7 +28,7 @@ function CommentSection() {
   return (
     <section className='flex flex-col gap-5 mx-auto text-GrayBlue max-w-screen-md min-h-screen bg-inherit px-4 md:px-5 py-7 md:py-10 transition-all'>
       {!authenticated && <AuthModal />}
-      {deleting && <Modal />}
+      {deleting && <DeleteModal />}
       <h1 className='sr-only'>Comments</h1>
       <ThemeSwitch />
       {loading ? (

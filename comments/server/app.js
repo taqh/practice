@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const commentRoutes = require('./routes/comment');
 

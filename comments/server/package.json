@@ -1,19 +1,22 @@
 {
   "name": "comment-section",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "An api returning a list of comments",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "start:dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
-    "url": "practice"
+    "url": "https://github.com/Dom-iha/practice/tree/main/comments"
   },
   "author": "Dom-iha",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongoose": "^8.0.3"
   },

@@ -147,7 +147,7 @@ exports.addReply = (payload) => {
           png: './assets/avatars/image-juliusomo.png',
           webp: './assets/avatars/image-juliusomo.webp',
         },
-        username: 'juliusomo',
+        username: payload.username,
       },
     };
 

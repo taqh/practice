@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
-import Button from './ui/Button';
-import ChatContext from '../context/ChatContext';
+import Button from '../ui/Button';
+import ChatContext from '../../context/ChatContext';
 
 const AuthModal = () => {
   const { authRef, setUser } = useContext(ChatContext);
@@ -54,7 +54,11 @@ const AuthModal = () => {
 };
 
 function AuthForm() {
-  return <>{createPortal(<AuthModal />, document.getElementById('portal'))}</>;
+  const portalContainer = document.getElementById('portal') as Element | null;
+  if (!portalContainer) {
+    return null;
+  }
+  return <>{createPortal(<AuthModal />, portalContainer)}</>;
 }
 
 export default AuthForm;

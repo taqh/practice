@@ -1,4 +1,4 @@
-import { useReducer, useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import ChatContext from './ChatContext';
 import dayjs from '../dayjsConfig';
 import { Comment as CommentType } from '../types';
@@ -6,20 +6,22 @@ import { Comment as CommentType } from '../types';
 function ChatProvider({ children }) {
   const initialState: CommentType[] = [];
   const [chatData, setChatData] = useState<CommentType[]>(initialState);
-  const [commentToDelete, setCommentToDelete] = useState(null);
-  const [deleting, setDeleting] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
+  const [commentToDelete, setCommentToDelete] = useState<string | null>();
   const [username, setUsername] = useState(JSON.parse(localStorage.getItem('USERNAME')) || '');
 
-  const modalRef = useRef();
-  const authRef = useRef();
+// const serverUrl = 'https://comment-section-pk6h.onrender.com/'
+const serverUrl = 'http://localhost:5000/comments/'
+  const modalRef = useRef<HTMLDialogElement>(null);
+  const authRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     const getComments = async () => {
       setLoading(true);
       try {
-        const res = await fetch('http://localhost:5000/comments');
+        const res = await fetch(serverUrl);
         const data = await res.json();
         setChatData(data.comments);
         console.log(data.comments);
@@ -31,7 +33,7 @@ function ChatProvider({ children }) {
 
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000); // timeout to always create a brief loading state after requests
 
     getComments();
     return () => {
@@ -58,21 +60,23 @@ function ChatProvider({ children }) {
     return dayjs(time).fromNow();
   };
 
-  useEffect (() => {
-    JSON.parse(localStorage.getItem('USERNAME')) ? setAuthenticated(true) : authRef.current.showModal();
-  }, [authenticated])
+  useEffect(() => {
+    JSON.parse(localStorage.getItem('USERNAME'))
+      ? setAuthenticated(true)
+      : authRef.current?.showModal();
+  }, [authenticated]);
 
-  const setUser =  (username: string) => {
+  const setUser = (username: string) => {
     // setUsername(username);
     localStorage.setItem('USERNAME', JSON.stringify(username));
     setAuthenticated(true);
-    authRef.current.close();
-  } 
+    authRef.current?.close();
+  };
 
   const addComment = async (text: string) => {
     if (text.trim().length !== 0) {
       try {
-        const response = await fetch('http://localhost:5000/comments', {
+        const response = await fetch(serverUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json', // Corrected headers object
@@ -102,15 +106,16 @@ function ChatProvider({ children }) {
   const addReply = async (text: string, id: string, replyingTo: string) => {
     if (text.trim().length !== 0) {
       try {
-        const response = await fetch('http://localhost:5000/comments/' + id, {
+        const response = await fetch(`${serverUrl}${id}`, {
           method: 'PUT',
           headers: {
-            'Content-Type': 'application/json', 
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             id: id,
             text: text,
             replyingTo: replyingTo,
+            username: username,
           }),
         });
 
@@ -131,7 +136,7 @@ function ChatProvider({ children }) {
 
   const updateComment = async (text: string, id: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/comments/${id}`, {
+      const response = await fetch(`${serverUrl}${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -155,7 +160,7 @@ function ChatProvider({ children }) {
     }
   };
 
-  const showModal = (id) => {
+  const showModal = (id: string) => {
     setDeleting(true);
     setCommentToDelete(id);
   };
@@ -168,7 +173,7 @@ function ChatProvider({ children }) {
   }, [deleting]);
 
   const cancelDelete = () => {
-    modalRef.current.close();
+    modalRef.current?.close();
     setDeleting(false);
   };
 
@@ -176,7 +181,7 @@ function ChatProvider({ children }) {
     console.log(commentToDelete);
     try {
       const response = await fetch(
-        `http://localhost:5000/comments/${commentToDelete}`,
+        `${serverUrl}${commentToDelete}`,
         {
           method: 'DELETE',
           // params: JSON.stringify(commentToDelete)
@@ -195,7 +200,7 @@ function ChatProvider({ children }) {
       console.error('failed to delete ' + error);
     }
 
-    modalRef.current.close();
+    modalRef.current?.close();
     setCommentToDelete(null);
     setDeleting(false);
   };
