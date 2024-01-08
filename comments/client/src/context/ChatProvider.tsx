@@ -1,19 +1,22 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, ReactNode } from 'react';
 import ChatContext from './ChatContext';
 import dayjs from '../dayjsConfig';
-import { Comment as CommentType } from '../types';
+import { Comment as CommentType, ContextValues } from '../types';
 
-function ChatProvider({ children }) {
+const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const storedName = localStorage.getItem('USERNAME');
+  const initialUsername = storedName ? JSON.parse(storedName) : '';
+
   const initialState: CommentType[] = [];
   const [chatData, setChatData] = useState<CommentType[]>(initialState);
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [commentToDelete, setCommentToDelete] = useState<string | null>();
-  const [username, setUsername] = useState(JSON.parse(localStorage.getItem('USERNAME')) || '');
+  const [username, setUsername] = useState<string>(initialUsername);
 
-// const serverUrl = 'https://comment-section-pk6h.onrender.com/'
-const serverUrl = 'http://localhost:5000/comments/'
+  // const serverUrl = 'https://comment-section-pk6h.onrender.com/'
+  const serverUrl = 'http://localhost:5000/comments/';
   const modalRef = useRef<HTMLDialogElement>(null);
   const authRef = useRef<HTMLDialogElement>(null);
 
@@ -41,7 +44,7 @@ const serverUrl = 'http://localhost:5000/comments/'
     };
   }, []);
 
-  const formatTime = (time: string | object) => {
+  const formatTime = (time: string) => {
     // because the json timestamps are strings calling the dayjs methods would display NaN
     // so i first need to check if its from the data.json file || local storage
 
@@ -61,15 +64,13 @@ const serverUrl = 'http://localhost:5000/comments/'
   };
 
   useEffect(() => {
-    JSON.parse(localStorage.getItem('USERNAME'))
-      ? setAuthenticated(true)
-      : authRef.current?.showModal();
-  }, [authenticated]);
+    username ? setAuthenticated(true) : authRef.current?.showModal();
+  }, [username]);
 
   const setUser = (username: string) => {
-    // setUsername(username);
     localStorage.setItem('USERNAME', JSON.stringify(username));
     setAuthenticated(true);
+    setUsername(username);
     authRef.current?.close();
   };
 
@@ -180,13 +181,10 @@ const serverUrl = 'http://localhost:5000/comments/'
   const deleteComment = async () => {
     console.log(commentToDelete);
     try {
-      const response = await fetch(
-        `${serverUrl}${commentToDelete}`,
-        {
-          method: 'DELETE',
-          // params: JSON.stringify(commentToDelete)
-        }
-      );
+      const response = await fetch(`${serverUrl}${commentToDelete}`, {
+        method: 'DELETE',
+        // params: JSON.stringify(commentToDelete)
+      });
       if (!response.ok) {
         console.log(
           'Failed to delete comment:',
@@ -205,13 +203,13 @@ const serverUrl = 'http://localhost:5000/comments/'
     setDeleting(false);
   };
 
-  const chatContext = {
+  const contextValues: ContextValues = {
     posts: chatData,
     setUser: setUser,
     loading: loading,
-    addReply: addReply,
-    modalRef: modalRef,
     authRef: authRef,
+    modalRef: modalRef,
+    addReply: addReply,
     deleting: deleting,
     username: username,
     showModal: showModal,
@@ -224,8 +222,10 @@ const serverUrl = 'http://localhost:5000/comments/'
   };
 
   return (
-    <ChatContext.Provider value={chatContext}>{children}</ChatContext.Provider>
+    <ChatContext.Provider value={contextValues}>
+      {children}
+    </ChatContext.Provider>
   );
-}
+};
 
 export default ChatProvider;

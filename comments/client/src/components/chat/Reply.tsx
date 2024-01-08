@@ -4,27 +4,23 @@ import ReplyField from '../ui/ReplyField';
 import { useContext, useState } from 'react';
 import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
-import { Reply as ReplyType } from '../../types';
+import { createAvatar } from '@dicebear/core';
+import { lorelei } from '@dicebear/collection';
+import { ReplyProps } from '../../types';
 
-function Reply({
+const avatar = createAvatar(lorelei, {
+  size: 35,
+}).toDataUriSync();
+
+const Reply: React.FC<ReplyProps> = ({
   id,
   currentUser,
   content,
   score,
-  src,
   replyingTo,
   username,
   createdAt,
-}: {
-  id: string;
-  currentUser: boolean;
-  content: string;
-  src: object;
-  score: number;
-  replyingTo: string;
-  username: string;
-  createdAt: string | object;
-}) {
+}) => {
   const state = useContext(ChatContext);
   const [isEditing, setIsediting] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
@@ -48,11 +44,7 @@ function Reply({
         id={username}
       >
         <div className='user grid xsm:flex items-center gap-2 xsm:gap-3'>
-          <picture className='w-8 h-8'>
-            <source srcSet={src.webp} type='image/webp' />
-            <source srcSet={src.png} type='image/png' />
-            <img src={src.png} alt={username} />
-          </picture>
+          <img src={avatar} alt='Avatar' className='rounded-full' />
           {currentUser && (
             <span className='bg-ModerateBlue dark:bg-SoftBlue rounded-sm px-1 text-white text-sm text-center'>
               you
@@ -61,9 +53,7 @@ function Reply({
           <p className='text-DarkBlue dark:text-Username font-bold'>
             {username}
           </p>
-          <span className='dark:text-PaleBlue'>
-            {state.formatTime(createdAt)}
-          </span>
+          <span className='dark:text-PaleBlue'>{createdAt}</span>
         </div>
         {!isEditing ? (
           <p
@@ -100,7 +90,7 @@ function Reply({
           </form>
         )}
 
-        <Vote score={score} id={id} user={currentUser} />
+        <Vote score={score} user={currentUser} />
 
         {!currentUser ? (
           <Button
@@ -129,9 +119,11 @@ function Reply({
           </div>
         )}
       </li>
-      {isReplying && <ReplyField id={id} close={replyTo} />}
+      {isReplying && (
+        <ReplyField id={id} close={replyTo} replyingTo={username} />
+      )}
     </>
   );
-}
+};
 
 export default Reply;

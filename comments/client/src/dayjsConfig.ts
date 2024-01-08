@@ -1,4 +1,3 @@
-// i moved this config to its own file to avoid importing same thing wherever i needed
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import updateLocale from 'dayjs/plugin/updateLocale';

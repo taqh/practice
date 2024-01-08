@@ -5,14 +5,29 @@ import ReplyField from '../ui/ReplyField';
 import { useState, useContext } from 'react';
 import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
-import { Reply as ReplyType } from '../../types';
+import { CommentProps, Reply as ReplyType } from '../../types';
+import { createAvatar } from '@dicebear/core';
+import { adventurer } from '@dicebear/collection';
 
-function Comment(props) {
+const Comment: React.FC<CommentProps> = ({
+  content,
+  currentUser,
+  id,
+  username,
+  createdAt,
+  hasReplies,
+  score,
+  replies,
+}) => {
   const state = useContext(ChatContext);
   const [isEditing, setIsediting] = useState(false);
   const [isReplying, setIsReplying] = useState(false);
-  const [updatedText, setUpdatedText] = useState<string>(props.content);
-  const [currentUser, setCurrentUser] = useState<string>(props.currentUser);
+  const [updatedText, setUpdatedText] = useState<string>(content);
+  // const [isCurrentUser, setIsCurrentUser] = useState<boolean>(currentUser);
+
+  const avatar = createAvatar(adventurer, {
+    size: 35,
+  }).toDataUriSync();
 
   const replyTo = () => {
     setIsReplying((prevState) => !prevState);
@@ -21,31 +36,25 @@ function Comment(props) {
   const update = (event: React.FormEvent) => {
     event.preventDefault();
 
-    state.updateComment(updatedText, props.id);
+    state.updateComment(updatedText, id);
     setIsediting(!isEditing);
   };
 
   return (
-    <li className='com gap-5  grid' id={props.username}>
+    <li className='com gap-5  grid' id={username}>
       <div className='comment grid gap-y-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
         <div className='user grid xsm:flex items-center xsm:gap-3 gap-2'>
           {' '}
-          <picture className='w-8 h-8'>
-            <source srcSet={props.src.webp} type='image/webp' />
-            <source srcSet={props.src.png} type='image/png' />
-            <img src={props.src.png} alt={props.username} />
-          </picture>
+          <img src={avatar} alt='Avatar' className='rounded-full' />
           <p className='text-DarkBlue dark:text-Username font-bold'>
-            {props.username}
+            {username}
           </p>
           {currentUser && (
             <span className='bg-ModerateBlue dark:bg-SoftBlue rounded-sm px-1 text-white text-sm text-center'>
               you
             </span>
           )}
-          <span className='dark:text-PaleBlue'>
-            {state.formatTime(props.createdAt)}
-          </span>
+          <span className='dark:text-PaleBlue'>{createdAt}</span>
         </div>
         {!isEditing ? (
           <p
@@ -53,7 +62,7 @@ function Comment(props) {
               currentUser ? 'animate-up' : ''
             }`}
           >
-            {props.content}
+            {content}
           </p>
         ) : (
           <form
@@ -76,7 +85,7 @@ function Comment(props) {
           </form>
         )}
 
-        <Vote score={props.score} id={props.id} />
+        <Vote score={score} user={currentUser} />
 
         {!currentUser ? (
           <Button
@@ -90,7 +99,7 @@ function Comment(props) {
           <div className='del flex justify-self-end gap-2'>
             <Button
               className='reply flex gap-2 items-center justify-self-end text-SoftRed fill-SoftRed hover:text-PaleRed dark:hover:text-DarkRed hover:fill-PaleRed dark:hover:fill-DarkRed font-bold'
-              onClick={() => state.showModal(props.id)}
+              onClick={() => state.showModal(id)}
             >
               <DeleteIcon aria-hidden='true' />
               <span>Delete</span>
@@ -107,18 +116,18 @@ function Comment(props) {
       </div>
 
       {isReplying && (
-        <ReplyField id={props.id} replyingTo={props.username} close={replyTo} />
+        <ReplyField id={id} replyingTo={username} close={replyTo} />
       )}
 
-      {props.hasReplies && (
+      {hasReplies && (
         <ul className='border-l-2 dark:border-Gray pl-4 md:pl-10 md:ml-10 grid gap-5 transition duration-300'>
-          {props.replies.map((reply: ReplyType) => (
+          {replies.map((reply: ReplyType) => (
             <Reply
               id={reply.id}
               key={reply.id}
               score={reply.score}
               content={reply.content}
-              src={reply.user.image}
+              // src={reply.user.avatar}
               createdAt={reply.createdAt}
               replyingTo={reply.replyingTo}
               username={reply.user.username}
@@ -129,6 +138,6 @@ function Comment(props) {
       )}
     </li>
   );
-}
+};
 
 export default Comment;

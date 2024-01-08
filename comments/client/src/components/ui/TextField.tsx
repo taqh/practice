@@ -1,14 +1,20 @@
-import avatar from '../../assets/avatars/image-juliusomo.png';
 import ChatContext from '../../context/ChatContext';
 import { useContext, useState } from 'react';
 import Button from './Button';
+import { createAvatar } from '@dicebear/core';
+import { adventurerNeutral } from '@dicebear/collection';
+
 
 const TextField = () => {
   const state = useContext(ChatContext);
   const [value, setValue] = useState('');
+  
+  const avatar = createAvatar(adventurerNeutral, {
+    size: 45,
+  }).toDataUriSync();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
 
     state.addComment(value);
     setValue('');
@@ -29,7 +35,7 @@ const TextField = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <img src={avatar} alt='profile pic' className='w-11 h-11' />
+      <img src={avatar} alt='Avatar' className='rounded-full'/>
       <Button className='submit text-sm h-fit px-7 py-3 justify-self-end bg-ModerateBlue dark:bg-SoftBlue dark:hover:bg-Blueish hover:bg-LightBlue text-white font-medium uppercase'>
         send
       </Button>

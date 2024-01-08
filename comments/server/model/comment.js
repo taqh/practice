@@ -24,10 +24,7 @@ exports.addComment = (payload) => {
       createdAt: 'server',
       score: 0,
       user: {
-        image: {
-          png: './assets/avatars/image-juliusomo.png',
-          webp: './assets/avatars/image-juliusomo.webp',
-        },
+        avatar: `./assets/avatars/image-${payload.username}.png`,
         username: payload.username,
       },
       replies: [],
@@ -58,7 +55,7 @@ exports.deleteComment = (id) => {
     comments = JSON.parse(fileContent);
 
     const updatedComments = comments.some((comment) => comment.id === id)
-      ? comments.filter((Comment) => Comment.id !== id)
+      ? comments.filter((comment) => comment.id !== id)
       : comments.map((comment) => {
           return {
             ...comment,
@@ -136,6 +133,10 @@ exports.addReply = (payload) => {
 
     comments = JSON.parse(fileContent);
 
+    const isReplyingToComment = comments.some(
+      (comment) => comment.id === payload.id
+    );
+
     const newReply = {
       id: Math.floor(Math.random(20) * 10000),
       replyingTo: payload.replyingTo,
@@ -143,31 +144,49 @@ exports.addReply = (payload) => {
       createdAt: 'server',
       score: 0,
       user: {
-        image: {
-          png: './assets/avatars/image-juliusomo.png',
-          webp: './assets/avatars/image-juliusomo.webp',
-        },
+        avatar: `./assets/avatars/image-${payload.username}.png`,
         username: payload.username,
       },
     };
 
-    const commentToReply = comments.findIndex(
-      (comment) => comment.id === payload.id
-    );
-    const updatedComment = comments.map((comment, index) => {
-      if (index === commentToReply) {
-        return {
-          ...comment,
-          replies: [...comment.replies, newReply],
-        };
-      } else {
-        return comment;
+    if (isReplyingToComment) {
+      const commentToReply = comments.findIndex(
+        (comment) => comment.id === payload.id
+      );
+      const updatedComment = comments.map((comment, index) => {
+        if (index === commentToReply) {
+          return {
+            ...comment,
+            replies: [...comment.replies, newReply],
+          };
+        } else {
+          return comment;
+        }
+      });
+
+      comments = JSON.stringify(updatedComment);
+    } else {
+      const commentIndex = comments.findIndex((comment) =>
+        comment.replies.some((reply) => reply.id === payload.id)
+      );
+
+      if (commentIndex !== -1) {
+        const updatedComments = comments.map((comment, index) => {
+          if (index === commentIndex) {
+            // Update only the target comment that contains the specific reply
+            return {
+              ...comment,
+              replies: [...comment.replies, newReply],
+            };
+          }
+          return comment; // Keep other comments unchanged
+        });
+
+        comments = JSON.stringify(updatedComments);
       }
-    });
+    }
 
-    comments = JSON.stringify(updatedComment);
-
-    console.log(updatedComment);
+    // console.log(updatedComment);
     fs.writeFile(filePath, comments, (err) => {
       if (err) {
         console.log(err);

@@ -17,7 +17,7 @@ function CommentSection() {
       score={comment.score}
       content={comment.content}
       replies={comment.replies}
-      src={comment.user.image}
+      // src={comment.user.avatar}
       createdAt={comment.createdAt}
       username={comment.user.username}
       hasReplies={comment.replies?.length > 0}
