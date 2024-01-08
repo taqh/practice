@@ -15,8 +15,8 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [commentToDelete, setCommentToDelete] = useState<string | null>();
   const [username, setUsername] = useState<string>(initialUsername);
 
-  // const serverUrl = 'https://comment-section-pk6h.onrender.com/'
-  const serverUrl = 'http://localhost:5000/comments/';
+  const serverUrl = 'https://comment-section-pk6h.onrender.com/'
+  // const serverUrl = 'http://localhost:5000/comments/';
   const modalRef = useRef<HTMLDialogElement>(null);
   const authRef = useRef<HTMLDialogElement>(null);
 
