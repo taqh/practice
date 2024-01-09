@@ -7,7 +7,7 @@ import ChatContext from '../../context/ChatContext';
 import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
 import { CommentProps, Reply as ReplyType } from '../../types';
 import { createAvatar } from '@dicebear/core';
-import { adventurer } from '@dicebear/collection';
+import { loreleiNeutral } from '@dicebear/collection';
 
 const Comment: React.FC<CommentProps> = ({
   content,
@@ -25,7 +25,8 @@ const Comment: React.FC<CommentProps> = ({
   const [updatedText, setUpdatedText] = useState<string>(content);
   // const [isCurrentUser, setIsCurrentUser] = useState<boolean>(currentUser);
 
-  const avatar = createAvatar(adventurer, {
+  const avatar = createAvatar(loreleiNeutral, {
+    seed: 'zoe',
     size: 35,
   }).toDataUriSync();
 

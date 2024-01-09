@@ -15,8 +15,8 @@ const TextField = ({ id, replyingTo, close }:{id: string, replyingTo: string, cl
     size: 45,
   }).toDataUriSync();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
 
     state.addReply(reply, id, replyingTo);
     close();

@@ -16,32 +16,27 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [username, setUsername] = useState<string>(initialUsername);
 
   const serverUrl = 'https://comment-section-pk6h.onrender.com/comments';
-  // const serverUrl = 'http://localhost:5000/comments/';
+  // const serverUrl = 'http://localhost:5000/comments';
   const modalRef = useRef<HTMLDialogElement>(null);
   const authRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    const getComments = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(serverUrl);
-        const data = await res.json();
-        setChatData(data.comments);
-        console.log(data.comments);
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
-    };
-
-    const timeout = setTimeout(() => {
+  const getComments = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(serverUrl);
+      const data = await res.json();
+      setChatData(data.comments);
+      console.log(data.comments);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      // sets loading to false wether fetch is successful or not
       setLoading(false);
-    }, 1000); // timeout to always create a brief loading state after requests
+    }
+  };
 
+  useEffect(() => {
     getComments();
-    return () => {
-      clearTimeout(timeout);
-    };
   }, []);
 
   const formatTime = (time: string) => {
@@ -97,6 +92,9 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
           );
         } else {
           console.log('Reply posted successfully');
+          setTimeout(() => {
+            getComments();
+          }, 1000);
         }
       } catch (error) {
         console.error('Error posting reply:', error);
@@ -128,6 +126,7 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
           );
         } else {
           console.log('Reply posted successfully');
+          
         }
       } catch (error) {
         console.error('Error posting reply:', error);
@@ -155,6 +154,9 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         );
       } else {
         console.log('Comment updated successfully');
+        setTimeout(() => {
+          getComments();
+        }, 1000);
       }
     } catch (error) {
       console.error('Error updating comment:', error);
@@ -193,6 +195,9 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         );
       } else {
         console.log('deleted successfully');
+        setTimeout(() => {
+          getComments();
+        }, 1000);
       }
     } catch (error) {
       console.error('failed to delete ' + error);

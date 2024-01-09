@@ -2,14 +2,15 @@ import ChatContext from '../../context/ChatContext';
 import { useContext, useState } from 'react';
 import Button from './Button';
 import { createAvatar } from '@dicebear/core';
-import { adventurerNeutral } from '@dicebear/collection';
+import { micah } from '@dicebear/collection';
 
 
 const TextField = () => {
   const state = useContext(ChatContext);
   const [value, setValue] = useState('');
   
-  const avatar = createAvatar(adventurerNeutral, {
+  const avatar = createAvatar(micah, {
+    seed: 'bandit',
     size: 45,
   }).toDataUriSync();
 
