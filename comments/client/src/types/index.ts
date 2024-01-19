@@ -1,12 +1,12 @@
 import { ReactNode, MouseEvent } from 'react';
 
 export type Comment = {
-  id: string;
+  _id: string;
   score: number;
   content: string;
   replies: [
     {
-      id: string;
+      _id: string;
       score: number;
       content: string;
       replyingTo: string;
@@ -25,7 +25,7 @@ export type Comment = {
 };
 
 export type Reply = {
-  id: string;
+  _id: string;
   score: number;
   content: string;
   replyingTo: string;
@@ -52,11 +52,11 @@ export type ContextValues = {
   authRef: React.RefObject<HTMLDialogElement> | null;
   cancel: () => void;
   setUser: (username: string) => void;
-  addReply: (reply: string, id: string, replyingTo: string) => void;
-  showModal: (id: string) => void;
+  addReply: (reply: string, _id: string, replyingTo: string) => void;
+  showModal: (_id: string) => void;
   addComment: (text: string) => void;
   formatTime: (time: string) => string;
-  updateComment: (updatedText: string, id: string) => void;
+  updateComment: (updatedText: string, _id: string) => void;
   deleteComment: () => void;
 };
 

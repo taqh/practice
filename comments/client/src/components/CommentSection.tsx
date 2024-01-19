@@ -12,8 +12,8 @@ function CommentSection() {
 
   const comments = posts.map((comment) => (
     <Comment
-      id={comment.id}
-      key={comment.id}
+      id={comment._id}
+      key={comment._id}
       score={comment.score}
       content={comment.content}
       replies={comment.replies}

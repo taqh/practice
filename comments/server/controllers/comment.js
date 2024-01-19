@@ -1,38 +1,57 @@
-const comments = require('../data/comments.json');
-const { addComment, deleteComment, update, addReply } = require('../model/comment');
+const Comment = require('../model/comment');
+const {
+  addComment,
+  deleteComment,
+  update,
+  addReply,
+} = require('../model/comment');
+const mongoose = require('mongoose');
 
 exports.getComments = (req, res, next) => {
   console.log('GET Request made');
-  res.status(200).json({
-    status: 'Success!',
-    comments: comments,
-  });
-  // With MongoDB
-  // Comment.find()
-  // .exec()
-  // .then((comments) => {
-  //    res.status(200).json(comments);
-  // })
-  // .catch((err) => {
-  //    res.status(500).json({
-  //       error: err,
-  //    });
-  // });
+  Comment.find()
+    .exec()
+    .then((comments) => {
+      res.status(200).json({
+        status: 'Success!',
+        comments: comments,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
+    });
 };
 
 exports.createComment = (req, res, next) => {
   console.log('POST Request made');
-  addComment(req.body);
-  res.status(200).json({
-    message: 'Comment created successfully!',
-    comment: req.body,
-  });
 
-  // const comment = new Comment({
-  //    _id: new mongoose.Types.ObjectId(),
-  //    text: req.body.text,
-  // });
-  // console.log(req.body);
+  console.log(req.body);
+
+  const comment = new Comment({
+    content: req.body.text,
+    score: req.body.score,
+    replies: req.body.replies,
+    createdAt: req.body.createdAt,
+    user: {
+      avatar: req.body.user.avatar,
+      username: req.body.user.username,
+    },
+  });
+  comment
+    .save()
+    .then((result) => {
+      res.status(200).json('Comment added successfully!');
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        message: 'Failed to create comment!',
+        error: err,
+      });
+    });
 };
 
 exports.updateComment = (req, res, next) => {
@@ -79,7 +98,7 @@ exports.deleteComment = (req, res, next) => {
   //   });
 };
 
-exports.createReply = (req, res, next) =>{
+exports.createReply = (req, res, next) => {
   console.log('PUT request made');
   console.log(req.params);
   addReply(req.body);
@@ -87,4 +106,4 @@ exports.createReply = (req, res, next) =>{
     message: 'Comment deleted successfully!',
     commentId: req.body,
   });
-}
+};

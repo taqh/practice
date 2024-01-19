@@ -124,8 +124,8 @@ const Comment: React.FC<CommentProps> = ({
         <ul className='border-l-2 dark:border-Gray pl-4 md:pl-10 md:ml-10 grid gap-5 transition duration-300'>
           {replies.map((reply: ReplyType) => (
             <Reply
-              id={reply.id}
-              key={reply.id}
+              id={reply._id}
+              key={reply._id}
               score={reply.score}
               content={reply.content}
               // src={reply.user.avatar}

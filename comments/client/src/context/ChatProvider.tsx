@@ -15,8 +15,8 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [commentToDelete, setCommentToDelete] = useState<string | null>();
   const [username, setUsername] = useState<string>(initialUsername);
 
-  const serverUrl = 'https://comment-section-pk6h.onrender.com/comments';
-  // const serverUrl = 'http://localhost:5000/comments';
+  const serverUrl = 'https://comment-section-pk6h.onrender.com/comments/';
+  // const serverUrl = 'http://localhost:5000/comments/';
   const modalRef = useRef<HTMLDialogElement>(null);
   const authRef = useRef<HTMLDialogElement>(null);
 
@@ -25,8 +25,10 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     try {
       const res = await fetch(serverUrl);
       const data = await res.json();
-      setChatData(data.comments);
-      console.log(data.comments);
+      if (res.ok) {
+        setChatData(data.comments);
+        console.log(data.comments);
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -75,29 +77,28 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         const response = await fetch(serverUrl, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json', // Corrected headers object
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            id: crypto.randomUUID(),
             text: text,
-            username: username,
+            score: 0,
+            createdAt: new Date().toISOString(),
+            user: {
+              avatar: 'https://i.pravatar.cc/100?u=1',
+              username: username,
+            },
+            replies: [],
           }),
         });
 
-        if (!response.ok) {
-          console.error(
-            'Failed to post reply:',
-            response.status,
-            response.statusText
-          );
-        } else {
-          console.log('Reply posted successfully');
-          setTimeout(() => {
-            getComments();
-          }, 1000);
-        }
+        if (response.ok) {
+            console.log(response.body);
+            // setTimeout(() => {
+            //   getComments();
+            // }, 1000);
+        } 
       } catch (error) {
-        console.error('Error posting reply:', error);
+        console.error('Error:', error);
       }
     } else return;
   };
@@ -126,7 +127,9 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
           );
         } else {
           console.log('Reply posted successfully');
-          
+          setTimeout(() => {
+            getComments();
+          }, 1000);
         }
       } catch (error) {
         console.error('Error posting reply:', error);
@@ -194,7 +197,7 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
           response.statusText
         );
       } else {
-        console.log('deleted successfully');
+        console.log('Deleted successfully');
         setTimeout(() => {
           getComments();
         }, 1000);
