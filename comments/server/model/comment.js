@@ -44,40 +44,6 @@ module.exports = mongoose.model('Comment', commentSchema);
 //   'comments.json'
 // );
 
-// exports.deleteComment = (id) => {
-//   console.log(id);
-//   let comments;
-
-//   fs.readFile(filePath, (err, fileContent) => {
-//     if (err) {
-//       console.log(err);
-//       return;
-//     }
-
-//     comments = JSON.parse(fileContent);
-
-//     const updatedComments = comments.some((comment) => comment.id === id)
-//       ? comments.filter((comment) => comment.id !== id)
-//       : comments.map((comment) => {
-//           return {
-//             ...comment,
-//             replies: comment.replies?.filter((reply) => reply.id !== id),
-//           };
-//         });
-
-//     comments = JSON.stringify(updatedComments);
-
-//     fs.writeFile(filePath, comments, (err) => {
-//       if (err) {
-//         console.log(err);
-//         return;
-//       }
-
-//       console.log('comment deleted successfully');
-//     });
-//   });
-// };
-
 // exports.update = (payload) => {
 //   const id = payload.id;
 //   const text = payload.text;

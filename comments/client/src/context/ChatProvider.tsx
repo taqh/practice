@@ -23,9 +23,9 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const getComments = async () => {
     setLoading(true);
     try {
-      const res = await fetch(serverUrl);
-      const data = await res.json();
-      if (res.ok) {
+      const response = await fetch(serverUrl);
+      const data = await response.json();
+      if (response.ok) {
         setChatData(data.comments);
         console.log(data.comments);
       }

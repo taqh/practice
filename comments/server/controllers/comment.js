@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 exports.getComments = (req, res, next) => {
   console.log('GET Request made');
-  Comment.find()
+  Comment.find({})
     .exec()
     .then((comments) => {
       res.status(200).json({

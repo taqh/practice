@@ -22,8 +22,10 @@ app.use((req, res, next) => {
 
 app.use('/', commentRoutes);
 
+const url = process.env.MONGODB_URI
+
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(url)
   .then(() => {
     console.log('Connected to MongoDB!');
   })
