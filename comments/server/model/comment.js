@@ -20,26 +20,14 @@ const commentSchema = new mongoose.Schema({
   },
   replies: [
     {
-      replyingTo: {
-        type: String,
-      },
-      content: {
-        type: String,
-      },
-      createdAt: {
-        type: String,
-      },
-      score: {
-        type: Number,
-      },
+      _id: String,
+      content: String,
+      createdAt: String,
+      score: Number,
+      replyingTo: String,
       user: {
-        avatar: {
-          type: String,
-        },
-        username: {
-          type: String,
-
-        },
+        avatar: String,
+        username: String,
       },
     },
   ],
@@ -55,41 +43,6 @@ module.exports = mongoose.model('Comment', commentSchema);
 //   'data',
 //   'comments.json'
 // );
-
-// exports.addComment = (payload) => {
-//   console.log(payload);
-//   let comments;
-
-//   // Read the existing JSON file.
-//   fs.readFile(filePath, (err, fileContent) => {
-//     if (err) {
-//       console.log(err);
-//       return;
-//     }
-//     comments = JSON.parse(fileContent);
-//     comments.push({
-//       id: `${payload.id}`,
-//       content: `${payload.text}`,
-//       createdAt: 'server',
-//       score: 0,
-//       user: {
-//         avatar: `./assets/avatars/image-${payload.username}.png`,
-//         username: payload.username,
-//       },
-//       replies: [],
-//     });
-
-//     const updatedComments = JSON.stringify(comments);
-
-//     fs.writeFile(filePath, updatedComments, (err) => {
-//       if (err) {
-//         console.log(err);
-//         return;
-//       }
-//       console.log('Comment added successfully');
-//     });
-//   });
-// };
 
 // exports.deleteComment = (id) => {
 //   console.log(id);

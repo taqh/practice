@@ -11,18 +11,19 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*'); // * means any origin
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PATCH, PUT, DELETE'
+  );
   res.setHeader('Access-Control-Allow-Headers', ' Content-Type, Authorization');
-  
+
   next();
 });
 
 app.use('/', commentRoutes);
 
 mongoose
-  .connect(
-    'mongodb+srv://taqibibrahim:BzV0m06gCIGYyrt9@cluster0.8hmijl4.mongodb.net/comment_section?retryWrites=true&w=majority'
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB!');
   })

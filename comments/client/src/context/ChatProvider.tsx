@@ -92,11 +92,11 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         });
 
         if (response.ok) {
-            console.log(response.body);
-            // setTimeout(() => {
-            //   getComments();
-            // }, 1000);
-        } 
+          console.log(response.status, response.statusText);
+          setTimeout(() => {
+            getComments();
+          }, 1000);
+        }
       } catch (error) {
         console.error('Error:', error);
       }
@@ -114,8 +114,13 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
           body: JSON.stringify({
             id: id,
             text: text,
+            createdAt: new Date().toISOString(),
             replyingTo: replyingTo,
-            username: username,
+            score: 0,
+            user: {
+              avatar: 'https://i.pravatar.cc/100?u=1',
+              username: username,
+            },
           }),
         });
 
@@ -188,7 +193,6 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     try {
       const response = await fetch(`${serverUrl}${commentToDelete}`, {
         method: 'DELETE',
-        // params: JSON.stringify(commentToDelete)
       });
       if (!response.ok) {
         console.log(
@@ -197,7 +201,7 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
           response.statusText
         );
       } else {
-        console.log('Deleted successfully');
+        console.log(response.status, response.statusText);
         setTimeout(() => {
           getComments();
         }, 1000);
