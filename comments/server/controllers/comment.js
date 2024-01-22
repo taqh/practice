@@ -49,12 +49,26 @@ exports.createComment = (req, res, next) => {
 
 exports.updateComment = (req, res, next) => {
   console.log('PATCH Request made');
-  const id = req.params.id;
+  const id = req.body.id;
   const text = req.body.text;
 
-  Comment.updateOne({ _id: id }, { content: text })
+  Comment.findOneAndUpdate(
+    { 'replies._id': id }, // Search for a comment with the specified reply ID
+    { $set: { 'replies.$.content': text } }, // $ is the positional operator that identifies the correct element in the array to update
+    { new: true }
+  )
     .exec()
     .then((result) => {
+      if (!result) {
+        return Comment.updateOne({ _id: id }, { content: text }); // If no comment was found with the reply ID, it might be the root comment
+      } else {
+        return result.save();   // Save the updated reply
+      }
+    })
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({ message: 'Comment or reply not found' });
+      }
       res.status(200).json(result);
     })
     .catch((err) => {
@@ -69,7 +83,7 @@ exports.deleteComment = (req, res, next) => {
   console.log(req.params);
   const id = req.params.id;
 
-  //Id could be for a comment or a nested reply so we first check for the nested reply
+  // ID could be for a comment or a nested reply so we first check for the nested reply
   Comment.findOneAndUpdate(
     { 'replies._id': id }, // Search for a comment with the specified reply ID
     { $pull: { replies: { _id: id } } }, // Remove the matching reply from the replies array
@@ -78,8 +92,7 @@ exports.deleteComment = (req, res, next) => {
     .exec()
     .then((result) => {
       if (!result) {
-        // If no comment was found with the reply ID, it might be the root comment
-        return Comment.deleteOne({ _id: id });
+        return Comment.deleteOne({ _id: id }); // If no comment was found with the reply ID, it might be the root comment
       } else {
         return result.save(); // Save the updated comment with the removed reply
       }
@@ -114,16 +127,26 @@ exports.createReply = (req, res, next) => {
     },
   };
 
-  Comment.findOne({ _id: idToReply })
+  Comment.findOneAndUpdate(
+    { 'replies._id': idToReply },
+    { $push: { replies: newReply } },
+    { new: true }
+  )
     .exec()
     .then((result) => {
       if (!result) {
-        return res.status(404).json({ message: 'Comment not found' });
+        return Comment.findOne({ _id: idToReply })
+          .exec()
+          .then((result) => {
+            if (!result) {
+              return res.status(404).json({ message: 'Comment not found' });
+            }
+            result.replies.push(newReply);
+            return result.save();
+          });
+      } else {
+        return result.save();
       }
-
-      result.replies.push(newReply);
-
-      return result.save();
     })
     .then((result) => {
       res.status(201).json(result);

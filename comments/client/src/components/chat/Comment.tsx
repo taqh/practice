@@ -8,6 +8,7 @@ import { DeleteIcon, EditIcon, ReplyIcon } from '../ui/icons';
 import { CommentProps, Reply as ReplyType } from '../../types';
 import { createAvatar } from '@dicebear/core';
 import { loreleiNeutral } from '@dicebear/collection';
+import dayjs from 'dayjs';
 
 const Comment: React.FC<CommentProps> = ({
   content,
@@ -41,6 +42,11 @@ const Comment: React.FC<CommentProps> = ({
     setIsediting(!isEditing);
   };
 
+  const formattedTime = dayjs(createdAt);
+
+  console.log(formattedTime);
+  console.log(formattedTime.fromNow())
+
   return (
     <li className='com gap-5  grid' id={username}>
       <div className='comment grid gap-y-3 md:gap-x-7 bg-white dark:bg-Gray p-6 rounded-lg shadow-sm transition duration-300'>
@@ -55,7 +61,7 @@ const Comment: React.FC<CommentProps> = ({
               you
             </span>
           )}
-          <span className='dark:text-PaleBlue'>{createdAt}</span>
+          <span className='dark:text-PaleBlue'>{state.formatTime(createdAt)}</span>
         </div>
         {!isEditing ? (
           <p

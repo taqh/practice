@@ -53,7 +53,7 @@ const Reply: React.FC<ReplyProps> = ({
           <p className='text-DarkBlue dark:text-Username font-bold'>
             {username}
           </p>
-          <span className='dark:text-PaleBlue'>{createdAt}</span>
+          <span className='dark:text-PaleBlue'>{state.formatTime(createdAt)}</span>
         </div>
         {!isEditing ? (
           <p

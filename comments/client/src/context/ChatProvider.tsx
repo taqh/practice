@@ -15,8 +15,8 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [commentToDelete, setCommentToDelete] = useState<string | null>();
   const [username, setUsername] = useState<string>(initialUsername);
 
-  const serverUrl = 'https://comment-section-pk6h.onrender.com/comments/';
-  // const serverUrl = 'http://localhost:5000/comments/';
+  // const serverUrl = 'https://comment-section-pk6h.onrender.com/comments/';
+  const serverUrl = 'http://localhost:5000/comments/';
   const modalRef = useRef<HTMLDialogElement>(null);
   const authRef = useRef<HTMLDialogElement>(null);
 
@@ -42,21 +42,7 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   }, []);
 
   const formatTime = (time: string) => {
-    // because the json timestamps are strings calling the dayjs methods would display NaN
-    // so i first need to check if its from the data.json file || local storage
-
-    // check if time is a string (from local storage or JSON)
-    if (typeof time === 'string') {
-      // check if the string can be parsed as a date
-      const parsedTime = Date.parse(time);
-      if (!isNaN(parsedTime)) {
-        // if so, convert to dayjs object
-        return dayjs(parsedTime).fromNow();
-      }
-      // otherwise, return the original string
-      return time;
-    }
-    // if time is already a Date or dayjs object, format it using fromNow
+    // Get the relative time from now to when comment/reply was created, e.g. 2 hours ago
     return dayjs(time).fromNow();
   };
 
