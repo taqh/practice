@@ -4,11 +4,10 @@ import Button from './Button';
 import { createAvatar } from '@dicebear/core';
 import { micah } from '@dicebear/collection';
 
-
 const TextField = () => {
   const state = useContext(ChatContext);
   const [value, setValue] = useState('');
-  
+
   const avatar = createAvatar(micah, {
     seed: 'bandit',
     size: 45,
@@ -17,7 +16,9 @@ const TextField = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    state.addComment(value);
+    if (value.trim().length !== 0) {
+      state.addComment(value);
+    }
     setValue('');
   };
   return (
@@ -36,7 +37,7 @@ const TextField = () => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <img src={avatar} alt='Avatar' className='rounded-full'/>
+      <img src={avatar} alt='Avatar' className='rounded-full' />
       <Button className='submit text-sm h-fit px-7 py-3 justify-self-end bg-ModerateBlue dark:bg-SoftBlue dark:hover:bg-Blueish hover:bg-LightBlue text-white font-medium uppercase'>
         send
       </Button>

@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect, ReactNode } from 'react';
+import io from 'socket.io-client';
 import ChatContext from './ChatContext';
 import dayjs from '../dayjsConfig';
 import { Comment as CommentType, ContextValues } from '../types';
@@ -8,17 +9,55 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const initialUsername = storedName ? JSON.parse(storedName) : '';
 
   const initialState: CommentType[] = [];
-  const [chatData, setChatData] = useState<CommentType[]>(initialState);
+  const [commentData, setCommentData] = useState<CommentType[]>(initialState);
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [commentToDelete, setCommentToDelete] = useState<string | null>();
   const [username, setUsername] = useState<string>(initialUsername);
 
-  const serverUrl = 'https://comment-section-pk6h.onrender.com/comments/';
-  // const serverUrl = 'http://localhost:5000/comments/';
+  // const serverUrl = 'https://comment-section-pk6h.onrender.com/comments';
+  const serverUrl = 'http://localhost:5000/comments';
   const modalRef = useRef<HTMLDialogElement>(null);
   const authRef = useRef<HTMLDialogElement>(null);
+  // const socket = io(serverUrl, {
+  //   transports: ['websocket'],
+  // });
+
+  useEffect(() => {
+    const socket = io(serverUrl, {
+      transports: ['websocket'],
+    });
+    socket.on('connect', () => {
+      console.log('connected');
+    });
+
+    socket.on('disconnect', () => {
+      console.log('disconnected');
+    });
+
+    socket.on('commentCreated', (newComment) => {
+      setCommentData((prevComments) => [...prevComments, newComment]);
+    });
+
+    socket.on('commentUpdated', (updatedComment) => {
+      setCommentData((prevComments) =>
+        prevComments.map((comment) =>
+          comment._id === updatedComment._id ? updatedComment : comment
+        )
+      );
+    });
+
+    socket.on('commentDeleted', (deletedCommentId) => {
+      setCommentData((prevComments) =>
+        prevComments.filter((comment) => comment._id !== deletedCommentId)
+      );
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   const getComments = async () => {
     setLoading(true);
@@ -26,13 +65,12 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       const response = await fetch(serverUrl);
       const data = await response.json();
       if (response.ok) {
-        setChatData(data.comments);
+        setCommentData(data.comments);
         console.log(data.comments);
       }
     } catch (error) {
       console.log(error);
     } finally {
-      // sets loading to false wether fetch is successful or not
       setLoading(false);
     }
   };
@@ -58,73 +96,63 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   const addComment = async (text: string) => {
-    if (text.trim().length !== 0) {
-      try {
-        const response = await fetch(serverUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            text: text,
-            score: 0,
-            createdAt: new Date().toISOString(),
-            user: {
-              avatar: 'https://i.pravatar.cc/100?u=1',
-              username: username,
-            },
-            replies: [],
-          }),
-        });
-
-        if (response.ok) {
-          console.log(response.status, response.statusText);
-          setTimeout(() => {
-            getComments();
-          }, 1000);
-        }
-      } catch (error) {
-        console.error('Error:', error);
+    const newComment = {
+      text: text,
+      score: 0,
+      createdAt: new Date().toISOString(),
+      user: {
+        avatar: 'https://i.pravatar.cc/100?u=1',
+        username: username,
+      },
+    };
+    try {
+      const response = await fetch(serverUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newComment),
+      });
+      if (response.ok) {
+        // socket.emit('createComment', newComment);
+        console.log(response.status, response.statusText);
       }
-    } else return;
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   const addReply = async (text: string, id: string, replyingTo: string) => {
-    if (text.trim().length !== 0) {
-      try {
-        const response = await fetch(`${serverUrl}${id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
+    try {
+      const response = await fetch(`${serverUrl}${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id: id,
+          text: text,
+          createdAt: new Date().toISOString(),
+          replyingTo: replyingTo,
+          score: 0,
+          user: {
+            avatar: 'https://i.pravatar.cc/100?u=1',
+            username: username,
           },
-          body: JSON.stringify({
-            id: id,
-            text: text,
-            createdAt: new Date().toISOString(),
-            replyingTo: replyingTo,
-            score: 0,
-            user: {
-              avatar: 'https://i.pravatar.cc/100?u=1',
-              username: username,
-            },
-          }),
-        });
+        }),
+      });
 
-        if (!response.ok) {
-          console.error(
-            'Failed to post reply:',
-            response.status,
-            response.statusText
-          );
-        } else {
-          console.log('Reply posted successfully');
-          setTimeout(() => {
-            getComments();
-          }, 1000);
-        }
-      } catch (error) {
-        console.error('Error posting reply:', error);
+      if (!response.ok) {
+        console.error(
+          'Failed to post reply:',
+          response.status,
+          response.statusText
+        );
+      } else {
+        console.log('Reply posted successfully');
       }
+    } catch (error) {
+      console.error('Error posting reply:', error);
     }
   };
 
@@ -148,9 +176,6 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         );
       } else {
         console.log('Comment updated successfully');
-        setTimeout(() => {
-          getComments();
-        }, 1000);
       }
     } catch (error) {
       console.error('Error updating comment:', error);
@@ -188,9 +213,6 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         );
       } else {
         console.log(response.status, response.statusText);
-        setTimeout(() => {
-          getComments();
-        }, 1000);
       }
     } catch (error) {
       console.error('failed to delete ' + error);
@@ -202,7 +224,7 @@ const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   const contextValues: ContextValues = {
-    posts: chatData,
+    posts: commentData,
     setUser: setUser,
     loading: loading,
     authRef: authRef,

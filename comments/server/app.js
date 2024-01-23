@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
+const { Server } = require('socket.io');
+const http = require('http');
 require('dotenv').config();
 
 const commentRoutes = require('./routes/comment');
@@ -22,7 +24,7 @@ app.use((req, res, next) => {
 
 app.use('/', commentRoutes);
 
-const url = process.env.MONGODB_URI
+const url = process.env.MONGODB_URI;
 
 mongoose
   .connect(url)
@@ -34,7 +36,36 @@ mongoose
     console.log('Connection failed!');
   });
 
+// Socket.io Connection
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: `http://localhost:5173`,
+  },
+});
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+
+  socket.on('createComment', (newComment) => {
+    console.log(newComment);
+    io.emit('commentCreated', newComment);
+  });
+
+  socket.on('updateComment', (updatedComment) => {
+    io.emit('commentUpdated', updatedComment);
+  });
+
+  socket.on('deleteComment', (commentId) => {
+    io.emit('commentDeleted', commentId);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server Running at http://localhost:${port}/comments`);
 });

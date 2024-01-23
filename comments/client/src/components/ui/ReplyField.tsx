@@ -18,7 +18,9 @@ const TextField = ({ id, replyingTo, close }:{id: string, replyingTo: string, cl
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    state.addReply(reply, id, replyingTo);
+    if (reply.trim().length !== 0) {
+      state.addReply(reply, id, replyingTo);
+    }
     close();
   };
 
