@@ -16,9 +16,42 @@
     <div id="app">
       <h1 class="visually-hidden">Interactive Rating Component</h1>
       <div class="card">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="card__icon">
+          <img src="./assets/icon-star.svg" alt="" aria-hidden="true"/>
+        </div>
+        <div>
+          <h2 class="card__title">How did we do?</h2>
+          <p class="card__text">
+            Please let us know how we did with your support request. All
+            feedbackis appreciated to help us improve our offering!.
+          </p>
+        </div>
+        <form id="form" class="card__form">
+          <fieldset class="fieldset">
+            <legend class="visually-hidden">Please select a rating:</legend>
+              <label class="card-form__label" for="rating-1">
+                <input type="radio" id="rating-1" name="rating" value="1" class="card-form__input">
+                <span class="card-form__circle">1</span>
+              </label>
+              <label class="card-form__label" for="rating-2">
+                  <input type="radio" id="rating-2" name="rating" value="2" class="card-form__input">
+                  <span class="card-form__circle">2</span>
+              </label>
+              <label class="card-form__label" for="rating-3">
+                <input type="radio" id="rating-3" name="rating" value="3" class="card-form__input">
+                <span class="card-form__circle">3</span>
+              </label>
+              <label class="card-form__label" for="rating-4">
+                  <input type="radio" id="rating-4" name="rating" value="4" class="card-form__input">
+                  <span class="card-form__circle">4</span>
+              </label>
+              <label class="card-form__label" for="rating-5">
+                  <input type="radio" id="rating-5" name="rating" value="5" class="card-form__input">
+                  <span class="card-form__circle">5</span>
+              </label>
+          </fieldset>
+          <button id="rating-submit" type="submit" class="btn btn--submit" >Submit</button>
+        </form>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
