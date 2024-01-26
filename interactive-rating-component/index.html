@@ -10,49 +10,101 @@
       href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <title>Vite + TS</title>
+    <title>Rate us!</title>
   </head>
   <body>
     <div id="app">
       <h1 class="visually-hidden">Interactive Rating Component</h1>
-      <div class="card">
+      <div class="card card--rating">
         <div class="card__icon">
-          <img src="./assets/icon-star.svg" alt="" aria-hidden="true"/>
+          <img src="./assets/icon-star.svg" alt="" aria-hidden="true" />
         </div>
         <div>
           <h2 class="card__title">How did we do?</h2>
           <p class="card__text">
             Please let us know how we did with your support request. All
-            feedbackis appreciated to help us improve our offering!.
+            feedback is appreciated to help us improve our offering!.
           </p>
         </div>
         <form id="form" class="card__form">
-          <fieldset class="fieldset">
+          <fieldset class="card__form--fieldset">
             <legend class="visually-hidden">Please select a rating:</legend>
-              <label class="card-form__label" for="rating-1">
-                <input type="radio" id="rating-1" name="rating" value="1" class="card-form__input">
-                <span class="card-form__circle">1</span>
-              </label>
-              <label class="card-form__label" for="rating-2">
-                  <input type="radio" id="rating-2" name="rating" value="2" class="card-form__input">
-                  <span class="card-form__circle">2</span>
-              </label>
-              <label class="card-form__label" for="rating-3">
-                <input type="radio" id="rating-3" name="rating" value="3" class="card-form__input">
-                <span class="card-form__circle">3</span>
-              </label>
-              <label class="card-form__label" for="rating-4">
-                  <input type="radio" id="rating-4" name="rating" value="4" class="card-form__input">
-                  <span class="card-form__circle">4</span>
-              </label>
-              <label class="card-form__label" for="rating-5">
-                  <input type="radio" id="rating-5" name="rating" value="5" class="card-form__input">
-                  <span class="card-form__circle">5</span>
-              </label>
+            <label class="card-form__label" for="rating-1">
+              <input
+                type="radio"
+                id="rating-1"
+                name="rating"
+                value="1"
+                class="card-form__input"
+              />
+              <span class="card-form__circle">1</span>
+            </label>
+            <label class="card-form__label" for="rating-2">
+              <input
+                type="radio"
+                id="rating-2"
+                name="rating"
+                value="2"
+                class="card-form__input"
+              />
+              <span class="card-form__circle">2</span>
+            </label>
+            <label class="card-form__label" for="rating-3">
+              <input
+                type="radio"
+                id="rating-3"
+                name="rating"
+                value="3"
+                class="card-form__input"
+              />
+              <span class="card-form__circle">3</span>
+            </label>
+            <label class="card-form__label" for="rating-4">
+              <input
+                type="radio"
+                id="rating-4"
+                name="rating"
+                value="4"
+                class="card-form__input"
+              />
+              <span class="card-form__circle">4</span>
+            </label>
+            <label class="card-form__label" for="rating-5">
+              <input
+                type="radio"
+                id="rating-5"
+                name="rating"
+                value="5"
+                class="card-form__input"
+              />
+              <span class="card-form__circle">5</span>
+            </label>
           </fieldset>
-          <button id="rating-submit" type="submit" class="btn btn--submit" >Submit</button>
+          <button id="rating-submit" type="submit" class="btn btn--submit">
+            Submit
+          </button>
         </form>
       </div>
+
+      <!-- <div class="card card--thanks">
+        <div>
+          <img
+            src="./assets/illustration-thank-you.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <div class="card__result">
+          <p>You selected # out of 5</p>
+        </div>
+        <div>
+          <h2>Thank you!</h2>
+          <p class="card__text">
+            We appreciate you taking the time to give a rating. if you ever need
+            more support, don't hesitate to get in touch!
+          </p>
+        </div>
+      </div> -->
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
