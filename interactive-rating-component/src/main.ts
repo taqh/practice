@@ -1,5 +1,3 @@
-import { setupCounter } from './counter.ts';
-
 const form = document.querySelector<HTMLFormElement>('#form');
 const submitBtn = document.querySelector<HTMLButtonElement>('.btn');
 const ratingCard = document.querySelector<HTMLDivElement>('.card--rating');
