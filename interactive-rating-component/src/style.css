@@ -1,10 +1,15 @@
 :root {
---Orange: hsl(25, 97%, 53%);
---White: hsl(0, 0%, 100%);
---Light-Grey: hsl(217, 12%, 63%);
---Medium-Grey: hsl(216, 12%, 54%);
---Dark-Blue: hsl(213, 19%, 18%);
---Very-Dark-Blue: hsl(216, 12%, 8%);
+  --Orange: hsl(25, 97%, 53%);
+  --White: hsl(0, 0%, 100%);
+  --Light-Grey: hsl(217, 12%, 63%);
+  --Medium-Grey: hsl(216, 12%, 54%);
+  --Dark-Blue: hsl(213, 19%, 18%);
+  --Very-Dark-Blue: hsl(216, 12%, 8%);
+  --Card-Bg: linear-gradient(
+    to bottom left,
+    hsl(215deg, 17%, 15%),
+    hsl(215deg, 27%, 12%)
+  );
 }
 
 /*
@@ -13,19 +18,19 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 /*
   2. Remove default margin
 */
 * {
-	margin: 0;
+  margin: 0;
   padding: 0;
 }
 
 /* Set core root defaults */
 html:focus-within {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /*
@@ -33,7 +38,7 @@ html:focus-within {
 */
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 /*
   Typographic tweaks!
@@ -41,8 +46,8 @@ body {
   5. Improve text rendering
 */
 body {
-	line-height: 1.5;
-	-webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 /*
   6. Improve media defaults
@@ -52,8 +57,8 @@ picture,
 video,
 canvas,
 svg {
-	display: block;
-	max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 /*
   7. Remove built-in form typography styles
@@ -62,7 +67,7 @@ input,
 button,
 textarea,
 select {
-	font: inherit;
+  font: inherit;
 }
 /*
   8. Avoid text overflows
@@ -74,44 +79,44 @@ h3,
 h4,
 h5,
 h6 {
-	overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-   list-style: none;
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-   text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
 }
 
 /* remove animations for people who've turned them off */
 @media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
-	}
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* utility classes */
 
 .visually-hidden {
-    position: absolute !important;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Main styles */
@@ -129,42 +134,48 @@ body {
   display: grid;
   min-height: 100vh;
   place-items: center;
-  padding-inline: 2rem;
+  padding-inline: clamp(0.75rem, calc(0.75rem + 2vw), 2rem);
 }
 
-.card {  
-  background-color: var(--Dark-Blue);
-  border-radius: 1rem;
-  width: clamp(3rem, 100%, 25.5rem);
-  padding: clamp(0.75rem, calc(0.75rem + 2vw), 2.5rem);
-  min-height: clamp(18rem, calc(5rem + 10vw), 25rem);
+.card {
+  background: var(--Card-Bg);
+  border-radius: 1.25rem;
+  width: clamp(3rem, 100%, 26rem);
+  padding: clamp(1.5rem, calc(0.75rem + 1.5vw), 2.5rem);
+  min-height: clamp(18rem, calc(5rem + 10vw), 26rem);
 }
 
-.card--rating {
+@media screen and (min-width: 768px) {
+  .card {
+    border-radius: 2rem;
+  }
+}
+
+.rating-card {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-.card--thanks{
+.thanks-card {
   display: grid;
   place-items: center;
   text-align: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
-.card--rating[data-visible="true"] {
+.rating-card[data-visible='true'] {
   display: grid;
 }
 
-.card--rating[data-visible="false"] {
+.rating-card[data-visible='false'] {
   display: none;
   opacity: 0;
 }
-.card--thanks[data-visible="true"] {
+.thanks-card[data-visible='true'] {
   display: grid;
 }
 
-.card--thanks[data-visible="false"] {
+.thanks-card[data-visible='false'] {
   display: none;
   opacity: 0;
 }
@@ -175,99 +186,108 @@ body {
   }
 }
 
-.card__result {
-  background-color: var(--Very-Dark-Blue);
+.thanks-card__result {
+  background-color: var(--Dark-Blue);
   border-radius: 2rem;
   padding: 0.3rem 0.9rem 0.1rem 0.9rem;
   color: var(--Orange);
   display: flex;
 }
 
-.card__icon {
+.star-icon {
   border-radius: 50%;
-  padding: 0.75rem;
-  width: fit-content;
-  background-color: var(--Very-Dark-Blue );
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-content: center;
+  background-color: var(--Dark-Blue);
 }
 
-.card__title {
+@media screen and (min-width: 768px) {
+  .star-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.rating-card__title,
+.thanks-card__title {
   font-weight: 700;
-  margin-bottom: 0rem;
+  font-size: clamp(1.25rem, calc(1rem + 1.5vw), 1.75rem);
 }
 
-.card__text {
+.rating-card__text,
+.thanks-card__text {
   margin-top: 0.75rem;
   color: var(--Light-Grey);
+  font-size: 0.875rem;
 }
 
-.card__form {
+@media screen and (min-width: 768px) {
+  .rating-card__text,
+  .thanks-card__text {
+    font-size: 1rem;
+  }
+}
+
+.rating-card__form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.btn {
-  background-color: var(--Orange);
-  color: var(--White);
-  cursor: pointer;
-  border: transparent;
-  outline: transparent;
-  padding: 0.75rem 2rem;
-  border-radius: 2rem;
-  text-transform: uppercase;
-  transition: all 250ms ease;
-  letter-spacing: .4ch;
-  font-weight: 700;
-}
-
-.btn:hover{
-  background: var(--White);
-  color: var(--Orange);
-  transition: all 250ms ease;
-}
-
-.btn:focus-visible {
-  outline-color: var(--Orange);
-  outline-offset: 2px;
-}
-
-.card__form--fieldset {
+.rating-card__fieldset {
   border: none;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.card-form__label {
+.rating-card__label {
   width: 2.5rem;
   height: 2.5rem;
   padding-top: 0.2rem;
   border-radius: 50%;
-  background-color: var(--Very-Dark-Blue);
+  background-color: var(--Dark-Blue);
   position: relative;
   display: grid;
   place-content: center;
   cursor: pointer;
-  transition: all 250ms ease;
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
   color: var(--Light-Grey);
   font-size: 0.875rem;
 }
 
-.card-form__label:hover {
-  background-color: var(--Orange);
+.rating-card__label:hover {
   color: var(--White);
-  transition: all 250ms ease;
+  background-color: var(--Orange);
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+
+/* .rating-card__label:focus-within {
+  outline: 2px solid var(--Orange);
+  outline-offset: 2px;
+} */
+
+.rating-card__label:has(.rating-card__input:focus-visible) {
+  outline: 2px solid var(--Orange);
+  outline-offset: 2px;
+}
+
+.rating-card__label:has(.rating-card__input:checked) {
+  background-color: var(--Light-Grey);
+  color: var(--White);
 }
 
 @media screen and (min-width: 32.5em) {
-  .card-form__label {
+  .rating-card__label {
     width: 3.125rem;
     height: 3.125rem;
     font-size: 1rem;
   }
 }
 
-.card-form__input {
+.rating-card__input {
   appearance: none;
   width: 100%;
   height: 100%;
@@ -277,7 +297,30 @@ body {
   left: 0;
 }
 
-.card-form__label:has(.card-form__input:checked) {
-  background-color: var(--Light-Grey);
+
+.btn {
+  background-color: var(--Orange);
   color: var(--White);
+  cursor: pointer;
+  border: none;
+  outline: transparent;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+  letter-spacing: 0.2ch;
+  font-weight: 700;
+}
+
+.btn:hover {
+  background: var(--White);
+  color: var(--Orange);
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+
+.btn:focus-visible {
+  outline-offset: 2px;
+  color: var(--Orange);
+  background: var(--White);
+  outline: 2px solid var(--Orange);
 }
