@@ -1,28 +1,10 @@
 # Practice
 
+![practice](./img/logo.png)
+
 This Repository contains a collection of practice projects I used to learn while also showcasing my frontend development skills.
 
-## Table of contents
-
-- [Overview](#overview)
-  - [Cover Image](#cover-image)
-  - [What and why](#what-and-why)
-- [My process](#my-process)
-  - [projects](#projects)
-  - [Technologies](#technologies)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Connect with me](#connect-with-me)
-- [Acknowledgments](#acknowledgments)
-
-## Overview
-
-### Cover Image
-
-![practice](./img/logo-large.png)
-
-### What and why
+## What and why
 
 What:
 
@@ -34,9 +16,7 @@ Why:
 - I decided to create this repository to document my progress and revisit solutions I wrote earlier in my journey.
 - I believe it shows how much I have improved since I started learning web development.
 
-## My process
-
-### Projects
+## Projects
 
 I started with simple projects and gradually moved to more complex ones.
 below is a table of the projects and challenges I have completed so far.
@@ -63,7 +43,7 @@ below is a table of the projects and challenges I have completed so far.
 | Todo app                        | Frontend       | [Live demo](https://domiha-todo.netlify.app)               |
 | E-commerce product page         | Frontend       | [Live demo](https://e-com-product-page.netlify.app)        |
 
-### Technologies
+## Technologies
 
 The construction of these projects involved the use of the following technologies and concepts:
 
@@ -77,7 +57,7 @@ The construction of these projects involved the use of the following technologie
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
 
-### What I learned
+## What I learned
 
 I learned a lot from each of these projects. I learned how to use technologies and concepts from beginner to an intermediate level.
 Some of the things I learned include but are not limited to the following:
@@ -104,11 +84,11 @@ Some of the things I learned include but are not limited to the following:
   - javascript ES6 features
   - javascript libraries
 
-### Continued development
+## Continued development
 
 I'm still growing daily as a developer and I'll continue to practice, learn new technologies and concepts to improve my skills, apply them to my projects, and document them here.
 
-### Useful resources
+## Useful resources
 
 - [Kevin powell](https://www.youtube.com/@KevinPowell) - Kevin's youtube channel helped me learn a lot as a beginner to css and I still learn alot from him today. Would recommend to anyone Just getting started or looking for a solution to a css problem.
 - [Freecodecamp](https://www.freecodecamp.org/learn/2022/responsive-web-design) - I got started with web development via freecodecamp's responsive web design course on thier website.
@@ -128,106 +108,3 @@ While these solutions were written by me, the challenges are from different sour
 - [devchallenges](https://devchallenges.io)
 - [freeCodeCamp](https://www.freecodecamp.org)
 
-<!-- <table width="100%">
-  <tr>
-    <th>Project title</th>
-    <th>Challenge type</th>
-    <th>Live Demo URL</th>
-  </tr>
-
-  <tr>
-    <td>Interacive comments section</td>
-    <td>Frontend</td>
-    <td><a href="https://comment-sec.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Interacive comments section v2</td>
-    <td>Fullstack</td>
-    <td><a href="https://comments-full.netlify.app/">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>REST Countries API with theme switcher</td>
-    <td>Frontend</td>
-    <td><a href="https://worlds-nations.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Calculator app</td>
-    <td>Frontend</td>
-    <td><a href="https://calc-live.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Multi step form</td>
-    <td>Frontend</td>
-    <td><a href="https://multistep-formlive.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Todo app</td>
-    <td>Frontend</td>
-    <td><a href="https://domiha-todo.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>E-commerce product page</td>
-    <td>Frontend</td>
-    <td><a href="https://e-com-product-page.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Space tourism website</td>
-    <td>Frontend</td>
-    <td><a href="https://spacetourweb.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Space tourism website v2</td>
-    <td>Frontend</td>
-    <td><a href="https://spacetourlive.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Social media dashboard</td>
-    <td>Frontend</td>
-    <td><a href="https://socialdashboard-live.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Intro section</td>
-    <td>Frontend</a></td>
-    <td><a href="https://introsect.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>News homepage</td>
-    <td>Frontend</td>
-    <td><a href="https://news-homepage-live.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Testimonials grid section</td>
-    <td>Frontend</td>
-    <td><a href="https://grid-sec.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Advice generator app</td>
-    <td>Frontend</td>
-    <td><a href="https://advice-generator-app-live.netlify.app/">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Sunnyside landing page</td>
-    <td>Frontend</td>
-    <td><a href="https://sunnyside-agency-live.netlify.app">Live demo</a></td>
-  </tr>
-
-  <tr>
-    <td>Crowdfunding product page</td>
-    <td>Frontend</td>
-    <td><a href="https://mastercraft-page.netlify.app">Live demo</a></td>
-  </tr>
-</table> -->
