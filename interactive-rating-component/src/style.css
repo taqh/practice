@@ -141,6 +141,7 @@ body {
   border-radius: 1.25rem;
   min-height: 20rem;
   width: clamp(3rem, 100%, 26rem);
+  perspective: 1000px;
 }
 
 @media screen and (min-width: 768px) {
@@ -148,6 +149,8 @@ body {
     min-height: 26rem;
   }
 }
+
+/* General card styles */
 
 .card {
   position: relative;
@@ -180,15 +183,7 @@ body {
   }
 }
 
-/* General card styles */
-
-
-.rating-card {
-  display: grid;
-}
-
 .thanks-card {
-  display: grid;
   place-items: center;
   text-align: center;
   transform: rotateY(180deg);
