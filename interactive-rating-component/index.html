@@ -16,96 +16,100 @@
   <body>
     <div id="app">
       <h1 class="visually-hidden">Interactive Rating Component</h1>
-      <div class="card">
-        
-        <div class="rating-card" data-visible="true">
-          <div class="star-icon">
-            <img src="./assets/icon-star.svg" alt="" aria-hidden="true" />
+      <div class="container">
+        <div class="card">
+          <div class="rating-card" data-visible="true">
+            <div class="star-icon">
+              <img src="./assets/icon-star.svg" alt="" aria-hidden="true" />
+            </div>
+            <div>
+              <h2 class="card__title">How did we do?</h2>
+              <p class="card__text">
+                Please let us know how we did with your support request. All
+                feedback is appreciated to help us improve our offering!
+              </p>
+            </div>
+            <form class="rating-card__form">
+              <fieldset class="rating-card__fieldset">
+                <legend class="visually-hidden">Please select a rating:</legend>
+                <label class="rating-card__label" for="rating-1">
+                  <input
+                    type="radio"
+                    id="rating-1"
+                    name="rating"
+                    value="1"
+                    class="rating-card__input"
+                  />
+                  <span>1</span>
+                </label>
+                <label class="rating-card__label" for="rating-2">
+                  <input
+                    type="radio"
+                    id="rating-2"
+                    name="rating"
+                    value="2"
+                    class="rating-card__input"
+                  />
+                  <span>2</span>
+                </label>
+                <label class="rating-card__label" for="rating-3">
+                  <input
+                    type="radio"
+                    id="rating-3"
+                    name="rating"
+                    value="3"
+                    class="rating-card__input"
+                  />
+                  <span>3</span>
+                </label>
+                <label class="rating-card__label" for="rating-4">
+                  <input
+                    type="radio"
+                    id="rating-4"
+                    name="rating"
+                    value="4"
+                    class="rating-card__input"
+                  />
+                  <span>4</span>
+                </label>
+                <label class="rating-card__label" for="rating-5">
+                  <input
+                    type="radio"
+                    id="rating-5"
+                    name="rating"
+                    value="5"
+                    class="rating-card__input"
+                  />
+                  <span>5</span>
+                </label>
+              </fieldset>
+              <button id="rating-submit" type="submit" class="btn">
+                Submit
+              </button>
+            </form>
           </div>
-          <div>
-            <h2 class="rating-card__title">How did we do?</h2>
-            <p class="rating-card__text">
-              Please let us know how we did with your support request. All
-              feedback is appreciated to help us improve our offering!
-            </p>
-          </div>
-          <form class="rating-card__form">
-            <fieldset class="rating-card__fieldset">
-              <legend class="visually-hidden">Please select a rating:</legend>
-              <label class="rating-card__label" for="rating-1">
-                <input
-                  type="radio"
-                  id="rating-1"
-                  name="rating"
-                  value="1"
-                  class="rating-card__input"
-                />
-                <span>1</span>
-              </label>
-              <label class="rating-card__label" for="rating-2">
-                <input
-                  type="radio"
-                  id="rating-2"
-                  name="rating"
-                  value="2"
-                  class="rating-card__input"
-                />
-                <span>2</span>
-              </label>
-              <label class="rating-card__label" for="rating-3">
-                <input
-                  type="radio"
-                  id="rating-3"
-                  name="rating"
-                  value="3"
-                  class="rating-card__input"
-                />
-                <span>3</span>
-              </label>
-              <label class="rating-card__label" for="rating-4">
-                <input
-                  type="radio"
-                  id="rating-4"
-                  name="rating"
-                  value="4"
-                  class="rating-card__input"
-                />
-                <span>4</span>
-              </label>
-              <label class="rating-card__label" for="rating-5">
-                <input
-                  type="radio"
-                  id="rating-5"
-                  name="rating"
-                  value="5"
-                  class="rating-card__input"
-                />
-                <span>5</span>
-              </label>
-            </fieldset>
-            <button id="rating-submit" type="submit" class="btn">Submit</button>
-          </form>
-        </div>
 
-        <div class="thanks-card" data-visible="false">
-          <div>
-            <img
-              src="./assets/illustration-thank-you.svg"
-              alt=""
-              aria-hidden="true"
-            />
+          <div class="thanks-card" data-visible="false">
+            <div>
+              <img
+                src="./assets/illustration-thank-you.svg"
+                alt=""
+                class="thanks-icon"
+                aria-hidden="true"
+              />
+            </div>
+            <div class="thanks-card__result">
+              <p class="rating">You selected # out of 5</p>
+            </div>
+            <div>
+              <h2 class="card__title">Thank you!</h2>
+              <p class="card__text">
+                We appreciate you taking the time to give a rating. if you ever
+                need more support, don't hesitate to get in touch!
+              </p>
+            </div>
+            <button type="button" class="btn change">Change Rating</button>
           </div>
-          <div class="thanks-card__result">
-            <p class="rating">You selected # out of 5</p>
-          </div>
-          <div>
-            <h2 class="thanks-card__title">Thank you!</h2>
-            <p class="thanks-card__text">
-              We appreciate you taking the time to give a rating. if you ever
-              need more support, don't hesitate to get in touch!
-            </p>
-          </div>
-          <!-- <button type="button" class="btn">Change Rating</button> -->
         </div>
       </div>
     </div>

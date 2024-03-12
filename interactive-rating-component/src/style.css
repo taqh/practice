@@ -137,53 +137,75 @@ body {
   padding-inline: clamp(0.75rem, calc(0.75rem + 2vw), 2rem);
 }
 
-.card {
-  background: var(--Card-Bg);
+.container {
   border-radius: 1.25rem;
+  min-height: 20rem;
   width: clamp(3rem, 100%, 26rem);
-  padding: clamp(1.5rem, calc(0.75rem + 1.5vw), 2.5rem);
-  min-height: clamp(18rem, calc(5rem + 10vw), 26rem);
 }
 
 @media screen and (min-width: 768px) {
-  .card {
+  .container {
+    min-height: 26rem;
+  }
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 1000ms;
+  transform-style: preserve-3d;
+}
+.rating-card{
+  gap: 1.5rem;
+}
+
+.thanks-card{
+  gap: 1rem;
+}
+
+.rating-card,
+.thanks-card {
+  position: absolute;
+  backface-visibility: hidden;
+  background: var(--Card-Bg);
+  padding: clamp(1.5rem, calc(0.75rem + 1.5vw), 2.5rem);
+  border-radius: 1.25rem;
+}
+
+@media screen and (min-width: 768px) {
+  .rating-card,
+  .thanks-card {
     border-radius: 2rem;
   }
 }
 
+/* General card styles */
+
+
 .rating-card {
   display: grid;
-  gap: 1.5rem;
 }
 
 .thanks-card {
   display: grid;
   place-items: center;
   text-align: center;
-  gap: 2rem;
+  transform: rotateY(180deg);
 }
 
-.rating-card[data-visible='true'] {
-  display: grid;
-}
-
-.rating-card[data-visible='false'] {
-  display: none;
-  opacity: 0;
-}
+.rating-card[data-visible='true'],
 .thanks-card[data-visible='true'] {
   display: grid;
 }
 
+.rating-card[data-visible='false'],
 .thanks-card[data-visible='false'] {
   display: none;
-  opacity: 0;
 }
 
-@media screen and (min-width: 32.5em) {
-  .card--thanks {
-    gap: 1.5rem;
-  }
+.rotate {
+  transform: rotateY(180deg);
 }
 
 .thanks-card__result {
@@ -194,6 +216,8 @@ body {
   display: flex;
 }
 
+/* Card content styles */
+
 .star-icon {
   border-radius: 50%;
   display: grid;
@@ -201,6 +225,9 @@ body {
   height: 2.5rem;
   place-content: center;
   background-color: var(--Dark-Blue);
+}
+.thanks-icon {
+  height: 6rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -210,22 +237,19 @@ body {
   }
 }
 
-.rating-card__title,
-.thanks-card__title {
+.card__title {
   font-weight: 700;
   font-size: clamp(1.25rem, calc(1rem + 1.5vw), 1.75rem);
 }
 
-.rating-card__text,
-.thanks-card__text {
+.card__text {
   margin-top: 0.75rem;
   color: var(--Light-Grey);
   font-size: 0.875rem;
 }
 
 @media screen and (min-width: 768px) {
-  .rating-card__text,
-  .thanks-card__text {
+  .card__text {
     font-size: 1rem;
   }
 }
@@ -264,11 +288,6 @@ body {
   transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
 }
 
-/* .rating-card__label:focus-within {
-  outline: 2px solid var(--Orange);
-  outline-offset: 2px;
-} */
-
 .rating-card__label:has(.rating-card__input:focus-visible) {
   outline: 2px solid var(--Orange);
   outline-offset: 2px;
@@ -297,7 +316,6 @@ body {
   left: 0;
 }
 
-
 .btn {
   background-color: var(--Orange);
   color: var(--White);
@@ -310,6 +328,7 @@ body {
   transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
   letter-spacing: 0.2ch;
   font-weight: 700;
+  width: 100%;
 }
 
 .btn:hover {

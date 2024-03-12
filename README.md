@@ -1,6 +1,4 @@
-# Practice
-
-![practice](./img/logo.png)
+# ![practice](./img/logo.png)
 
 This Repository contains a collection of practice projects I used to learn while also showcasing my frontend development skills.
 
