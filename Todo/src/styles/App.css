@@ -220,8 +220,8 @@ button:focus-visible {
    list-style: none;
 }
 .dragging {
-   background-color: hsl(var(--Focus));
-   border: 0;
+   background-color: hsl(var(--Card-bg));
+   border: 2px solid hsl(var(--Focus));
    border-radius: 1rem;
 }
 .task {

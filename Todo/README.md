@@ -1,31 +1,4 @@
-<div id="top"></div>
-
-<div align="center">
-
-  <img src="https://www.frontendmentor.io/static/images/logo-mobile.svg" alt="frontendmentor" width="80">
-
-  <h2 align="center">Todo app solution</h2>
-  <p align="center">
-    <a href="(https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW"><strong>Frontend Mentor Challenge</strong></a>
-    <br />
-  </p>
-</div>
-
-#
-
-<div align="center">
-
-![](./design/desktop-preview.jpg)
-
-</div>
-
-This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
-
-<h2 align="center"></h2>
-
-- Live Site URL: [URL](https://todo-tau-sable.vercel.app/) 
-
-<br>
+# ![desktop design](./design/desktop-design-dark.jpg)
 
 ## Table of contents
 
@@ -35,7 +8,7 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   - [Built with](#built-with)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
+
 ## Overview
 
 ### The challenge
@@ -52,14 +25,12 @@ Users should be able to:
 - Toggle light and dark mode
 - **Bonus**: Drag and drop to reorder items on the list
 
-
-
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- [React](https://reactjs.org/) - JS library
+- [React](https://reactjs.org/)
 - React Hooks (useState, useEffect)
 - Flexbox
 - CSS Grid
@@ -68,7 +39,6 @@ Users should be able to:
 
 ## Author
 
-- Frontend Mentor - [@Domiha](//https://www.frontendmentor.io/profile/Dom-iha)
 - Github - [Taqib](https://github.com/Dom-iha)
 - Twitter - [@_Mihaq](https://www.twitter.com/_Mihaq)
 
@@ -77,38 +47,6 @@ Users should be able to:
 - [React documentation](https://reactjs.org/)
 - [React beautiful dnd](https://www.freecodecamp.org/news/how-to-add-drag-and-drop-in-react-with-react-beautiful-dnd/)
 - [MDN web docs: Getting started with react](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started)
-
-## Acknowledgments
-
-- [vite](https://vitejs.dev/). 
-
-To get started, Run the following command:
-
-```bash
-with npm:
-  npm create vite@latest
-
-with yarn:
-  yarn create vite
-```
-
-Then, you can run the client:
-
-```bash
-npm run dev
-```
-
-- [React beautiful dnd](https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd)
-
-To add the package, Run the following command:
-
-```bash
-with npm:
-  npm install react-beautiful-dnd --save
-
-with yarn:
-  yarn add react-beautiful-dnd
-```
 
 ## Learn More
 
